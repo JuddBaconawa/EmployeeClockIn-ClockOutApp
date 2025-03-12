@@ -6,12 +6,16 @@
 
 
 //main class - App
-public class App {
+public class GUI {
 
     //main method
     public static void main(String[] args) throws Exception {
 
 
-        System.out.println("Hello, World!");
+        
+
+
     }
+
+
 }
