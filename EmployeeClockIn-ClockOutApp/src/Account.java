@@ -14,6 +14,7 @@ public class Account {
 	private char[] password;
 	private int userId;
 
+	//account constructor - responsible for creating 
 	public Account() {
 
 		//Account's attributes
