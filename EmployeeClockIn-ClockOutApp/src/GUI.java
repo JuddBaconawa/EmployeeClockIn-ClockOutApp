@@ -54,15 +54,6 @@ public class GUI {
         login.setBounds( 100, 90, 75, 25);
         panel.add(login);
 
-
-
-
-
-
-
-
-        
-
     }
 
     //main method - where the first code is actually executed.

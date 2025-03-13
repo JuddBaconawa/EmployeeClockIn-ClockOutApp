@@ -24,15 +24,15 @@ public class Account {
 
 
 	//=====================================Getters========================================================
-	public String getUsername() {	//gets username
+	public String getUsername() {	//getters username
 		return username;
 	}
 
-	public char[] getPassword() {	//gets password
+	public char[] getPassword() {	//getters password
 		return password;
 	}
 
-	public int getUserId() {		//gets userId
+	public int getUserId() {		//getters userId
 		return userId;
 	}
 
