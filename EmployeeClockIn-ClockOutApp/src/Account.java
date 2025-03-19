@@ -15,10 +15,11 @@ public class Account {
 	private int userId;
 
 	//account constructor - responsible for creating 
-	public Account() {
-
+	public Account(String username, String password, int userId) {
 		//Account's attributes
-		
+		this.username = username;
+		this.password = password.toCharArray();
+		this.userId = userId;
 	}
 
 
