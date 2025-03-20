@@ -27,6 +27,11 @@ public class UserServices {
 		return false;
 	}
 
+	//Getter for accounts
+	public static ArrayList<Account> getAccount() {
+		return UserServices.accounts;
+	}
+
 
 
 }
