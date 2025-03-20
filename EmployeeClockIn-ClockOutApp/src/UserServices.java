@@ -3,6 +3,7 @@
 
 //imports
 import java.util.ArrayList;
+import java.util.Arrays;
 
 //main class - for backend functions hidden to the user
 public class UserServices {
@@ -16,6 +17,16 @@ public class UserServices {
 		accounts.add(new Account("user01", "password01", 0000002));
 	}
 
-	
+	public static boolean login(String username, char[] password, ArrayList<Account> account) {
+		for (Account accounts : account) {
+
+			if (accounts.getUsername().equals(username) && Arrays.equals(accounts.getPassword(), password)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+
 
 }
