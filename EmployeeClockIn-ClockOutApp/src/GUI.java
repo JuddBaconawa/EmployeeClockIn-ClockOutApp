@@ -2,17 +2,22 @@
 
 
 //imports
+import java.awt.Button;
+import java.awt.event.ActionListener;
+
+
 import javax.swing.JButton;
 import javax.swing.JFrame;          //makes the window box
 import javax.swing.JLabel;          //formats the design and spacing withing the GUI window
 import javax.swing.JPanel;          //JLabel for the label such as the title for "username" and "password"
 import javax.swing.JPasswordField;      //for the username and password input into the textbox
 import javax.swing.JTextField;
+import org.w3c.dom.UserDataHandler;
 
 
 
 //main class - App
-public class GUI {
+public class GUI implements ActionListener {
 
 
 
@@ -20,7 +25,7 @@ public class GUI {
 
 
 
-        //framing for the GUI
+        //framing + panel for the GUI
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();    //should be set before the use of panel within the frame object
         
@@ -57,7 +62,7 @@ public class GUI {
         JButton loginButton = new JButton("Login");
         loginButton.setBounds( 100, 90, 75, 25);
         panel.add(loginButton);
-        
+        loginButton.addActionListener(this);
 
         //create an account button
         JButton createAccount = new JButton("Create Account");
@@ -72,6 +77,8 @@ public class GUI {
 
     //main method - where the first code is actually executed.
     public static void main(String[] args) throws Exception {
+
+        UserServices.initializeUser();  //adds the accounts for credential checks 
 
         //activating or calling upon the method GUI
         new GUI();
