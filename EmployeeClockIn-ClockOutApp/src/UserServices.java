@@ -17,13 +17,17 @@ public class UserServices {
 		accounts.add(new Account("user01", "password01", 0000002));
 	}
 
+	//login method which confirms credentials
 	public static boolean login(String username, char[] password, ArrayList<Account> account) {
 		for (Account accounts : account) {
 
+			//logic which check credentials via .equals & Arrays.equals()
 			if (accounts.getUsername().equals(username) && Arrays.equals(accounts.getPassword(), password)) {
+				//credential confirmed
 				return true;
 			}
 		}
+		//if credential false
 		return false;
 	}
 
