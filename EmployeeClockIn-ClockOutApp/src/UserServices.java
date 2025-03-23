@@ -23,8 +23,10 @@ public class UserServices {
 
 			//logic which check credentials via .equals & Arrays.equals()
 			if (accounts.getUsername().equals(username) && Arrays.equals(accounts.getPassword(), password)) {
+				System.out.println("Login Succesfull");
 				//credential confirmed
 				return true;
+				
 			}
 		}
 		//if credential false

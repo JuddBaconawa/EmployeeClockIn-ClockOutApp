@@ -4,7 +4,7 @@
 //imports
 import java.awt.Button;
 import java.awt.event.ActionListener;
-
+import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;          //makes the window box
@@ -14,6 +14,9 @@ import javax.swing.JPasswordField;      //for the username and password input in
 import javax.swing.JTextField;
 import org.w3c.dom.UserDataHandler;
 
+
+
+//main class - App
 
 
 //main class - App
@@ -70,7 +73,11 @@ public class GUI implements ActionListener {
         panel.add(createAccount);
 
         
-        
+        //login button clicked action event
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            throw new UnsupportedOperationException("Not supported yet.");
+        }
         
 
     }
@@ -86,6 +93,7 @@ public class GUI implements ActionListener {
 
 
     }
+
 
 
 }
