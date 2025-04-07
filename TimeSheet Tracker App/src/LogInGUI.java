@@ -16,10 +16,15 @@ public class LogInGUI extends BaseGUI implements ActionListener {
 		//inhereted declarations
 		super("Clock In/Out App: Login/Create Account", 325, 275);
 
+		JFrame frame = new JFrame();
+
+		ImageIcon image = new ImageIcon("src/images/timesheet-icon (small).png");
+		frame.setIconImage(image.getImage());
+
 
 		//username label
 		JLabel usernameLabel = new JLabel("Username");
-		usernameLabel.setBounds(20, 20, 80, 25); 
+		usernameLabel.setBounds(20, 180, 80, 25); 
 		panel.add(usernameLabel);
 
 		//username input
