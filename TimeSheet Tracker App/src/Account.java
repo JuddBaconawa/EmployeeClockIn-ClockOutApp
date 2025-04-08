@@ -13,14 +13,17 @@ public class Account {
 		this.userId = userId;
 	}
 
+	//username getter
 	public String getUsername() {
 		return usernameInput;
 	}
 
+	//password getter
 	public char[] getPassword() {
 		return passwordInput;
 	}
 
+	//userId getter
 	public int getUserId() {
 		return userId;
 	}
