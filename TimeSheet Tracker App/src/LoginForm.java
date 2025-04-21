@@ -3,19 +3,13 @@
 
 /****************** imports **************************/
 // Toolkit for GUI
-import java.awt.GridLayout;
 import java.awt.BorderLayout;
-
-// Events
-
-// Database
-
-// Swing objects
+import java.awt.GridLayout;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
+import javax.swing.JPanel;
 import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 // LoginForm
 public class LoginForm extends JFrame {
@@ -40,15 +34,16 @@ public class LoginForm extends JFrame {
 		/**************** Labels and Inputs panel *****************/
 
 		JLabel usernameLabel = new JLabel("Username");
-		usernameLabel.setBounds();
+		usernameLabel.setBounds(25, 50, 75, 25);
 
 		usernameInput = new JTextField();
+		usernameInput.setBounds(50, 50, 75, 25);
 
 		JLabel passwordLabel = new JLabel("Password");
-		passwordLabel.setBounds();
+		passwordLabel.setBounds(25, 90, 75, 25);
 
 		userPasswordInput = new JPasswordField();
-		userPasswordInput.setBounds();
+		userPasswordInput.setBounds(75, 90, 75, 25);
 
 		/*********************** Form panel ********************/
 		JPanel formPanel = new JPanel();
@@ -69,6 +64,7 @@ public class LoginForm extends JFrame {
 		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		setSize(400, 300);
 		add(formPanel);
+		setVisible(true);
 
 		
 
