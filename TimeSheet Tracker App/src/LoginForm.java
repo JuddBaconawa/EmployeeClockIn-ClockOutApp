@@ -3,17 +3,17 @@
 
 /****************** imports **************************/
 // Toolkit for GUI
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.GridLayout;
-import javax.swing.JButton;
+import java.awt.BorderLayout;						//Border layout
+import java.awt.Color;									//used to change color - using RGB
+import java.awt.Dimension;							//setting up the size of an object within the window
+import java.awt.GridLayout;							//layout of the form in a grid manner
+import javax.swing.JButton;							//for buttons within the forms
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-import javax.swing.WindowConstants;
+import javax.swing.JPasswordField;			//password input
+import javax.swing.JTextField;					//username input
+import javax.swing.WindowConstants;			//constants
 
 // LoginForm
 public class LoginForm extends JFrame {
