@@ -25,27 +25,31 @@ public class LoginForm extends JFrame {
 
 	public void initialize() {
 
+		//create the outer main panel as a background
+		JPanel outerMainPanel = new JPanel(new BorderLayout());
+		outerMainPanel.setBackground(new Color(220, 220, 220));
+
 		//create the main panel to hold the left and right panels
 		JPanel innerMainPanel = new JPanel(new GridLayout(1, 2));
-	
 
 		/*********************** Left Panel ************************/
 		JPanel leftPanel = new JPanel(new BorderLayout());
 		JLabel leftTitle = new JLabel("Welcome Back!", JLabel.CENTER);
-		leftPanel.setBackground(RGB(243, 344, 445));
+		
+		/******************** Form Panel Left **********************/
+		leftPanel.setBackground(new Color(245, 245, 240));
+		leftPanel.add(leftTitle, BorderLayout.CENTER);
 		
 		//future image
 		//image label
 		//leftPanel.add(imageLabel, BorderLayout.CENTER);
 
 
-		/******************** Form Panel Left **********************/
-		leftPanel.add(leftTitle, BorderLayout.CENTER);
 
 
 		/*********************** Right Form panel ********************/
 		/**************** Labels and Inputs panel *****************/
-		JPanel rightPanel = new JPanel(new GridLayout(3, 3, 10, 10));
+		JPanel rightPanel = new JPanel();
 
 		JLabel usernameLabel = new JLabel("Username");
 		usernameLabel.setBounds(25, 50, 75, 25);
@@ -60,7 +64,6 @@ public class LoginForm extends JFrame {
 		userPasswordInput.setBounds(75, 90, 75, 25);
 
 		/*********************** Form panel RIGHT ********************/
-		JPanel formPanel = new JPanel();
 		rightPanel.add(usernameLabel);
 		rightPanel.add(usernameInput);
 		rightPanel.add(passwordLabel);
@@ -71,10 +74,10 @@ public class LoginForm extends JFrame {
 
 		/*********************** Buttons panel ********************/
 		JButton loginButton = new JButton("Log In");
-		loginButton.setBounds(75, 25, 50, 25);
+
 
 		JButton windowExit = new JButton("Exit");
-		windowExit.setBounds(25, 25, 50, 25);
+
 
 
 		/*********************** Button-Form panel ********************/
@@ -86,21 +89,20 @@ public class LoginForm extends JFrame {
 		innerMainPanel.add(rightPanel);
 		
 
+		/*********************** Outer Main panel ********************/
+		outerMainPanel.add(innerMainPanel, BorderLayout.CENTER);
+		// setSize(600, 400);
+
 		/*********************** Frame Settings ********************/
 		setTitle("Login to Clock In");
-		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);
-		setSize(600, 400);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		setSize(800, 500);
 		setLocationRelativeTo(null);
-		add(innerMainPanel);
+		add(outerMainPanel);
 		setVisible(true);
 
 		
 
 	}
-
-    private Color RGB(int i, int i0, int i1) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
 
 }
