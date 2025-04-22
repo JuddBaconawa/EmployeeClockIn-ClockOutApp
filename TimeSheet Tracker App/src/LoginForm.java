@@ -5,6 +5,7 @@
 // Toolkit for GUI
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -31,6 +32,8 @@ public class LoginForm extends JFrame {
 
 		//create the main panel to hold the left and right panels
 		JPanel innerMainPanel = new JPanel(new GridLayout(1, 2));
+		innerMainPanel.setPreferredSize(new Dimension(300, 150));
+		innerMainPanel.setBackground(Color.CYAN);
 
 		/*********************** Left Panel ************************/
 		JPanel leftPanel = new JPanel(new BorderLayout());
@@ -39,6 +42,8 @@ public class LoginForm extends JFrame {
 		/******************** Form Panel Left **********************/
 		leftPanel.setBackground(new Color(245, 245, 240));
 		leftPanel.add(leftTitle, BorderLayout.CENTER);
+
+		leftPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
 		
 		//future image
 		//image label
@@ -48,8 +53,14 @@ public class LoginForm extends JFrame {
 
 
 		/*********************** Right Form panel ********************/
-		/**************** Labels and Inputs panel *****************/
 		JPanel rightPanel = new JPanel();
+		rightPanel.setBackground(new Color(250, 250, 250)); // Slightly lighter
+		rightPanel.setLayout(new GridLayout(5, 1, 10, 10)); // 5 rows, 1 column, spacing
+		rightPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 40, 20, 40));		
+
+
+		/**************** Labels and Inputs panel *****************/
+
 
 		JLabel usernameLabel = new JLabel("Username");
 		usernameLabel.setBounds(25, 50, 75, 25);
