@@ -41,9 +41,9 @@ public class LoginForm extends JFrame {
 		
 		/******************** Form Panel Left **********************/
 		leftPanel.setBackground(new Color(245, 245, 240));
-		leftPanel.add(leftTitle, BorderLayout.CENTER);
+		leftPanel.add(leftTitle, BorderLayout.NORTH);
 
-		leftPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
+		leftPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(40, 20, 20, 20));
 		
 		//future image
 		//image label
@@ -55,24 +55,24 @@ public class LoginForm extends JFrame {
 		/*********************** Right Form panel ********************/
 		JPanel rightPanel = new JPanel();
 		rightPanel.setBackground(new Color(250, 250, 250)); // Slightly lighter
-		rightPanel.setLayout(new GridLayout(5, 1, 10, 10)); // 5 rows, 1 column, spacing
-		rightPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 40, 20, 40));		
+		rightPanel.setLayout(new GridLayout(0, 1, 10, 40)); // 5 rows, 1 column, spacing
+		rightPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 50, 30, 50));		
 
 
 		/**************** Labels and Inputs panel *****************/
 
 
 		JLabel usernameLabel = new JLabel("Username");
-		usernameLabel.setBounds(25, 50, 75, 25);
+		// usernameLabel.setBounds(25, 50, 75, 25);
 
 		usernameInput = new JTextField();
-		usernameInput.setBounds(50, 50, 75, 25);
+		// usernameInput.setBounds(50, 50, 75, 25);
 
 		JLabel passwordLabel = new JLabel("Password");
-		passwordLabel.setBounds(25, 90, 75, 25);
+		// passwordLabel.setBounds(25, 90, 25, 25);
 
 		userPasswordInput = new JPasswordField();
-		userPasswordInput.setBounds(75, 90, 75, 25);
+		// userPasswordInput.setBounds(75, 90, 25, 25);
 
 		/*********************** Form panel RIGHT ********************/
 		rightPanel.add(usernameLabel);
@@ -84,6 +84,7 @@ public class LoginForm extends JFrame {
 
 
 		/*********************** Buttons panel ********************/
+		// Login Button created
 		JButton loginButton = new JButton("Log In");
 
 
