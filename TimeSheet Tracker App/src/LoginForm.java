@@ -8,6 +8,9 @@ import java.awt.Color;									//used to change color - using RGB
 import java.awt.Dimension;							//setting up the size of an object within the window
 import java.awt.GridLayout;							//layout of the form in a grid manner
 
+import java.awt.event.ActionListener;		// Listens for the action - button clicked
+import java.awt.event.ActionEvent;			// Effect or function of when clicked
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;							//for buttons within the forms
 import javax.swing.JFrame;
