@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;			//password input
 import javax.swing.JTextField;					//username input
+import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;			//constants
 
 // LoginForm
@@ -40,7 +41,7 @@ public class LoginForm extends JFrame {
 		JLabel leftTitle = new JLabel("Welcome Back!", JLabel.CENTER);
 		
 		/******************** Form Panel Left **********************/
-		leftPanel.setBackground(new Color(245, 245, 240));
+		leftPanel.setBackground(new Color(230, 235, 230));
 		leftPanel.add(leftTitle, BorderLayout.NORTH);
 
 		leftPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(40, 20, 20, 20));
@@ -55,12 +56,12 @@ public class LoginForm extends JFrame {
 		/*********************** Right Form panel ********************/
 		JPanel rightPanel = new JPanel();
 		rightPanel.setBackground(new Color(250, 250, 250)); // Slightly lighter
-		rightPanel.setLayout(new GridLayout(0, 1, 10, 40)); // 5 rows, 1 column, spacing
+		rightPanel.setLayout(new GridLayout(0, 1, 10, 10)); 
 		rightPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(30, 50, 30, 50));		
 
 
 		/**************** Labels and Inputs panel *****************/
-
+		JLabel loginLabel = new JLabel("Login to Clock In", SwingConstants.CENTER);
 
 		JLabel usernameLabel = new JLabel("Username");
 		// usernameLabel.setBounds(25, 50, 75, 25);
@@ -75,6 +76,7 @@ public class LoginForm extends JFrame {
 		// userPasswordInput.setBounds(75, 90, 25, 25);
 
 		/*********************** Form panel RIGHT ********************/
+		rightPanel.add(loginLabel);
 		rightPanel.add(usernameLabel);
 		rightPanel.add(usernameInput);
 		rightPanel.add(passwordLabel);
