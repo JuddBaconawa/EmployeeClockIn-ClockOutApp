@@ -35,7 +35,7 @@ public class LoginForm extends JFrame {
 
 		//create the main panel to hold the left and right panels
 		JPanel innerMainPanel = new JPanel(new GridLayout(1, 2));
-		innerMainPanel.setPreferredSize(new Dimension(300, 150));
+		innerMainPanel.setPreferredSize(new Dimension(600, 400));
 		innerMainPanel.setBackground(Color.CYAN);
 
 		/*********************** Left Panel ************************/
@@ -77,12 +77,8 @@ public class LoginForm extends JFrame {
 		userPasswordInput = new JPasswordField();
 		// userPasswordInput.setBounds(75, 90, 25, 25);
 
-		/*********************** Form panel RIGHT ********************/
-		rightPanel.add(loginLabel);
-		rightPanel.add(usernameLabel);
-		rightPanel.add(usernameInput);
-		rightPanel.add(passwordLabel);
-		rightPanel.add(userPasswordInput);
+
+
 
 		
 
@@ -97,11 +93,22 @@ public class LoginForm extends JFrame {
 
 
 		/*********************** Button-Form panel ********************/
-		JPanel buttonPanel = new JPanel();
+		JPanel buttonPanel = new JPanel(new GridLayout());
 		buttonPanel.setLayout(new GridLayout(1, 2, 10, 0));
-		buttonPanel.setBorder(BorderFactory.createEmptyBorder(30, 50, 30, 50));
-		rightPanel.add(loginButton);
-		rightPanel.add(windowExit);
+		// buttonPanel.setBorder(BorderFactory.createEmptyBorder(3, 5, 3, 5));
+
+
+		buttonPanel.add(loginButton);
+		buttonPanel.add(windowExit);
+
+		/*********************** Form panel RIGHT ********************/
+		rightPanel.add(loginLabel);
+		rightPanel.add(usernameLabel);
+		rightPanel.add(usernameInput);
+		rightPanel.add(passwordLabel);
+		rightPanel.add(userPasswordInput);
+		rightPanel.add(buttonPanel);
+
 
 
 		/*********************** Inner Main panel ********************/
