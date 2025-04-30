@@ -12,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;							//for buttons within the forms
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;			//password input
 import javax.swing.JTextField;					//username input
@@ -86,6 +87,29 @@ public class LoginForm extends JFrame {
 		/*********************** Buttons panel ********************/
 		// Login Button created
 		JButton loginButton = new JButton("Log In");
+
+		loginButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				String username = usernameInput.getText();
+				String password = String.valueOf(userPasswordInput.getPassword());
+
+				User user = getAuthenticated(username, password);
+
+				if (user != null) {
+					MainFrame mainFrame = new MainFrame();
+					mainFrame.initialize(user);
+					dispose();
+				} else {
+					JOptionPane.showMessageDialog(LoginForm.this,
+											"Email or password Invalid",
+											"Try Againt",
+											JOptionPane.ERROR_MESSAGE);
+				}
+			}
+
+		});
 
 
 		JButton windowExit = new JButton("Exit");
