@@ -7,6 +7,8 @@ import java.awt.BorderLayout;						//Border layout
 import java.awt.Color;									//used to change color - using RGB
 import java.awt.Dimension;							//setting up the size of an object within the window
 import java.awt.GridLayout;							//layout of the form in a grid manner
+
+import javax.swing.BorderFactory;
 import javax.swing.JButton;							//for buttons within the forms
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -95,8 +97,12 @@ public class LoginForm extends JFrame {
 
 
 		/*********************** Button-Form panel ********************/
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new GridLayout(1, 2, 10, 0));
+		buttonPanel.setBorder(BorderFactory.createEmptyBorder(30, 50, 30, 50));
 		rightPanel.add(loginButton);
 		rightPanel.add(windowExit);
+
 
 		/*********************** Inner Main panel ********************/
 		innerMainPanel.add(leftPanel);
