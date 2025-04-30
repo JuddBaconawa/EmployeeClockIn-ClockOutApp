@@ -112,7 +112,15 @@ public class LoginForm extends JFrame {
 		});
 
 
-		JButton windowExit = new JButton("Exit");
+		JButton exitButton = new JButton("Exit");
+
+		exitButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
 
 
 
@@ -123,7 +131,7 @@ public class LoginForm extends JFrame {
 
 
 		buttonPanel.add(loginButton);
-		buttonPanel.add(windowExit);
+		buttonPanel.add(exitButton);
 
 		/*********************** Form panel RIGHT ********************/
 		rightPanel.add(loginLabel);
