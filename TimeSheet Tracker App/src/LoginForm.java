@@ -172,7 +172,12 @@ public class LoginForm extends JFrame {
 		//set Empty for the program to check for credential
 		User user = null;
 
+		// Database url, username, and password for MySQL access
 		final String DB_URL = "jdbc:mysql://localhost:3306/timesheetapp";
+		final String USERNAME = "root";
+		final String PASSWORD = "#MCMXCii1301!";
+
+		
 
 	}
 
