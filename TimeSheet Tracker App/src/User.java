@@ -6,6 +6,7 @@
 // USER - class
 public class User {
 	
+	// User class' Attributes
 	public int userId;
 	public String username;
 	public String email;
