@@ -191,7 +191,10 @@ public class LoginForm extends JFrame {
 
 
 		} catch (Exception e) {
+			System.err.println("Database connection failed" + e.getLocalizedMessage());
 		}
+
+		return user;
 
 	}
 
