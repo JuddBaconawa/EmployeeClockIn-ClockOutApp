@@ -11,6 +11,9 @@ import java.awt.GridLayout;							//layout of the form in a grid manner
 import java.awt.event.ActionListener;		// Listens for the action - button clicked
 import java.awt.event.ActionEvent;			// Effect or function of when clicked
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;							//for buttons within the forms
 import javax.swing.JFrame;
@@ -167,6 +170,7 @@ public class LoginForm extends JFrame {
 
 	}
 
+	// Authenticator for log in
 	private User getAuthenticatedUser (String usernameInput, String passwordInput) {
 
 		//set Empty for the program to check for credential
@@ -177,7 +181,17 @@ public class LoginForm extends JFrame {
 		final String USERNAME = "root";
 		final String PASSWORD = "#MCMXCii1301!";
 
-		
+		try {
+				
+			// Load MySQl JDBC driver
+			Class.forName("com.mysql.cj.jdbc.Driver");
+
+			// Connect to the database
+			Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+
+
+		} catch (Exception e) {
+		}
 
 	}
 
