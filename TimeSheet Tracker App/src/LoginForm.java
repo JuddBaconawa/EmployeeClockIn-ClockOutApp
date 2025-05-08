@@ -190,6 +190,15 @@ public class LoginForm extends JFrame {
 			Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
 
 
+			// SQL statement to pull the list of files from the user table for credential checks
+			String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+
+			// Used preparedStatements to prevent SQL injection Attacks
+			PreparedStatement preparedStatement = conn.preparedStatement(sql);
+			preparedStatement.setString(1, usernameInput);
+			preparedStatement.setString(2, passwordInput);
+
+
 		} catch (Exception e) {
 			System.err.println("Database connection failed" + e.getLocalizedMessage());
 		}
