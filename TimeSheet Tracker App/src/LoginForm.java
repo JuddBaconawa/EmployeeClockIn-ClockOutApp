@@ -98,7 +98,7 @@ public class LoginForm extends JFrame {
 				String username = usernameInput.getText();
 				String password = String.valueOf(userPasswordInput.getPassword());
 
-				User user = getAuthenticated(username, password);
+				User user = getAuthenticatedUser(username, password);
 
 				if (user != null) {
 					TimeSheet timesheet = new TimeSheet();
