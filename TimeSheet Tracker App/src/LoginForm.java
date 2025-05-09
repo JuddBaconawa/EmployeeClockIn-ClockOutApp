@@ -87,10 +87,6 @@ public class LoginForm extends JFrame {
 
 
 
-
-		
-
-
 		/*********************** Buttons panel ********************/
 		// Login Button created
 		JButton loginButton = new JButton("Log In");
@@ -105,8 +101,9 @@ public class LoginForm extends JFrame {
 				User user = getAuthenticated(username, password);
 
 				if (user != null) {
-					MainFrame mainFrame = new MainFrame();
-					mainFrame.initialize(user);
+					TimeSheet timesheet = new TimeSheet();
+					TimeSheet timeSheet = new TimeSheet();
+					timeSheet.initialize(user);
 					dispose();
 				} else {
 					JOptionPane.showMessageDialog(LoginForm.this,
