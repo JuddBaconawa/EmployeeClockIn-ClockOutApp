@@ -13,6 +13,7 @@ import java.awt.event.ActionEvent;			// Effect or function of when clicked
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;							//for buttons within the forms
@@ -194,7 +195,7 @@ public class LoginForm extends JFrame {
 			String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 
 			// Used preparedStatements to prevent SQL injection Attacks
-			PreparedStatement preparedStatement = conn.preparedStatement(sql);
+			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, usernameInput);
 			preparedStatement.setString(2, passwordInput);
 
