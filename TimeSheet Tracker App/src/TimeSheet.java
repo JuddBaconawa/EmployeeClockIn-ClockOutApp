@@ -7,8 +7,16 @@
 // TimeSheet class
 public class TimeSheet {
 
-	public void initialize() {
+	public void initialize(User user) {
 		
+		/*********************** Time sheet Main Menu ****************************/
+
+
+
+		/*********************** Main panel ********************/
+		JPanel mainPanel = new JPanel();
+		
+
 	}
 
 }
