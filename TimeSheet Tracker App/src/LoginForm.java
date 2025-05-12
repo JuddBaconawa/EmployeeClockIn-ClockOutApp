@@ -127,25 +127,22 @@ public class LoginForm extends JFrame {
 		});
 
 
-
 		/*********************** Button-Form panel ********************/
 		JPanel buttonPanel = new JPanel(new GridLayout());
 		buttonPanel.setLayout(new GridLayout(1, 2, 10, 0));
 		// buttonPanel.setBorder(BorderFactory.createEmptyBorder(3, 5, 3, 5));
 
 
-		buttonPanel.add(loginButton);
-		buttonPanel.add(exitButton);
+		buttonPanel.add(loginButton);				// Login Button added to the panel
+		buttonPanel.add(exitButton);				// Exit Button added to the panel
 
 		/*********************** Form panel RIGHT ********************/
-		rightPanel.add(loginLabel);
-		rightPanel.add(usernameLabel);
-		rightPanel.add(usernameInput);
-		rightPanel.add(passwordLabel);
-		rightPanel.add(userPasswordInput);
-		rightPanel.add(buttonPanel);
-
-
+		rightPanel.add(loginLabel);								// Login label added to the  right panel
+		rightPanel.add(usernameLabel);						// Username label added to the right panel
+		rightPanel.add(usernameInput);						// Username input added to the right panel
+		rightPanel.add(passwordLabel);						// Password label added to the right panel
+		rightPanel.add(userPasswordInput);				// Password input added to the right panel
+		rightPanel.add(buttonPanel);							// Button panel added to the right panel
 
 		/*********************** Inner Main panel ********************/
 		innerMainPanel.add(leftPanel);
@@ -163,8 +160,6 @@ public class LoginForm extends JFrame {
 		setLocationRelativeTo(null);
 		add(outerMainPanel);
 		setVisible(true);
-
-		
 
 	}
 
