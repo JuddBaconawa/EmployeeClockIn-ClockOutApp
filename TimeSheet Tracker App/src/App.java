@@ -10,9 +10,9 @@ public class App {
 		// LoginForm loginForm = new LoginForm();		
 		// loginForm.initialize();
 
-		
-		// TimeSheet timeSheet = new TimeSheet();
-		// timeSheet.initialize();
+
+		TimeSheet timeSheet = new TimeSheet();
+		timeSheet.initialize();
 
 	}
 
