@@ -18,8 +18,8 @@ public class TimeSheet extends JFrame{
 	public void initialize(User user) {
 		
 		/*********************** Time Sheet UI ***********************/
-		/*********************** Main Panel *********************************/
-		JPanel mainPanel = new JPanel();
+		/*********************** Frame Panel *********************************/
+
 		setTitle("Time Sheet Home");
 		setSize(800, 600);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,9 +28,18 @@ public class TimeSheet extends JFrame{
 		setResizable(false);
 		setLayout(null);
 
+		/*********************** (Side) Menu Bar/Panel ************************************/
+		// Create a menu bar
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setLayout(null);
+		menuBar.setBounds(0, 0, 200, 600);
+		menuBar.setBackground(new Color(255, 220, 220));
+		menuBar.setVisible(true);	
 
+		/*********************** (Side) Menu Bar/Panel Settings ***************************/
 
 		/*********************** Main Panel Settings *************************/
+		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(null);
 		mainPanel.setBounds(0, 0, 1000, 800);
 		mainPanel.setBackground(new Color(255, 255, 255));
@@ -43,11 +52,7 @@ public class TimeSheet extends JFrame{
 		/*********************** Main Panel Settings *************************/
 		
 
-		/*********************** (Side) Menu Bar/Panel ************************************/
-		// Create a menu bar
-		JMenuBar menuBar = new JMenuBar();
 
-		/*********************** Menu Bar Settings ***************************/
 
 		/*********************** Action Button Panel ********************************/
 		JButton clockInButton = new JButton("Clock In");
