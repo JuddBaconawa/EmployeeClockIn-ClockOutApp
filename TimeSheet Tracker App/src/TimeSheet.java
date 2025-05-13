@@ -21,7 +21,7 @@ public class TimeSheet extends JFrame{
 		/*********************** Frame Panel *********************************/
 
 		setTitle("Time Sheet Home");
-		setSize(800, 600);
+		setSize(1000, 800);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -32,10 +32,16 @@ public class TimeSheet extends JFrame{
 		// Create a menu bar
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setLayout(null);
-		menuBar.setBounds(0, 0, 200, 600);
+		menuBar.setBounds(0, 0, 200, 800);
 		menuBar.setBackground(new Color(255, 220, 220));
 		menuBar.setVisible(true);	
 
+		// Add menu bar to the frame
+		add(menuBar);
+		// Create menu items
+		JButton searchButton = new JButton("Search");
+		JButton dashboardButton = new JButton("Dashboard");
+		JButton timesheetButton = new JButton("Time Sheet");
 		JButton homeButton = new JButton("Home");
 		JButton profileButton = new JButton("Profile");
 		JButton settingsButton = new JButton("Settings");
