@@ -6,6 +6,7 @@ import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JMenuBar;
 import javax.swing.JButton;
 
 
@@ -40,12 +41,15 @@ public class TimeSheet extends JFrame{
 		mainPanel.add(welcomeLabel);
 
 		/*********************** Main Panel Settings *************************/
+		
 
-		/*********************** Menu Bar ************************************/
+		/*********************** (Side) Menu Bar/Panel ************************************/
+		// Create a menu bar
+		JMenuBar menuBar = new JMenuBar();
 
 		/*********************** Menu Bar Settings ***************************/
 
-		/*********************** Button Panel ********************************/
+		/*********************** Action Button Panel ********************************/
 		JButton clockInButton = new JButton("Clock In");
 
 		JButton clockOutButton = new JButton("Clock Out");
