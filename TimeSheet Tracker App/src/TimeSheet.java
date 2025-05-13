@@ -66,9 +66,25 @@ public class TimeSheet extends JFrame{
 		menuBar.add(settingsButton);
 		menuBar.add(logoutButton);
 		// Set the background color for each menu item
-		searchButton.setBackground(new Color(247, 204, 173));
+		// First button theme check ============================
 		searchButton.setBackground(new Color(250, 247, 240));
 		searchButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+
+		// second button theme check =====================================
+		dashboardButton.setBackground(new Color(247, 204, 173));
+		dashboardButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+		// third button theme check	 =====================================
+		timesheetButton.setBackground(new Color(247, 204, 173));
+		timesheetButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+		// fourth button theme check	=====================================
+		homeButton.setBackground(new Color(255, 255, 255));
+		homeButton.setForeground(new Color(251, 160, 157)); 
+		// fifth button theme check	========================================
+		profileButton.setBackground(new Color(116, 65, 62));
+		profileButton.setForeground(new Color(251, 160, 157));
+		// sixth button theme check	=========================================
+		// seventh button theme check	==========================================
+
 
 
 
