@@ -67,6 +67,8 @@ public class TimeSheet extends JFrame{
 		menuBar.add(logoutButton);
 		// Set the background color for each menu item
 		searchButton.setBackground(new Color(247, 204, 173));
+		searchButton.setBackground(new Color(250, 247, 240));
+		searchButton.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 
 
