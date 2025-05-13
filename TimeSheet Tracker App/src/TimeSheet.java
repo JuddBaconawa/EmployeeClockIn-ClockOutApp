@@ -1,6 +1,7 @@
 // Packages
 
 // IMPORTS
+import java.awt.BorderLayout;
 import java.awt.Color;
 
 import javax.swing.JFrame;
@@ -33,11 +34,10 @@ public class TimeSheet extends JFrame{
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setLayout(null);
 		menuBar.setBounds(0, 0, 200, 800);
-		menuBar.setBackground(new Color(255, 220, 220));
+		menuBar.setBackground(new Color(247, 204, 173));
 		menuBar.setVisible(true);	
 
-		// Add menu bar to the frame
-		add(menuBar);
+
 		// Create menu items
 		JButton searchButton = new JButton("Search");
 		JButton dashboardButton = new JButton("Dashboard");
@@ -49,6 +49,26 @@ public class TimeSheet extends JFrame{
 		  
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
+		// Set the bounds for each menu item
+		searchButton.setBounds(20, 30, 160, 40);
+		dashboardButton.setBounds(20, 80, 160, 40);
+		timesheetButton.setBounds(20, 130, 160, 40);
+		homeButton.setBounds(20, 180, 160, 40);
+		profileButton.setBounds(20, 230, 160, 40);
+		settingsButton.setBounds(20, 650, 160, 40);
+		logoutButton.setBounds(20, 700, 160, 40);
+		// Add menu items to the menu bar
+		menuBar.add(searchButton);
+		menuBar.add(dashboardButton);
+		menuBar.add(timesheetButton);
+		menuBar.add(homeButton);
+		menuBar.add(profileButton);
+		menuBar.add(settingsButton);
+		menuBar.add(logoutButton);
+		// Set the background color for each menu item
+		searchButton.setBackground(new Color(247, 204, 173));
+
+
 
 		/*********************** Main Panel Settings *************************/
 		JPanel mainPanel = new JPanel();
@@ -78,7 +98,11 @@ public class TimeSheet extends JFrame{
 
 
 		/*********************** Add Panel to Frame **************************/
+		// Add menu bar to the frame
+		add(menuBar, BorderLayout.WEST);
+
 		add(mainPanel);
+		
 
 		setVisible(true);
 		
