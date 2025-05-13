@@ -36,6 +36,12 @@ public class TimeSheet extends JFrame{
 		menuBar.setBackground(new Color(255, 220, 220));
 		menuBar.setVisible(true);	
 
+		JButton homeButton = new JButton("Home");
+		JButton profileButton = new JButton("Profile");
+		JButton settingsButton = new JButton("Settings");
+		JButton logoutButton = new JButton("Logout");
+		  
+
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
 
 		/*********************** Main Panel Settings *************************/
