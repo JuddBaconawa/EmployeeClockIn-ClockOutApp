@@ -124,6 +124,9 @@ public class TimeSheet extends JFrame{
 			BorderFactory.createEmptyBorder(5, 5, 5, 5)
 		));
 
+		// 1. User + Role Panel
+		JPanel userRolePanel = new JPanel();
+
 		// Top info Panel contents
 		JLabel userNameLabel = new JLabel("User: " + user.username);
 		//JLabel userRoleLabel = new JLabel("Role: " + user.role);
