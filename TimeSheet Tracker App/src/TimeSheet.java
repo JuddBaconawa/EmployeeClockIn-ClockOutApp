@@ -118,10 +118,19 @@ public class TimeSheet extends JFrame{
 		/*********************************** (User) Top Info Panel *********************************/
 		// Create a top info panel
 		JPanel topInfoPanel = new JPanel();
-		topInfoPanel.setLayout(null);	
+		topInfoPanel.setLayout(null);
+		topInfoPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(Color.GRAY, 5), 
+			BorderFactory.createEmptyBorder(5, 5, 5, 5)
+		));
+
+		// Top info Panel contents
+		JLabel userNameLabel = new JLabel("User: " + user.username);
+		//JLabel userRoleLabel = new JLabel("Role: " + user.role);
+
 
 		/*********************************** Top Info Panel Settings *******************************/
-		topInfoPanel.setBounds(200, 0, 1200, 75);
+		topInfoPanel.setBounds(200, 0, 984, 75);
 		topInfoPanel.setBackground(new Color(250, 247, 249)); 
 
 		/*********************** Main Panel Settings *************************/
@@ -130,9 +139,9 @@ public class TimeSheet extends JFrame{
 		mainPanel.setBounds(0, 0, 1200, 800);
 		mainPanel.setBackground(new Color(255, 255, 255));
 
-		// Sample label to verify its working
+		// Sample label test to verify its working and placements
 		JLabel welcomeLabel = new JLabel("Welcome, " + user.username);
-		welcomeLabel.setBounds(50, 50, 200, 30);
+		welcomeLabel.setBounds(500, 150, 200, 30);
 		mainPanel.add(welcomeLabel);
 		mainPanel.add(topInfoPanel);
 
