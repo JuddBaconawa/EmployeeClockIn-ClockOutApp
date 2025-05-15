@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS salaries;
 CREATE TABLE users (
 	userid INT(7) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(200) NOT NULL,
+    role VARCHAR(200) NOT NULL DEFAULT 'employee',
     email VARCHAR(200) NOT NULL UNIQUE,
     phone VARCHAR(200),
     address VARCHAR(200),
