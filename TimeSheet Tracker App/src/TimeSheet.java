@@ -3,11 +3,13 @@
 // IMPORTS
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.BorderFactory;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JMenuBar;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.border.Border;
 
@@ -38,6 +40,21 @@ public class TimeSheet extends JFrame{
 		menuBar.setBackground(new Color(116,65,62));
 		menuBar.setVisible(true);	
 
+		// Add a logo to the top of the menu bar
+		JLabel logoLabel = new JLabel("Logo");
+		ImageIcon logoIcon = new ImageIcon ("resources/logo.png");
+		logoLabel.setIcon(logoIcon);
+		logoLabel.setBounds(20, 10, 160, 60);
+		logoLabel.setBackground(new Color(255, 255, 255));
+		logoLabel.setOpaque(true);
+		logoLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(Color.GRAY, 5), 
+			BorderFactory.createEmptyBorder(5, 5, 5, 5)
+		));
+
+		logoLabel.setVisible(true);
+
+
 
 		// Create menu items
 		JButton searchButton = new JButton("Search");
@@ -58,6 +75,10 @@ public class TimeSheet extends JFrame{
 		profileButton.setBounds(20, 280, 160, 40);
 		settingsButton.setBounds(20, 650, 160, 40);
 		logoutButton.setBounds(20, 700, 160, 40);
+
+		// Logo label
+		menuBar.add(logoLabel);
+
 		// Add menu items to the menu bar
 		menuBar.add(searchButton);
 		menuBar.add(dashboardButton);
