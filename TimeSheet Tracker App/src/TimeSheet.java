@@ -147,7 +147,7 @@ public class TimeSheet extends JFrame{
 
 		// Add all panel to info panel
 		topInfoPanel.add(userPanel);
-		
+
 
 
 		/*********************************** Top Info Panel Settings *******************************/
@@ -180,7 +180,8 @@ public class TimeSheet extends JFrame{
 		JButton breakButton = new JButton("Break/Lunch");
 
 		/*********************** Button Panel Settings ***********************/
-
+		// Have to add to the Main info panel thats yet to be created
+		JPanel actionButtonPanel = new JPanel();
 
 
 		/*********************** Add Panel to Frame **************************/
