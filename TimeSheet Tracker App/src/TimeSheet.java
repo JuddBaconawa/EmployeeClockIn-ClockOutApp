@@ -125,11 +125,29 @@ public class TimeSheet extends JFrame{
 		));
 
 		// 1. User + Role Panel
-		JPanel userRolePanel = new JPanel();
+		JPanel userPanel = new JPanel(null);
+		userPanel.setBounds(10, 10, 250, 55);
+		userPanel.setBackground(new Color(0, 0, 255));
+		JLabel usernameLabel = new JLabel("User: " + user.username);
+		usernameLabel.setBounds(10, 10, 200, 20);
+		JLabel userRoleLabel = new JLabel("Role: " + user);
+		userRoleLabel.setBounds(10, 30, 200, 20);
+
+		userPanel.add(usernameLabel);
+		//userRolePanel.add(userRoleLabel);
 
 		// Top info Panel contents
-		JLabel userNameLabel = new JLabel("User: " + user.username);
-		//JLabel userRoleLabel = new JLabel("Role: " + user.role);
+
+		// 2. Hours total Panel with period selection (drop down window or cycle through button)
+
+
+		// 3. current time and (datae panel)
+
+		// 4. current date panel
+
+		// Add all panel to info panel
+		topInfoPanel.add(userPanel);
+		
 
 
 		/*********************************** Top Info Panel Settings *******************************/
