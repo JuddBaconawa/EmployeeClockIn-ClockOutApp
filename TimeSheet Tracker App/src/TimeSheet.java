@@ -137,16 +137,21 @@ public class TimeSheet extends JFrame{
 		//userRolePanel.add(userRoleLabel);
 
 		// Top info Panel contents
-
 		// 2. Hours total Panel with period selection (drop down window or cycle through button)
+		JPanel hoursPanel = new JPanel();
+		hoursPanel.setBounds(270, 10, 250, 55);
 
 
 		// 3. current time and (datae panel)
+		JPanel currentTimePanel = new JPanel();
+		currentTimePanel.setBounds(530, 10, 250, 55);
 
 		// 4. current date panel
 
-		// Add all panel to info panel
+		// Add all panel to Top Info Panel
 		topInfoPanel.add(userPanel);
+		topInfoPanel.add(hoursPanel);
+		topInfoPanel.add(currentTimePanel);
 
 
 
@@ -163,11 +168,13 @@ public class TimeSheet extends JFrame{
 		// Sample label test to verify its working and placements
 		JLabel welcomeLabel = new JLabel("Welcome, " + user.username);
 		welcomeLabel.setBounds(500, 150, 200, 30);
-		mainPanel.add(welcomeLabel);
-		mainPanel.add(topInfoPanel);
+
+
 
 		/*********************** Main Panel Settings *************************/
-
+		// Used to add sections into the main panel
+		mainPanel.add(welcomeLabel);
+		mainPanel.add(topInfoPanel);
 		
 
 
