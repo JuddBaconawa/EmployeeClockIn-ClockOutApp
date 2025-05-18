@@ -128,9 +128,12 @@ public class TimeSheet extends JFrame{
 		JPanel userPanel = new JPanel(null);
 		userPanel.setBounds(10, 10, 250, 55);
 		userPanel.setBackground(new Color(0, 0, 255));
+		userPanel.setForeground(new Color(255, 255, 255));
 		JLabel usernameLabel = new JLabel("User: " + user.username);
+		usernameLabel.setForeground(new Color(255, 255, 255));
 		usernameLabel.setBounds(10, 10, 200, 20);
 		JLabel userRoleLabel = new JLabel("Role: " + user);
+		userRoleLabel.setForeground(new Color(255, 255, 255));
 		userRoleLabel.setBounds(10, 30, 200, 20);
 
 		userPanel.add(usernameLabel);
@@ -142,7 +145,7 @@ public class TimeSheet extends JFrame{
 		hoursPanel.setBounds(270, 10, 300, 55);
 		hoursPanel.setBackground(Color.WHITE);
 		JLabel hoursLabel = new JLabel("Hours: 0");
-		hoursLabel.setBounds(10, 10, 200, 20);
+		hoursLabel.setBounds(10, 5, 200, 20);
 
 
 		// 3. current time and (datae panel)
