@@ -138,10 +138,11 @@ public class TimeSheet extends JFrame{
 
 		// Top info Panel contents
 		// 2. Hours total Panel with period selection (drop down window or cycle through button)
-		JPanel hoursPanel = new JPanel();
+		JPanel hoursPanel = new JPanel(null);
 		hoursPanel.setBounds(270, 10, 300, 55);
 		hoursPanel.setBackground(Color.WHITE);
-		
+		JLabel hoursLabel = new JLabel("Hours: 0");
+		hoursLabel.setBounds(10, 10, 200, 20);
 
 
 		// 3. current time and (datae panel)
