@@ -38,7 +38,7 @@ public class TimeSheet extends JFrame{
 		menuBar.setLayout(null);
 		menuBar.setBounds(0, 0, 200, 761);									// Menu bar size
 		menuBar.setBorder(javax.swing.BorderFactory.createCompoundBorder(		// Menu bar border
-			BorderFactory.createLineBorder(Color.GRAY, 5), 
+			BorderFactory.createLineBorder(Color.GRAY, 5, true), 
 			BorderFactory.createEmptyBorder(5, 5, 5, 5)
 		));
 		menuBar.setBackground(new Color(116,65,62));
@@ -52,7 +52,7 @@ public class TimeSheet extends JFrame{
 		logoLabel.setBackground(new Color(255, 255, 255));
 		logoLabel.setOpaque(true);
 		logoLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(Color.GRAY, 5), 
+			BorderFactory.createLineBorder(Color.GRAY, 5/*, true*/), 
 			BorderFactory.createEmptyBorder(5, 5, 5, 5)
 		));
 
@@ -130,7 +130,7 @@ public class TimeSheet extends JFrame{
 		userPanel.setBackground(new Color(0, 0, 255));
 		userPanel.setForeground(new Color(255, 255, 255));
 		JLabel usernameLabel = new JLabel("User: " + user.username);
-		usernameLabel.setForeground(new Color(255, 255, 255));
+		usernameLabel.setForeground(new Color(0, 0, 0));
 		usernameLabel.setBounds(10, 10, 200, 20);
 		JLabel userRoleLabel = new JLabel("Role: " + user);
 		userRoleLabel.setForeground(new Color(255, 255, 255));
@@ -142,8 +142,8 @@ public class TimeSheet extends JFrame{
 		// Top info Panel contents
 		// 2. Hours total Panel with period selection (drop down window or cycle through button)
 		JPanel hoursPanel = new JPanel(null);
-		hoursPanel.setBounds(270, 10, 300, 55);
-		hoursPanel.setBackground(Color.WHITE);
+		hoursPanel.setBounds(270, 10, 200, 55);
+		hoursPanel.setBackground(new Color(240, 235, 216));
 		JLabel hoursLabel = new JLabel("Hours: 0");
 		hoursLabel.setBounds(10, 5, 200, 20);
 		hoursPanel.add(hoursLabel);
@@ -155,7 +155,7 @@ public class TimeSheet extends JFrame{
 
 		// 3. current time and (datae panel)
 		JPanel currentTimePanel = new JPanel();
-		currentTimePanel.setBounds(530, 10, 250, 55);
+		currentTimePanel.setBounds(480, 10, 200, 55);
 		currentTimePanel.setBackground(new Color(240, 235, 216));
 		JLabel currentTimeLabel = new JLabel("Time: --:--:--");
 		currentTimeLabel.setBounds(10, 5, 200, 20);
@@ -165,7 +165,7 @@ public class TimeSheet extends JFrame{
 
 		// 4. current date panel
 		JPanel currentDatePanel = new JPanel();
-		currentDatePanel.setBounds(790, 10, 250, 55);
+		currentDatePanel.setBounds(690, 10, 280, 55);
 		currentDatePanel.setBackground(new Color(240, 235, 216));
 		JLabel currentDateLabel = new JLabel("Date: --/--/----");
 		currentDateLabel.setBounds(10, 5, 200, 20);
@@ -175,6 +175,10 @@ public class TimeSheet extends JFrame{
 		topInfoPanel.add(userPanel);
 		topInfoPanel.add(hoursPanel);
 		topInfoPanel.add(currentTimePanel);
+		topInfoPanel.add(currentDatePanel);
+
+		// Set the background color for each menu item
+		userPanel.setBackground(new Color(240, 235, 216));
 
 
 
