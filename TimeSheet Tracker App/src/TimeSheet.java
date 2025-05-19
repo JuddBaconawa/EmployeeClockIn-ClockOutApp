@@ -157,8 +157,8 @@ public class TimeSheet extends JFrame{
 		periodCombo.addActionListener(e -> {
 			String selectedPeriod = (String) periodCombo.getSelectedItem();
 			// TODO: Replace with actual Calculation logic
-			if ("Daily".equals(selected)) hoursLabel.setText("Hours: 8");
-			else if ("Weekly".equals(selected)) hoursLabel.setText("Hours: 40");
+			if ("Daily".equals(selectedPeriod)) hoursLabel.setText("Hours: 8");
+			else if ("Weekly".equals(selectedPeriod)) hoursLabel.setText("Hours: 40");
 			else hoursLabel.setText("Hours: 80");
 		});
 
