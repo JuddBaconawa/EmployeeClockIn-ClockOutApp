@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.border.Border;
 
 
@@ -146,6 +147,9 @@ public class TimeSheet extends JFrame{
 		hoursPanel.setBackground(Color.WHITE);
 		JLabel hoursLabel = new JLabel("Hours: 0");
 		hoursLabel.setBounds(10, 5, 200, 20);
+		String[] periods = {"Daily", "Weekly", "Bi-Weekly"};
+		JComboBox<String> periodCombo = new JComboBox<>(periods);
+		periodCombo.setBounds(10, 30, 200, 20);
 		hoursPanel.add(hoursLabel);
 		hoursPanel.add(periodCombo);
 
