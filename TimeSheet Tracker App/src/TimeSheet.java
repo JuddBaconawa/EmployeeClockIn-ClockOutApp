@@ -146,6 +146,11 @@ public class TimeSheet extends JFrame{
 		hoursPanel.setBackground(Color.WHITE);
 		JLabel hoursLabel = new JLabel("Hours: 0");
 		hoursLabel.setBounds(10, 5, 200, 20);
+		hoursPanel.add(hoursLabel);
+		hoursPanel.add(periodCombo);
+
+		// Example: update hoursLabel when period changes(replace with actual logic)
+		
 
 
 		// 3. current time and (datae panel)
@@ -156,6 +161,7 @@ public class TimeSheet extends JFrame{
 		currentTimeLabel.setBounds(10, 5, 200, 20);
 		currentTimePanel.add(currentTimeLabel);
 		
+
 
 		// 4. current date panel
 		JPanel currentDatePanel = new JPanel();
