@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenuBar;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.border.Border;
 
 
@@ -120,12 +121,16 @@ public class TimeSheet extends JFrame{
 		JPanel topInfoPanel = new JPanel();
 		topInfoPanel.setLayout(null);
 		topInfoPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(Color.GRAY, 5), 
+			BorderFactory.createLineBorder(Color.GRAY, 5 /*, true*/), 
 			BorderFactory.createEmptyBorder(5, 5, 5, 5)
 		));
 
 		// 1. User + Role Panel
 		JPanel userPanel = new JPanel(null);
+		userPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(Color.GRAY, 3, true), 
+			BorderFactory.createEmptyBorder(10, 5, 10, 5)
+		));
 		userPanel.setBounds(10, 10, 250, 55);
 		userPanel.setBackground(new Color(0, 0, 255));
 		userPanel.setForeground(new Color(255, 255, 255));
@@ -146,7 +151,13 @@ public class TimeSheet extends JFrame{
 		hoursPanel.setBackground(new Color(240, 235, 216));
 		JLabel hoursLabel = new JLabel("Hours: 0");
 		hoursLabel.setBounds(10, 5, 200, 20);
+		String[] periods = {"Day", "Week", "Month"};
+		//JComboBox<String> periodCombo = new JComboBox<>(periods);				//this line is throwing error
+		//periodCombo.setBounds(10, 30, 100, 20);
+		
 		hoursPanel.add(hoursLabel);
+
+		//hoursPanel.add(periodCombo);
 		//hoursPanel.add(periodCombo);
 
 		// Example: update hoursLabel when period changes(replace with actual logic)
@@ -220,8 +231,9 @@ public class TimeSheet extends JFrame{
 
 		/*********************** Add Panel to Frame **************************/
 		// Add menu bar to the frame
-		add(topInfoPanel, BorderLayout.NORTH);
-		add(menuBar, BorderLayout.WEST);
+		add(menuBar);
+
+		add(topInfoPanel);
 
 		add(mainPanel);
 		
