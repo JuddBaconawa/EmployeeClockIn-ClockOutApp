@@ -150,7 +150,13 @@ public class TimeSheet extends JFrame{
 		hoursPanel.add(periodCombo);
 
 		// Example: update hoursLabel when period changes(replace with actual logic)
-		
+		periodCombo.addActionListener(e -> {
+			String selectedPeriod = (String) periodCombo.getSelectedItem();
+			// TODO: Replace with actual Calculation logic
+			if ("Daily".equals(selected)) hoursLabel.setText("Hours: 8");
+			else if ("Weekly".equals(selected)) hoursLabel.setText("Hours: 40");
+			else hoursLabel.setText("Hours: 80");
+		});
 
 
 		// 3. current time and (datae panel)
