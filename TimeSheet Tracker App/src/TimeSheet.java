@@ -151,6 +151,7 @@ public class TimeSheet extends JFrame{
 		// 3. current time and (datae panel)
 		JPanel currentTimePanel = new JPanel();
 		currentTimePanel.setBounds(530, 10, 250, 55);
+		currentTimePanel.setBackground(new Color(240, 235, 216));
 		
 
 		// 4. current date panel
