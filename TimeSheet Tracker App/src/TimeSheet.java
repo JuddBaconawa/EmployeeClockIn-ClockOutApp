@@ -136,10 +136,10 @@ public class TimeSheet extends JFrame{
 		userPanel.setForeground(new Color(255, 255, 255));
 		JLabel usernameLabel = new JLabel("User: " + user.username);
 		usernameLabel.setForeground(new Color(0, 0, 0));
-		usernameLabel.setBounds(10, 10, 200, 20);
+		usernameLabel.setBounds(17, 10, 200, 20);
 		JLabel userRoleLabel = new JLabel("Role: " + user);
 		userRoleLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(Color.GRAY, 3), 
+			BorderFactory.createBevelBorder(1), 
 			BorderFactory.createEmptyBorder(10, 5, 10, 5)
 		));
 		userRoleLabel.setForeground(new Color(0, 0, 0));
@@ -158,7 +158,7 @@ public class TimeSheet extends JFrame{
 		hoursPanel.setBounds(270, 10, 200, 55);
 		hoursPanel.setBackground(new Color(240, 235, 216));
 		JLabel hoursLabel = new JLabel("Hours: 0");
-		hoursLabel.setBounds(10, 5, 200, 20);
+		hoursLabel.setBounds(10, 15, 200, 20);
 		String[] periods = {"Day", "Week", "Month"};
 		//JComboBox<String> periodCombo = new JComboBox<>(periods);				//this line is throwing error
 		//periodCombo.setBounds(10, 30, 100, 20);
@@ -189,7 +189,7 @@ public class TimeSheet extends JFrame{
 		// 4. current date panel
 		JPanel currentDatePanel = new JPanel();
 		currentDatePanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createBevelBorder(1),				// type 1 bevel
+			BorderFactory.createBevelBorder(1, Color.BLACK, Color.GRAY),				// type 1 bevel
 			BorderFactory.createEmptyBorder(10, 5, 10, 5)
 		));
 		currentDatePanel.setBounds(690, 10, 280, 55);
