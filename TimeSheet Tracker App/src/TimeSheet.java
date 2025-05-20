@@ -42,7 +42,7 @@ public class TimeSheet extends JFrame{
 			BorderFactory.createLineBorder(Color.GRAY, 5), 
 			BorderFactory.createEmptyBorder(5, 5, 5, 5)
 		));
-		menuBar.setBackground(new Color(116,65,62));
+		menuBar.setBackground(new Color(29, 45, 68));
 		menuBar.setVisible(true);	
 
 		// Add a logo to the top of the menu bar
