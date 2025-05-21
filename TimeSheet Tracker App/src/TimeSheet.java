@@ -211,7 +211,7 @@ public class TimeSheet extends JFrame{
 
 
 		/*********************************** Top Info Panel Settings *******************************/
-		topInfoPanel.setBounds(200, 0, 984, 75);
+		topInfoPanel.setBounds(200, 0, 1000, 75);
 		topInfoPanel.setBackground(new Color(62, 92, 118)); 
 
 		/*********************** Main Panel Settings *************************/
