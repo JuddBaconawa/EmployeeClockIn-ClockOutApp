@@ -81,7 +81,7 @@ public class TimeSheet extends JFrame{
 		dashboardButton.setBounds(20, 180, 160, 40);
 		timesheetButton.setBounds(20, 230, 160, 40);
 		homeButton.setBounds(20, 280, 160, 40);
-		profileButton.setBounds(20, 320, 160, 40);
+		// profileButton.setBounds(20, 340, 160, 40);
 		settingsButton.setBounds(20, 630, 160, 40);
 		logoutButton.setBounds(20, 680, 160, 40);
 
