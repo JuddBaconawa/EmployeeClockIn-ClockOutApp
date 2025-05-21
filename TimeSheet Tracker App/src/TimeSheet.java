@@ -43,8 +43,8 @@ public class TimeSheet extends JFrame{
 		menuBar.setLayout(null);
 		menuBar.setBounds(0, 0, 200, 803);									// Menu bar size   763 with a titlebar
 		// menuBar.setBorder(javax.swing.BorderFactory.createCompoundBorder(		// Menu bar border
-		// 	BorderFactory.createLineBorder(Color.GRAY, 5), 
-		// 	BorderFactory.createEmptyBorder(5, 5, 5, 5)
+		// 	BorderFactory.createLineBorder(Color.GRAY, 5, true), 
+		// 	BorderFactory.createEmptyBorder(20, 10, 20, 10)
 		// ));
 		menuBar.setBackground(new Color(29, 45, 68));
 		menuBar.setVisible(true);	
@@ -53,7 +53,7 @@ public class TimeSheet extends JFrame{
 		JLabel logoLabel = new JLabel("\"Brand/Logo\"");
 		ImageIcon logoIcon = new ImageIcon ("resources/logo.png");
 		logoLabel.setIcon(logoIcon);
-		logoLabel.setBounds(20, 10, 160, 60);
+		logoLabel.setBounds(20, 30, 160, 60);
 		logoLabel.setBackground(new Color(255, 255, 255));
 		logoLabel.setOpaque(true);
 		logoLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
@@ -77,13 +77,13 @@ public class TimeSheet extends JFrame{
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
 		// Set the bounds for each menu item
-		searchButton.setBounds(20, 80, 160, 40);
-		dashboardButton.setBounds(20, 130, 160, 40);
-		timesheetButton.setBounds(20, 180, 160, 40);
-		homeButton.setBounds(20, 230, 160, 40);
-		profileButton.setBounds(20, 280, 160, 40);
-		settingsButton.setBounds(20, 650, 160, 40);
-		logoutButton.setBounds(20, 700, 160, 40);
+		searchButton.setBounds(20, 130, 160, 40);
+		dashboardButton.setBounds(20, 180, 160, 40);
+		timesheetButton.setBounds(20, 230, 160, 40);
+		homeButton.setBounds(20, 280, 160, 40);
+		profileButton.setBounds(20, 320, 160, 40);
+		settingsButton.setBounds(20, 630, 160, 40);
+		logoutButton.setBounds(20, 680, 160, 40);
 
 		// Logo label
 		menuBar.add(logoLabel);
@@ -214,7 +214,7 @@ public class TimeSheet extends JFrame{
 
 
 		/*********************************** Top Info Panel Settings *******************************/
-		topInfoPanel.setBounds(200, 0, 1000, 75);
+		topInfoPanel.setBounds(200, 0, 1000, 105);
 		topInfoPanel.setBackground(new Color(62, 92, 118)); 
 
 		/*********************** Main Panel Settings *************************/
