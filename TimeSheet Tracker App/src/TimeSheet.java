@@ -3,6 +3,7 @@
 // IMPORTS
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.geom.RoundRectangle2D;
 import javax.swing.BorderFactory;
 
 import javax.swing.JFrame;
@@ -33,6 +34,8 @@ public class TimeSheet extends JFrame{
 		setVisible(true);
 		setResizable(false);
 		setLayout(null);
+
+		setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 40, 40));	// Rounded corners
 
 		/*********************** (Side) Menu Bar/Panel ************************************/
 		// Create a menu bar
