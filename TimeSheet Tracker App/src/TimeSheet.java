@@ -40,7 +40,7 @@ public class TimeSheet extends JFrame{
 		/*********************** (Side) Menu Bar/Panel ************************************/
 		// Create a menu bar
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setLayout(null);
+		menuBar.setLayout(new java.awt.GridLayout(6, 2, 0, 0));
 		menuBar.setBounds(0, 0, 200, 803);									// Menu bar size   763 with a titlebar
 		// menuBar.setBorder(javax.swing.BorderFactory.createCompoundBorder(		// Menu bar border
 		// 	BorderFactory.createLineBorder(Color.GRAY, 5, true), 
@@ -49,11 +49,15 @@ public class TimeSheet extends JFrame{
 		menuBar.setBackground(new Color(29, 45, 68));
 		menuBar.setVisible(true);	
 
-		// Add a logo to the top of the menu bar
+		// Add a logo to the top of the menu bar  NORTH position
+		JPanel logoPanel = new JPanel();
+		logoPanel.setBackground(new Color(29, 45, 68));
+		logoPanel.setLayout(new java.awt.GridBagLayout());
+		logoPanel.setPreferredSize(new java.awt.Dimension(200, 100));
 		JLabel logoLabel = new JLabel("\"Brand/Logo\"");
 		ImageIcon logoIcon = new ImageIcon ("resources/logo.png");
 		logoLabel.setIcon(logoIcon);
-		logoLabel.setBounds(20, 30, 160, 60);
+		// logoLabel.setBounds(20, 30, 160, 60);
 		logoLabel.setBackground(new Color(255, 255, 255));
 		logoLabel.setOpaque(true);
 		logoLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
