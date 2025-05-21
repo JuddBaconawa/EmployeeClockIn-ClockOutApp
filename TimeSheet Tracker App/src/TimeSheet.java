@@ -40,8 +40,8 @@ public class TimeSheet extends JFrame{
 		/*********************** (Side) Menu Bar/Panel ************************************/
 		// Create a menu bar
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setLayout(new java.awt.GridLayout(6, 2, 0, 0));
-		menuBar.setBounds(0, 0, 200, 803);									// Menu bar size   763 with a titlebar
+		menuBar.setLayout(null);
+		//menuBar.setBounds(0, 0, 200, 803);									// Menu bar size   763 with a titlebar
 		// menuBar.setBorder(javax.swing.BorderFactory.createCompoundBorder(		// Menu bar border
 		// 	BorderFactory.createLineBorder(Color.GRAY, 5, true), 
 		// 	BorderFactory.createEmptyBorder(20, 10, 20, 10)
