@@ -26,7 +26,8 @@ public class TimeSheet extends JFrame{
 		/*********************** Frame Panel *********************************/
 
 		setTitle("Time Sheet Home");
-		setSize(1200, 800);
+		setUndecorated(true);						// Takes out the TimeSheet title bar
+		setSize(1200, 801);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -37,7 +38,7 @@ public class TimeSheet extends JFrame{
 		// Create a menu bar
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setLayout(null);
-		menuBar.setBounds(0, 0, 200, 763);									// Menu bar size
+		menuBar.setBounds(0, 0, 200, 803);									// Menu bar size   763 with a titlebar
 		// menuBar.setBorder(javax.swing.BorderFactory.createCompoundBorder(		// Menu bar border
 		// 	BorderFactory.createLineBorder(Color.GRAY, 5), 
 		// 	BorderFactory.createEmptyBorder(5, 5, 5, 5)
@@ -120,10 +121,10 @@ public class TimeSheet extends JFrame{
 		// Create a top info panel
 		JPanel topInfoPanel = new JPanel();
 		topInfoPanel.setLayout(null);
-		topInfoPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(Color.GRAY, 5 /*, true*/), 
-			BorderFactory.createEmptyBorder(5, 5, 5, 5)
-		));
+		// topInfoPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+		// 	BorderFactory.createLineBorder(Color.GRAY, 5 /*, true*/), 
+		// 	BorderFactory.createEmptyBorder(5, 5, 5, 5)
+		// ));
 
 		// 1. User + Role Panel
 		JPanel userPanel = new JPanel(null);
