@@ -132,7 +132,7 @@ public class TimeSheet extends JFrame{
 		/*********************************** (User) Top Info Panel *********************************/
 		// Create a top info panel
 		JPanel topInfoPanel = new JPanel();
-		topInfoPanel.setLayout(new GridLayout(1, 6, 50, 50));
+		topInfoPanel.setLayout(new GridLayout(1, 6, 15, 50));
 		topInfoPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
 		// topInfoPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
 		// 	BorderFactory.createLineBorder(Color.GRAY, 5 /*, true*/), 
