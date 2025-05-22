@@ -4,8 +4,9 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.geom.RoundRectangle2D;
-import javax.swing.BorderFactory;
+import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -14,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.border.Border;
+
 
 
 
@@ -39,9 +41,9 @@ public class TimeSheet extends JFrame{
 
 		/*********************** (Side) Menu Bar/Panel ************************************/
 		// Create a menu bar
-		JMenuBar menuBar = new JMenuBar();
+		JPanel menuBar = new JPanel();
 		menuBar.setLayout(null);
-		//menuBar.setBounds(0, 0, 200, 803);									// Menu bar size   763 with a titlebar
+		menuBar.setBounds(0, 0, 200, 803);									// Menu bar size   763 with a titlebar
 		// menuBar.setBorder(javax.swing.BorderFactory.createCompoundBorder(		// Menu bar border
 		// 	BorderFactory.createLineBorder(Color.GRAY, 5, true), 
 		// 	BorderFactory.createEmptyBorder(20, 10, 20, 10)
@@ -59,13 +61,14 @@ public class TimeSheet extends JFrame{
 		logoLabel.setIcon(logoIcon);
 		// logoLabel.setBounds(20, 30, 160, 60);
 		logoLabel.setBackground(new Color(255, 255, 255));
-		logoLabel.setOpaque(true);
-		logoLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(Color.GRAY, 7/* , true*/), 
-			BorderFactory.createEmptyBorder(5, 5, 5, 5)
-		));
+		// logoLabel.setOpaque(true);
+		// logoLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+		// 	BorderFactory.createLineBorder(Color.GRAY, 7/* , true*/), 
+		// 	BorderFactory.createEmptyBorder(5, 5, 5, 5)
+		// ));
 
 		logoLabel.setVisible(true);
+		logoPanel.add(logoLabel);
 
 
 
@@ -229,7 +232,7 @@ public class TimeSheet extends JFrame{
 
 		// Sample label test to verify its working and placements
 		JLabel welcomeLabel = new JLabel("Welcome, " + user.username);
-		welcomeLabel.setBounds(500, 150, 200, 30);
+		welcomeLabel.setBounds(200, 150, 200, 30);
 
 
 
