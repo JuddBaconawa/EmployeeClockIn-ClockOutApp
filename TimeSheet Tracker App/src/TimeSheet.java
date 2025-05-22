@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+import javax.swing.border.EmptyBorder;
 
 
 
@@ -130,7 +132,8 @@ public class TimeSheet extends JFrame{
 		/*********************************** (User) Top Info Panel *********************************/
 		// Create a top info panel
 		JPanel topInfoPanel = new JPanel();
-		topInfoPanel.setLayout(null);
+		topInfoPanel.setLayout(new GridLayout(1, 6, 50, 50));
+		topInfoPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
 		// topInfoPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
 		// 	BorderFactory.createLineBorder(Color.GRAY, 5 /*, true*/), 
 		// 	BorderFactory.createEmptyBorder(5, 5, 5, 5)
