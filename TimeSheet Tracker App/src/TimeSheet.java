@@ -64,13 +64,14 @@ public class TimeSheet extends JFrame{
 		// logoLabel.setBounds(20, 30, 160, 60);
 		logoLabel.setBackground(new Color(255, 255, 255));
 		// logoLabel.setOpaque(true);
-		// logoLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-		// 	BorderFactory.createLineBorder(Color.GRAY, 7/* , true*/), 
-		// 	BorderFactory.createEmptyBorder(5, 5, 5, 5)
-		// ));
+		logoLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
+			BorderFactory.createLineBorder(Color.GRAY, 7/* , true*/), 
+			BorderFactory.createEmptyBorder(5, 5, 5, 5)
+		));
 
 		logoLabel.setVisible(true);
-		logoPanel.add(logoLabel);
+
+		menuBar.add(logoPanel);
 
 
 
@@ -133,7 +134,7 @@ public class TimeSheet extends JFrame{
 		// Create a top info panel
 		JPanel topInfoPanel = new JPanel();
 		topInfoPanel.setLayout(new GridLayout(1, 6, 15, 50));
-		topInfoPanel.setBorder(BorderFactory.createEmptyBorder(20, 10, 20, 10));
+		topInfoPanel.setBorder(BorderFactory.createEmptyBorder(40, 10, 20, 10));
 		// topInfoPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
 		// 	BorderFactory.createLineBorder(Color.GRAY, 5 /*, true*/), 
 		// 	BorderFactory.createEmptyBorder(5, 5, 5, 5)
@@ -224,7 +225,7 @@ public class TimeSheet extends JFrame{
 
 
 		/*********************************** Top Info Panel Settings *******************************/
-		topInfoPanel.setBounds(200, 0, 1000, 105);
+		topInfoPanel.setBounds(200, 0, 1000, 120);
 		topInfoPanel.setBackground(new Color(62, 92, 118)); 
 
 		/*********************** Main Panel Settings *************************/
@@ -235,7 +236,7 @@ public class TimeSheet extends JFrame{
 
 		// Sample label test to verify its working and placements
 		JLabel welcomeLabel = new JLabel("Welcome, " + user.username);
-		welcomeLabel.setBounds(200, 150, 200, 30);
+		welcomeLabel.setBounds(205, 150, 200, 30);
 
 
 
