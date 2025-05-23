@@ -39,7 +39,7 @@ public class TimeSheet extends JFrame{
 		setResizable(false);
 		setLayout(null);
 
-		setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 40, 40));	// Rounded corners
+		setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 10, 10));	// Rounded corners
 
 		/*********************** (Side) Menu Bar/Panel ************************************/
 		// Create a menu bar
