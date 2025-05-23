@@ -80,6 +80,7 @@ public class TimeSheet extends JFrame{
 		
 		logoLabel.setBounds(20, 30, 160, 60);
 		logoLabel.setBackground(new Color(255, 255, 255));
+		logoLabel.setForeground(new Color(255, 255, 255));
 		// logoLabel.setOpaque(true);
 		logoLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
 			BorderFactory.createLineBorder(Color.GRAY, 3/* , true*/),
@@ -94,25 +95,25 @@ public class TimeSheet extends JFrame{
 
 
 
-		// Create menu items
-		JButton searchButton = new JButton("Search");
-		JButton dashboardButton = new JButton("Dashboard");
-		JButton timesheetButton = new JButton("Time Sheet");
-		JButton homeButton = new JButton("Home");
-		JButton profileButton = new JButton("Profile");
+		// Create menu items (Buttons)
+		// JPanel searchButton = new JPanel("Search");
+		// JPanel dashboardButton = new JPanel("Dashboard");
+		// JPanel timesheetButton = new JPanel("Time Sheet");
+		// JPanel homeButton = new JPanel("Home");
+		// JPanel profileButton = new JPanel("Profile");
 		// Instead of using JButton, use JPanel for menu items to allow custom effects
 		JPanel searchPanel = new JPanel();
 		searchPanel.setLayout(null);
-		searchPanel.setBounds(20, 130, 160, 40);
+		// searchPanel.setBounds(20, 130, 200, 100);
 		searchPanel.setBackground(new Color(250, 247, 240));
 		JLabel searchLabel = new JLabel("Search");
 		searchLabel.setForeground(new Color(251, 160, 157));
-		searchLabel.setBounds(10, 0, 140, 40);
+		// searchLabel.setBounds(10, 0, 140, 40);
 		searchPanel.add(searchLabel);
 
 		JPanel dashboardPanel = new JPanel();
 		dashboardPanel.setLayout(null);
-		dashboardPanel.setBounds(20, 180, 160, 40);
+		// dashboardPanel.setBounds(20, 180, 160, 40);
 		dashboardPanel.setBackground(new Color(247, 204, 173));
 		JLabel dashboardLabel = new JLabel("Dashboard");
 		dashboardLabel.setForeground(new Color(251, 160, 157));
@@ -190,12 +191,12 @@ public class TimeSheet extends JFrame{
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
 		// Set the bounds for each menu item
-		searchButton.setBounds(20, 130, 160, 40);
-		dashboardButton.setBounds(20, 180, 160, 40);
-		timesheetButton.setBounds(20, 230, 160, 40);
-		homeButton.setBounds(20, 280, 160, 40);
+		searchPanel.setBounds(0, 130, 200, 40);
+		dashboardPanel.setBounds(20, 180, 160, 40);
+		timesheetPanel.setBounds(20, 230, 160, 40);
+		homePanel.setBounds(20, 280, 160, 40);
 
-		profileButton.setBounds(20, 340, 160, 40);
+		profilePanel.setBounds(20, 340, 160, 40);
 		logoutButton.setBounds(20, 630, 160, 40);
 		settingsButton.setBounds(20, 680, 160, 40);
 
@@ -203,13 +204,13 @@ public class TimeSheet extends JFrame{
 		menuBar.add(logoLabel);
 
 		// Add menu items to the menu bar
-		menuBar.add(searchButton);
-		menuBar.add(dashboardButton);
-		menuBar.add(timesheetButton);
-		menuBar.add(homeButton);
+		menuBar.add(searchPanel);
+		menuBar.add(dashboardPanel);
+		menuBar.add(timesheetPanel);
+		menuBar.add(homePanel);
 
 		//last two buttons
-		menuBar.add(profileButton);
+		menuBar.add(profilePanel);
 		menuBar.add(settingsButton);
 
 		menuBar.add(logoutButton);
@@ -217,21 +218,21 @@ public class TimeSheet extends JFrame{
 
 		// Set the background color for each menu item
 		// First button theme check ============================
-		searchButton.setBackground(new Color(250, 247, 240));
-		searchButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+		searchPanel.setBackground(new Color(250, 247, 240));
+		searchPanel.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		// second button theme check =====================================
-		dashboardButton.setBackground(new Color(247, 204, 173));
-		dashboardButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+		dashboardPanel.setBackground(new Color(247, 204, 173));
+		dashboardPanel.setForeground(new Color(251, 160, 157)); // Set text color to black
 		// third button theme check	 =====================================
-		timesheetButton.setBackground(new Color(247, 204, 173));
-		timesheetButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+		timesheetPanel.setBackground(new Color(247, 204, 173));
+		timesheetPanel.setForeground(new Color(251, 160, 157)); // Set text color to black
 		// fourth button theme check	=====================================
-		homeButton.setBackground(new Color(255, 255, 255));
-		homeButton.setForeground(new Color(251, 160, 157)); 
+		homePanel.setBackground(new Color(255, 255, 255));
+		homePanel.setForeground(new Color(251, 160, 157)); 
 		// fifth button theme check	========================================
-		profileButton.setBackground(new Color(116, 65, 62));
-		profileButton.setForeground(new Color(251, 160, 157));
+		profilePanel.setBackground(new Color(116, 65, 62));
+		profilePanel.setForeground(new Color(251, 160, 157));
 		// sixth button theme check	=========================================
 		logoutButton.setBackground(new Color(0, 102, 102));
 		logoutButton.setForeground(new Color(251, 160, 157)); // Set text color to black
