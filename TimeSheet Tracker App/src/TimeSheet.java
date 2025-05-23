@@ -15,7 +15,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
+import javax.swing.border.MatteBorder;
 import javax.swing.border.EmptyBorder;
 
 
@@ -39,7 +41,7 @@ public class TimeSheet extends JFrame{
 		setResizable(false);
 		setLayout(null);
 
-		setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 10, 10));	// Rounded corners
+		setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 10, 10));	// Rounded corners 10 radius
 
 		/*********************** (Side) Menu Bar/Panel ************************************/
 		// Create a menu bar
@@ -56,22 +58,36 @@ public class TimeSheet extends JFrame{
 		// Add a logo to the top of the menu bar  NORTH position
 		JPanel logoPanel = new JPanel();
 		logoPanel.setBackground(new Color(29, 45, 68));
-		logoPanel.setLayout(new java.awt.GridBagLayout());
+		logoPanel.setLayout(null);
 		logoPanel.setPreferredSize(new java.awt.Dimension(200, 100));
+		logoPanel.setBounds(0, 0, 200, 120);
+
+		// logoPanel.setBorder(new MatteBorder(0, 0, 2, 2, Color.LIGHT_GRAY));
+		logoPanel.setBorder(
+			new CompoundBorder(
+				new LineBorder(new Color(29,45, 68), 3), // Outer border
+				new MatteBorder(0, 0, 2, 2, Color.LIGHT_GRAY) // Inner border
+    )
+);
+
+
 		JLabel logoLabel = new JLabel("\"Brand/Logo\"");
 		ImageIcon logoIcon = new ImageIcon ("resources/logo.png");
 		logoLabel.setIcon(logoIcon);
-		// logoLabel.setBounds(20, 30, 160, 60);
+		
+		logoLabel.setBounds(20, 30, 160, 60);
 		logoLabel.setBackground(new Color(255, 255, 255));
 		// logoLabel.setOpaque(true);
 		logoLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createLineBorder(Color.GRAY, 7/* , true*/), 
+			BorderFactory.createLineBorder(Color.GRAY, 3/* , true*/),
 			BorderFactory.createEmptyBorder(5, 5, 5, 5)
 		));
 
 		logoLabel.setVisible(true);
 
-		menuBar.add(logoPanel);
+		// Add the logo label to the logo panel
+		logoPanel.add(logoLabel);
+		// menuBar.add(logoPanel);
 
 
 
@@ -81,8 +97,92 @@ public class TimeSheet extends JFrame{
 		JButton timesheetButton = new JButton("Time Sheet");
 		JButton homeButton = new JButton("Home");
 		JButton profileButton = new JButton("Profile");
-		JButton settingsButton = new JButton("Settings");
+		// Instead of using JButton, use JPanel for menu items to allow custom effects
+		JPanel searchPanel = new JPanel();
+		searchPanel.setLayout(null);
+		searchPanel.setBounds(20, 130, 160, 40);
+		searchPanel.setBackground(new Color(250, 247, 240));
+		JLabel searchLabel = new JLabel("Search");
+		searchLabel.setForeground(new Color(251, 160, 157));
+		searchLabel.setBounds(10, 0, 140, 40);
+		searchPanel.add(searchLabel);
+
+		JPanel dashboardPanel = new JPanel();
+		dashboardPanel.setLayout(null);
+		dashboardPanel.setBounds(20, 180, 160, 40);
+		dashboardPanel.setBackground(new Color(247, 204, 173));
+		JLabel dashboardLabel = new JLabel("Dashboard");
+		dashboardLabel.setForeground(new Color(251, 160, 157));
+		dashboardLabel.setBounds(10, 0, 140, 40);
+		dashboardPanel.add(dashboardLabel);
+
+		JPanel timesheetPanel = new JPanel();
+		timesheetPanel.setLayout(null);
+		timesheetPanel.setBounds(20, 230, 160, 40);
+		timesheetPanel.setBackground(new Color(247, 204, 173));
+		JLabel timesheetLabel = new JLabel("Time Sheet");
+		timesheetLabel.setForeground(new Color(251, 160, 157));
+		timesheetLabel.setBounds(10, 0, 140, 40);
+		timesheetPanel.add(timesheetLabel);
+
+		JPanel homePanel = new JPanel();
+		homePanel.setLayout(null);
+		homePanel.setBounds(20, 280, 160, 40);
+		homePanel.setBackground(new Color(255, 255, 255));
+		JLabel homeLabel = new JLabel("Home");
+		homeLabel.setForeground(new Color(251, 160, 157));
+		homeLabel.setBounds(10, 0, 140, 40);
+		homePanel.add(homeLabel);
+
+		JPanel profilePanel = new JPanel();
+		profilePanel.setLayout(null);
+		profilePanel.setBounds(20, 340, 160, 40);
+		profilePanel.setBackground(new Color(116, 65, 62));
+		JLabel profileLabel = new JLabel("Profile");
+		profileLabel.setForeground(new Color(251, 160, 157));
+		profileLabel.setBounds(10, 0, 140, 40);
+		profilePanel.add(profileLabel);
+
+		// Add mouse listeners for highlight/click effect (example for one panel)
+		java.awt.event.MouseAdapter highlightEffect = new java.awt.event.MouseAdapter() {
+			Color original;
+			@Override
+			public void mouseEntered(java.awt.event.MouseEvent e) {
+				JPanel panel = (JPanel) e.getSource();
+				original = panel.getBackground();
+				panel.setBackground(new Color(200, 200, 200));
+			}
+			@Override
+			public void mouseExited(java.awt.event.MouseEvent e) {
+				JPanel panel = (JPanel) e.getSource();
+				panel.setBackground(original);
+			}
+			@Override
+			public void mousePressed(java.awt.event.MouseEvent e) {
+				JPanel panel = (JPanel) e.getSource();
+				panel.setBackground(new Color(180, 180, 180));
+			}
+			@Override
+			public void mouseReleased(java.awt.event.MouseEvent e) {
+				JPanel panel = (JPanel) e.getSource();
+				panel.setBackground(original);
+			}
+		};
+		searchPanel.addMouseListener(highlightEffect);
+		dashboardPanel.addMouseListener(highlightEffect);
+		timesheetPanel.addMouseListener(highlightEffect);
+		homePanel.addMouseListener(highlightEffect);
+		profilePanel.addMouseListener(highlightEffect);
+
+		// Add panels to menuBar instead of buttons
+		menuBar.add(searchPanel);
+		menuBar.add(dashboardPanel);
+		menuBar.add(timesheetPanel);
+		menuBar.add(homePanel);
+		menuBar.add(profilePanel);		
+		// Logout and Exit
 		JButton logoutButton = new JButton("Logout");
+		JButton settingsButton = new JButton("Exit");
 		  
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
@@ -91,9 +191,10 @@ public class TimeSheet extends JFrame{
 		dashboardButton.setBounds(20, 180, 160, 40);
 		timesheetButton.setBounds(20, 230, 160, 40);
 		homeButton.setBounds(20, 280, 160, 40);
-		// profileButton.setBounds(20, 340, 160, 40);
-		settingsButton.setBounds(20, 630, 160, 40);
-		logoutButton.setBounds(20, 680, 160, 40);
+
+		profileButton.setBounds(20, 340, 160, 40);
+		logoutButton.setBounds(20, 630, 160, 40);
+		settingsButton.setBounds(20, 680, 160, 40);
 
 		// Logo label
 		menuBar.add(logoLabel);
@@ -103,9 +204,14 @@ public class TimeSheet extends JFrame{
 		menuBar.add(dashboardButton);
 		menuBar.add(timesheetButton);
 		menuBar.add(homeButton);
+
+		//last two buttons
 		menuBar.add(profileButton);
 		menuBar.add(settingsButton);
+
 		menuBar.add(logoutButton);
+		menuBar.add(logoPanel);
+
 		// Set the background color for each menu item
 		// First button theme check ============================
 		searchButton.setBackground(new Color(250, 247, 240));
@@ -124,11 +230,12 @@ public class TimeSheet extends JFrame{
 		profileButton.setBackground(new Color(116, 65, 62));
 		profileButton.setForeground(new Color(251, 160, 157));
 		// sixth button theme check	=========================================
-		settingsButton.setBackground(new Color(0, 128, 128));
-		settingsButton.setForeground(new Color(251, 160, 157)); // Set text color to black
-		// seventh button theme check	==========================================
 		logoutButton.setBackground(new Color(0, 102, 102));
 		logoutButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+
+		// seventh button theme check	==========================================
+		settingsButton.setBackground(new Color(0, 128, 128));
+		settingsButton.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		/*********************************** (User) Top Info Panel *********************************/
 		// Create a top info panel
