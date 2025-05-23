@@ -66,9 +66,12 @@ public class TimeSheet extends JFrame{
 		logoPanel.setBorder(
 			new CompoundBorder(
 				new LineBorder(new Color(29,45, 68), 3), // Outer border
-				new MatteBorder(0, 0, 2, 2, Color.LIGHT_GRAY) // Inner border
-    )
-);
+				new CompoundBorder(
+					new MatteBorder(0, 0, 2, 2, Color.LIGHT_GRAY), // Inner border
+					new MatteBorder(0, 0, 2, 0, (new Color(29, 45, 68))) // Inner border
+				)
+			)
+		);
 
 
 		JLabel logoLabel = new JLabel("\"Brand/Logo\"");
