@@ -104,8 +104,7 @@ public class TimeSheet extends JFrame{
 		// Instead of using JButton, use JPanel for menu items to allow custom effects
 		JPanel searchPanel = new JPanel();
 		searchPanel.setLayout(null);
-		// searchPanel.setBounds(20, 130, 200, 100);
-		searchPanel.setBackground(new Color(250, 247, 240));
+		searchPanel.setBackground(new Color(29,45, 68));
 		JLabel searchLabel = new JLabel("Search");
 		searchLabel.setForeground(new Color(251, 160, 157));
 		searchLabel.setBounds(10, 0, 140, 40);
@@ -154,7 +153,7 @@ public class TimeSheet extends JFrame{
 			public void mouseEntered(java.awt.event.MouseEvent e) {
 				JPanel panel = (JPanel) e.getSource();
 				original = panel.getBackground();
-				panel.setBackground(new Color(200, 200, 200));
+				panel.setBackground(new Color(13, 19, 33));
 			}
 			@Override
 			public void mouseExited(java.awt.event.MouseEvent e) {
