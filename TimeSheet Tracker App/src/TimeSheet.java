@@ -108,7 +108,7 @@ public class TimeSheet extends JFrame{
 		searchPanel.setBackground(new Color(250, 247, 240));
 		JLabel searchLabel = new JLabel("Search");
 		searchLabel.setForeground(new Color(251, 160, 157));
-		// searchLabel.setBounds(10, 0, 140, 40);
+		searchLabel.setBounds(10, 0, 140, 40);
 		searchPanel.add(searchLabel);
 
 		JPanel dashboardPanel = new JPanel();
@@ -186,7 +186,7 @@ public class TimeSheet extends JFrame{
 		menuBar.add(profilePanel);		
 		// Logout and Exit
 		JButton logoutButton = new JButton("Logout");
-		JButton exitButton = new JButton("Exit");
+		JButton settingsButton = new JButton("Exit");
 		  
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
@@ -198,7 +198,7 @@ public class TimeSheet extends JFrame{
 
 		profilePanel.setBounds(20, 340, 160, 40);
 		logoutButton.setBounds(20, 630, 160, 40);
-		exitButton.setBounds(20, 680, 160, 40);
+		settingsButton.setBounds(20, 680, 160, 40);
 
 		// Logo label
 		menuBar.add(logoLabel);
@@ -211,7 +211,7 @@ public class TimeSheet extends JFrame{
 
 		//last two buttons
 		menuBar.add(profilePanel);
-		menuBar.add(exitButton);
+		menuBar.add(settingsButton);
 
 		menuBar.add(logoutButton);
 		menuBar.add(logoPanel);
@@ -238,8 +238,8 @@ public class TimeSheet extends JFrame{
 		logoutButton.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		// seventh button theme check	==========================================
-		exitButton.setBackground(new Color(0, 128, 128));
-		exitButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+		settingsButton.setBackground(new Color(0, 128, 128));
+		settingsButton.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		/*********************************** (User) Top Info Panel *********************************/
 		// Create a top info panel
