@@ -102,13 +102,13 @@ public class TimeSheet extends JFrame{
 		// JPanel homeButton = new JPanel("Home");
 		// JPanel profileButton = new JPanel("Profile");
 		// Instead of using JButton, use JPanel for menu items to allow custom effects
-		JPanel searchPanel = new JPanel();
-		searchPanel.setLayout(null);
-		searchPanel.setBackground(new Color(29,45, 68));
-		JLabel searchLabel = new JLabel("Search");
+		JLabel menuLabel = new JLabel();
+		menuLabel.setLayout(null);
+		menuLabel.setBackground(new Color(29,45, 68));
+		JLabel searchLabel = new JLabel("Menu Items");
 		searchLabel.setForeground(new Color(251, 160, 157));
 		searchLabel.setBounds(10, 0, 140, 40);
-		searchPanel.add(searchLabel);
+		menuLabel.add(searchLabel);
 
 		JPanel dashboardPanel = new JPanel();
 		dashboardPanel.setLayout(null);
@@ -116,7 +116,7 @@ public class TimeSheet extends JFrame{
 		dashboardPanel.setBackground(new Color(247, 204, 173));
 		JLabel dashboardLabel = new JLabel("Dashboard");
 		dashboardLabel.setForeground(new Color(251, 160, 157));
-		dashboardLabel.setBounds(10, 0, 140, 40);
+		dashboardLabel.setBounds(20, 0, 140, 40);
 		dashboardPanel.add(dashboardLabel);
 
 		JPanel timesheetPanel = new JPanel();
@@ -125,7 +125,7 @@ public class TimeSheet extends JFrame{
 		timesheetPanel.setBackground(new Color(247, 204, 173));
 		JLabel timesheetLabel = new JLabel("Time Sheet");
 		timesheetLabel.setForeground(new Color(251, 160, 157));
-		timesheetLabel.setBounds(10, 0, 140, 40);
+		timesheetLabel.setBounds(20, 0, 140, 40);
 		timesheetPanel.add(timesheetLabel);
 
 		JPanel homePanel = new JPanel();
@@ -134,7 +134,7 @@ public class TimeSheet extends JFrame{
 		homePanel.setBackground(new Color(255, 255, 255));
 		JLabel homeLabel = new JLabel("Home");
 		homeLabel.setForeground(new Color(251, 160, 157));
-		homeLabel.setBounds(10, 0, 140, 40);
+		homeLabel.setBounds(20, 0, 140, 40);
 		homePanel.add(homeLabel);
 
 		JPanel profilePanel = new JPanel();
@@ -143,7 +143,7 @@ public class TimeSheet extends JFrame{
 		profilePanel.setBackground(new Color(116, 65, 62));
 		JLabel profileLabel = new JLabel("Profile");
 		profileLabel.setForeground(new Color(251, 160, 157));
-		profileLabel.setBounds(10, 0, 140, 40);
+		profileLabel.setBounds(20, 0, 140, 40);
 		profilePanel.add(profileLabel);
 
 		// Add mouse listeners for highlight/click effect (example for one panel)
@@ -171,74 +171,74 @@ public class TimeSheet extends JFrame{
 				panel.setBackground(original);
 			}
 		};
-		searchPanel.addMouseListener(highlightEffect);
+		menuLabel.addMouseListener(highlightEffect);
 		dashboardPanel.addMouseListener(highlightEffect);
 		timesheetPanel.addMouseListener(highlightEffect);
 		homePanel.addMouseListener(highlightEffect);
 		profilePanel.addMouseListener(highlightEffect);
 
 		// Add panels to menuBar instead of buttons
-		menuBar.add(searchPanel);
+		menuBar.add(menuLabel);
 		menuBar.add(dashboardPanel);
 		menuBar.add(timesheetPanel);
 		menuBar.add(homePanel);
 		menuBar.add(profilePanel);		
 		// Logout and Exit
 		JButton logoutButton = new JButton("Logout");
-		JButton settingsButton = new JButton("Exit");
+		JButton exitButton = new JButton("Exit");
 		  
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
 		// Set the bounds for each menu item
-		searchPanel.setBounds(0, 130, 200, 40);
-		dashboardPanel.setBounds(20, 180, 200, 40);
-		timesheetPanel.setBounds(20, 230, 160, 40);
-		homePanel.setBounds(20, 280, 160, 40);
-
-		profilePanel.setBounds(20, 340, 160, 40);
+		menuLabel.setBounds(0, 130, 200, 40);
+		dashboardPanel.setBounds(0, 180, 200, 40);
+		timesheetPanel.setBounds(0, 230, 200, 40);
+		homePanel.setBounds(0, 280, 200, 40);
+		profilePanel.setBounds(0, 330, 200, 40);
+		// Set the bounds for the buttons
 		logoutButton.setBounds(20, 630, 160, 40);
-		settingsButton.setBounds(20, 680, 160, 40);
+		exitButton.setBounds(20, 680, 160, 40);
 
 		// Logo label
 		menuBar.add(logoLabel);
 
 		// Add menu items to the menu bar
-		menuBar.add(searchPanel);
+		menuBar.add(menuLabel);
 		menuBar.add(dashboardPanel);
 		menuBar.add(timesheetPanel);
 		menuBar.add(homePanel);
 
 		//last two buttons
 		menuBar.add(profilePanel);
-		menuBar.add(settingsButton);
+		menuBar.add(exitButton);
 
 		menuBar.add(logoutButton);
-		menuBar.add(logoPanel);
+		// menuBar.add(logoPanel);
 
 		// Set the background color for each menu item
 		// First button theme check ============================
-		searchPanel.setBackground(new Color(29, 45, 68));
-		searchPanel.setForeground(new Color(251, 160, 157)); // Set text color to black
+		menuLabel.setBackground(new Color(29, 45, 68));
+		menuLabel.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		// second button theme check =====================================
-		dashboardPanel.setBackground(new Color(247, 204, 173));
+		dashboardPanel.setBackground(new Color(29, 45, 68));
 		dashboardPanel.setForeground(new Color(251, 160, 157)); // Set text color to black
 		// third button theme check	 =====================================
-		timesheetPanel.setBackground(new Color(247, 204, 173));
+		timesheetPanel.setBackground(new Color(29, 45, 68));
 		timesheetPanel.setForeground(new Color(251, 160, 157)); // Set text color to black
 		// fourth button theme check	=====================================
-		homePanel.setBackground(new Color(255, 255, 255));
+		homePanel.setBackground(new Color(29, 45, 68));
 		homePanel.setForeground(new Color(251, 160, 157)); 
 		// fifth button theme check	========================================
-		profilePanel.setBackground(new Color(116, 65, 62));
+		profilePanel.setBackground(new Color(29, 45, 68));
 		profilePanel.setForeground(new Color(251, 160, 157));
 		// sixth button theme check	=========================================
 		logoutButton.setBackground(new Color(0, 102, 102));
 		logoutButton.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		// seventh button theme check	==========================================
-		settingsButton.setBackground(new Color(0, 128, 128));
-		settingsButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+		exitButton.setBackground(new Color(0, 128, 128));
+		exitButton.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		/*********************************** (User) Top Info Panel *********************************/
 		// Create a top info panel
