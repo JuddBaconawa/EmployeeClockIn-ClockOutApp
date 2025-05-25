@@ -55,7 +55,7 @@ public class LoginForm extends JFrame {
 		/*********************** Left Panel ************************/
 		JPanel leftPanel = new JPanel(new BorderLayout());
 		JLabel leftTitle = new JLabel("Welcome Back!", JLabel.CENTER);
-		leftTitle.setFont(new Font("null", Font.BOLD, 30);)
+		leftTitle.setFont(new Font("null", Font.BOLD, 30));
 		
 		/******************** Form Panel Left **********************/
 		leftPanel.setBackground(new Color(230, 235, 230));
@@ -79,15 +79,18 @@ public class LoginForm extends JFrame {
 
 		/**************** Labels and Inputs panel *****************/
 		JLabel loginLabel = new JLabel("Login to Clock In", SwingConstants.CENTER);
+		loginLabel.setFont(new Font("null", Font.BOLD, 30));
 
 		JLabel usernameLabel = new JLabel("Username");
 		// usernameLabel.setBounds(25, 50, 75, 25);
+		usernameLabel.setFont(new Font("null", Font.BOLD, 20));
 
 		usernameInput = new JTextField();
 		// usernameInput.setBounds(50, 50, 75, 25);
 
 		JLabel passwordLabel = new JLabel("Password");
 		// passwordLabel.setBounds(25, 90, 25, 25);
+		passwordLabel.setFont(new Font("null", Font.BOLD, 20));
 
 		userPasswordInput = new JPasswordField();
 		// userPasswordInput.setBounds(75, 90, 25, 25);
@@ -97,6 +100,7 @@ public class LoginForm extends JFrame {
 		/*********************** Buttons panel ********************/
 		// Login Button created
 		JButton loginButton = new JButton("Log In");
+		loginButton.setFont(new Font("null", Font.BOLD, 20));
 
 		loginButton.addActionListener(new ActionListener() {
 
@@ -124,6 +128,7 @@ public class LoginForm extends JFrame {
 
 
 		JButton exitButton = new JButton("Exit");
+		exitButton.setFont(new Font("null", Font.BOLD, 20));
 
 		exitButton.addActionListener(new ActionListener() {
 
