@@ -183,7 +183,7 @@ public class TimeSheet extends JFrame{
 		homePanel.addMouseListener(highlightEffect);
 		profilePanel.addMouseListener(highlightEffect);
 
-		// Add panels to menuBar instead of buttons
+		// Add PANELS to menuBar instead of buttons
 		menuBar.add(menuLabel);
 		menuBar.add(dashboardPanel);
 		menuBar.add(timesheetPanel);
@@ -191,7 +191,7 @@ public class TimeSheet extends JFrame{
 		menuBar.add(profilePanel);		
 
 
-		// Logout and Exit
+		// Logout and Exit buttons
 		JButton logoutButton = new JButton("Logout");
 		logoutButton.setFont(new Font("null", Font.BOLD, 16));
 		JButton exitButton = new JButton("Exit");
@@ -226,7 +226,7 @@ public class TimeSheet extends JFrame{
 		// menuBar.add(logoPanel);
 
 		// Set the background color for each menu item
-		// First button theme check ============================
+		// First panel label theme check ============================
 		menuLabel.setBackground(new Color(29, 45, 68));
 		menuLabel.setForeground(new Color(251, 160, 157)); // Set text color to black
 
@@ -243,11 +243,11 @@ public class TimeSheet extends JFrame{
 		profilePanel.setBackground(new Color(29, 45, 68));
 		profilePanel.setForeground(new Color(251, 160, 157));
 		// sixth button theme check	=========================================
-		logoutButton.setBackground(new Color(0, 102, 102));
+		logoutButton.setBackground(new Color(240, 235, 216));
 		logoutButton.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		// seventh button theme check	==========================================
-		exitButton.setBackground(new Color(0, 128, 128));
+		exitButton.setBackground(new Color(240, 235, 216));
 		exitButton.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		/*********************************** (User) Top Info Panel *********************************/
