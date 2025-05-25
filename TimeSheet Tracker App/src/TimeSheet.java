@@ -3,6 +3,7 @@
 // IMPORTS
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.GridLayout;
 
@@ -106,6 +107,7 @@ public class TimeSheet extends JFrame{
 		menuLabel.setLayout(null);
 		menuLabel.setBackground(new Color(29,45, 68));
 		JLabel searchLabel = new JLabel("Menu Items");
+		searchLabel.setFont(new Font("null", Font.BOLD, 20));
 		searchLabel.setForeground(new Color(251, 160, 157));
 		searchLabel.setBounds(10, 0, 140, 40);
 		menuLabel.add(searchLabel);
@@ -115,6 +117,7 @@ public class TimeSheet extends JFrame{
 		// dashboardPanel.setBounds(20, 180, 160, 40);
 		dashboardPanel.setBackground(new Color(247, 204, 173));
 		JLabel dashboardLabel = new JLabel("Dashboard");
+		dashboardLabel.setFont(new Font("null", Font.BOLD, 16));
 		dashboardLabel.setForeground(new Color(251, 160, 157));
 		dashboardLabel.setBounds(20, 0, 140, 40);
 		dashboardPanel.add(dashboardLabel);
@@ -124,6 +127,7 @@ public class TimeSheet extends JFrame{
 		timesheetPanel.setBounds(20, 230, 160, 40);
 		timesheetPanel.setBackground(new Color(247, 204, 173));
 		JLabel timesheetLabel = new JLabel("Time Sheet");
+		timesheetLabel.setFont(new Font("null", Font.BOLD, 16));
 		timesheetLabel.setForeground(new Color(251, 160, 157));
 		timesheetLabel.setBounds(20, 0, 140, 40);
 		timesheetPanel.add(timesheetLabel);
@@ -133,6 +137,7 @@ public class TimeSheet extends JFrame{
 		homePanel.setBounds(20, 280, 160, 40);
 		homePanel.setBackground(new Color(255, 255, 255));
 		JLabel homeLabel = new JLabel("Home");
+		homeLabel.setFont(new Font("null", Font.BOLD, 16));
 		homeLabel.setForeground(new Color(251, 160, 157));
 		homeLabel.setBounds(20, 0, 140, 40);
 		homePanel.add(homeLabel);
@@ -142,6 +147,7 @@ public class TimeSheet extends JFrame{
 		profilePanel.setBounds(20, 340, 160, 40);
 		profilePanel.setBackground(new Color(116, 65, 62));
 		JLabel profileLabel = new JLabel("Profile");
+		profileLabel.setFont(new Font("null", Font.BOLD, 16));
 		profileLabel.setForeground(new Color(251, 160, 157));
 		profileLabel.setBounds(20, 0, 140, 40);
 		profilePanel.add(profileLabel);
@@ -183,9 +189,13 @@ public class TimeSheet extends JFrame{
 		menuBar.add(timesheetPanel);
 		menuBar.add(homePanel);
 		menuBar.add(profilePanel);		
+
+
 		// Logout and Exit
 		JButton logoutButton = new JButton("Logout");
+		logoutButton.setFont(new Font("null", Font.BOLD, 16));
 		JButton exitButton = new JButton("Exit");
+		exitButton.setFont(new Font("null", Font.BOLD, 16));
 		  
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
