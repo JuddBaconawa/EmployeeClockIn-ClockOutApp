@@ -77,11 +77,11 @@ public class TimeSheet extends JFrame{
 			)
 		);
 
-
+		// set space for the company logo
 		JLabel logoLabel = new JLabel("\"Brand/Logo\"");
 		ImageIcon logoIcon = new ImageIcon ("resources/logo.png");
 		logoLabel.setIcon(logoIcon);
-		
+
 		logoLabel.setBounds(20, 40, 160, 60);
 		logoLabel.setBackground(new Color(255, 255, 255));
 		logoLabel.setForeground(new Color(255, 255, 255));
