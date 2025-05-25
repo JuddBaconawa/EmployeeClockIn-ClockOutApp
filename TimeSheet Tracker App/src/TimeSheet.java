@@ -197,9 +197,38 @@ public class TimeSheet extends JFrame{
 		// Logout and Exit buttons
 		JButton logoutButton = new JButton("Logout");
 		logoutButton.setFont(new Font("null", Font.BOLD, 16));
+
+		logoutButton.addActionListener(e -> {
+			// Close the current TimeSheet window
+			this.dispose();
+			// Open the login form
+			new LoginForm().setVisible(true);
+		});
+
 		JButton exitButton = new JButton("Exit");
 		exitButton.setFont(new Font("null", Font.BOLD, 16));
-		  
+		 
+		exitButton.addActionListener(e -> System.exit(0));
+
+		exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+		    Color original = exitButton.getBackground();
+		    @Override
+		    public void mouseEntered(java.awt.event.MouseEvent e) {
+		        exitButton.setBackground(new Color(180, 180, 180)); // Highlight color
+		    }
+		    @Override
+		    public void mouseExited(java.awt.event.MouseEvent e) {
+		        exitButton.setBackground(original);
+		    }
+		    @Override
+		    public void mousePressed(java.awt.event.MouseEvent e) {
+		        exitButton.setBackground(new Color(13, 19, 33)); // Clicked color
+		    }
+		    @Override
+		    public void mouseReleased(java.awt.event.MouseEvent e) {
+		        exitButton.setBackground(original);
+		    }
+		});
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
 		// Set the bounds for each menu item
