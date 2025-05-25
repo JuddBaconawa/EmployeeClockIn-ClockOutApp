@@ -35,6 +35,10 @@ public class LoginForm extends JFrame {
 	JTextField usernameInput;
 	JPasswordField userPasswordInput;
 
+	public LoginForm() {
+        initialize();
+    }
+
 	public void initialize() {
 
 		//create the outer main panel as a background
