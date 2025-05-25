@@ -7,6 +7,8 @@ import java.awt.BorderLayout;						//Border layout
 import java.awt.Color;									//used to change color - using RGB
 import java.awt.Dimension;							//setting up the size of an object within the window
 import java.awt.GridLayout;							//layout of the form in a grid manner
+import java.awt.Font;									//font for the text
+
 
 import java.awt.event.ActionListener;		// Listens for the action - button clicked
 import java.awt.event.ActionEvent;			// Effect or function of when clicked
@@ -53,6 +55,7 @@ public class LoginForm extends JFrame {
 		/*********************** Left Panel ************************/
 		JPanel leftPanel = new JPanel(new BorderLayout());
 		JLabel leftTitle = new JLabel("Welcome Back!", JLabel.CENTER);
+		leftTitle.setFont(new Font("null", Font.BOLD, 30);)
 		
 		/******************** Form Panel Left **********************/
 		leftPanel.setBackground(new Color(230, 235, 230));
