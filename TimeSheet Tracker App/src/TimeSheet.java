@@ -52,10 +52,6 @@ public class TimeSheet extends JFrame{
 		JPanel menuBar = new JPanel();
 		menuBar.setLayout(null);
 		menuBar.setBounds(0, 0, 200, 803);									// Menu bar size   763 with a titlebar
-		// menuBar.setBorder(javax.swing.BorderFactory.createCompoundBorder(		// Menu bar border
-		// 	BorderFactory.createLineBorder(Color.GRAY, 5, true), 
-		// 	BorderFactory.createEmptyBorder(20, 10, 20, 10)
-		// ));
 		menuBar.setBackground(new Color(29, 45, 68));
 		menuBar.setVisible(true);	
 
