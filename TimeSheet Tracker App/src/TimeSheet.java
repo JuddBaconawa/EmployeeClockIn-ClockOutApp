@@ -247,13 +247,11 @@ public class TimeSheet extends JFrame{
 		profilePanel.setForeground(new Color(251, 160, 157));
 		// sixth button theme check	=========================================
 		logoutButton.setBackground(new Color(240, 235, 216));
-		logoutButton.setForeground(new Color(251, 160, 157));
-		makeButtonRounded(logoutButton);
+		logoutButton.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		// seventh button theme check	==========================================
 		exitButton.setBackground(new Color(240, 235, 216));
-		exitButton.setForeground(new Color(251, 160, 157));
-		makeButtonRounded(exitButton);
+		exitButton.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		/*********************************** (User) Top Info Panel *********************************/
 		// Create a top info panel
