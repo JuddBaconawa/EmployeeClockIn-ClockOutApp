@@ -4,6 +4,9 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.GridLayout;
 
@@ -244,11 +247,13 @@ public class TimeSheet extends JFrame{
 		profilePanel.setForeground(new Color(251, 160, 157));
 		// sixth button theme check	=========================================
 		logoutButton.setBackground(new Color(240, 235, 216));
-		logoutButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+		logoutButton.setForeground(new Color(251, 160, 157));
+		makeButtonRounded(logoutButton);
 
 		// seventh button theme check	==========================================
 		exitButton.setBackground(new Color(240, 235, 216));
-		exitButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+		exitButton.setForeground(new Color(251, 160, 157));
+		makeButtonRounded(exitButton);
 
 		/*********************************** (User) Top Info Panel *********************************/
 		// Create a top info panel
@@ -368,7 +373,7 @@ public class TimeSheet extends JFrame{
 
 
 
-		/*********************** Action Button Panel ********************************/
+		/*********************** Action Button Panel ********************************
 		JButton clockInButton = new JButton("Clock In");
 
 		JButton clockOutButton = new JButton("Clock Out");
@@ -403,4 +408,22 @@ public class TimeSheet extends JFrame{
 			timesheet.initialize(user);
 	}
 
+	private void makeButtonRounded(JButton button) {
+	    button.setContentAreaFilled(false);
+	    button.setFocusPainted(false);
+	    button.setBorderPainted(false);
+	    button.setOpaque(false);
+
+	    button.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+	        @Override
+	        public void paint(Graphics g, javax.swing.JComponent c) {
+	            Graphics2D g2 = (Graphics2D) g.create();
+	            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	            g2.setColor(button.getBackground());
+	            g2.fill(new RoundRectangle2D.Float(0, 0, button.getWidth(), button.getHeight(), 10, 10));
+	            super.paint(g, c);
+	            g2.dispose();
+	        }
+	    });
+	}
 }
