@@ -167,6 +167,7 @@ public class LoginForm extends JFrame {
 
 		/*********************** Frame Settings ********************/
 		setTitle("Login to Clock In");
+		setUndecorated(true);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setSize(800, 500);
 		setLocationRelativeTo(null);
