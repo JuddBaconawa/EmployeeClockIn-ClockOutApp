@@ -191,7 +191,7 @@ public class TimeSheet extends JFrame{
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
 		// Set the bounds for each menu item
 		searchPanel.setBounds(0, 130, 200, 40);
-		dashboardPanel.setBounds(20, 180, 160, 40);
+		dashboardPanel.setBounds(20, 180, 200, 40);
 		timesheetPanel.setBounds(20, 230, 160, 40);
 		homePanel.setBounds(20, 280, 160, 40);
 
@@ -217,7 +217,7 @@ public class TimeSheet extends JFrame{
 
 		// Set the background color for each menu item
 		// First button theme check ============================
-		searchPanel.setBackground(new Color(250, 247, 240));
+		searchPanel.setBackground(new Color(29, 45, 68));
 		searchPanel.setForeground(new Color(251, 160, 157)); // Set text color to black
 
 		// second button theme check =====================================
