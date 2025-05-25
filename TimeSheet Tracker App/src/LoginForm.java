@@ -11,6 +11,7 @@ import java.awt.Font;									//font for the text
 
 
 import java.awt.event.ActionListener;		// Listens for the action - button clicked
+import java.awt.geom.RoundRectangle2D;
 import java.awt.event.ActionEvent;			// Effect or function of when clicked
 
 import java.sql.Connection;
@@ -173,6 +174,8 @@ public class LoginForm extends JFrame {
 		setLocationRelativeTo(null);
 		add(outerMainPanel);
 		setVisible(true);
+
+		setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 10, 10));	// Rounded corners 10 radius
 
 	}
 
