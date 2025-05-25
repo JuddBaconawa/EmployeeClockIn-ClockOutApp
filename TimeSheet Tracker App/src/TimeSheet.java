@@ -100,55 +100,63 @@ public class TimeSheet extends JFrame{
 
 
 		// Create menu items (Buttons)
-		// JPanel searchButton = new JPanel("Search");
-		// JPanel dashboardButton = new JPanel("Dashboard");
-		// JPanel timesheetButton = new JPanel("Time Sheet");
-		// JPanel homeButton = new JPanel("Home");
-		// JPanel profileButton = new JPanel("Profile");
-		// Instead of using JButton, use JPanel for menu items to allow custom effects
+		// Menu Label
 		JLabel menuLabel = new JLabel();
 		menuLabel.setLayout(null);
 		menuLabel.setBackground(new Color(29,45, 68));
+
+		// Menu Label
 		JLabel searchLabel = new JLabel("Menu Items");
 		searchLabel.setFont(new Font("null", Font.BOLD, 20));
 		searchLabel.setForeground(new Color(251, 160, 157));
 		searchLabel.setBounds(10, 0, 140, 40);
 		menuLabel.add(searchLabel);
 
+		// dashboard Panel
 		JPanel dashboardPanel = new JPanel();
 		dashboardPanel.setLayout(null);
-		// dashboardPanel.setBounds(20, 180, 160, 40);
 		dashboardPanel.setBackground(new Color(247, 204, 173));
+
+		// dashboard label
 		JLabel dashboardLabel = new JLabel("Dashboard");
 		dashboardLabel.setFont(new Font("null", Font.BOLD, 16));
 		dashboardLabel.setForeground(new Color(251, 160, 157));
 		dashboardLabel.setBounds(20, 0, 140, 40);
 		dashboardPanel.add(dashboardLabel);
 
+		// Timesheet Panel
 		JPanel timesheetPanel = new JPanel();
 		timesheetPanel.setLayout(null);
 		timesheetPanel.setBounds(20, 230, 160, 40);
 		timesheetPanel.setBackground(new Color(247, 204, 173));
+
+		//timesheet Label
 		JLabel timesheetLabel = new JLabel("Time Sheet");
 		timesheetLabel.setFont(new Font("null", Font.BOLD, 16));
 		timesheetLabel.setForeground(new Color(251, 160, 157));
 		timesheetLabel.setBounds(20, 0, 140, 40);
 		timesheetPanel.add(timesheetLabel);
 
+		// Home Panel
 		JPanel homePanel = new JPanel();
 		homePanel.setLayout(null);
 		homePanel.setBounds(20, 280, 160, 40);
 		homePanel.setBackground(new Color(255, 255, 255));
+
+		// Home label
 		JLabel homeLabel = new JLabel("Home");
 		homeLabel.setFont(new Font("null", Font.BOLD, 16));
 		homeLabel.setForeground(new Color(251, 160, 157));
 		homeLabel.setBounds(20, 0, 140, 40);
 		homePanel.add(homeLabel);
 
+		// Profile Panel
 		JPanel profilePanel = new JPanel();
 		profilePanel.setLayout(null);
 		profilePanel.setBounds(20, 340, 160, 40);
 		profilePanel.setBackground(new Color(116, 65, 62));
+
+		// Profile label
 		JLabel profileLabel = new JLabel("Profile");
 		profileLabel.setFont(new Font("null", Font.BOLD, 16));
 		profileLabel.setForeground(new Color(251, 160, 157));
