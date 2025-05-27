@@ -152,9 +152,9 @@ public class LoginForm extends JFrame {
 				User user = getAuthenticatedUser(username, password);
 
 				if (user != null) {
-					TimeSheet timesheet = new TimeSheet();
 					TimeSheet timeSheet = new TimeSheet();
 					timeSheet.initialize(user);
+					timeSheet.setVisible(true);
 					dispose();
 				} else {
 					JOptionPane.showMessageDialog(LoginForm.this,
