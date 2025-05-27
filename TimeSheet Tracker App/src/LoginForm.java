@@ -120,6 +120,7 @@ public class LoginForm extends JFrame {
 
 		// Set the default background color
 		loginButton.setBackground(new Color(0, 204, 153));
+		loginButton.setForeground(new Color(240, 240, 240));
 
 		// Add mouse listener for highlight/click effect
 		loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -186,6 +187,7 @@ public class LoginForm extends JFrame {
 
 		// Set the default background color
 		exitButton.setBackground(new Color(128, 14, 19));
+		exitButton.setForeground(new Color(240, 240, 240));
 
 		// Add mouse listener for highlight/click effect
 		exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
