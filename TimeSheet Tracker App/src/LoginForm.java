@@ -102,7 +102,6 @@ public class LoginForm extends JFrame {
 		// Login Button created
 		JButton loginButton = new JButton("Log In");
 		loginButton.setFont(new Font("null", Font.BOLD, 20));
-		
 
 		loginButton.addActionListener(new ActionListener() {
 
