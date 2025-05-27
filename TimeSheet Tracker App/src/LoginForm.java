@@ -185,14 +185,14 @@ public class LoginForm extends JFrame {
 		exitButton.setFont(new Font("null", Font.BOLD, 20));
 
 		// Set the default background color
-		exitButton.setBackground(new Color(221, 17, 85));
+		exitButton.setBackground(new Color(128, 14, 19));
 
 		// Add mouse listener for highlight/click effect
 		exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
 		    Color original = exitButton.getBackground();
 		    @Override
 		    public void mouseEntered(java.awt.event.MouseEvent e) {
-		        exitButton.setBackground(new Color(220, 220, 220)); // Highlight color
+		        exitButton.setBackground(new Color(173, 40, 49)); // Highlight color
 		    }
 		    @Override
 		    public void mouseExited(java.awt.event.MouseEvent e) {
@@ -200,7 +200,7 @@ public class LoginForm extends JFrame {
 		    }
 		    @Override
 		    public void mousePressed(java.awt.event.MouseEvent e) {
-		        exitButton.setBackground(new Color(150, 150, 150)); // Clicked color
+		        exitButton.setBackground(new Color(100, 13, 20)); // Clicked color
 		    }
 		    @Override
 		    public void mouseReleased(java.awt.event.MouseEvent e) {
