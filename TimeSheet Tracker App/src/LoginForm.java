@@ -8,8 +8,9 @@ import java.awt.Color;									//used to change color - using RGB
 import java.awt.Dimension;							//setting up the size of an object within the window
 import java.awt.GridLayout;							//layout of the form in a grid manner
 import java.awt.Font;									//font for the text
-
-
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.event.ActionListener;		// Listens for the action - button clicked
 import java.awt.geom.RoundRectangle2D;
 import java.awt.event.ActionEvent;			// Effect or function of when clicked
@@ -100,8 +101,46 @@ public class LoginForm extends JFrame {
 
 		/*********************** Buttons panel ********************/
 		// Login Button created
-		JButton loginButton = new JButton("Log In");
+		JButton loginButton = new JButton("Log In") {
+		    @Override
+		    protected void paintComponent(Graphics g) {
+		        Graphics2D g2 = (Graphics2D) g.create();
+		        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		        g2.setColor(getBackground());
+		        g2.fill(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 20, 20)); // 20 = corner radius
+		        super.paintComponent(g);
+		        g2.dispose();
+		    }
+		};
+		loginButton.setContentAreaFilled(false);
+		loginButton.setFocusPainted(false);
+		loginButton.setBorderPainted(false);
+		loginButton.setOpaque(false);
 		loginButton.setFont(new Font("null", Font.BOLD, 20));
+
+		// Set the default background color
+		loginButton.setBackground(new Color(0, 204, 153));
+
+		// Add mouse listener for highlight/click effect
+		loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+		    Color original = loginButton.getBackground();
+		    @Override
+		    public void mouseEntered(java.awt.event.MouseEvent e) {
+		        loginButton.setBackground(new Color(255, 200, 200)); // Highlight color
+		    }
+		    @Override
+		    public void mouseExited(java.awt.event.MouseEvent e) {
+		        loginButton.setBackground(original);
+		    }
+		    @Override
+		    public void mousePressed(java.awt.event.MouseEvent e) {
+		        loginButton.setBackground(new Color(200, 100, 100)); // Clicked color
+		    }
+		    @Override
+		    public void mouseReleased(java.awt.event.MouseEvent e) {
+		        loginButton.setBackground(original);
+		    }
+		});
 
 		loginButton.addActionListener(new ActionListener() {
 
@@ -128,17 +167,49 @@ public class LoginForm extends JFrame {
 		});
 
 
-		JButton exitButton = new JButton("Exit");
+		JButton exitButton = new JButton("Exit") {
+		    @Override
+		    protected void paintComponent(Graphics g) {
+		        Graphics2D g2 = (Graphics2D) g.create();
+		        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		        g2.setColor(getBackground());
+		        g2.fill(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 20, 20)); // 20 = corner radius
+		        super.paintComponent(g);
+		        g2.dispose();
+		    }
+		};
+		exitButton.setContentAreaFilled(false);
+		exitButton.setFocusPainted(false);
+		exitButton.setBorderPainted(false);
+		exitButton.setOpaque(false);
 		exitButton.setFont(new Font("null", Font.BOLD, 20));
 
-		exitButton.addActionListener(new ActionListener() {
+		// Set the default background color
+		exitButton.setBackground(new Color(221, 17, 85));
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-			}
+		// Add mouse listener for highlight/click effect
+		exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
+		    Color original = exitButton.getBackground();
+		    @Override
+		    public void mouseEntered(java.awt.event.MouseEvent e) {
+		        exitButton.setBackground(new Color(220, 220, 220)); // Highlight color
+		    }
+		    @Override
+		    public void mouseExited(java.awt.event.MouseEvent e) {
+		        exitButton.setBackground(original);
+		    }
+		    @Override
+		    public void mousePressed(java.awt.event.MouseEvent e) {
+		        exitButton.setBackground(new Color(150, 150, 150)); // Clicked color
+		    }
+		    @Override
+		    public void mouseReleased(java.awt.event.MouseEvent e) {
+		        exitButton.setBackground(original);
+		    }
 		});
 
+
+		exitButton.addActionListener(e -> dispose());
 
 		/*********************** Button-Form panel ********************/
 		JPanel buttonPanel = new JPanel(new GridLayout());
