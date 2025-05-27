@@ -127,7 +127,7 @@ public class LoginForm extends JFrame {
 		    Color original = loginButton.getBackground();
 		    @Override
 		    public void mouseEntered(java.awt.event.MouseEvent e) {
-		        loginButton.setBackground(new Color(255, 200, 200)); // Highlight color
+		        loginButton.setBackground(new Color(149, 213, 178)); // Highlight color
 		    }
 		    @Override
 		    public void mouseExited(java.awt.event.MouseEvent e) {
@@ -135,7 +135,7 @@ public class LoginForm extends JFrame {
 		    }
 		    @Override
 		    public void mousePressed(java.awt.event.MouseEvent e) {
-		        loginButton.setBackground(new Color(200, 100, 100)); // Clicked color
+		        loginButton.setBackground(new Color(45, 106, 79)); // Clicked color
 		    }
 		    @Override
 		    public void mouseReleased(java.awt.event.MouseEvent e) {
@@ -217,6 +217,7 @@ public class LoginForm extends JFrame {
 		JPanel buttonPanel = new JPanel(new GridLayout());
 		buttonPanel.setLayout(new GridLayout(1, 2, 10, 0));
 		// buttonPanel.setBorder(BorderFactory.createEmptyBorder(3, 5, 3, 5));
+		buttonPanel.setBackground(new Color(250, 250, 250));
 
 
 		buttonPanel.add(loginButton);				// Login Button added to the panel
