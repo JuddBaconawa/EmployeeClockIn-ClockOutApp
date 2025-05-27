@@ -240,6 +240,7 @@ public class TimeSheet extends JFrame{
 		dashboardPanel.setBounds(0, 180, 200, 40);
 		timesheetPanel.setBounds(0, 230, 200, 40);
 		homePanel.setBounds(0, 280, 200, 40);
+		
 		profilePanel.setBounds(0, 330, 200, 40);
 		// Set the bounds for the buttons
 		logoutButton.setBounds(20, 680, 160, 40);
