@@ -8,9 +8,6 @@ import java.awt.Color;									//used to change color - using RGB
 import java.awt.Dimension;							//setting up the size of an object within the window
 import java.awt.GridLayout;							//layout of the form in a grid manner
 import java.awt.Font;									//font for the text
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 
 
 import java.awt.event.ActionListener;		// Listens for the action - button clicked
@@ -103,22 +100,9 @@ public class LoginForm extends JFrame {
 
 		/*********************** Buttons panel ********************/
 		// Login Button created
-		JButton loginButton = new JButton("Log In") {
-            @Override
-            protected void paintComponent(Graphics g) {
-                Graphics2D g2 = (Graphics2D) g.create();
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                g2.setColor(getBackground());
-                g2.fill(new java.awt.geom.RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 30, 30)); // 30 = corner radius
-                super.paintComponent(g);
-                g2.dispose();
-            }
-        };
-		loginButton.setContentAreaFilled(false);
-		loginButton.setFocusPainted(false);
-		loginButton.setBorderPainted(false);
-		loginButton.setOpaque(false);
+		JButton loginButton = new JButton("Log In");
 		loginButton.setFont(new Font("null", Font.BOLD, 20));
+		
 
 		loginButton.addActionListener(new ActionListener() {
 
@@ -145,21 +129,7 @@ public class LoginForm extends JFrame {
 		});
 
 
-		JButton exitButton = new JButton("Exit") {
-            @Override
-            protected void paintComponent(Graphics g) {
-                Graphics2D g2 = (Graphics2D) g.create();
-                g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-                g2.setColor(getBackground());
-                g2.fill(new java.awt.geom.RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 30, 30));
-                super.paintComponent(g);
-                g2.dispose();
-            }
-        };
-		exitButton.setContentAreaFilled(false);
-		exitButton.setFocusPainted(false);
-		exitButton.setBorderPainted(false);
-		exitButton.setOpaque(false);
+		JButton exitButton = new JButton("Exit");
 		exitButton.setFont(new Font("null", Font.BOLD, 20));
 
 		exitButton.addActionListener(new ActionListener() {
