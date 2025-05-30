@@ -399,7 +399,7 @@ public class TimeSheet extends JFrame{
 		mainPanel.setBackground(new Color(255, 255, 255));
 
 		// Sample label test to verify its working and placements
-		JLabel welcomeLabel = new JLabel("Welcome, " + user.username);
+		JLabel welcomeLabel = new JLabel("If seeing this, something is wrong!" + user.username);
 		welcomeLabel.setBounds(205, 150, 200, 30);
 
 
