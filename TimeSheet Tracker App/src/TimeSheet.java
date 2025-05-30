@@ -379,6 +379,13 @@ public class TimeSheet extends JFrame{
 		// Set the background color for each menu item
 		userPanel.setBackground(new Color(240, 235, 216));
 
+		/******************************* (Views) Display Panel ***********************************/
+		JPanel displayPanel = new JPanel();
+		displayPanel.setBounds(200, 120, 1000, 680);
+		displayPanel.setBackground(new Color(240, 235, 216));
+
+		/*********************************** Menu Bar Panel ****************************************/
+
 
 
 		/*********************************** Top Info Panel Settings *******************************/
@@ -388,7 +395,7 @@ public class TimeSheet extends JFrame{
 		/*********************** Main Panel Settings *************************/
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(null);
-		mainPanel.setBounds(0, 0, 1200, 800);
+		mainPanel.setBounds(0, 0, 1200, 800);			//panel size is 1200 x 800
 		mainPanel.setBackground(new Color(255, 255, 255));
 
 		// Sample label test to verify its working and placements
@@ -419,10 +426,10 @@ public class TimeSheet extends JFrame{
 
 		/*********************** Add Panel to Frame **************************/
 		// Add menu bar to the frame
-		add(menuBar);
+		add(menuBar);															//Menu bar on the left side  
 
-		add(topInfoPanel);
-
+		add(topInfoPanel);												// Add top info panel to the frame		
+		add(displayPanel);
 		add(mainPanel);
 		
 
