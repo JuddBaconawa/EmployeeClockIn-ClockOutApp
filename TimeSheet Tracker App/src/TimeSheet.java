@@ -286,7 +286,7 @@ public class TimeSheet extends JFrame{
 		    }
 		});
 
-		exitButton.addActionListener(e -> System.exit(0));
+		exitButton.addActionListener(e -> this.dispose());
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
 		// Set the bounds for each menu item
