@@ -498,24 +498,4 @@ public class TimeSheet extends JFrame{
 			TimeSheet timesheet = new TimeSheet();
 			timesheet.initialize(user);
 	}
-
-	// Example method to create a rounded button (optional)
-	// private void makeButtonRounded(JButton button) {
-	//     button.setContentAreaFilled(false);
-	//     button.setFocusPainted(false);
-	//     button.setBorderPainted(false);
-	//     button.setOpaque(false);
-
-	//     button.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
-	//         @Override
-	//         public void paint(Graphics g, javax.swing.JComponent c) {
-	//             Graphics2D g2 = (Graphics2D) g.create();
-	//             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-	//             g2.setColor(button.getBackground());
-	//             g2.fill(new RoundRectangle2D.Float(0, 0, button.getWidth(), button.getHeight(), 10, 10));
-	//             super.paint(g, c);
-	//             g2.dispose();
-	//         }
-	//     });
-	// }
 }
