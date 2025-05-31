@@ -384,15 +384,13 @@ public class TimeSheet extends JFrame{
 		hoursPanel.setBounds(270, 10, 200, 55);
 		hoursPanel.setBackground(new Color(240, 235, 216));
 		JLabel hoursLabel = new JLabel("Hours: 0");
-		hoursLabel.setBounds(10, 15, 200, 20);
-		String[] periods = {"Day", "Week", "Month"};
-		//JComboBox<String> periodCombo = new JComboBox<>(periods);				//this line is throwing error
-		//periodCombo.setBounds(10, 30, 100, 20);
+		hoursLabel.setBounds(10, 10, 200, 20);
+		String[] periods = {"Day", "Week", "Bi-month"};
+		JComboBox<String> periodCombo = new JComboBox<>(periods);
+		periodCombo.setBounds(10, 35, 100, 20);
 		
 		hoursPanel.add(hoursLabel);
-
-		//hoursPanel.add(periodCombo);
-		//hoursPanel.add(periodCombo);
+		hoursPanel.add(periodCombo);
 
 		// Example: update hoursLabel when period changes(replace with actual logic)
 		
@@ -407,7 +405,7 @@ public class TimeSheet extends JFrame{
 		currentTimePanel.setBounds(480, 10, 200, 55);
 		currentTimePanel.setBackground(new Color(240, 235, 216));
 		JLabel currentTimeLabel = new JLabel("Time: --:--:--");
-		currentTimeLabel.setBounds(10, 5, 200, 20);
+		currentTimeLabel.setBounds(10, 10, 200, 20);
 		currentTimePanel.add(currentTimeLabel);
 		
 
@@ -421,7 +419,7 @@ public class TimeSheet extends JFrame{
 		currentDatePanel.setBounds(690, 10, 280, 55);
 		currentDatePanel.setBackground(new Color(240, 235, 216));
 		JLabel currentDateLabel = new JLabel("Date: --/--/----");
-		currentDateLabel.setBounds(10, 5, 200, 20);
+		currentDateLabel.setBounds(10, 10, 200, 20);
 		currentDatePanel.add(currentDateLabel);
 
 		// Add all panel to Top Info Panel
