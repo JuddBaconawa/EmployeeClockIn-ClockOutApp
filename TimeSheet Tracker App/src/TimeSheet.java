@@ -199,8 +199,43 @@ public class TimeSheet extends JFrame{
 
 
 		// Logout and Exit buttons
-		JButton logoutButton = new JButton("Logout");
-		logoutButton.setFont(new Font("null", Font.BOLD, 16));
+		JButton logoutButton = new JButton("Logout") {
+			@Override
+			protected void paintComponent(Graphics g) {
+				Graphics2D g2 = (Graphics2D) g.create();
+				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+				g2.setColor(getBackground());
+				g2.fill(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 20, 20)); // 20 = corner radius
+				super.paintComponent(g);
+				g2.dispose();
+			}
+		};
+		logoutButton.setContentAreaFilled(false);
+		logoutButton.setFocusPainted(false);
+		logoutButton.setBorderPainted(false);
+		logoutButton.setOpaque(false);
+		logoutButton.setFont(new Font("null", Font.BOLD, 20));
+
+		logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+		    Color original = logoutButton.getBackground();
+		    @Override
+		    public void mouseEntered(java.awt.event.MouseEvent e) {
+		        logoutButton.setBackground(new Color(173, 40, 49)); // Highlight color
+		    }
+		    @Override
+		    public void mouseExited(java.awt.event.MouseEvent e) {
+		        logoutButton.setBackground(original);
+		    }
+		    @Override
+		    public void mousePressed(java.awt.event.MouseEvent e) {
+		        logoutButton.setBackground(new Color(100, 13, 20)); // Clicked color
+		    }
+		    @Override
+		    public void mouseReleased(java.awt.event.MouseEvent e) {
+		        logoutButton.setBackground(original);
+		    }
+		});
+
 
 		logoutButton.addActionListener(e -> {
 			// Close the current TimeSheet window
@@ -209,16 +244,33 @@ public class TimeSheet extends JFrame{
 			new LoginForm().setVisible(true);
 		});
 
-		JButton exitButton = new JButton("Exit");
-		exitButton.setFont(new Font("null", Font.BOLD, 16));
+
+
+
+		JButton exitButton = new JButton("Exit") {
+			@Override
+			protected void paintComponent(Graphics g) {
+				Graphics2D g2 = (Graphics2D) g.create();
+				g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+				g2.setColor(getBackground());
+				g2.fill(new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 20, 20)); // 20 = corner radius
+				super.paintComponent(g);
+				g2.dispose();
+			}
+		};
+		exitButton.setContentAreaFilled(false);
+		exitButton.setFocusPainted(false);
+		exitButton.setBorderPainted(false);
+		exitButton.setOpaque(false);
+		exitButton.setFont(new Font("null", Font.BOLD, 20));
 		 
-		exitButton.addActionListener(e -> System.exit(0));
+		
 
 		exitButton.addMouseListener(new java.awt.event.MouseAdapter() {
 		    Color original = exitButton.getBackground();
 		    @Override
 		    public void mouseEntered(java.awt.event.MouseEvent e) {
-		        exitButton.setBackground(new Color(180, 180, 180)); // Highlight color
+		        exitButton.setBackground(new Color(116, 65, 62)); // Highlight color
 		    }
 		    @Override
 		    public void mouseExited(java.awt.event.MouseEvent e) {
@@ -233,6 +285,8 @@ public class TimeSheet extends JFrame{
 		        exitButton.setBackground(original);
 		    }
 		});
+
+		exitButton.addActionListener(e -> System.exit(0));
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
 		// Set the bounds for each menu item
