@@ -19,7 +19,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
-import javax.swing.BorderFactory;
 import javax.swing.JButton;							//for buttons within the forms
 import javax.swing.JFrame;
 import javax.swing.JLabel;
