@@ -108,35 +108,10 @@ public class TimeSheet extends JFrame{
 		searchLabel.setBounds(10, 0, 140, 40);
 		menuLabel.add(searchLabel);
 
-		// dashboard Panel
-		JPanel dashboardPanel = new JPanel();
-		dashboardPanel.setLayout(null);
-		dashboardPanel.setBackground(new Color(247, 204, 173));
-
-		// dashboard label
-		JLabel dashboardLabel = new JLabel("Dashboard");
-		dashboardLabel.setFont(new Font("null", Font.BOLD, 16));
-		dashboardLabel.setForeground(new Color(251, 160, 157));
-		dashboardLabel.setBounds(20, 0, 140, 40);
-		dashboardPanel.add(dashboardLabel);
-
-		// Timesheet Panel
-		JPanel timesheetPanel = new JPanel();
-		timesheetPanel.setLayout(null);
-		timesheetPanel.setBounds(20, 230, 160, 40);
-		timesheetPanel.setBackground(new Color(247, 204, 173));
-
-		//timesheet Label
-		JLabel timesheetLabel = new JLabel("Time Sheet");
-		timesheetLabel.setFont(new Font("null", Font.BOLD, 16));
-		timesheetLabel.setForeground(new Color(251, 160, 157));
-		timesheetLabel.setBounds(20, 0, 140, 40);
-		timesheetPanel.add(timesheetLabel);
-
 		// Home Panel
 		JPanel homePanel = new JPanel();
 		homePanel.setLayout(null);
-		homePanel.setBounds(20, 280, 160, 40);
+		homePanel.setBounds(0, 180, 200, 40); // moved up
 		homePanel.setBackground(new Color(255, 255, 255));
 
 		// Home label
@@ -145,6 +120,32 @@ public class TimeSheet extends JFrame{
 		homeLabel.setForeground(new Color(251, 160, 157));
 		homeLabel.setBounds(20, 0, 140, 40);
 		homePanel.add(homeLabel);
+
+		// Dashboard Panel
+		JPanel dashboardPanel = new JPanel();
+		dashboardPanel.setLayout(null);
+		dashboardPanel.setBounds(0, 230, 200, 40); // moved down
+		dashboardPanel.setBackground(new Color(247, 204, 173));
+
+		// Dashboard label
+		JLabel dashboardLabel = new JLabel("Dashboard");
+		dashboardLabel.setFont(new Font("null", Font.BOLD, 16));
+		dashboardLabel.setForeground(new Color(251, 160, 157));
+		dashboardLabel.setBounds(20, 0, 140, 40);
+		dashboardPanel.add(dashboardLabel);
+
+		// Time Log Panel (was Timesheet Panel)
+		JPanel timeLogPanel = new JPanel();
+		timeLogPanel.setLayout(null);
+		timeLogPanel.setBounds(0, 280, 200, 40); // moved down
+		timeLogPanel.setBackground(new Color(247, 204, 173));
+
+		// Time Log label
+		JLabel timeLogLabel = new JLabel("Time Log");
+		timeLogLabel.setFont(new Font("null", Font.BOLD, 16));
+		timeLogLabel.setForeground(new Color(251, 160, 157));
+		timeLogLabel.setBounds(20, 0, 140, 40);
+		timeLogPanel.add(timeLogLabel);
 
 		// Profile Panel
 		JPanel profilePanel = new JPanel();
@@ -184,17 +185,18 @@ public class TimeSheet extends JFrame{
 				panel.setBackground(original);
 			}
 		};
+		// Add mouse listeners for highlight/click effect
 		menuLabel.addMouseListener(highlightEffect);
-		dashboardPanel.addMouseListener(highlightEffect);
-		timesheetPanel.addMouseListener(highlightEffect);
 		homePanel.addMouseListener(highlightEffect);
+		dashboardPanel.addMouseListener(highlightEffect);
+		timeLogPanel.addMouseListener(highlightEffect);
 		profilePanel.addMouseListener(highlightEffect);
 
-		// Add PANELS to menuBar instead of buttons
+		// Add PANELS to menuBar instead of buttons (update order and variable names)
 		menuBar.add(menuLabel);
-		menuBar.add(dashboardPanel);
-		menuBar.add(timesheetPanel);
 		menuBar.add(homePanel);
+		menuBar.add(dashboardPanel);
+		menuBar.add(timeLogPanel);
 		menuBar.add(profilePanel);		
 
 
@@ -289,12 +291,11 @@ public class TimeSheet extends JFrame{
 		exitButton.addActionListener(e -> this.dispose());
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
-		// Set the bounds for each menu item
+		// Set the bounds for each menu item (update order and variable names)
 		menuLabel.setBounds(0, 130, 200, 40);
-		dashboardPanel.setBounds(0, 180, 200, 40);
-		timesheetPanel.setBounds(0, 230, 200, 40);
-		homePanel.setBounds(0, 280, 200, 40);
-		
+		homePanel.setBounds(0, 180, 200, 40);
+		dashboardPanel.setBounds(0, 230, 200, 40);
+		timeLogPanel.setBounds(0, 280, 200, 40);
 		profilePanel.setBounds(0, 330, 200, 40);
 		// Set the bounds for the buttons
 		logoutButton.setBounds(20, 680, 160, 40);
@@ -305,14 +306,14 @@ public class TimeSheet extends JFrame{
 
 		// Add menu items to the menu bar
 		menuBar.add(menuLabel);
-		menuBar.add(dashboardPanel);
-		menuBar.add(timesheetPanel);
 		menuBar.add(homePanel);
+		menuBar.add(dashboardPanel);
+		menuBar.add(timeLogPanel);
+		menuBar.add(profilePanel);
+
 
 		//last two buttons
-		menuBar.add(profilePanel);
 		menuBar.add(exitButton);
-
 		menuBar.add(logoutButton);
 		// menuBar.add(logoPanel);
 
@@ -325,8 +326,8 @@ public class TimeSheet extends JFrame{
 		dashboardPanel.setBackground(new Color(29, 45, 68));
 		dashboardPanel.setForeground(new Color(251, 160, 157)); // Set text color to black
 		// third button theme check	 =====================================
-		timesheetPanel.setBackground(new Color(29, 45, 68));
-		timesheetPanel.setForeground(new Color(251, 160, 157)); // Set text color to black
+		timeLogPanel.setBackground(new Color(29, 45, 68));
+		timeLogPanel.setForeground(new Color(251, 160, 157)); // Set text color to black
 		// fourth button theme check	=====================================
 		homePanel.setBackground(new Color(29, 45, 68));
 		homePanel.setForeground(new Color(251, 160, 157)); 
@@ -498,4 +499,24 @@ public class TimeSheet extends JFrame{
 			TimeSheet timesheet = new TimeSheet();
 			timesheet.initialize(user);
 	}
+
+	// Example method to create a rounded button (optional)
+	// private void makeButtonRounded(JButton button) {
+	//     button.setContentAreaFilled(false);
+	//     button.setFocusPainted(false);
+	//     button.setBorderPainted(false);
+	//     button.setOpaque(false);
+
+	//     button.setUI(new javax.swing.plaf.basic.BasicButtonUI() {
+	//         @Override
+	//         public void paint(Graphics g, javax.swing.JComponent c) {
+	//             Graphics2D g2 = (Graphics2D) g.create();
+	//             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+	//             g2.setColor(button.getBackground());
+	//             g2.fill(new RoundRectangle2D.Float(0, 0, button.getWidth(), button.getHeight(), 10, 10));
+	//             super.paint(g, c);
+	//             g2.dispose();
+	//         }
+	//     });
+	// }
 }
