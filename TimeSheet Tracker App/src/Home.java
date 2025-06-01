@@ -3,7 +3,7 @@ import javax.swing.JPanel;
 
 public class Home extends JPanel {
 
-  JPanel cardPanel = new JPanel(new CardLayout());
-  
+  JPanel cardPanel = new JPanel(new java.awt.CardLayout());
+
   
 }
