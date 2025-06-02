@@ -49,9 +49,11 @@ public class TimeSheet extends JFrame{
 
 		/*********************** (Side) Menu Bar/Panel ************************************/
 		// Create a menu bar
-		JPanel menuBar = new JPanel();
-		menuBar.setLayout(null);
-		menuBar.setBounds(0, 0, 200, 803);									// Menu bar size   763 with a titlebar
+		JPanel menuBar = new JPanel(new GridLayout(12, 1, 0, 10)); // 9 rows, 1 column, 10px vertical gap
+		menuBar.setBounds(0, 0, 200, getHeight());									// Menu bar size   763 with a titlebar
+		// Set menuBar width to 25% of the window width dynamically
+		int menuBarWidth = (int) (getWidth() * 0.16555);
+		menuBar.setBounds(0, 0, menuBarWidth, getHeight());
 		menuBar.setBackground(new Color(29, 45, 68));
 		menuBar.setVisible(true);	
 
@@ -72,6 +74,9 @@ public class TimeSheet extends JFrame{
 				)
 			)
 		);
+
+		JPanel menuSpacer = new JPanel();
+		menuSpacer.setOpaque(false);
 
 		// set space for the company logo
 		JLabel logoLabel = new JLabel("\"Brand/Logo\"");
@@ -192,12 +197,7 @@ public class TimeSheet extends JFrame{
 		timeLogPanel.addMouseListener(highlightEffect);
 		profilePanel.addMouseListener(highlightEffect);
 
-		// Add PANELS to menuBar instead of buttons (update order and variable names)
-		menuBar.add(menuLabel);
-		menuBar.add(homePanel);
-		menuBar.add(dashboardPanel);
-		menuBar.add(timeLogPanel);
-		menuBar.add(profilePanel);		
+
 
 
 		// Logout and Exit buttons
@@ -290,31 +290,47 @@ public class TimeSheet extends JFrame{
 
 		exitButton.addActionListener(e -> this.dispose());
 
-		/*********************** (Side) Menu Bar/Panel Settings ***************************/
-		// Set the bounds for each menu item (update order and variable names)
-		menuLabel.setBounds(0, 130, 200, 40);
-		homePanel.setBounds(0, 180, 200, 40);
-		dashboardPanel.setBounds(0, 230, 200, 40);
-		timeLogPanel.setBounds(0, 280, 200, 40);
-		profilePanel.setBounds(0, 330, 200, 40);
-		// Set the bounds for the buttons
-		logoutButton.setBounds(20, 680, 160, 40);
-		exitButton.setBounds(20, 740, 160, 40);
-
-		// Logo label
-		menuBar.add(logoLabel);
-
-		// Add menu items to the menu bar
-		menuBar.add(menuLabel);
+		/******** Add PANELS to menuBar instead of buttons (update order and variable names) *******/
+		menuBar.add(logoLabel);      // Logo at the top
+		menuBar.add(menuSpacer);
+		menuBar.add(menuLabel);      // "Menu Items" label
+		menuBar.add(menuSpacer);
 		menuBar.add(homePanel);
 		menuBar.add(dashboardPanel);
 		menuBar.add(timeLogPanel);
 		menuBar.add(profilePanel);
 
+		//buttons
+		menuBar.add(menuSpacer);
+		menuBar.add(logoutButton);
+		menuBar.add(exitButton);
+		menuBar.add(menuSpacer);
+
+		/*********************** (Side) Menu Bar/Panel Settings ***************************/
+		// Set the bounds for each menu item (update order and variable names)
+		// menuLabel.setBounds(0, 130, 200, 40);
+		// homePanel.setBounds(0, 180, 200, 40);
+		// dashboardPanel.setBounds(0, 230, 200, 40);
+		// timeLogPanel.setBounds(0, 280, 200, 40);
+		// profilePanel.setBounds(0, 330, 200, 40);
+		// Set the bounds for the buttons
+		// logoutButton.setBounds(20, 680, 160, 40);
+		// exitButton.setBounds(20, 740, 160, 40);
+
+		// Logo label
+		// menuBar.add(logoLabel);
+
+		// Add menu items to the menu bar
+		// menuBar.add(menuLabel);
+		// menuBar.add(homePanel);
+		// menuBar.add(dashboardPanel);
+		// menuBar.add(timeLogPanel);
+		// menuBar.add(profilePanel);
+
 
 		//last two buttons
-		menuBar.add(exitButton);
-		menuBar.add(logoutButton);
+		// menuBar.add(exitButton);
+		// menuBar.add(logoutButton);
 		// menuBar.add(logoPanel);
 
 		// Set the background color for each menu item
