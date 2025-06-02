@@ -49,10 +49,10 @@ public class TimeSheet extends JFrame{
 
 		/*********************** (Side) Menu Bar/Panel ************************************/
 		// Create a menu bar
-		JPanel menuBar = new JPanel(new GridLayout(12, 1, 0, 10)); // 9 rows, 1 column, 10px vertical gap
+		JPanel menuBar = new JPanel(new GridLayout(12, 1, 0,  5)); // 9 rows, 1 column, 10px vertical gap
 		menuBar.setBounds(0, 0, 200, getHeight());									// Menu bar size   763 with a titlebar
 		// Set menuBar width to 25% of the window width dynamically
-		int menuBarWidth = (int) (getWidth() * 0.16555);
+		int menuBarWidth = (int) (getWidth() * 0.167);
 		menuBar.setBounds(0, 0, menuBarWidth, getHeight());
 		menuBar.setBackground(new Color(29, 45, 68));
 		menuBar.setVisible(true);	
