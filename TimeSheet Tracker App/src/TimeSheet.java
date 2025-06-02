@@ -106,7 +106,7 @@ public class TimeSheet extends JFrame{
 		menuLabel.setLayout(null);
 		menuLabel.setBackground(new Color(29,45, 68));
 
-		// MenuItemLabel - title of the menu items
+		// Menu Label
 		JLabel menuItemLabel = new JLabel("Menu Items");
 		menuItemLabel.setFont(new Font("null", Font.BOLD, 20));
 		menuItemLabel.setForeground(new Color(251, 160, 157));
