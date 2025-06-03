@@ -292,28 +292,29 @@ public class TimeSheet extends JFrame{
 
 		/******** Add PANELS to menuBar instead of buttons (update order and variable names) *******/
 		menuBar.add(logoLabel);      // Logo at the top
-		menuBar.add(menuSpacer);
-		menuBar.add(menuLabel);      // "Menu Items" label
-		menuBar.add(menuSpacer);
+
+		menuBar.add(menuLabel);      // "Menu Items" label title
+
+		// menu Items
 		menuBar.add(homePanel);
 		menuBar.add(dashboardPanel);
 		menuBar.add(timeLogPanel);
 		menuBar.add(profilePanel);
 
 		//buttons
-		menuBar.add(menuSpacer);
+
 		menuBar.add(logoutButton);
 		menuBar.add(exitButton);
-		menuBar.add(menuSpacer);
+
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
 		// Set the bounds for each menu item (update order and variable names)
 		// menuLabel.setBounds(0, 130, 200, 40);
 		// homePanel.setBounds(0, 180, 200, 40);
 		// dashboardPanel.setBounds(0, 230, 200, 40);
-		// timeLogPanel.setBounds(0, 280, 200, 40);
-		// profilePanel.setBounds(0, 330, 200, 40);
-		// Set the bounds for the buttons
+		// timeLogPanel.setBounds(0, 280, 200, 400);
+		// Set the bounds for the buttons);
+		// profilePanel.setBounds(0, 330, 200, 4
 		// logoutButton.setBounds(20, 680, 160, 40);
 		// exitButton.setBounds(20, 740, 160, 40);
 
