@@ -308,9 +308,10 @@ public class TimeSheet extends JFrame{
 		//buttons
 		menuBar.add(Box.createVerticalStrut(40)); // 30px space
 		menuBar.add(Box.createVerticalStrut(40));
-		menuBar.add(Box.createVerticalStrut(40));
+		menuBar.add(Box.createVerticalStrut(10));
 		menuBar.add(logoutButton);
 		menuBar.add(exitButton);
+		
 
 
 		/*********************** (Side) Menu Bar/Panel Settings ***************************/
