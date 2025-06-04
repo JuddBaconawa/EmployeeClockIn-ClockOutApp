@@ -312,9 +312,9 @@ public class TimeSheet extends JFrame{
 		// menuLabel.setBounds(0, 130, 200, 40);
 		// homePanel.setBounds(0, 180, 200, 40);
 		// dashboardPanel.setBounds(0, 230, 200, 40);
-		// timeLogPanel.setBounds(0, 280, 200, 400);
-		// Set the bounds for the buttons);
-		// profilePanel.setBounds(0, 330, 200, 4
+		// timeLogPanel.setBounds(0, 280, 200, 40);
+		// profilePanel.setBounds(0, 330, 200, 40);
+		// Set the bounds for the buttons
 		// logoutButton.setBounds(20, 680, 160, 40);
 		// exitButton.setBounds(20, 740, 160, 40);
 
