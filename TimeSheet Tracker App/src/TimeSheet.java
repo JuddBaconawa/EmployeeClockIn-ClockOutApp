@@ -9,6 +9,8 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -18,6 +20,7 @@ import javax.swing.JMenuBar;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.Box;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
@@ -293,6 +296,7 @@ public class TimeSheet extends JFrame{
 		/******** Add PANELS to menuBar instead of buttons (update order and variable names) *******/
 		menuBar.add(logoLabel);      // Logo at the top
 
+		menuBar.add(Box.createVerticalStrut(40)); // 30px space
 		menuBar.add(menuLabel);      // "Menu Items" label title
 
 		// menu Items
@@ -302,7 +306,7 @@ public class TimeSheet extends JFrame{
 		menuBar.add(profilePanel);
 
 		//buttons
-
+		menuBar.add(Box.createVerticalStrut(0));
 		menuBar.add(logoutButton);
 		menuBar.add(exitButton);
 
