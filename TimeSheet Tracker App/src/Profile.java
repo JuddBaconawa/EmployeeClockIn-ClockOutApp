@@ -8,4 +8,6 @@ public class Profile extends DisplayCard {
         super("Profile");
         setBackground(new Color(62, 92, 118));
   
+    }
+    
 }
