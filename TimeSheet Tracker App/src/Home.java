@@ -15,6 +15,10 @@ public class Home extends DisplayCard {
       // additional initialization if needed
     }
 
-  }
-  
-}
+
+    public static void main(String[] args) {
+      //Home instance created for testing
+      Home home = new Home();
+
+    }
+}  
