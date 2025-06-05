@@ -53,7 +53,7 @@ public class Timelog extends DisplayCard {
       public static void main(String[] args) {
         JFrame frame = new JFrame("Timelog Example");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 400);
+        frame.setSize(1000, 680);
         frame.add(new Timelog());
         frame.setVisible(true);
     }
