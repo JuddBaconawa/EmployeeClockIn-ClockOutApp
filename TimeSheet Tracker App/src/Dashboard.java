@@ -18,7 +18,7 @@ public class Dashboard extends DisplayCard {
         super.paintComponent(g);
         g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
         g.setColor(java.awt.Color.BLACK);
-        g.drawString("Dashboard", 50, 80); // x, y
+        g.drawString("Dashboard", 30, 60); // x, y
     }
 
     public static void main(String[] args) {
