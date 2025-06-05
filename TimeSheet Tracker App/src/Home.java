@@ -14,6 +14,14 @@ public class Home extends DisplayCard {
       // additional initialization if needed
     }
 
+    @Override
+    protected void paintComponent(java.awt.Graphics g) {
+      super.paintComponent(g);
+      g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
+      g.setColor(java.awt.Color.WHITE);
+      g.drawString("Home", 30, 60); // x, y
+    }
+
 
     public static void main(String[] args) {
       //Home instance created for testing
