@@ -457,9 +457,15 @@ public class TimeSheet extends JFrame{
 		userPanel.setBackground(new Color(240, 235, 216));
 
 		/******************************* (Views) Display Panel ***********************************/
-		JPanel displayPanel = new JPanel();
+		JPanel displayPanel = new JPanel(new java.awt.CardLayout());
 		displayPanel.setBounds(200, 120, 1000, 680);
 		displayPanel.setBackground(new Color(240, 235, 216));
+
+		displayPanel.add(new Home(), "Home");
+		displayPanel.add(new Dashboard(), "Dashboard");
+		displayPanel.add(new Profile(), "Profile");
+		displayPanel.add(new Timelog(), "Time Log");
+
 
 		/*********************************** Menu Bar Panel ****************************************/
 
@@ -487,8 +493,6 @@ public class TimeSheet extends JFrame{
 		mainPanel.add(topInfoPanel);
 		
 
-
-
 		/*********************** Action Button Panel ********************************
 		JButton clockInButton = new JButton("Clock In");
 
@@ -497,8 +501,7 @@ public class TimeSheet extends JFrame{
 		JButton breakButton = new JButton("Break/Lunch");
 
 		/*********************** Button Panel Settings ***********************/
-		// Have to add to the Main info panel thats yet to be created
-		JPanel actionButtonPanel = new JPanel();
+		// Have to add to the Main info panel thats yet to be create
 
 
 		/*********************** Add Panel to Frame **************************/
