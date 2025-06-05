@@ -17,4 +17,13 @@ public class Profile extends DisplayCard {
         g.setColor(java.awt.Color.LIGHT_GRAY);
         g.drawString("Profile", 30, 60);
     }
-    
+
+    public static void main(String[] args) {
+
+        Profile profile = new Profile();
+        javax.swing.JFrame frame = new javax.swing.JFrame("Profile Example");
+        frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+        frame.add(profile);
+        frame.setSize(1000, 680);
+        frame.setVisible(true);
+    }
