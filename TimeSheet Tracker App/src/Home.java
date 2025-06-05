@@ -21,7 +21,7 @@ public class Home extends DisplayCard {
       Home home = new Home();
 
       javax.swing.JFrame frame = new javax.swing.JFrame("Home Example");
-      setDefaultOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+      frame.setDefaultOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
       frame.add(home);
       frame.setSize(1000, 680);
       frame.setVisible(true);
