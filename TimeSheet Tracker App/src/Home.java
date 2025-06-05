@@ -1,9 +1,20 @@
 //IMPORTS
+import java.awt.Color;
+
 import javax.swing.JPanel;
 
-public class Home extends JPanel {
 
-  JPanel cardPanel = new JPanel(new java.awt.CardLayout());
 
+// Home Class
+public class Home extends DisplayCard {
+    public Home() {
+      super("Home");
+      setLayout(null);
+      setBackground(new Color(0, 40, 0));
+      setBounds(200, 120, 1000, 680);
+      // additional initialization if needed
+    }
+
+  }
   
 }
