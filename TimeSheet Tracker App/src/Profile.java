@@ -27,3 +27,5 @@ public class Profile extends DisplayCard {
         frame.setSize(1000, 680);
         frame.setVisible(true);
     }
+
+}
