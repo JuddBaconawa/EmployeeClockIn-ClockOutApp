@@ -15,9 +15,12 @@ public class Dashboard extends DisplayCard {
     @Override
     protected void paintComponent(java.awt.Graphics g) {
         super.paintComponent(g);
-        g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
-        g.setColor(java.awt.Color.BLACK);
-        g.drawString("Dashboard", 30, 60); // x, y
+        java.awt.Graphics2D g2d = (java.awt.Graphics2D) g;
+        g2d.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,
+                             java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
+        g2d.setColor(java.awt.Color.LIGHT_GRAY);
+        g2d.drawString("Profile", 30, 60);
     }
 
     public static void main(String[] args) {
