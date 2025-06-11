@@ -10,10 +10,16 @@ public class Timelog extends DisplayCard {
       super("Timelog");
       setBackground(new Color(0, 40, 0));
       setLayout(null);
-  
+
       // Example data
       String[] columns = {"Type", "Time"};
       Object[][] data = {
+          {"Login", "08:00 AM"},
+          {"Break", "12:00 PM"},
+          {"Logout", "05:00 PM"},
+          {"Login", "06:00 PM"},
+          {"Break", "07:00 PM"},
+          {"Logout", "08:00 PM"},
           {"Login", "08:00 AM"},
           {"Break", "12:00 PM"},
           {"Logout", "05:00 PM"},
@@ -46,9 +52,20 @@ public class Timelog extends DisplayCard {
       });
   
       JScrollPane scrollPane = new JScrollPane(table);
-      scrollPane.setBounds(50, 50, 400, 200);
+      scrollPane.setBounds(50, 150, 400, 200);
       add(scrollPane);
-      } 
+    } 
+
+    @Override
+    protected void paintComponent(java.awt.Graphics g) {
+        super.paintComponent(g);
+        java.awt.Graphics2D g2d = (java.awt.Graphics2D) g;
+        g2d.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,
+                             java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
+        g2d.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
+        g2d.setColor(java.awt.Color.LIGHT_GRAY);
+        g2d.drawString("Profile", 30, 60);
+    }
   
       public static void main(String[] args) {
         JFrame frame = new JFrame("Timelog Example");
