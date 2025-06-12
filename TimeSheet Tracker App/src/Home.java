@@ -1,5 +1,7 @@
 //IMPORTS
 import java.awt.Color;
+
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 
@@ -12,6 +14,15 @@ public class Home extends DisplayCard {
       setBackground(new Color(0, 40, 0));
       setBounds(200, 120, 1000, 680);
       // additional initialization if needed
+
+      JLabel header = new JLabel("Home");
+      header.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
+      header.setBackground(new Color(0, 40, 0));
+      header.setForeground(new Color( 255, 255, 255));
+      header.setBounds(20, 0, 90, 32);
+
+      this.add(header);
+
     }
 
     @Override
