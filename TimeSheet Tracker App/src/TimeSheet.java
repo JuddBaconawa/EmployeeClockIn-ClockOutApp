@@ -308,7 +308,7 @@ public class TimeSheet extends JFrame{
 		//buttons
 		menuBar.add(Box.createVerticalStrut(40)); // 30px space
 		menuBar.add(Box.createVerticalStrut(40));
-		menuBar.add(Box.createVerticalStrut(10));
+		// menuBar.add(Box.createVerticalStrut(5));
 		menuBar.add(logoutButton);
 		menuBar.add(exitButton);
 		
@@ -458,7 +458,7 @@ public class TimeSheet extends JFrame{
 
 		/******************************* (Views) Display Panel ***********************************/
 		JPanel displayPanel = new JPanel(new java.awt.CardLayout());
-		displayPanel.setBounds(200, 120, 1000, 680);
+		displayPanel.setBounds(200, 120, 1000, 681);
 		displayPanel.setBackground(new Color(240, 235, 216));
 
 		displayPanel.add(new Home(), "Home");
