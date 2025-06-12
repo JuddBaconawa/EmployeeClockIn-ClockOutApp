@@ -4,6 +4,8 @@ import java.awt.Color;
 // Dashboard class
 public class Dashboard extends DisplayCard {
     public Dashboard() {
+
+        // Card Title
         super("Dashboard");
         setLayout(null);
         setBackground(new Color(240, 235, 216));

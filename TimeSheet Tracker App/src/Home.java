@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 // Home Class
 public class Home extends DisplayCard {
     public Home() {
+
+      // Card Title
       super("Home");
       setLayout(null);
       setBackground(new Color(0, 40, 0));
