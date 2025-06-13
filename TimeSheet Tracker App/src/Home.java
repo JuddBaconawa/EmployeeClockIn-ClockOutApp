@@ -13,17 +13,11 @@ public class Home extends DisplayCard {
       // Card Title
       super("Home");
       setLayout(null);
-      setBackground(new Color(0, 40, 0));
+      setBackground(new Color(116, 140, 171));
       setBounds(200, 120, 1000, 680);
       // additional initialization if needed
 
-      JLabel header = new JLabel("Home");
-      header.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
-      header.setBackground(new Color(0, 40, 0));
-      header.setForeground(new Color( 255, 255, 255));
-      header.setBounds(20, 0, 90, 32);
 
-      this.add(header);
 
     }
 
@@ -31,7 +25,7 @@ public class Home extends DisplayCard {
     protected void paintComponent(java.awt.Graphics g) {
       super.paintComponent(g);
       g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
-      g.setColor(java.awt.Color.WHITE);
+      g.setColor(java.awt.Color.LIGHT_GRAY);
       g.drawString("Home", 30, 60); // x, y
     }
 
