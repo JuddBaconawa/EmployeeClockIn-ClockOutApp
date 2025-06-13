@@ -344,7 +344,7 @@ public class TimeSheet extends JFrame{
 		// menuBar.add(logoutButton);
 		// menuBar.add(logoPanel);
 
-		// Set the background color for each menu item and their text color via setForeground
+		// Set the background color for each menu item and their TEXT color via setForeground
 		// First panel label theme check ============================
 		menuLabel.setBackground(new Color(29, 45, 68));
 		menuLabel.setForeground(new Color(251, 160, 157)); // Set text color to black
