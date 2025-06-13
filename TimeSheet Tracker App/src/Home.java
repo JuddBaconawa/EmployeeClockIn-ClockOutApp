@@ -12,11 +12,17 @@ public class Home extends DisplayCard {
 
       // Card Title
       super("Home");
+
+      // Set properties for the Home JPanel
       setLayout(null);
       setBackground(new Color(116, 140, 171));
       setBounds(200, 120, 1000, 680);
-      // additional initialization if needed
 
+
+      // additional initialization if needed
+      JLabel usernameLabel = new JLabel ("Welcome, User!");
+      usernameLabel.setBounds(25, 150, 200, 30);
+      this.add(usernameLabel);
 
 
     }
