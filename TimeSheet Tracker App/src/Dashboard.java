@@ -21,7 +21,7 @@ public class Dashboard extends DisplayCard {
         g2d.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,
                              java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
-        g2d.setColor(java.awt.Color.LIGHT_GRAY);
+        g2d.setColor(java.awt.Color.DARK_GRAY);
         g2d.drawString("Profile", 30, 60);
     }
 
