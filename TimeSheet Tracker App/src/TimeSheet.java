@@ -1,7 +1,5 @@
 // Packages
 
-// IMPORTS
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -10,23 +8,17 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JMenuBar;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.Box;
-import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
-import javax.swing.border.EmptyBorder;
 
 
 
@@ -53,7 +45,7 @@ public class TimeSheet extends JFrame{
 
 		/*********************** (Side) Menu Bar/Panel ************************************/
 		// Create a menu bar
-		JPanel menuBar = new JPanel(new GridLayout(12, 1, 0,  5)); // 9 rows, 1 column, 10px vertical gap
+		JPanel menuBar = new JPanel(new GridLayout(13, 1, 0,  5)); // 9 rows, 1 column, 10px vertical gap
 		menuBar.setBounds(0, 0, 200, getHeight());									// Menu bar size   763 with a titlebar
 		// Set menuBar width to 25% of the window width dynamically
 		int menuBarWidth = (int) (getWidth() * 0.167);
@@ -65,8 +57,8 @@ public class TimeSheet extends JFrame{
 		JPanel logoPanel = new JPanel();
 		logoPanel.setBackground(new Color(29, 45, 68));
 		logoPanel.setLayout(null);
-		logoPanel.setPreferredSize(new java.awt.Dimension(200, 100));
-		logoPanel.setBounds(0, 0, 200, 120);
+		logoPanel.setPreferredSize(new java.awt.Dimension(300, 00));
+		//logoPanel.setBounds(0, 0, 200, 120);
 
 		// logoPanel.setBorder(new MatteBorder(0, 0, 2, 2, Color.LIGHT_GRAY));
 		logoPanel.setBorder(
@@ -364,7 +356,7 @@ public class TimeSheet extends JFrame{
 		// sixth button theme check	=========================================
 		logoutButton.setBackground(new Color(240, 235, 216));
 		logoutButton.setForeground(new Color(251, 160, 157)); // Set text color to black
-		logoutButton.setFont(new Font("null", Font.BOLD, 20));
+		logoutButton.setFont(new Font("null", Font.BOLD, 20)); // "null" is not a valid font name, use a real font or Font.DIALOG
 		logoutButton.setPreferredSize(new Dimension(140, 30));
 
 		// seventh button theme check	==========================================
@@ -377,6 +369,7 @@ public class TimeSheet extends JFrame{
 		JPanel topInfoPanel = new JPanel();
 		topInfoPanel.setLayout(new GridLayout(1, 6, 15, 50));
 		topInfoPanel.setBorder(BorderFactory.createEmptyBorder(40, 10, 20, 10));
+		// The commented-out border below does nothing and can be removed
 		// topInfoPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
 		// 	BorderFactory.createLineBorder(Color.GRAY, 5 /*, true*/), 
 		// 	BorderFactory.createEmptyBorder(5, 5, 5, 5)
@@ -395,6 +388,7 @@ public class TimeSheet extends JFrame{
 		usernameLabel.setForeground(new Color(0, 0, 0));
 		usernameLabel.setBounds(17, 10, 200, 20);
 		JLabel userRoleLabel = new JLabel("Role: " + user);
+		// The border below is not visible unless the label is added to a visible container
 		userRoleLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
 			BorderFactory.createBevelBorder(1), 
 			BorderFactory.createEmptyBorder(10, 5, 10, 5)
