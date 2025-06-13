@@ -296,7 +296,7 @@ public class TimeSheet extends JFrame{
 
 		exitButton.addActionListener(e -> this.dispose());
 
-		/******** Add PANELS to menuBar instead of buttons (update order and variable names) *******/
+		/******** Add Panels and Buttons to menuBar (update order and variable names) *******/
 		menuBar.add(logoLabel);      // Logo at the top
 
 		menuBar.add(Box.createVerticalStrut(40)); // 30px space
@@ -344,7 +344,7 @@ public class TimeSheet extends JFrame{
 		// menuBar.add(logoutButton);
 		// menuBar.add(logoPanel);
 
-		// Set the background color for each menu item
+		// Set the background color for each menu item and their text color via setForeground
 		// First panel label theme check ============================
 		menuLabel.setBackground(new Color(29, 45, 68));
 		menuLabel.setForeground(new Color(251, 160, 157)); // Set text color to black
