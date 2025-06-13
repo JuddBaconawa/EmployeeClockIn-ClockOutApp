@@ -3,6 +3,7 @@
 // IMPORTS
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -205,6 +206,8 @@ public class TimeSheet extends JFrame{
 
 		// Logout and Exit buttons
 		JButton logoutButton = new JButton("Logout") {
+
+			
 			@Override
 			protected void paintComponent(Graphics g) {
 				Graphics2D g2 = (Graphics2D) g.create();
@@ -361,10 +364,13 @@ public class TimeSheet extends JFrame{
 		// sixth button theme check	=========================================
 		logoutButton.setBackground(new Color(240, 235, 216));
 		logoutButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+		logoutButton.setFont(new Font("null", Font.BOLD, 20));
+		logoutButton.setPreferredSize(new Dimension(140, 30));
 
 		// seventh button theme check	==========================================
 		exitButton.setBackground(new Color(240, 235, 216));
 		exitButton.setForeground(new Color(251, 160, 157)); // Set text color to black
+		exitButton.setPreferredSize(new Dimension(120, 20));
 
 		/*********************************** (User) Top Info Panel *********************************/
 		// Create a top info panel
