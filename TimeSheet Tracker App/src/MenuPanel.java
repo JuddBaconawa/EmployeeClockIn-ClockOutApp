@@ -63,6 +63,8 @@ public class MenuPanel extends JPanel {
         });
 
         // ============== Exit Button ===============
+        JButton exitButton = createRoundedButton("Exit", new Color(240, 235, 216));
+        exitButton.addActionListener(e -> parentFrame.dispose());
 
         // ============== Add All Components ==============
         add(logoLabel);
