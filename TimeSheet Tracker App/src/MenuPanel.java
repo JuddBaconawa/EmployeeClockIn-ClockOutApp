@@ -55,6 +55,12 @@ public class MenuPanel extends JPanel {
         addButton("Home");
 
         // ============== Logout Button ==============
+        JButton logoutButton = createRoundedButton("Logout", new Color(240, 235, 216));
+        logoutButton.addActionListener(e -> {
+            // Action to perform on logout
+            parentFrame.dispose(); // Close the current frame
+            new LoginForm().setVisible(true); // Open the login form
+        });
 
         // ============== Exit Button ===============
 
