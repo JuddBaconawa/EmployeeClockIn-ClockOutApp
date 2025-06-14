@@ -43,13 +43,15 @@ import javax.swing.border.EmptyBorder;
 // TimeSheet class
 public class TimeSheet extends JFrame{
 
+	private JPanel displayPanel;
+
 	public void initialize(User user) {
 		
 		/*********************** Frame Setup *********************************/
 
 		setTitle("Time Sheet Home");
-		setUndecorated(true);											// Takes out the TimeSheet title bar
-		setSize(1200, 801);											// Set the size of the frame	
+		setUndecorated(true);						// Takes out the TimeSheet title bar
+		setSize(1200, 801);						// Set the size of the frame	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
