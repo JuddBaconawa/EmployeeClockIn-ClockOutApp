@@ -1,6 +1,6 @@
-package auth;
-/********************* Packages **********************/
 
+/********************* Packages **********************/
+package auth;
 
 /****************** imports **************************/
 // Toolkit for GUI
@@ -31,6 +31,7 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;			//constants
 
 import models.User;
+import core.TimeSheet;
 
 
 // LoginForm
