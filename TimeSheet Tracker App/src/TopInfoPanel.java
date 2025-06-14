@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 
 
 import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
@@ -13,7 +14,7 @@ import models.User;
 
 
 public class TopInfoPanel extends JPanel {
-    public JLabel hourseLabel;
+    public JLabel hoursLabel;
     public JLabel timeLabel;
     public JLabel dateLabel;
 
@@ -42,7 +43,33 @@ public class TopInfoPanel extends JPanel {
     }
 
     private JPanel createHoursPanel() {
-        JPanel 
+        JPanel panel = createStylePanel(200);
+        panel.setLayout(null);
+        hoursLabel = new JLabel("Hours: 0");
+        hoursLabel.setBounds(10, 10, 200, 20);
+        String[] periods = {"Daily", "Weekly", "Bi-Month"};
+        JComboBox<String> periodComboBox = new JComboBox<>(periods);
+        periodComboBox.setBounds(10, 30, 180, 20);
+        panel.add(hoursLabel);
+        panel.add(periodComboBox);
+        return panel;
+    }
+
+    private JPanel createTimePanel() {
+        JPanel panel = createStylePanel(200);
+        timeLabel = new JLabel("Time: --:--:--");
+        timeLabel.setBounds(10, 10, 200, 20);
+        panel.add(timeLabel);
+        return panel;
+    }
+
+    private JPanel createDatePanel() {
+        JPanel panel = createStylePanel(280);
+        panel.setLayout(null);
+        dateLabel = new JLabel("Date: --/--/----");
+        dateLabel.setBounds( 10, 10, 200, 20);
+        return panel;
+
     }
 
     private JPanel createStylePanel(int width) {
