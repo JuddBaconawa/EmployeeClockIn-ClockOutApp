@@ -71,6 +71,7 @@ public class MenuPanel extends JPanel {
         addButton("Dashboard");
         addButton("Timelog");
         addButton("Profile");
+        add(Box.createVerticalStrut(10));
 
         // ============== Logout Button ==============
         JButton logoutButton = createRoundedButton("Logout", new Color(240, 235, 216));
