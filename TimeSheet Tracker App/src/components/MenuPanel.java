@@ -1,5 +1,6 @@
-package components;
 // PACKAGE
+package components;
+
 
 // IMPORTS
 import java.awt.Color;
@@ -11,6 +12,7 @@ import java.awt.GridLayout;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.geom.RoundRectangle2D;
+import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -22,9 +24,7 @@ import javax.swing.JPanel;
 // import javax.swing.border.Border;
 import javax.swing.SwingConstants;
 
-// import org.w3c.dom.events.MouseEvent;
-import java.awt.event.MouseEvent;
-
+// import javax.swing.border.CompoundBorder;
 import auth.LoginForm;
 import models.User;
 
@@ -39,23 +39,38 @@ public class MenuPanel extends JPanel {
         setBounds(0, 0, 200, 800);
 
         // ============== LOGO =============
+        JPanel logoPanel = new JPanel(null);
+        logoPanel.setPreferredSize(new Dimension(200, 200));
+        logoPanel.setBackground(new Color(29, 45, 68));
+
         JLabel logoLabel = new JLabel("\" Brand Logo \"");
         logoLabel.setIcon(new ImageIcon("path/to/logo.png")); // Set your logo path here
-        logoLabel.setBounds(20, 40, 160, 60);
+        logoLabel.setBounds(20, 20, 160, 160);
         logoLabel.setForeground(Color.WHITE);
         logoLabel.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createLineBorder(Color.GRAY, 3),
             BorderFactory.createEmptyBorder(5, 5, 5, 5)
         ));
 
+        logoPanel.add(logoLabel);
+
         // ============== Menu Header =============
         JLabel menuItemLabel = new JLabel("Menu Items");
-        menuItemLabel.setFont(new Font("null", Font.BOLD, 16));
+        menuItemLabel.setFont(new Font("null", Font.BOLD, 30));
         menuItemLabel.setForeground(new Color(251, 160, 157));
         menuItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
-        // ============== Buttons ==============
+        
+        // ============== Add All Components ==============
+        add(logoPanel);
+        add(Box.createVerticalStrut(10));
+        add(menuItemLabel);
+        add(Box.createVerticalStrut(5));
         addButton("Home");
+        // add(Box.createVerticalStrut(10));
+        addButton("Dashboard");
+        addButton("Timelog");
+        addButton("Profile");
 
         // ============== Logout Button ==============
         JButton logoutButton = createRoundedButton("Logout", new Color(240, 235, 216));
@@ -68,21 +83,18 @@ public class MenuPanel extends JPanel {
         // ============== Exit Button ===============
         JButton exitButton = createRoundedButton("Exit", new Color(240, 235, 216));
         exitButton.addActionListener(e -> parentFrame.dispose());
-
-        // ============== Add All Components ==============
-        add(logoLabel);
-        add(Box.createVerticalStrut(20));
-        add(menuItemLabel);
-        add(Box.createVerticalStrut(10));
+        
+        // ============== Buttons Add==============
         add(logoutButton);
-        add(exitButton);
+        add(exitButton);        
     }
+
 
     private void addButton(String title) {
         JPanel panel = new JPanel(null);
         panel.setBackground(new Color(29, 45, 68));
         panel.setPreferredSize(new Dimension(200, 40));
-
+        // menuBar.add(logoPanel);
         JLabel label = new JLabel(title);
         label.setFont(new Font("null", Font.BOLD, 16));
         label.setForeground(new Color(251, 160, 157));
@@ -101,6 +113,7 @@ public class MenuPanel extends JPanel {
             protected void paintComponent(Graphics g) {
               Graphics2D g2d = (Graphics2D) g.create();
               g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+              g2d.setColor(bg);
               g2d.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
               super.paintComponent(g2d);
               g2d.dispose();
@@ -108,7 +121,10 @@ public class MenuPanel extends JPanel {
         };
         button.setContentAreaFilled(false);
         button.setFocusPainted(false);
-        button.setForeground(Color.BLACK);
+        button.setForeground(new Color(240, 235, 216));
+        button.setFont(new Font("null", Font.BOLD, 16));
+        button.setForeground(new Color(251, 160, 157));
+        // button.setHorizontalAlignment(SwingConstants.CENTER);
         return button;
     }
 
