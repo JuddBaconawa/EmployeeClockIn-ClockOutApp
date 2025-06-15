@@ -58,14 +58,14 @@ public class MenuPanel extends JPanel {
         JLabel menuItemLabel = new JLabel("Menu Items");
         menuItemLabel.setFont(new Font("null", Font.BOLD, 30));
         menuItemLabel.setForeground(new Color(251, 160, 157));
-        menuItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        menuItemLabel.setHorizontalAlignment(SwingConstants.EAST);
 
         
         // ============== Add All Components ==============
         add(logoPanel);
         add(Box.createVerticalStrut(10));
         add(menuItemLabel);
-        add(Box.createVerticalStrut(5));
+        // add(Box.createVerticalStrut(5));
         addButton("Home");
         // add(Box.createVerticalStrut(10));
         addButton("Dashboard");
@@ -100,6 +100,8 @@ public class MenuPanel extends JPanel {
         label.setFont(new Font("null", Font.BOLD, 16));
         label.setForeground(new Color(251, 160, 157));
         label.setBounds(20, 0, 140, 40);
+        label.setHorizontalAlignment(SwingConstants.LEFT);
+        label.setVerticalAlignment(SwingConstants.CENTER);
         panel.add(label);
 
         panel.addMouseListener(highlightEffect(panel));
@@ -123,8 +125,10 @@ public class MenuPanel extends JPanel {
         button.setContentAreaFilled(false);
         button.setFocusPainted(false);
         button.setForeground(new Color(240, 235, 216));
-        button.setFont(new Font("null", Font.BOLD, 16));
+        button.setFont(new Font("null", Font.BOLD, 24));
         button.setForeground(new Color(251, 160, 157));
+        button.setVerticalAlignment(SwingConstants.CENTER);
+        button.setHorizontalAlignment(SwingConstants.CENTER);
         // button.setHorizontalAlignment(SwingConstants.CENTER);
         return button;
     }
