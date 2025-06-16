@@ -23,7 +23,7 @@ public class Home extends DisplayCard {
 
 
       // additional initialization if needed
-      JLabel usernameLabel = new JLabel ("Welcome, User!");
+      JLabel usernameLabel = new JLabel ("Welcome, " + "User"); // Replace "User" with actual username
       usernameLabel.setBounds(25, 150, 200, 30);
       this.add(usernameLabel);
 
