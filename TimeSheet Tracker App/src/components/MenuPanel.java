@@ -128,7 +128,7 @@ public class MenuPanel extends JPanel {
         button.setFont(new Font("null", Font.BOLD, 24));
         button.setForeground(new Color(251, 160, 157));
         button.setVerticalAlignment(SwingConstants.CENTER);
-        button.setHorizontalAlignment(SwingConstants.CENTER);
+        button.setHorizontalAlignment(SwingConstants.NORTH);
         // button.setHorizontalAlignment(SwingConstants.CENTER);
         return button;
     }
