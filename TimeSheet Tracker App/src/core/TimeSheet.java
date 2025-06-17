@@ -72,7 +72,7 @@ public class TimeSheet extends JFrame{
 		JPanel logoPanel = new JPanel();
 		logoPanel.setBackground(new Color(29, 45, 68));
 		logoPanel.setLayout(null);
-		logoPanel.setPreferredSize(new java.awt.Dimension(200, 100));
+		logoPanel.setPreferredSize(new java.awt.Dimension(200, 200));
 		//logoPanel.setBounds(0, 0, 200, 120);
 
 		// logoPanel.setBorder(new MatteBorder(0, 0, 2, 2, Color.LIGHT_GRAY));
@@ -94,7 +94,7 @@ public class TimeSheet extends JFrame{
 		ImageIcon logoIcon = new ImageIcon ("resources/logo.png");
 		logoLabel.setIcon(logoIcon);
 
-		logoLabel.setBounds(20, 40, 160, 60);
+		logoLabel.setBounds(20, 40, 200, 200);
 		logoLabel.setBackground(new Color(255, 255, 255));
 		logoLabel.setForeground(new Color(255, 255, 255));
 		// logoLabel.setOpaque(true);
