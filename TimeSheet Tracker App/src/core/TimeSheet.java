@@ -350,80 +350,7 @@ public class TimeSheet extends JFrame{
 
 		/*********************************** (User) Top Info Panel *********************************/
 		// Create a top info panel
-		JPanel topInfoPanel = new JPanel();
-		topInfoPanel.setLayout(new GridLayout(1, 6, 15, 50));
-		topInfoPanel.setBorder(BorderFactory.createEmptyBorder(40, 10, 20, 10));
-
-		// 1. User + Role Panel
-		JPanel userPanel = new JPanel(null);
-		userPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createBevelBorder(1, Color.BLACK, Color.GRAY), 
-			BorderFactory.createEmptyBorder(10, 5, 10, 5)
-		));
-		userPanel.setBounds(15, 10, 250, 55);
-		userPanel.setBackground(new Color(240, 235, 216));
-		userPanel.setForeground(new Color(255, 255, 255));
-		JLabel usernameLabel = new JLabel("User: " + user.username);
-		usernameLabel.setForeground(new Color(0, 0, 0));
-		usernameLabel.setBounds(17, 10, 200, 20);
-		JLabel userRoleLabel = new JLabel("Role: " + user);
-		userRoleLabel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createBevelBorder(1), 
-			BorderFactory.createEmptyBorder(10, 5, 10, 5)
-		));
-		userRoleLabel.setForeground(new Color(0, 0, 0));
-		userRoleLabel.setBounds(10, 30, 200, 20);
-
-		userPanel.add(usernameLabel);
-		userPanel.add(userRoleLabel);
-
-		// Top info Panel contents
-		// 2. Hours total Panel with period selection (drop down window or cycle through button)
-		JPanel hoursPanel = new JPanel(null);
-		hoursPanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createBevelBorder(1, Color.BLACK, Color.GRAY), 
-			BorderFactory.createEmptyBorder(10, 5, 10, 5)
-		));
-		hoursPanel.setBounds(270, 10, 200, 55);
-		hoursPanel.setBackground(new Color(240, 235, 216));
-		JLabel hoursLabel = new JLabel("Hours: 0");
-		hoursLabel.setBounds(10, 10, 200, 20);
-		String[] periods = {"Day", "Week", "Bi-month"};
-		JComboBox<String> periodCombo = new JComboBox<>(periods);
-		periodCombo.setBounds(10, 35, 100, 20);
 		
-		hoursPanel.add(hoursLabel);
-		hoursPanel.add(periodCombo);
-
-		// Example: update hoursLabel when period changes(replace with actual logic)
-		
-
-
-		// 3. current time and (datae panel)
-		JPanel currentTimePanel = new JPanel();
-		currentTimePanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createBevelBorder(1, Color.BLACK, Color.GRAY),
-			BorderFactory.createEmptyBorder(10, 5, 10, 5)
-		));
-		currentTimePanel.setBounds(480, 10, 200, 55);
-		currentTimePanel.setBackground(new Color(240, 235, 216));
-		JLabel currentTimeLabel = new JLabel("Time: --:--:--");
-		currentTimeLabel.setBounds(10, 10, 200, 20);
-		currentTimePanel.add(currentTimeLabel);
-		
-
-
-		// 4. current date panel
-		JPanel currentDatePanel = new JPanel();
-		currentDatePanel.setBorder(javax.swing.BorderFactory.createCompoundBorder(
-			BorderFactory.createBevelBorder(1, Color.BLACK, Color.GRAY),				// type 1 bevel
-			BorderFactory.createEmptyBorder(10, 5, 10, 5)
-		));
-		currentDatePanel.setBounds(690, 10, 280, 55);
-		currentDatePanel.setBackground(new Color(240, 235, 216));
-		JLabel currentDateLabel = new JLabel("Date: --/--/----");
-		currentDateLabel.setBounds(10, 10, 200, 20);
-		currentDatePanel.add(currentDateLabel);
 
 
 		/******************************* (Views) Display Panel ***********************************/
@@ -438,15 +365,6 @@ public class TimeSheet extends JFrame{
 
 
 		/*********************************** Top Info Panel Settings *******************************/
-		topInfoPanel.setBounds(200, 0, 1000, 120);
-		topInfoPanel.setBackground(new Color(62, 92, 118)); 
-
-
-		/******************** Display Top Info Panel ********************************/
-		topInfoPanel.add(userPanel);
-		topInfoPanel.add(hoursPanel);
-		topInfoPanel.add(currentTimePanel);
-		topInfoPanel.add(currentDatePanel);
 
 		/*********************** Display Panel Settings *************************/
 		displayPanel.add(new Home(), "Home");
