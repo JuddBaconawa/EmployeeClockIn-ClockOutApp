@@ -1,4 +1,4 @@
-package core;
+package pages;
 // IMPORTS
 import java.awt.Color;
 
