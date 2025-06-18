@@ -12,11 +12,14 @@ public class App {
 		// LoginForm loginForm = new LoginForm();		
 		// loginForm.initialize();
 
+		TimeSheet timeSheet = new TimeSheet(new User());
+		timeSheet.initialize(new User());
 
-		TimeSheet timeSheet = new TimeSheet();
+
 		// Create a User object to pass to initialize
-		User user = new User(); // You may need to set properties or use a constructor
-		timeSheet.initialize(user);
+		// User user = new User(); // You may need to set properties or use a constructor
+		// TimeSheet timeSheet = new TimeSheet(user);
+		// timeSheet.initialize(user);
 
 	}
 
