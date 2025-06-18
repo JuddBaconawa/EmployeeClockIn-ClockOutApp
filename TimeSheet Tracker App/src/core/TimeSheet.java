@@ -1,117 +1,69 @@
 package core;
-// Packages
 
-// IMPORTS
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
+import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.BorderFactory;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JMenuBar;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.Box;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.LineBorder;
-import javax.swing.border.MatteBorder;
+import javax.swing.*;
 
 import auth.LoginForm;
-import components.TopInfoPanel;
 import components.MenuPanel;
+import components.TopInfoPanel;
 import models.User;
 import pages.Dashboard;
 import pages.Home;
 import pages.Profile;
 import pages.Timelog;
 
-import javax.swing.border.EmptyBorder;
+public class TimeSheet extends JFrame {
 
+    private JPanel displayPanel;
+    private TopInfoPanel topInfoPanel;
+    private MenuPanel menuPanel;
 
+    public TimeSheet(User user) {
+        setupFrame();
 
-// TimeSheet class
-public class TimeSheet extends JFrame{
+        // Main layout: left menu, top info, and content panel
+        JPanel mainPanel = new JPanel(new BorderLayout());
 
-	private JPanel displayPanel;
-	private MenuPanel menuPanel;
-	private TopInfoPanel topInfoPanel;
+        // ========== Menu ==========
+        menuPanel = new MenuPanel(this, user);
+        mainPanel.add(menuPanel, BorderLayout.WEST);
 
+        // ========== Top Info ==========
+        topInfoPanel = new TopInfoPanel(user);
+        mainPanel.add(topInfoPanel, BorderLayout.NORTH);
 
-	public void initialize(User user) {
+        // ========== Display Panel ==========
+        displayPanel = new JPanel(new CardLayout());
+        displayPanel.setBackground(new Color(240, 235, 216));
+        displayPanel.add(new Home(), "Home");
+        displayPanel.add(new Dashboard(), "Dashboard");
+        displayPanel.add(new Timelog(), "Timelog");
+        displayPanel.add(new Profile(), "Profile");
 
-		setupFrame();
-		
-		/*********************** Frame Setup *********************************/
-		JPanel mainPanel = new JPanel(new BorderLayout());
+        mainPanel.add(displayPanel, BorderLayout.CENTER);
 
-		/*********************** Main Panel Settings *************************/
-		menuPanel = new MenuPanel(this, user);
-		mainPanel.add(menuPanel, BorderLayout.WEST);
+        add(mainPanel);
+        setVisible(true);
+    }
 
+    private void setupFrame() {
+        setTitle("Time Sheet Home");
+        setUndecorated(true);
+        setSize(1200, 800);
+        setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setResizable(false);
+        setLayout(new BorderLayout());
 
-		/*********************** Top Info Panel ******************************/
-		topInfoPanel = new TopInfoPanel(this, user);
-		topInfoPanel.setPreferredSize(new Dimension(0, 50));
-		topInfoPanel.setBackground(new Color(0, 0, 0, 0));
-		mainPanel.add(topInfoPanel, BorderLayout.NORTH);
+        // Rounded corners
+        setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 15, 15));
+    }
 
-		/*********************** Display Panel *******************************/
-		
-
-		mainPanel = new JPanel(new BorderLayout());
-		mainPanel.setBounds(0, 0, getWidth(), getHeight());
-		add(mainPanel);
-		menuPanel = new MenuPanel(this, user);
-		mainPanel.add(menuPanel, BorderLayout.WEST);
-		mainPanel.add(menuPanel, BorderLayout.WEST);
-		
-
-
-		/*********************** (Side) Menu Bar/Panel *******************************/
-		
-
-		
-
-		/******************** (Side) Menu Bar/Panel Settings ***********************/
-
-		
-		
-	}
-
-	private void setupFrame() {
-		setTitle("Time Sheet Home");
-		setUndecorated(true);						// Takes out the TimeSheet title bar
-		setSize(1200, 801);						// Set the size of the frame	
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
-		setVisible(true);
-		setResizable(false);
-		setLayout(null);
-
-		setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 15, 15));	
-
-	}
-
-	public static void main(String[] args) {
-		// Create a saple user Instance to test
-			User user = new User();
-
-			// Initialize the TimeSheet UI
-			TimeSheet timesheet = new TimeSheet();
-			timesheet.initialize(user);
-	}
-
-
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            User user = new User(); // Replace with proper initialization
+            new TimeSheet(user);
+        });
+    }
 }

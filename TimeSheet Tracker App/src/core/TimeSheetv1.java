@@ -484,7 +484,7 @@ public class TimeSheetv1 extends JFrame{
 			User user = new User();
 
 			// Initialize the TimeSheet UI
-			TimeSheet timesheet = new TimeSheet();
+			TimeSheetv1 timesheet = new TimeSheetv1();
 			timesheet.initialize(user);
 	}
 
