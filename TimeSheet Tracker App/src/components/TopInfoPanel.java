@@ -37,7 +37,7 @@ public class TopInfoPanel extends JPanel {
         JLabel usernameLabel = new JLabel("User: " + user.username);
         JLabel roleLabel = new JLabel("Role: " + user.role);
         usernameLabel.setBounds(17, 10, 200, 20);
-        roleLabel.setBounds(10, 30, 200, 20);
+        roleLabel.setBounds(10, 30, 100, 20);
         userPanel.setLayout(null);
         userPanel.add(usernameLabel);
         userPanel.add(roleLabel);
