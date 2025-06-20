@@ -65,9 +65,7 @@ public class MenuPanel extends JPanel {
         add(logoPanel);
         add(Box.createVerticalStrut(10));
         add(menuItemLabel);
-        // add(Box.createVerticalStrut(5));
         addButton("Home");
-        // add(Box.createVerticalStrut(10));
         addButton("Dashboard");
         addButton("Timelog");
         addButton("Profile");

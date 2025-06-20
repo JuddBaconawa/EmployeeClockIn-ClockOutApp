@@ -70,14 +70,7 @@ public class TimeSheet extends JFrame{
 		mainPanel.setBounds(0, 0, 1200, 800);			//panel size is 1200 x 800
 		mainPanel.setBackground(new Color(255, 255, 255));
 
-		/******************************* (Views) Display Panel ***********************************/
-		displayPanel = new JPanel(new java.awt.CardLayout());
-		displayPanel.setBounds(200, 120, 1000, 681);
-		displayPanel.setBackground(new Color(240, 235, 216));
-		displayPanel.add(new Home(), "Home");
-		displayPanel.add(new Dashboard(), "Dashboard");
-		displayPanel.add(new Profile(), "Profile");
-		displayPanel.add(new Timelog(), "Time Log");
+
 
 
 
@@ -86,7 +79,7 @@ public class TimeSheet extends JFrame{
 		/*********************** Menu Bar Panel *********************************/
 		JPanel menuPanel = new JPanel();
 		menuPanel.setBounds(0, 0, 200, getHeight()); // Example bounds, adjust as needed
-		menuPanel.setBackground(new Color(29, 45, 68)); // Example color, adjust as needed
+		menuPanel.setBackground(new Color(13, 19, 33)); // Example color, adjust as needed
 		mainPanel.add(menuPanel);
 		// Use the custom MenuPanel instead of TopInfoPanel for the menu
 
@@ -99,9 +92,19 @@ public class TimeSheet extends JFrame{
 		topInfoPanel.setBackground(new Color(62, 92, 118)); // Example color, adjust as needed
 		topInfoPanel.setBorder(new MatteBorder(0, 0, 1, 0, new Color(220, 220, 220))); // Example border, adjust as needed
 		mainPanel.add(topInfoPanel); // Add top info panel to the main panel
+
+		/******************************* (Views) Display Panel ***********************************/
+		displayPanel = new JPanel(new java.awt.CardLayout());
+		displayPanel.setBounds(200, 120, 1000, 680);
+		displayPanel.setBackground(new Color(240, 235, 216));
+		displayPanel.add(new Home(), "Home");
+		displayPanel.add(new Dashboard(), "Dashboard");
+		displayPanel.add(new Profile(), "Profile");
+		displayPanel.add(new Timelog(), "Time Log");
 		
 		/*********************** Add Panel to Frame **************************/
-		add(displayPanel);												// Add display panel to the frame		
+		mainPanel.add(displayPanel);					// Add display panel to the main panel
+		// add(displayPanel);												// Add display panel to the frame		
 		add(mainPanel);														// Add main panel to the frame					
 		// add(menuPanel);														// Add menu panel to the frame
 	}
