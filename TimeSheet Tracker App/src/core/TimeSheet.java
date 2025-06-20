@@ -68,12 +68,7 @@ public class TimeSheet extends JFrame{
 		/********************* Main Panel Settings ***********************/
 		JPanel mainPanel = new JPanel(null);
 		mainPanel.setBounds(0, 0, 1200, 800);			//panel size is 1200 x 800
-		mainPanel.setBackground(new Color(255, 255, 255));
-
-
-
-
-
+		mainPanel.setBackground(new Color(240, 235, 216));
 
 
 		/*********************** Menu Bar Panel *********************************/
