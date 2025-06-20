@@ -4,6 +4,7 @@ package components;
 // IMPORTS
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
 
@@ -22,8 +23,8 @@ public class TopInfoPanel extends JPanel {
     public JLabel dateLabel;
 
     public TopInfoPanel(User user) {
-        setLayout(new GridLayout(1, 6, 15, 50));
-        setBorder(BorderFactory.createEmptyBorder(40, 10, 20, 10));
+        setLayout(new FlowLayout(4, 15, 30));
+        setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
         setBackground(new Color(62, 92, 118));
 
         add(createUserPanel(user));
@@ -71,6 +72,7 @@ public class TopInfoPanel extends JPanel {
         panel.setLayout(null);
         dateLabel = new JLabel("Date: --/--/----");
         dateLabel.setBounds( 10, 10, 200, 20);
+        panel.add(dateLabel);
         return panel;
 
     }
