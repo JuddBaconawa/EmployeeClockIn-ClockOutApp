@@ -65,6 +65,11 @@ public class TimeSheet extends JFrame{
 
 		setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 15, 15));	// Rounded corners 10 radius
 
+		/********************* Main Panel Settings ***********************/
+		JPanel mainPanel = new JPanel(null);
+		mainPanel.setBounds(0, 0, 1200, 800);			//panel size is 1200 x 800
+		mainPanel.setBackground(new Color(255, 255, 255));
+
 		/******************************* (Views) Display Panel ***********************************/
 		displayPanel = new JPanel(new java.awt.CardLayout());
 		displayPanel.setBounds(200, 120, 1000, 681);
@@ -75,25 +80,23 @@ public class TimeSheet extends JFrame{
 		displayPanel.add(new Timelog(), "Time Log");
 
 
-		/*********************** Main Panel Settings *************************/
-		JPanel mainPanel = new JPanel(null);
-		mainPanel.setBounds(0, 0, 1200, 800);			//panel size is 1200 x 800
-		mainPanel.setBackground(new Color(255, 255, 255));
 
 
-		/**************************** Menu Bar Panel ****************************************/
-		JPanel menuPanel = new TopInfoPanel(user);
-		menuPanel.setBounds(0, 120, 200, 681); // Example bounds, adjust as needed
-		menuPanel.setBackground(new Color(220, 220, 220)); // Example color, adjust as needed
+
+		/*********************** Menu Bar Panel *********************************/
+		JPanel menuPanel = new JPanel();
+		menuPanel.setBounds(0, 0, 200, getHeight()); // Example bounds, adjust as needed
+		menuPanel.setBackground(new Color(29, 45, 68)); // Example color, adjust as needed
 		mainPanel.add(menuPanel);
+		// Use the custom MenuPanel instead of TopInfoPanel for the menu
 
 
 
-		/****************************** Top Info Panel Settings *******************************/
+		/********************* Top Info Panel Settings ******************************/
 		// Used to add sections into the main panel
 		JPanel topInfoPanel = new TopInfoPanel(user);
 		topInfoPanel.setBounds(200, 0, 1000, 120); // Example bounds, adjust as needed
-		topInfoPanel.setBackground(new Color(255, 255, 255)); // Example color, adjust as needed
+		topInfoPanel.setBackground(new Color(62, 92, 118)); // Example color, adjust as needed
 		topInfoPanel.setBorder(new MatteBorder(0, 0, 1, 0, new Color(220, 220, 220))); // Example border, adjust as needed
 		mainPanel.add(topInfoPanel); // Add top info panel to the main panel
 		
@@ -102,8 +105,6 @@ public class TimeSheet extends JFrame{
 		// add(menuBar);															//Menu bar on the left side  
 		// add(topInfoPanel);												// Add top info panel to the frame
 		// Create and add the menu panel (replace MenuPanel() with your actual menu panel class if different)
-
-		// add(menuPanel);
 		add(displayPanel);												// Add display panel to the frame		
 		add(mainPanel);														// Add main panel to the frame					
 		//setVisible(true);												// Set the frame to be visible
