@@ -106,14 +106,16 @@ public class TimeSheet extends JFrame{
 		// add(menuBar);															//Menu bar on the left side  
 		// add(topInfoPanel);												// Add top info panel to the frame
 		// Create and add the menu panel (replace MenuPanel() with your actual menu panel class if different)
-		JPanel menuPanel = new JPanel();
-		menuPanel.setBounds(200, 120, 200, 681); // Example bounds, adjust as needed
-		menuPanel.setBackground(new Color(220, 220, 220)); // Example color, adjust as needed
-		add(menuPanel);
+
 
 		add(displayPanel);												// Add display panel to the frame		
-		add(mainPanel);														// Add main panel to the frame					
+												// Add main panel to the frame					
 		//setVisible(true);												// Set the frame to be visible
+		MenuPanel menuPanel = new MenuPanel(this, user);
+		menuPanel.setBounds(0, 120, 200, 681); // Example bounds, adjust as needed
+		menuPanel.setBackground(new Color(220, 220, 220)); // Example color, adjust as needed
+		mainPanel.add(menuPanel);
+		add(mainPanel);		
 		
 
 	}
