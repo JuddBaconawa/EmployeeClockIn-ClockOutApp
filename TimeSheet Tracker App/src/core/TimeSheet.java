@@ -56,7 +56,7 @@ public class TimeSheet extends JFrame{
 
 		setTitle("Time Sheet Home");
 		setUndecorated(true);						// Takes out the TimeSheet title bar
-		setSize(1200, 801);						// Set the size of the frame	
+		setSize(1200, 800);						// Set the size of the frame	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setVisible(true);
@@ -101,16 +101,9 @@ public class TimeSheet extends JFrame{
 		mainPanel.add(topInfoPanel); // Add top info panel to the main panel
 		
 		/*********************** Add Panel to Frame **************************/
-		// Add menu bar to the frame, no container is needed as it is being added to the main frame
-		// add(menuBar);															//Menu bar on the left side  
-		// add(topInfoPanel);												// Add top info panel to the frame
-		// Create and add the menu panel (replace MenuPanel() with your actual menu panel class if different)
 		add(displayPanel);												// Add display panel to the frame		
 		add(mainPanel);														// Add main panel to the frame					
-		//setVisible(true);												// Set the frame to be visible
-
-		
-
+		// add(menuPanel);														// Add menu panel to the frame
 	}
 
 	public static void main(String[] args) {
