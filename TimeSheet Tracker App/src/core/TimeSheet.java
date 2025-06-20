@@ -72,7 +72,7 @@ public class TimeSheet extends JFrame{
 
 
 		/*********************** Menu Bar Panel *********************************/
-		JPanel menuPanel = new JPanel();
+		JPanel menuPanel = new MenuPanel(this, user);
 		menuPanel.setBounds(0, 0, 200, getHeight()); // Example bounds, adjust as needed
 		menuPanel.setBackground(new Color(13, 19, 33)); // Example color, adjust as needed
 		mainPanel.add(menuPanel);
