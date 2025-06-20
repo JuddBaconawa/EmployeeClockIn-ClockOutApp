@@ -2,6 +2,8 @@ package core;
 // Packages
 
 // IMPORTS
+import components.MenuPanel;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -102,7 +104,13 @@ public class TimeSheet extends JFrame{
 		/*********************** Add Panel to Frame **************************/
 		// Add menu bar to the frame, no container is needed as it is being added to the main frame
 		// add(menuBar);															//Menu bar on the left side  
-		// add(topInfoPanel);												// Add top info panel to the frame		
+		// add(topInfoPanel);												// Add top info panel to the frame
+		// Create and add the menu panel (replace MenuPanel() with your actual menu panel class if different)
+		JPanel menuPanel = new JPanel();
+		menuPanel.setBounds(200, 120, 200, 681); // Example bounds, adjust as needed
+		menuPanel.setBackground(new Color(220, 220, 220)); // Example color, adjust as needed
+		add(menuPanel);
+
 		add(displayPanel);												// Add display panel to the frame		
 		add(mainPanel);														// Add main panel to the frame					
 		//setVisible(true);												// Set the frame to be visible
