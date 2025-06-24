@@ -32,15 +32,34 @@ import models.User;
 public class MenuPanel extends JPanel {
 
     // Constructor - used to initialize an object (the Menu panel)
-public MenuPanel(JFrame parentFrame, User user) {
-    setLayout(null);
-    setBackground(Color.GREEN);
-    setBounds(0, 0, 200, getHeight());
-    setBorder(BorderFactory.createBevelBorder(5, Color.GRAY, Color.WHITE));
-    JLabel label = new JLabel("TEST MENU");
-    label.setBounds(20, 20, 100, 30);
-    add(label);
-}
+    public MenuPanel(JFrame parentFrame, User user) {
+        setLayout(new GridLayout(12, 1, 2, 5));
+        setBackground(new Color(13, 19, 33));
+        setBounds(0, 0, 200, getHeight());
+        
+        
+        // JLabel label = new JLabel("TEST MENU");
+        // label.setBounds(20, 20, 100, 30);    
+        // add(label);
+
+        // ============== LOGO =============
+        JPanel logoPanel = new JPanel();
+        logoPanel.setSize(getWidth(), getHeight());
+        logoPanel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 4));
+
+        JLabel logoLabel = new JLabel("\" Brand Logo \"");
+        logoLabel.setBounds(0 , 5, 150, 150);
+        logoLabel.setForeground(new Color(251, 160, 157));
+
+        logoPanel.add(logoLabel);
+
+        // ============== Add Components =============
+        
+        add(Box.createVerticalStrut(1));
+        add(logoPanel);
+
+
+    }
     
   
 }
