@@ -68,27 +68,25 @@ public class TimeSheet extends JFrame{
 		/********************* Main Panel Settings ***********************/
 		JPanel mainPanel = new JPanel(null);
 		mainPanel.setBounds(0, 0, 1200, 800);			//panel size is 1200 x 800
-		mainPanel.setBackground(new Color(240, 235, 216));
 
 
 		/*********************** Menu Bar Panel *********************************/
 		JPanel menuPanel = new MenuPanel(this, user);
 		menuPanel.setBounds(0, 0, 200, getHeight()); // Example bounds, adjust as needed
-		menuPanel.setBackground(new Color(13, 19, 33)); // Example color, adjust as needed
 		mainPanel.add(menuPanel);
 		// Use the custom MenuPanel instead of TopInfoPanel for the menu
 
 
 
-		/********************* Top Info Panel Settings ******************************/
+		/********************* Top Info Panel Settings ***************************/
 		// Used to add sections into the main panel
 		JPanel topInfoPanel = new TopInfoPanel(user);
-		topInfoPanel.setBounds(200, 0, 1000, 120); // Example bounds, adjust as needed
-		topInfoPanel.setBackground(new Color(62, 92, 118)); // Example color, adjust as needed
+
+
 		topInfoPanel.setBorder(new MatteBorder(0, 0, 1, 0, new Color(220, 220, 220))); // Example border, adjust as needed
 		mainPanel.add(topInfoPanel); // Add top info panel to the main panel
 
-		/******************************* (Views) Display Panel ***********************************/
+		/********************** (Views) Display Panel ****************************/
 		displayPanel = new JPanel(new java.awt.CardLayout());
 		displayPanel.setBounds(200, 120, 1000, 680);
 		displayPanel.setBackground(new Color(240, 235, 216));
