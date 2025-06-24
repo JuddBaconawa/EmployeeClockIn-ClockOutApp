@@ -12,7 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+import javax.swing.border.MatteBorder;
 
 import models.User;
 
@@ -25,6 +25,8 @@ public class TopInfoPanel extends JPanel {
     public TopInfoPanel(User user) {
         setLayout(new FlowLayout(4, 15, 30));
         setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        setBounds(200, 0, 1000, 120); // Example bounds, adjust as neede
+        setBorder(new MatteBorder(3, 3, 3, 3, Color.WHITE));
         setBackground(new Color(62, 92, 118));
 
         add(createUserPanel(user));
