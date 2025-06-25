@@ -16,6 +16,7 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -33,9 +34,10 @@ public class MenuPanel extends JPanel {
 
     // Constructor - used to initialize an object (the Menu panel)
     public MenuPanel(JFrame parentFrame, User user) {
-        setLayout(new GridLayout(12, 1, 2, 5));
+        setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(new Color(13, 19, 33));
         setBounds(0, 0, 200, getHeight());
+        setBorder(BorderFactory.createEmptyBorder(0, 20, 0, 40));
         
         
         // JLabel label = new JLabel("TEST MENU");
@@ -44,19 +46,38 @@ public class MenuPanel extends JPanel {
 
         // ============== LOGO =============
         JPanel logoPanel = new JPanel();
-        logoPanel.setSize(getWidth(), getHeight());
-        logoPanel.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 4));
+        logoPanel.setPreferredSize(new Dimension(150, 150));
+        logoPanel.setMaximumSize(new Dimension(150, 150));
+        logoPanel.setBorder(BorderFactory.createCompoundBorder(
+            BorderFactory.createEmptyBorder(0, 0, 0, 0), // 20px left margin
+            BorderFactory.createLineBorder(Color.LIGHT_GRAY, 4)
+        ));
+
+
 
         JLabel logoLabel = new JLabel("\" Brand Logo \"");
-        logoLabel.setBounds(0 , 5, 150, 150);
+        // logoLabel.setBounds(0 , 25, 120, 120);
         logoLabel.setForeground(new Color(251, 160, 157));
+        logoLabel.setBackground(new Color(75, 75, 85));
+        
 
         logoPanel.add(logoLabel);
 
+        // ============== Menu Header =============
+        JLabel menuItemLabel = new JLabel("Menu Items");
+        menuItemLabel.setFont(new Font("null", Font.BOLD, 20));
+        menuItemLabel.setAlignmentX(BOTTOM_ALIGNMENT);
+        // menuItemLabel.setHorizontalAlignment(SwingConstants.EAST);
+
+
         // ============== Add Components =============
         
-        add(Box.createVerticalStrut(1));
+        add(Box.createVerticalStrut(25));
+
         add(logoPanel);
+        add(Box.createVerticalStrut(20));
+        add(menuItemLabel);
+        add(Box.createVerticalStrut(10));
 
 
     }
