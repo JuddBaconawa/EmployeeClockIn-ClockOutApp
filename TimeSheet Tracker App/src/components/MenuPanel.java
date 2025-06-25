@@ -36,8 +36,8 @@ public class MenuPanel extends JPanel {
     public MenuPanel(JFrame parentFrame, User user) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(new Color(13, 19, 33));
-        setBounds(0, 0, 200, getHeight());
-        setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
+        setBounds(0, 0, 250, getHeight());
+        setBorder(BorderFactory.createEmptyBorder(25, 0, 0, 0));
         
         
         // JLabel label = new JLabel("TEST MENU");
@@ -84,10 +84,9 @@ public class MenuPanel extends JPanel {
 
         // ============== Add Components =============
         
-        add(Box.createVerticalStrut(20));
-
+        add(Box.createVerticalStrut(10));
         add(logoPanel);
-        add(Box.createVerticalStrut(20));
+        add(Box.createVerticalStrut(10));
         add(menuItemLabel);
         add(Box.createVerticalStrut(10));
 
@@ -98,8 +97,21 @@ public class MenuPanel extends JPanel {
         addButton("Profile");
 
         add(Box.createVerticalStrut(10));
-        add(logoutButton);
-        add(exitButton);
+
+        // --- Add the two buttons side by side ---
+        JPanel buttonRow = new JPanel();
+        buttonRow.setLayout(new BoxLayout(buttonRow, BoxLayout.X_AXIS));
+        buttonRow.setOpaque(false); // Make background transparent to match parent
+
+        buttonRow.add(Box.createHorizontalGlue()); // Fill remaining space
+        buttonRow.add(logoutButton);
+        buttonRow.add(Box.createHorizontalStrut(10)); // Space between buttons
+        buttonRow.add(exitButton);
+        buttonRow.add(Box.createHorizontalGlue()); // Fill remaining space
+
+        buttonRow.setAlignmentX(CENTER_ALIGNMENT); // Center the buttons in the row
+        buttonRow.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 20)); // Add vertical padding
+        add(buttonRow);
 
         add(Box.createVerticalStrut(10));
 
@@ -115,8 +127,10 @@ public class MenuPanel extends JPanel {
         label.setFont(new Font("null", Font.BOLD, 15));
         label.setForeground(new Color(251, 160, 157));
         label.setBounds(20, 0, 140, 40);
-        label.setHorizontalAlignment(SwingConstants.LEFT);
+        label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setVerticalAlignment(SwingConstants.CENTER);
+        label.setAlignmentX(SwingConstants.CENTER);
+        label.setAlignmentY(SwingConstants.CENTER);
         panel.add(label);
 
         panel.addMouseListener(highlightEffect(panel));
