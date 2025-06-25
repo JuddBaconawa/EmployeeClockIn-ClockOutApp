@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\src\\core\\App.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\core\\App.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\src\\core\\TimeSheet.java||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:src\\core\\TimeSheet.java||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "App.java",
+              "DocumentMoniker": "C:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\src\\core\\App.java",
+              "RelativeDocumentMoniker": "src\\core\\App.java",
+              "ToolTip": "C:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\src\\core\\App.java",
+              "RelativeToolTip": "src\\core\\App.java",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001630|",
+              "WhenOpened": "2025-06-24T18:16:55.762Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TimeSheet.java",
+              "DocumentMoniker": "C:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\src\\core\\TimeSheet.java",
+              "RelativeDocumentMoniker": "src\\core\\TimeSheet.java",
+              "ToolTip": "C:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\src\\core\\TimeSheet.java",
+              "RelativeToolTip": "src\\core\\TimeSheet.java",
+              "ViewState": "AgIAADkAAAAAAAAAAAAAAFkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001630|",
+              "WhenOpened": "2025-06-24T18:16:42.113Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
