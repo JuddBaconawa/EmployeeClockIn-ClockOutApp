@@ -24,9 +24,9 @@ public class TopInfoPanel extends JPanel {
 
     public TopInfoPanel(User user) {
         setLayout(new FlowLayout(4, 15, 30));
-        setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
+        
         setBounds(200, 0, 1000, 120); // Example bounds, adjust as neede
-        setBorder(new MatteBorder(3, 3, 3, 3, Color.WHITE));
+        // setBorder(new MatteBorder(3, 3, 0, 3, Color.WHITE));
         setBackground(new Color(62, 92, 118));
 
         add(createUserPanel(user));
@@ -39,7 +39,7 @@ public class TopInfoPanel extends JPanel {
         JPanel userPanel = createStylePanel(250);
         JLabel usernameLabel = new JLabel("User: " + user.username);
         JLabel roleLabel = new JLabel("Role: " + user.role);
-        usernameLabel.setBounds(17, 10, 200, 20);
+        usernameLabel.setBounds(17, 10, 150, 20);
         roleLabel.setBounds(10, 30, 100, 20);
         userPanel.setLayout(null);
         userPanel.add(usernameLabel);
@@ -52,7 +52,7 @@ public class TopInfoPanel extends JPanel {
         JPanel panel = createStylePanel(200);
         panel.setLayout(null);
         hoursLabel = new JLabel("Hours: 0");
-        hoursLabel.setBounds(10, 10, 200, 20);
+        hoursLabel.setBounds(10, 10, 150, 20);
         String[] periods = {"Daily", "Weekly", "Bi-Month"};
         JComboBox<String> periodComboBox = new JComboBox<>(periods);
         periodComboBox.setBounds(10, 30, 180, 20);
@@ -64,7 +64,7 @@ public class TopInfoPanel extends JPanel {
     private JPanel createTimePanel() {
         JPanel panel = createStylePanel(200);
         timeLabel = new JLabel("Time: --:--:--");
-        timeLabel.setBounds(10, 10, 200, 20);
+        timeLabel.setBounds(10, 10, 150, 20);
         panel.add(timeLabel);
         return panel;
     }
@@ -73,7 +73,7 @@ public class TopInfoPanel extends JPanel {
         JPanel panel = createStylePanel(280);
         panel.setLayout(null);
         dateLabel = new JLabel("Date: --/--/----");
-        dateLabel.setBounds( 10, 10, 200, 20);
+        dateLabel.setBounds( 10, 10, 150, 20);
         panel.add(dateLabel);
         return panel;
 
