@@ -121,7 +121,7 @@ public class MenuPanel extends JPanel {
     private void addButton(String title) {
         JPanel panel = new JPanel(null);
         panel.setBackground(new Color(29, 45, 68));
-        panel.setPreferredSize(new Dimension(150, 20));
+        panel.setPreferredSize(new Dimension(150, 10));
         // menuBar.add(logoPanel);
         JLabel label = new JLabel(title);
         label.setFont(new Font("null", Font.BOLD, 15));
@@ -129,8 +129,8 @@ public class MenuPanel extends JPanel {
         label.setBounds(20, 0, 140, 40);
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setVerticalAlignment(SwingConstants.CENTER);
-        label.setAlignmentX(SwingConstants.CENTER);
-        label.setAlignmentY(SwingConstants.CENTER);
+        // label.setAlignmentX(SwingConstants.CENTER);
+        // label.setAlignmentY(SwingConstants.CENTER);
         panel.add(label);
 
         panel.addMouseListener(highlightEffect(panel));
