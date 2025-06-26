@@ -104,6 +104,7 @@ public class MenuPanel extends JPanel {
         buttonRow.setLayout(new BoxLayout(buttonRow, BoxLayout.X_AXIS));
         buttonRow.setOpaque(false); // Make background transparent to match parent
 
+
         buttonRow.add(Box.createHorizontalGlue()); // Fill remaining space
         buttonRow.add(logoutButton);
         buttonRow.add(Box.createHorizontalStrut(10)); // Space between buttons
@@ -122,7 +123,7 @@ public class MenuPanel extends JPanel {
     private void addButton(String title) {
         JPanel panel = new JPanel(null);
         panel.setBackground(new Color(29, 45, 68));
-        panel.setPreferredSize(new Dimension(200, 40));
+        panel.setPreferredSize(new Dimension(getWidth(), 40));
         
         JLabel label = new JLabel(title);
         label.setFont(new Font("null", Font.BOLD, 25));
@@ -130,6 +131,7 @@ public class MenuPanel extends JPanel {
         label.setBounds(5, 0, 200, 40);
         label.setHorizontalAlignment(SwingConstants.LEFT);
         label.setVerticalAlignment(SwingConstants.BOTTOM);
+        label.setAlignmentY(SwingConstants.BOTTOM);
         // label.setAlignmentX(SwingConstants.CENTER);
         // label.setAlignmentY(SwingConstants.CENTER);
         panel.add(label);
@@ -147,7 +149,7 @@ public class MenuPanel extends JPanel {
               Graphics2D g2d = (Graphics2D) g.create();
               g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
               g2d.setColor(bg);
-              g2d.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
+              g2d.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30));
               super.paintComponent(g2d);
               g2d.dispose();
             }
@@ -175,7 +177,7 @@ public class MenuPanel extends JPanel {
           }
 
           public void mousePressed(MouseEvent e) {
-              panel.setBackground(new Color(180, 180, 180));             
+              panel.setBackground(new Color(62, 92, 118));             
           }
 
           public void mouseReleased(MouseEvent e) {
