@@ -37,7 +37,7 @@ public class MenuPanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(new Color(13, 19, 33));
         setBounds(0, 0, 250, getHeight());
-        setBorder(BorderFactory.createEmptyBorder(25, 0, 0, 0));
+        setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         
         
         // JLabel label = new JLabel("TEST MENU");
@@ -121,12 +121,12 @@ public class MenuPanel extends JPanel {
     private void addButton(String title) {
         JPanel panel = new JPanel(null);
         panel.setBackground(new Color(29, 45, 68));
-        panel.setPreferredSize(new Dimension(150, 10));
-        // menuBar.add(logoPanel);
+        panel.setPreferredSize(new Dimension(200, 40));
+        
         JLabel label = new JLabel(title);
-        label.setFont(new Font("null", Font.BOLD, 15));
+        label.setFont(new Font("null", Font.BOLD, 25));
         label.setForeground(new Color(251, 160, 157));
-        label.setBounds(20, 0, 140, 40);
+        label.setBounds(0, 0, 200, 40);
         label.setHorizontalAlignment(SwingConstants.CENTER);
         label.setVerticalAlignment(SwingConstants.CENTER);
         // label.setAlignmentX(SwingConstants.CENTER);
@@ -155,7 +155,7 @@ public class MenuPanel extends JPanel {
         button.setFocusPainted(false);
         button.setForeground(new Color(240, 235, 216));
         button.setFont(new Font("null", Font.BOLD, 24));
-        button.setForeground(new Color(251, 160, 157));
+        // button.setForeground(new Color(251, 160, 157));
         button.setVerticalAlignment(SwingConstants.CENTER);
         button.setHorizontalAlignment(SwingConstants.CENTER);
         // button.setHorizontalAlignment(SwingConstants.CENTER);
