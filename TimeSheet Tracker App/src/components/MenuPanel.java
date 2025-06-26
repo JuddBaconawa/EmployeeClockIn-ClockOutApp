@@ -71,9 +71,10 @@ public class MenuPanel extends JPanel {
         menuItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         // ============ Buttons =============
-        JButton logoutButton = createRoundedButton("Logout", new Color(240, 235, 216));
+        JButton logoutButton = createRoundedButton("", new Color(240, 235, 216));
         setForeground(new Color(29, 45, 68));
-        
+        ImageIcon logoutIcon = new ImageIcon(new ImageIcon("src/images/sign-out-icon.png").getImage().getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+        logoutButton.setIcon(logoutIcon);
 
         logoutButton.addActionListener(e -> {
             // Action to perform on logout
@@ -82,8 +83,10 @@ public class MenuPanel extends JPanel {
         });
 
         // ============== Exit Button ===============
-        JButton exitButton = createRoundedButton("Exit", new Color(240, 235, 216));
+        JButton exitButton = createRoundedButton("", new Color(240, 235, 216));
         exitButton.addActionListener(e -> parentFrame.dispose());
+        ImageIcon exitIcon = new ImageIcon(new ImageIcon("src/images/exit-icon.png").getImage().getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+        exitButton.setIcon(exitIcon);
 
 
         // ============== Add Components =============
