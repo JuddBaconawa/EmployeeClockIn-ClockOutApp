@@ -64,16 +64,16 @@ public class MenuPanel extends JPanel {
         logoPanel.add(logoLabel);
 
         // ============== Menu Header =============
-        JLabel menuItemLabel = new JLabel("Menu Items");
+        JLabel menuItemLabel = new JLabel("Menu");
         menuItemLabel.setFont(new Font("null", Font.BOLD, 30));
         menuItemLabel.setForeground(new Color(251, 160, 157));
-        menuItemLabel.setAlignmentX(CENTER_ALIGNMENT);
+        menuItemLabel.setAlignmentX(RIGHT_ALIGNMENT);
         menuItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         // ============ Buttons =============
         JButton logoutButton = createRoundedButton("", new Color(240, 235, 216));
         setForeground(new Color(29, 45, 68));
-        ImageIcon logoutIcon = new ImageIcon(new ImageIcon("src/images/sign-out-icon.png").getImage().getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+        ImageIcon logoutIcon = new ImageIcon(new ImageIcon("src/images/sign-out-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         logoutButton.setIcon(logoutIcon);
 
         logoutButton.addActionListener(e -> {
@@ -85,7 +85,7 @@ public class MenuPanel extends JPanel {
         // ============== Exit Button ===============
         JButton exitButton = createRoundedButton("", new Color(240, 235, 216));
         exitButton.addActionListener(e -> parentFrame.dispose());
-        ImageIcon exitIcon = new ImageIcon(new ImageIcon("src/images/exit-icon.png").getImage().getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH));
+        ImageIcon exitIcon = new ImageIcon(new ImageIcon("src/images/exit-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         exitButton.setIcon(exitIcon);
 
 
@@ -118,7 +118,7 @@ public class MenuPanel extends JPanel {
         buttonRow.add(Box.createHorizontalGlue()); // Fill remaining space
 
         buttonRow.setAlignmentX(CENTER_ALIGNMENT); // Center the buttons in the row
-        buttonRow.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 20)); // Add vertical padding
+        buttonRow.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Add vertical padding
         add(buttonRow);
 
         add(Box.createVerticalStrut(10));
@@ -155,7 +155,7 @@ public class MenuPanel extends JPanel {
               Graphics2D g2d = (Graphics2D) g.create();
               g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
               g2d.setColor(bg);
-              g2d.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30));
+              g2d.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
               super.paintComponent(g);
               g2d.dispose();
             }
