@@ -58,6 +58,7 @@ public class TimeSheet extends JFrame{
 		setUndecorated(true);						// Takes out the TimeSheet title bar
 		setSize(1200, 800);						// Set the size of the frame	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setIconImage(new ImageIcon("src/images/Gemini_Generated_Image_yfthpfyfthpfyfth.png").getImage());
 		setLocationRelativeTo(null);
 		setVisible(true);
 		setResizable(false);
