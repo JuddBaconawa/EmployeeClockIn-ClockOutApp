@@ -36,7 +36,7 @@ public class MenuPanel extends JPanel {
     public MenuPanel(JFrame parentFrame, User user) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(new Color(29, 45, 68));
-        setBounds(0, 0, 250, getHeight());
+        setBounds(0, 0, 200, getHeight());
         setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         
         
@@ -46,8 +46,8 @@ public class MenuPanel extends JPanel {
 
         // ============== LOGO =============
         JPanel logoPanel = new JPanel();
-        logoPanel.setPreferredSize(new Dimension(150, 150));
-        logoPanel.setMaximumSize(new Dimension(150, 150));
+        logoPanel.setPreferredSize(new Dimension(125, 75));
+        logoPanel.setMaximumSize(new Dimension(125, 75));
         logoPanel.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createEmptyBorder(0, 0, 0, 0), // 20px left margin
             BorderFactory.createLineBorder(Color.LIGHT_GRAY, 4)
@@ -56,7 +56,7 @@ public class MenuPanel extends JPanel {
 
 
         JLabel logoLabel = new JLabel("\" Brand Logo \"");
-        // logoLabel.setBounds(0 , 25, 120, 120);
+        logoLabel.setBounds(0 , 0, 50, 50);
         logoLabel.setForeground(new Color(251, 160, 157));
         logoLabel.setBackground(new Color(75, 75, 85));
         
@@ -65,10 +65,10 @@ public class MenuPanel extends JPanel {
 
         // ============== Menu Header =============
         JLabel menuItemLabel = new JLabel("Menu");
-        menuItemLabel.setFont(new Font("null", Font.BOLD, 30));
+        menuItemLabel.setFont(new Font("Ariel", Font.BOLD, 30));
         menuItemLabel.setForeground(new Color(251, 160, 157));
         menuItemLabel.setAlignmentX(RIGHT_ALIGNMENT);
-        menuItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        // menuItemLabel.setHorizontalAlignment(SwingConstants.LEFT);
 
         // ============ Buttons =============
         JButton logoutButton = createRoundedButton("", new Color(240, 235, 216));
@@ -84,6 +84,7 @@ public class MenuPanel extends JPanel {
 
         // ============== Exit Button ===============
         JButton exitButton = createRoundedButton("", new Color(240, 235, 216));
+        exitButton.setForeground(new Color(29, 45, 68));
         exitButton.addActionListener(e -> parentFrame.dispose());
         ImageIcon exitIcon = new ImageIcon(new ImageIcon("src/images/exit-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         exitButton.setIcon(exitIcon);
@@ -98,10 +99,11 @@ public class MenuPanel extends JPanel {
         add(Box.createVerticalStrut(10));
 
         // ============== Add Menu Items =============
-        addButton("Home");
+        
         addButton("Dashboard");
         addButton("Timelog");
         addButton("Profile");
+        addButton("Home");
 
         add(Box.createVerticalStrut(10));
 
@@ -129,23 +131,39 @@ public class MenuPanel extends JPanel {
     private void addButton(String title) {
         JPanel panel = new JPanel(null);
         panel.setBackground(new Color(29, 45, 68));
-        panel.setPreferredSize(new Dimension(getWidth(), 40));
+        panel.setPreferredSize(new Dimension(getWidth(), 20));
         
         JLabel label = new JLabel(title);
-        label.setFont(new Font("null", Font.BOLD, 25));
+        label.setFont(new Font("null", Font.BOLD, 20));
         label.setForeground(new Color(251, 160, 157));
-        label.setBounds(5, 0, 200, 40);
-        label.setHorizontalAlignment(SwingConstants.LEFT);
-        label.setVerticalAlignment(SwingConstants.BOTTOM);
-        label.setAlignmentY(SwingConstants.BOTTOM);
-        // label.setAlignmentX(SwingConstants.CENTER);
-        // label.setAlignmentY(SwingConstants.CENTER);
+        label.setBounds(-5, 0, 200, 40);
+        label.setHorizontalAlignment(SwingConstants.RIGHT);
+        label.setVerticalAlignment(SwingConstants.CENTER);
+
         panel.add(label);
 
         panel.addMouseListener(highlightEffect(panel));
 
         add(panel);
 
+    }
+
+    private void addButton(String title, String iconPath) {
+        JButton button = createRoundedButton(title, new Color(29, 45, 68));
+        button.setForeground(new Color(251, 160, 157));
+        button.setFont(new Font("Arial", Font.BOLD, 20));
+        button.setHorizontalAlignment(SwingConstants.LEFT); // Icon left, text right
+
+        if (iconPath != null && !iconPath.isEmpty()) {
+            ImageIcon icon = new ImageIcon(new ImageIcon(iconPath).getImage().getScaledInstance(24, 24, java.awt.Image.SCALE_SMOOTH));
+            button.setIcon(icon);
+        }
+
+        button.setPreferredSize(new Dimension(180, 40));
+        button.setMaximumSize(new Dimension(180, 40));
+        button.setAlignmentX(LEFT_ALIGNMENT);
+
+        add(button);
     }
 
     private JButton createRoundedButton(String text, Color bg) {
@@ -162,6 +180,7 @@ public class MenuPanel extends JPanel {
         };
         button.setContentAreaFilled(false);
         button.setFocusPainted(false);
+        button.setBackground(new Color(255, 255, 255));;
         button.setForeground(new Color(29, 45, 68));
         button.setFont(new Font("null", Font.BOLD, 24));
         // button.setForeground(new Color(251, 160, 157));
