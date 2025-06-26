@@ -72,6 +72,7 @@ public class MenuPanel extends JPanel {
 
         // ============ Buttons =============
         JButton logoutButton = createRoundedButton("Logout", new Color(240, 235, 216));
+        setForeground(new Color(29, 45, 68));
         logoutButton.addActionListener(e -> {
             // Action to perform on logout
             parentFrame.dispose(); // Close the current frame
@@ -150,13 +151,13 @@ public class MenuPanel extends JPanel {
               g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
               g2d.setColor(bg);
               g2d.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 30, 30));
-              super.paintComponent(g2d);
+              super.paintComponent(g);
               g2d.dispose();
             }
         };
         button.setContentAreaFilled(false);
         button.setFocusPainted(false);
-        button.setForeground(new Color(240, 235, 216));
+        button.setForeground(new Color(29, 45, 68));
         button.setFont(new Font("null", Font.BOLD, 24));
         // button.setForeground(new Color(251, 160, 157));
         button.setVerticalAlignment(SwingConstants.CENTER);
