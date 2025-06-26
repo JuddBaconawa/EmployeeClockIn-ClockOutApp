@@ -35,7 +35,7 @@ public class MenuPanel extends JPanel {
     // Constructor - used to initialize an object (the Menu panel)
     public MenuPanel(JFrame parentFrame, User user) {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        setBackground(new Color(13, 19, 33));
+        setBackground(new Color(29, 45, 68));
         setBounds(0, 0, 250, getHeight());
         setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
         
@@ -65,8 +65,9 @@ public class MenuPanel extends JPanel {
 
         // ============== Menu Header =============
         JLabel menuItemLabel = new JLabel("Menu Items");
-        menuItemLabel.setFont(new Font("null", Font.BOLD, 15));
-        menuItemLabel.setAlignmentX(BOTTOM_ALIGNMENT);
+        menuItemLabel.setFont(new Font("null", Font.BOLD, 30));
+        menuItemLabel.setForeground(new Color(251, 160, 157));
+        menuItemLabel.setAlignmentX(CENTER_ALIGNMENT);
         menuItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         // ============ Buttons =============
@@ -126,9 +127,9 @@ public class MenuPanel extends JPanel {
         JLabel label = new JLabel(title);
         label.setFont(new Font("null", Font.BOLD, 25));
         label.setForeground(new Color(251, 160, 157));
-        label.setBounds(0, 0, 200, 40);
-        label.setHorizontalAlignment(SwingConstants.CENTER);
-        label.setVerticalAlignment(SwingConstants.CENTER);
+        label.setBounds(5, 0, 200, 40);
+        label.setHorizontalAlignment(SwingConstants.LEFT);
+        label.setVerticalAlignment(SwingConstants.BOTTOM);
         // label.setAlignmentX(SwingConstants.CENTER);
         // label.setAlignmentY(SwingConstants.CENTER);
         panel.add(label);
