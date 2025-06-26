@@ -8,7 +8,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.GridLayout;
+// import java.awt.GridLayout;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.awt.geom.RoundRectangle2D;
@@ -37,7 +37,7 @@ public class MenuPanel extends JPanel {
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(new Color(29, 45, 68));
         setBounds(0, 0, 200, getHeight());
-        setBorder(BorderFactory.createEmptyBorder(20, 0, 0, 0));
+        setBorder(BorderFactory.createEmptyBorder(13, 0, 0, 0));
         
         
         // JLabel label = new JLabel("TEST MENU");
@@ -56,7 +56,7 @@ public class MenuPanel extends JPanel {
 
 
         JLabel logoLabel = new JLabel("\" Brand Logo \"");
-        logoLabel.setBounds(0 , 0, 50, 50);
+        logoLabel.setBounds(0 , 0, 100, 100);
         logoLabel.setForeground(new Color(251, 160, 157));
         logoLabel.setBackground(new Color(75, 75, 85));
         
@@ -64,11 +64,11 @@ public class MenuPanel extends JPanel {
         logoPanel.add(logoLabel);
 
         // ============== Menu Header =============
-        JLabel menuItemLabel = new JLabel("Menu");
-        menuItemLabel.setFont(new Font("Ariel", Font.BOLD, 30));
+        JLabel menuItemLabel = new JLabel("<html><u>Menu</u></html>");
+        menuItemLabel.setFont(new Font("Ariel", Font.BOLD, 35));
         menuItemLabel.setForeground(new Color(251, 160, 157));
         menuItemLabel.setAlignmentX(RIGHT_ALIGNMENT);
-        // menuItemLabel.setHorizontalAlignment(SwingConstants.LEFT);
+        // menuItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         // ============ Buttons =============
         JButton logoutButton = createRoundedButton("", new Color(240, 235, 216));
@@ -94,15 +94,18 @@ public class MenuPanel extends JPanel {
         
         add(Box.createVerticalStrut(10));
         add(logoPanel);
-        add(Box.createVerticalStrut(10));
+        add(Box.createVerticalStrut(30));
         add(menuItemLabel);
         add(Box.createVerticalStrut(10));
 
         // ============== Add Menu Items =============
         
         addButton("Dashboard");
+        add(Box.createVerticalStrut(10));
         addButton("Timelog");
+        add(Box.createVerticalStrut(10));
         addButton("Profile");
+        add(Box.createVerticalStrut(10));
         addButton("Home");
 
         add(Box.createVerticalStrut(10));
