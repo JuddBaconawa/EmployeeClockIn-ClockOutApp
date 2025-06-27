@@ -73,12 +73,13 @@ public class MenuPanel extends JPanel {
 
         // ============ Buttons =============
         JButton logoutButton = createRoundedButton("", new Color(240, 235, 216));
-        setForeground(new Color(29, 45, 68));
+        logoutButton.setForeground(new Color(29, 45, 68));
+        logoutButton.setBackground(new Color(128, 14, 19));
         logoutButton.setBounds(0, 0, 200, 40);
         ImageIcon logoutIcon = new ImageIcon(new ImageIcon("src/images/sign-out-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         logoutButton.setIcon(logoutIcon);
 
-        logoutButton.addMouseListener(hoverEffect(new Color(220, 220, 220), new Color(220, 220, 220), logoutButton.getBackground()));
+        logoutButton.addMouseListener(hoverEffect(new Color(173, 40, 49), new Color(100, 13, 20), logoutButton.getBackground()));
 
         logoutButton.addActionListener(e -> {
             // Action to perform on logout
@@ -89,11 +90,12 @@ public class MenuPanel extends JPanel {
         // ============== Exit Button ===============
         JButton exitButton = createRoundedButton("", new Color(240, 235, 216));
         exitButton.setForeground(new Color(29, 45, 68));
+        exitButton.setBackground(new Color(255, 183, 3));
         exitButton.addActionListener(e -> parentFrame.dispose());
         ImageIcon exitIcon = new ImageIcon(new ImageIcon("src/images/exit-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         exitButton.setIcon(exitIcon);
 
-        exitButton.addMouseListener(hoverEffect(new Color(220, 200, 220), new Color(180, 180, 180), exitButton.getBackground()));
+        exitButton.addMouseListener(hoverEffect(new Color(251, 133, 0), new Color(210, 105, 45), exitButton.getBackground()));
 
 
         // ============== Add Components =============
