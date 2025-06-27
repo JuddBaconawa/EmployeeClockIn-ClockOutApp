@@ -73,7 +73,7 @@ public class MenuPanel extends JPanel {
         // ============ Buttons =============
         JButton logoutButton = createRoundedButton("", new Color(240, 235, 216));
         setForeground(new Color(29, 45, 68));
-        ImageIcon logoutIcon = new ImageIcon(new ImageIcon("src/images/sign-out-icon.png").getImage().getScaledInstance(45, 35, java.awt.Image.SCALE_SMOOTH));
+        ImageIcon logoutIcon = new ImageIcon(new ImageIcon("src/images/sign-out-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         logoutButton.setIcon(logoutIcon);
 
         logoutButton.addActionListener(e -> {
@@ -86,7 +86,7 @@ public class MenuPanel extends JPanel {
         JButton exitButton = createRoundedButton("", new Color(240, 235, 216));
         exitButton.setForeground(new Color(29, 45, 68));
         exitButton.addActionListener(e -> parentFrame.dispose());
-        ImageIcon exitIcon = new ImageIcon(new ImageIcon("src/images/exit-icon.png").getImage().getScaledInstance(45, 35, java.awt.Image.SCALE_SMOOTH));
+        ImageIcon exitIcon = new ImageIcon(new ImageIcon("src/images/exit-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         exitButton.setIcon(exitIcon);
 
 
@@ -101,11 +101,11 @@ public class MenuPanel extends JPanel {
         // ============== Add Menu Items =============
         
         addButton("Dashboard");
-        add(Box.createVerticalStrut(5));
+        add(Box.createVerticalStrut(10));
         addButton("Timelog");
-        add(Box.createVerticalStrut(5));
+        add(Box.createVerticalStrut(10));
         addButton("Profile");
-        add(Box.createVerticalStrut(5));
+        add(Box.createVerticalStrut(10));
         addButton("Home");
 
         add(Box.createVerticalStrut(10));
@@ -151,23 +151,6 @@ public class MenuPanel extends JPanel {
 
     }
 
-    private void addButton(String title, String iconPath) {
-        JButton button = createRoundedButton(title, new Color(29, 45, 68));
-        button.setForeground(new Color(251, 160, 157));
-        button.setFont(new Font("Arial", Font.BOLD, 20));
-        button.setHorizontalAlignment(SwingConstants.LEFT); // Icon left, text right
-
-        if (iconPath != null && !iconPath.isEmpty()) {
-            ImageIcon icon = new ImageIcon(new ImageIcon(iconPath).getImage().getScaledInstance(24, 24, java.awt.Image.SCALE_SMOOTH));
-            button.setIcon(icon);
-        }
-
-        button.setPreferredSize(new Dimension(180, 40));
-        button.setMaximumSize(new Dimension(180, 40));
-        button.setAlignmentX(LEFT_ALIGNMENT);
-
-        add(button);
-    }
 
     private JButton createRoundedButton(String text, Color bg) {
         JButton button = new JButton(text) {
@@ -177,19 +160,18 @@ public class MenuPanel extends JPanel {
               g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
               g2d.setColor(bg);
               g2d.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
-              super.paintComponent(g);
+              super.paintComponent(g2d);
               g2d.dispose();
             }
         };
         button.setContentAreaFilled(false);
+        button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.setBackground(new Color(255, 255, 255));;
         button.setForeground(new Color(29, 45, 68));
-        button.setFont(new Font("null", Font.BOLD, 24));
-        // button.setForeground(new Color(251, 160, 157));
+        button.setFont(new Font("Arial", Font.BOLD, 24));
         button.setVerticalAlignment(SwingConstants.CENTER);
         button.setHorizontalAlignment(SwingConstants.CENTER);
-        // button.setHorizontalAlignment(SwingConstants.CENTER);
         return button;
     }
 
