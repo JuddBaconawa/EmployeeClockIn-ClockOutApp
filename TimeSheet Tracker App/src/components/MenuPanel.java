@@ -68,7 +68,7 @@ public class MenuPanel extends JPanel {
         menuItemLabel.setFont(new Font("Ariel", Font.BOLD, 35));
         menuItemLabel.setForeground(new Color(251, 160, 157));
         menuItemLabel.setAlignmentX(RIGHT_ALIGNMENT);
-        menuItemLabel.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 0));
+        menuItemLabel.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 10));
         // menuItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         // ============ Buttons =============
@@ -76,10 +76,13 @@ public class MenuPanel extends JPanel {
         logoutButton.setForeground(new Color(29, 45, 68));
         logoutButton.setBackground(new Color(128, 14, 19));
         logoutButton.setBounds(0, 0, 200, 40);
+        // logoutButton.setFont(new Font("Arial", Font.BOLD, 5));
         ImageIcon logoutIcon = new ImageIcon(new ImageIcon("src/images/sign-out-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         logoutButton.setIcon(logoutIcon);
 
         logoutButton.addMouseListener(hoverEffect(new Color(173, 40, 49), new Color(100, 13, 20), logoutButton.getBackground()));
+
+        
 
         logoutButton.addActionListener(e -> {
             // Action to perform on logout
@@ -88,9 +91,10 @@ public class MenuPanel extends JPanel {
         });
 
         // ============== Exit Button ===============
-        JButton exitButton = createRoundedButton("", new Color(240, 235, 216));
+        JButton exitButton = createRoundedButton("Exit", new Color(240, 235, 216));
         exitButton.setForeground(new Color(29, 45, 68));
         exitButton.setBackground(new Color(255, 183, 3));
+        exitButton.setFont(new Font("Arial", Font.BOLD, 15));
         exitButton.addActionListener(e -> parentFrame.dispose());
         ImageIcon exitIcon = new ImageIcon(new ImageIcon("src/images/exit-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         exitButton.setIcon(exitIcon);
