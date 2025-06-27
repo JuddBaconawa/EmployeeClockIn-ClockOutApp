@@ -64,7 +64,7 @@ public class MenuPanel extends JPanel {
         logoPanel.add(logoLabel);
 
         // ============== Menu Header =============
-        JLabel menuItemLabel = new JLabel("<html><u>Menu</u></html>");
+        JLabel menuItemLabel = new JLabel("<html><u>MENU</u></html>");
         menuItemLabel.setFont(new Font("Ariel", Font.BOLD, 35));
         menuItemLabel.setForeground(new Color(251, 160, 157));
         menuItemLabel.setAlignmentX(RIGHT_ALIGNMENT);
@@ -108,13 +108,13 @@ public class MenuPanel extends JPanel {
 
         // ============== Add Menu Items =============
         
-        addButton("Home");
+        addButton("DASHBOARD");
         add(Box.createVerticalStrut(10));
-        addButton("Timelog");
+        addButton("TIMELOG");
         add(Box.createVerticalStrut(10));
-        addButton("Profile");
+        addButton("PROFILE");
         add(Box.createVerticalStrut(10));
-        addButton("Settings");
+        addButton("SETTINGS");
         
 
         add(Box.createVerticalStrut(10));
