@@ -33,7 +33,7 @@ import javax.swing.border.MatteBorder;
 import auth.LoginForm;
 import models.User;
 import pages.Dashboard;
-import pages.Home;
+import pages.Settings;
 import pages.Profile;
 import pages.Timelog;
 import components.TopInfoPanel;
@@ -92,10 +92,10 @@ public class TimeSheet extends JFrame{
 		displayPanel = new JPanel(new java.awt.CardLayout());
 		displayPanel.setBounds(200, 120, 1000, 680);
 		displayPanel.setBackground(new Color(240, 235, 216));
-		displayPanel.add(new Home(), "Home");
 		displayPanel.add(new Dashboard(), "Dashboard");
 		displayPanel.add(new Profile(), "Profile");
 		displayPanel.add(new Timelog(), "Time Log");
+		displayPanel.add(new Settings(), "Settings");
 		
 		/*********************** Add Panel to Frame **************************/
 		mainPanel.add(displayPanel);					// Add display panel to the main panel
