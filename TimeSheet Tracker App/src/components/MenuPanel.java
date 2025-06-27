@@ -91,6 +91,8 @@ public class MenuPanel extends JPanel {
         ImageIcon exitIcon = new ImageIcon(new ImageIcon("src/images/exit-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         exitButton.setIcon(exitIcon);
 
+        exitButton.addMouseListener(hoverEffect(new Color(220, 200, 220), new Color(180, 180, 180), exitButton.getBackground()));
+
 
         // ============== Add Components =============
         
@@ -131,20 +133,46 @@ public class MenuPanel extends JPanel {
 
         add(Box.createVerticalStrut(10));
 
+    }
 
+    // Method to add hover effect for buttons
+    private MouseAdapter hoverEffect(Color hoverColor, Color pressColor, Color originalColor) {
+        return new MouseAdapter() {
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                ((JButton) e.getSource()).setBackground(hoverColor);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                ((JButton) e.getSource()).setBackground(originalColor);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                ((JButton) e.getSource()).setBackground(pressColor);
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                ((JButton) e.getSource()).setBackground(hoverColor);
+            }
+        };
     }
 
     private void addButton(String title) {
         JPanel panel = new JPanel(null);
         panel.setBackground(new Color(29, 45, 68));
-        panel.setPreferredSize(new Dimension(getWidth(), 80));
-        panel.setMaximumSize(new Dimension(200, 80));
+        panel.setPreferredSize(new Dimension(200, 70));
+        panel.setMaximumSize(new Dimension(Integer.MAX_VALUE, 20));
+        
+        
         
         JLabel label = new JLabel(title);
         label.setFont(new Font("null", Font.BOLD, 20));
         label.setForeground(new Color(251, 160, 157));
-        label.setBounds(0, 0, 200, 40);
-        label.setHorizontalAlignment(SwingConstants.LEFT);
+        label.setBounds(15, 20, 200, 30);
+        // label.setHorizontalAlignment(SwingConstants.LEFT);
         label.setVerticalAlignment(SwingConstants.CENTER);
 
         panel.add(label);
@@ -200,6 +228,7 @@ public class MenuPanel extends JPanel {
       };
 
     }
+    
 
 
     
