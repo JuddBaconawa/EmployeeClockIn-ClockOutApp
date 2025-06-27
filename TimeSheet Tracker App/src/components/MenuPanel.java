@@ -74,6 +74,7 @@ public class MenuPanel extends JPanel {
         // ============ Buttons =============
         JButton logoutButton = createRoundedButton("", new Color(240, 235, 216));
         setForeground(new Color(29, 45, 68));
+        logoutButton.setBounds(0, 0, 200, 40);
         ImageIcon logoutIcon = new ImageIcon(new ImageIcon("src/images/sign-out-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         logoutButton.setIcon(logoutIcon);
 
@@ -101,13 +102,14 @@ public class MenuPanel extends JPanel {
 
         // ============== Add Menu Items =============
         
-        addButton("Dashboard");
+        addButton("Home");
         add(Box.createVerticalStrut(10));
         addButton("Timelog");
         add(Box.createVerticalStrut(10));
         addButton("Profile");
         add(Box.createVerticalStrut(10));
-        addButton("Home");
+        addButton("Settings");
+        
 
         add(Box.createVerticalStrut(10));
 
@@ -135,12 +137,13 @@ public class MenuPanel extends JPanel {
     private void addButton(String title) {
         JPanel panel = new JPanel(null);
         panel.setBackground(new Color(29, 45, 68));
-        panel.setPreferredSize(new Dimension(getWidth(), 20));
+        panel.setPreferredSize(new Dimension(getWidth(), 80));
+        panel.setMaximumSize(new Dimension(200, 80));
         
         JLabel label = new JLabel(title);
         label.setFont(new Font("null", Font.BOLD, 20));
         label.setForeground(new Color(251, 160, 157));
-        label.setBounds(15, 0, 200, 40);
+        label.setBounds(0, 0, 200, 40);
         label.setHorizontalAlignment(SwingConstants.LEFT);
         label.setVerticalAlignment(SwingConstants.CENTER);
 
