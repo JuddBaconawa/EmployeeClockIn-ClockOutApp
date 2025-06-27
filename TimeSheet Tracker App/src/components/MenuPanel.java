@@ -68,6 +68,7 @@ public class MenuPanel extends JPanel {
         menuItemLabel.setFont(new Font("Ariel", Font.BOLD, 35));
         menuItemLabel.setForeground(new Color(251, 160, 157));
         menuItemLabel.setAlignmentX(RIGHT_ALIGNMENT);
+        menuItemLabel.setBorder(BorderFactory.createEmptyBorder(0, 5, 0, 0));
         // menuItemLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
         // ============ Buttons =============
@@ -139,7 +140,7 @@ public class MenuPanel extends JPanel {
         JLabel label = new JLabel(title);
         label.setFont(new Font("null", Font.BOLD, 20));
         label.setForeground(new Color(251, 160, 157));
-        label.setBounds(10, 0, 200, 40);
+        label.setBounds(15, 0, 200, 40);
         label.setHorizontalAlignment(SwingConstants.LEFT);
         label.setVerticalAlignment(SwingConstants.CENTER);
 
