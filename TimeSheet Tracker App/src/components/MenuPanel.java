@@ -78,6 +78,8 @@ public class MenuPanel extends JPanel {
         ImageIcon logoutIcon = new ImageIcon(new ImageIcon("src/images/sign-out-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         logoutButton.setIcon(logoutIcon);
 
+        logoutButton.addMouseListener(hoverEffect(new Color(220, 220, 220), new Color(220, 220, 220), logoutButton.getBackground()));
+
         logoutButton.addActionListener(e -> {
             // Action to perform on logout
             parentFrame.dispose(); // Close the current frame
@@ -190,7 +192,7 @@ public class MenuPanel extends JPanel {
             protected void paintComponent(Graphics g) {
               Graphics2D g2d = (Graphics2D) g.create();
               g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-              g2d.setColor(bg);
+              g2d.setColor(getBackground());
               g2d.fill(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 20, 20));
               super.paintComponent(g2d);
               g2d.dispose();
