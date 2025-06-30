@@ -20,6 +20,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;							//for buttons within the forms
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -48,6 +49,9 @@ public class LoginForm extends JFrame {
     }
 
 	public void initialize() {
+
+		// 
+		setIconImage(new ImageIcon("src/images/app-file-icon.png").getImage());
 
 		//create the outer main panel as a background
 		JPanel outerMainPanel = new JPanel(new BorderLayout());
