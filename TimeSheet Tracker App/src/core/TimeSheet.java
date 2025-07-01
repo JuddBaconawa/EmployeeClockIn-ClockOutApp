@@ -56,7 +56,7 @@ public class TimeSheet extends JFrame{
 
 		setTitle("Time Sheet Home");
 		setUndecorated(true);						// Takes out the TimeSheet title bar
-		setSize(1200, 800);						// Set the size of the frame	
+		setSize(1400, 800);						// Set the size of the frame	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// sets the icon for the App that can be seen in the taskbar
 		setIconImage(new ImageIcon("src/images/app-file-icon.png").getImage());
