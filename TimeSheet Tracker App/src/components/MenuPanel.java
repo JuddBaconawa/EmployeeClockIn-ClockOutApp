@@ -177,7 +177,7 @@ public class MenuPanel extends JPanel {
         
         
         JLabel label = new JLabel(title);
-        label.setFont(new Font("null", Font.BOLD, 20));
+        label.setFont(new Font("null", Font.BOLD, 15));
         label.setForeground(new Color(251, 160, 157));
         label.setBounds(15, 20, 200, 30);
         // label.setHorizontalAlignment(SwingConstants.LEFT);
