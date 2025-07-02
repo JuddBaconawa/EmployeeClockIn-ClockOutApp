@@ -23,7 +23,7 @@ public class Dashboard extends DisplayCard {
                              java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
         g2d.setColor(java.awt.Color.DARK_GRAY);
-        g2d.drawString("Profile", 30, 60);
+        g2d.drawString("Dashboard", 30, 60);
     }
 
     public static void main(String[] args) {
