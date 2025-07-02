@@ -69,7 +69,7 @@ public class MenuPanel extends JPanel {
         logoPanel.add(logoLabel);
 
         // ============== Menu Header =============
-        JLabel menuItemLabel = new JLabel("<html><u>MENU</u></html>");
+        JLabel menuItemLabel = new JLabel(/* "<html><u>MENU</u></html>" */);
         menuItemLabel.setFont(new Font("Ariel", Font.BOLD, 35));
         menuItemLabel.setForeground(new Color(251, 160, 157));
         menuItemLabel.setAlignmentX(RIGHT_ALIGNMENT);
