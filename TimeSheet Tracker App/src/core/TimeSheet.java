@@ -102,7 +102,7 @@ public class TimeSheet extends JFrame{
 		displayPanel.setBackground(new Color(240, 235, 216));
 		displayPanel.add(new Dashboard(), "Dashboard");
 		displayPanel.add(new Profile(), "Profile");
-		displayPanel.add(new Timelog(), "Time Log");
+		displayPanel.add(new Timelog(), "Timelog");
 		displayPanel.add(new Projects(), "Projects");
 		displayPanel.add(new Settings(), "Settings");
 		
