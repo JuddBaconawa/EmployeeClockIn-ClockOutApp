@@ -95,6 +95,7 @@ public class TimeSheet extends JFrame{
 		displayPanel.add(new Dashboard(), "Dashboard");
 		displayPanel.add(new Profile(), "Profile");
 		displayPanel.add(new Timelog(), "Time Log");
+		displayPanel.add(new Projects(), "Projects"); // Projects class not found or not imported
 		displayPanel.add(new Settings(), "Settings");
 		
 		/*********************** Add Panel to Frame **************************/
