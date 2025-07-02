@@ -118,7 +118,11 @@ public class MenuPanel extends JPanel {
         add(Box.createVerticalStrut(10));
         addButton("PROFILE");
         add(Box.createVerticalStrut(10));
+        addButton("Projects");
+        add(Box.createVerticalStrut(10));
         addButton("SETTINGS");
+        add(Box.createVerticalStrut(10));
+        addButton("Projects");
         
 
         add(Box.createVerticalStrut(10));
