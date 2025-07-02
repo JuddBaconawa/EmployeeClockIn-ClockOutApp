@@ -68,7 +68,7 @@ public class Timelog extends DisplayCard {
                              java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
         g2d.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
         g2d.setColor(java.awt.Color.LIGHT_GRAY);
-        g2d.drawString("Profile", 30, 60);
+        g2d.drawString("Timelog", 30, 60);
     }
   
       public static void main(String[] args) {
