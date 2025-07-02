@@ -10,9 +10,7 @@ public class Dashboard extends DisplayCard {
 
         // Card Title
         super("Dashboard");
-        setLayout(null);
         setBackground(new Color(240, 235, 216));
-        setBounds(200, 120, 1000, 680); // location and size of a card
 
         
     }
@@ -36,7 +34,7 @@ public class Dashboard extends DisplayCard {
         javax.swing.JFrame frame = new javax.swing.JFrame("Dashboard Example");
         frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         frame.add(dashboard);
-        frame.setSize(1000, 680);
+        frame.setSize(1400, 680);
         frame.setVisible(true);
     }
 
