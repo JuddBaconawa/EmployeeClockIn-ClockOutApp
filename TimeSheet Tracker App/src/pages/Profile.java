@@ -27,7 +27,7 @@ public class Profile extends DisplayCard {
         javax.swing.JFrame frame = new javax.swing.JFrame("Profile Example");
         frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
         frame.add(profile);
-        frame.setSize(1000, 680);
+        frame.setSize(1200, 680);
         frame.setVisible(true);
     }
 
