@@ -60,7 +60,7 @@ public class TimeSheet extends JFrame{
 
 	public void initialize(User user) {
 		
-		/*********************** Frame Setup *********************************/
+		/**************** Frame Setup ****************************/
 
 		setTitle("Time Sheet Home");
 		setUndecorated(true);						// Takes out the TimeSheet title bar
