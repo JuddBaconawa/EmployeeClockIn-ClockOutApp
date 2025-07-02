@@ -25,15 +25,20 @@ import javax.swing.JPanel;
 // import javax.swing.border.Border;
 import javax.swing.SwingConstants;
 
+
 // import javax.swing.border.CompoundBorder;
 import auth.LoginForm;
 import models.User;
+import core.TimeSheet;
 
 // Main Class
 public class MenuPanel extends JPanel {
 
+    private TimeSheet parentFrame;
+
     // Constructor - used to initialize an object (the Menu panel)
-    public MenuPanel(JFrame parentFrame, User user) {
+    public MenuPanel(TimeSheet parentFrame, User user) {
+        this.parentFrame = parentFrame;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(new Color(29, 45, 68));
         setBounds(0, 0, 200, getHeight());
@@ -112,15 +117,15 @@ public class MenuPanel extends JPanel {
 
         // ============== Add Menu Items =============
         
-        addButton("DASHBOARD");
+        addButton("DASHBOARD", "Dashboard");
         add(Box.createVerticalStrut(10));
-        addButton("TIMELOG");
+        addButton("TIMELOG", "Timelog");
         add(Box.createVerticalStrut(10));
-        addButton("PROFILE");
+        addButton("PROFILE", "Profile");
         add(Box.createVerticalStrut(10));
-        addButton("PROJECTSS");
+        addButton("PROJECTS", "Projects");
         add(Box.createVerticalStrut(10));
-        addButton("SETTINGS");
+        addButton("SETTINGS", "Settings");
         add(Box.createVerticalStrut(10));
 
         
@@ -172,7 +177,7 @@ public class MenuPanel extends JPanel {
         };
     }
 
-    private void addButton(String title) {
+    private void addButton(String title, String cardName) {
         JPanel panel = new JPanel(null);
         panel.setBackground(new Color(29, 45, 68));
         panel.setPreferredSize(new Dimension(200, 70));
@@ -189,7 +194,27 @@ public class MenuPanel extends JPanel {
 
         panel.add(label);
 
-        panel.addMouseListener(highlightEffect(panel));
+        panel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                parentFrame.showCard(cardName);
+            }
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                panel.setBackground(new Color(13, 19, 33));
+            }
+            @Override
+            public void mouseExited(MouseEvent e) {
+                panel.setBackground(new Color(29, 45, 68));
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {
+                panel.setBackground(new Color(62, 92, 118));
+            }@Override
+            public void mouseReleased(MouseEvent e) {
+                panel.setBackground(new Color(29, 45, 68));
+            }
+        });
 
         add(panel);
 
