@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import java.awt.Color;
 
 public class DisplayCard extends JPanel {
+    
     public DisplayCard(String name) {
         setName(name);
         // setLayout(null);
@@ -13,4 +14,4 @@ public class DisplayCard extends JPanel {
         
   
     }
-  }
+}
