@@ -70,7 +70,7 @@ public class TimeSheet extends JFrame{
 
 		/********************* Main Panel Settings ***********************/
 		JPanel mainPanel = new JPanel(null);
-		mainPanel.setBounds(0, 0, 1200, 800);			//panel size is 1200 x 800
+		mainPanel.setBounds(0, 0, 1400, 800);			//panel size is 1200 x 800
 
 
 		/*********************** Menu Bar Panel *********************************/
@@ -91,7 +91,7 @@ public class TimeSheet extends JFrame{
 
 		/********************** (Views) Display Panel ****************************/
 		displayPanel = new JPanel(new java.awt.CardLayout());
-		displayPanel.setBounds(200, 0, 1200, 8000);
+		displayPanel.setBounds(200, 0, 1400, 800);
 		displayPanel.setBackground(new Color(240, 235, 216));
 		displayPanel.add(new Dashboard(), "Dashboard");
 		displayPanel.add(new Profile(), "Profile");
