@@ -35,6 +35,7 @@ import models.User;
 import pages.Dashboard;
 import pages.Settings;
 import pages.Profile;
+import pages.Projects;
 import pages.Timelog;
 import components.TopInfoPanel;
 
@@ -95,7 +96,7 @@ public class TimeSheet extends JFrame{
 		displayPanel.add(new Dashboard(), "Dashboard");
 		displayPanel.add(new Profile(), "Profile");
 		displayPanel.add(new Timelog(), "Time Log");
-		displayPanel.add(new Projects(), "Projects"); // Projects class not found or not imported
+		displayPanel.add(new Projects(), "Projects");
 		displayPanel.add(new Settings(), "Settings");
 		
 		/*********************** Add Panel to Frame **************************/
