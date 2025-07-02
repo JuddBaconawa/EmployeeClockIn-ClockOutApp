@@ -13,6 +13,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
 import java.awt.GridLayout;
+import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -40,6 +41,7 @@ import pages.Timelog;
 import components.TopInfoPanel;
 
 
+
 import javax.swing.border.EmptyBorder;
 
 
@@ -50,6 +52,11 @@ import javax.swing.border.EmptyBorder;
 public class TimeSheet extends JFrame{
 
 	private JPanel displayPanel;
+
+	public void showCard(String cardname) {
+		CardLayout cl = (CardLayout) displayPanel.getLayout();
+		cl.show(displayPanel, cardname);
+	}
 
 	public void initialize(User user) {
 		
