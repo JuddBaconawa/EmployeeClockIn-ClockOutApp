@@ -17,8 +17,11 @@ public class Projects extends DisplayCard {
     setBackground(new Color(255, 255, 255));
 
 
+    // Projects panel
     JPanel projectsPanel = new JPanel();
-    
+    projectsPanel.setBounds(5, 10, 990, 20);
+    projectsPanel.setBorder(new Border());
+
     
 
   }
