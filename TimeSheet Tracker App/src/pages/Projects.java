@@ -21,6 +21,7 @@ public class Projects extends DisplayCard {
 
 
      public Projects() {
+        // Card Title
         super("Projects");
 
         setBackground(new Color(62, 92, 118));
