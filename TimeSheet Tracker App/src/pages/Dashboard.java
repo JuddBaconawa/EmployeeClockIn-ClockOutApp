@@ -3,7 +3,9 @@ package pages;
 // IMPORTS
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import components.DisplayCard;
@@ -19,7 +21,15 @@ public class Dashboard extends DisplayCard {
         setBackground(new Color(240, 235, 216));
         setLayout(new BorderLayout());
 
+        // === Title Panel ===
         JPanel titlePanel = new JPanel();
+        titlePanel.setBackground(new Color(62, 92, 118));
+        JLabel titleLabel = new JLabel("Dashboard");
+        titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
+        titleLabel.setForeground(new Color(255, 255, 255));
+
+        titlePanel.add(titleLabel);
+        add(titlePanel);
     }  
 
     // public static void main(String[] args) {
