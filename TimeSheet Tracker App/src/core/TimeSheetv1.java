@@ -29,11 +29,11 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.MatteBorder;
 
 import auth.LoginForm;
+import displayCards.Dashboard;
+import displayCards.Projects;
+import displayCards.Profile;
+import displayCards.Timelog;
 import models.User;
-import pages.Dashboard;
-import pages.Home;
-import pages.Profile;
-import pages.Timelog;
 
 import javax.swing.border.EmptyBorder;
 
