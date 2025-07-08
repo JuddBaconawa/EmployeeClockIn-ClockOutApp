@@ -1,4 +1,4 @@
-package pages;
+package displayCards;
 // IMPORTS
 import java.awt.Color;
 import javax.swing.*;
