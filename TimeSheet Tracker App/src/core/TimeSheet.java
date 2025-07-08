@@ -33,14 +33,12 @@ import javax.swing.border.MatteBorder;
 
 import auth.LoginForm;
 import models.User;
-import pages.Dashboard;
-import pages.Settings;
-import pages.Profile;
-import pages.Projects;
-import pages.Timelog;
 import components.TopInfoPanel;
-
-
+import displayCards.Dashboard;
+import displayCards.Profile;
+import displayCards.Projects;
+import displayCards.Settings;
+import displayCards.Timelog;
 
 import javax.swing.border.EmptyBorder;
 
