@@ -1,5 +1,5 @@
 // PACKAGES
-package pages;
+package displayCards;
 
 // IMPORTS
 import  components.DisplayCard;
