@@ -1,5 +1,11 @@
 package components.dashboard;
 
-public class ProfilePanel {
+import javax.swing.JPanel;
+
+public class ProfilePanel extends JPanel {
+
+  public ProfilePanel() {
+    
+  }
   
 }
