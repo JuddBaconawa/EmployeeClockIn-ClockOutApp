@@ -450,7 +450,7 @@ public class TimeSheetv1 extends JFrame{
 		topInfoPanel.add(currentDatePanel);
 
 		/*********************** Display Panel Settings *************************/
-		displayPanel.add(new Home(), "Home");
+		displayPanel.add(new Settings(), "Home");
 		displayPanel.add(new Dashboard(), "Dashboard");
 		displayPanel.add(new Profile(), "Profile");
 		displayPanel.add(new Timelog(), "Time Log");
