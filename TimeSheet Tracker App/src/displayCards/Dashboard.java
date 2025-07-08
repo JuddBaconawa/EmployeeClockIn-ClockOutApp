@@ -13,10 +13,14 @@ import components.DisplayCard;
 import components.dashboard.ClockPanel;
 import components.dashboard.TimeStatsPanel;
 import components.dashboard.ProfilePanel;
+import components.dashboard.StatusIndicator;
 
 
 // Dashboard class
 public class Dashboard extends DisplayCard {
+
+    private StatusIndicator statusIndicator;
+    private JLabel statusText;
     
     public Dashboard() {
         // Card Title
@@ -34,7 +38,16 @@ public class Dashboard extends DisplayCard {
         titleLabel.setForeground(new Color(255, 255, 255));
 
         // Status Indicator (small Colered Circle)
-        
+        statusIndicator = new StatusIndicator();
+        statusText = new JLabel("Logged Out");
+        statusText.setFont(new Font("Arial", Font.PLAIN, 16));
+        statusText.setForeground(Color.WHITE);
+
+        // Group Indicator + Text
+        JPanel indicatorPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+        indicatorPanel.setOpaque(false);
+        indicatorPanel.add(statusIndicator);
+        indicatorPanel.add(statusText);
 
         titlePanel.add(titleLabel);
         titlePanel.add(indicatorPanel);
@@ -44,6 +57,7 @@ public class Dashboard extends DisplayCard {
         contentPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
         contentPanel.setOpaque(false);
 
+        contentPanel.add(new ProfilePanel());
         contentPanel.add(new TimeStatsPanel());
         contentPanel.add(new ClockPanel());
 
