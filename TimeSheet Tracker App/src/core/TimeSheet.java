@@ -47,6 +47,7 @@ import javax.swing.border.EmptyBorder;
 
 
 // TimeSheet class
+
 public class TimeSheet extends JFrame{
 
 	private JPanel displayPanel;
