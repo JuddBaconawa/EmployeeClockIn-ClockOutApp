@@ -59,7 +59,7 @@ public class Dashboard extends DisplayCard {
 
         contentPanel.add(new ProfilePanel());
         contentPanel.add(new TimeStatsPanel());
-        contentPanel.add(new ClockPanel());
+        contentPanel.add(new ClockPanel(this));
 
 
         // Add panels to layout
@@ -72,21 +72,21 @@ public class Dashboard extends DisplayCard {
         
 
         titlePanel.add(titleLabel);
-        add(titlePanel);
+        // add(titlePanel);    == double error
     }
     
     public void updateStatus(String status) {
     statusIndicator.setStatus(status);
     switch (status) {
         case "in":
-            statusText.setText("Logged In");
+            statusText.setText("Clocked In");
             break;
         case "break":
             statusText.setText("On Break");
             break;
         case "out":
         default:
-            statusText.setText("Logged Out");
+            statusText.setText("Clocked Out");
         }
     }
 
