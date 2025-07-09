@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import components.DisplayCard;
 import components.dashboard.ClockPanel;
 import components.dashboard.TimeStatsPanel;
+import models.User;
 import components.dashboard.ProfilePanel;
 import components.dashboard.StatusIndicator;
 
@@ -54,11 +55,11 @@ public class Dashboard extends DisplayCard {
 
         // === Content Panel === 
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        contentPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
         contentPanel.setOpaque(false);
 
         //profilepanel leaves a small white square for spacing
-        contentPanel.add(new ProfilePanel());
+        contentPanel.add(new ProfilePanel(User.getCurrentUser()));
         contentPanel.add(new TimeStatsPanel());
         contentPanel.add(new ClockPanel(this));
 
