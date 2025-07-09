@@ -21,9 +21,10 @@ public class TimeStatsPanel extends JPanel {
     private JLabel remainingHoursLabel;
 
     public TimeStatsPanel() {
-        setLayout(new BorderLayout(10, 10));
+        setLayout(new BorderLayout(15, 10));
         setPreferredSize(new Dimension(300, 150));
         setBackground(new Color(255, 255, 255));
+        // setOpaque(false);
         setBorder(BorderFactory.createTitledBorder("Time Stats"));
 
         // Top: Toggle Button
@@ -31,9 +32,9 @@ public class TimeStatsPanel extends JPanel {
         toggleButton.addActionListener(e -> cycleMode());
 
         modeLabel = new JLabel("Mode: " + modes[currentMode]);
-        regularHoursLabel = new JLabel("Regular Hours: 0");
-        overtimeLabel = new JLabel("Overtime: 0");
-        remainingHoursLabel = new JLabel("Remaining: 0");
+        regularHoursLabel = new JLabel("Regular Hours: 00:00:00");
+        overtimeLabel = new JLabel("Overtime: 00:00:00");
+        remainingHoursLabel = new JLabel("Remaining: 00:00:00");
 
         JPanel center = new JPanel(new GridLayout(3, 1));
         center.add(regularHoursLabel);
