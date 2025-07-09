@@ -44,7 +44,7 @@ public class Dashboard extends DisplayCard {
         statusText.setForeground(Color.WHITE);
 
         // Group Indicator + Text
-        JPanel indicatorPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 5, 0));
+        JPanel indicatorPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
         indicatorPanel.setOpaque(false);
         indicatorPanel.add(statusIndicator);
         indicatorPanel.add(statusText);
@@ -54,9 +54,10 @@ public class Dashboard extends DisplayCard {
 
         // === Content Panel === 
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
+        contentPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 20));
         contentPanel.setOpaque(false);
 
+        //profilepanel leaves a small white square for spacing
         contentPanel.add(new ProfilePanel());
         contentPanel.add(new TimeStatsPanel());
         contentPanel.add(new ClockPanel(this));
