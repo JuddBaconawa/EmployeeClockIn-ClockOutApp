@@ -19,6 +19,9 @@ public class ClockPanel extends JPanel {
     private Dashboard dashboard;
     private long breakStartTime = 0;
     private long totalBreakMillis = 0;
+    private JButton clockInButton;
+    private JButton clockOutButton;
+    private JButton breakButton;
 
 
     public ClockPanel(Dashboard dashboard) {
@@ -29,9 +32,9 @@ public class ClockPanel extends JPanel {
         setBackground(new Color(245, 245, 245));
         setBorder(BorderFactory.createTitledBorder("Time Tracking"));
 
-        JButton clockInButton = new JButton("Clock In");
-        JButton clockOutButton = new JButton("Clock Out");
-        JButton breakButton = new JButton("Start Break");
+        clockInButton = new JButton("Clock In");
+        clockOutButton = new JButton("Clock Out");
+        breakButton = new JButton("Start Break");
 
         statusLabel = new JLabel("Status: Off the clock");
 
@@ -39,6 +42,7 @@ public class ClockPanel extends JPanel {
             clockInTime = System.currentTimeMillis();
             statusLabel.setText("Status: Clocked In");
             dashboard.updateStatus("in");
+            updateButtonState("in");
         });
 
         clockOutButton.addActionListener(e -> {
@@ -49,16 +53,18 @@ public class ClockPanel extends JPanel {
             breakStartTime = 0;
             onBreak = false;
             dashboard.updateStatus("out");
+            updateButtonState("out");
         });
 
         breakButton.addActionListener(e -> {
             if (onBreak = !onBreak) {
                 // Starting break
                 breakStartTime = System.currentTimeMillis();
-                totalBreakMillis += breakStartTime - clockInTime;
+                onBreak = true;
                 breakButton.setText("End Break");
                 statusLabel.setText("On Break");
                 dashboard.updateStatus("break");
+                updateButtonState("break");
             } else {
                 // Ending break
                 long breakEndTime = System.currentTimeMillis();
@@ -67,6 +73,7 @@ public class ClockPanel extends JPanel {
                 breakButton.setText("Start Break");
                 statusLabel.setText("Clocked In");
                 dashboard.updateStatus("in");
+                updateButtonState("in");
             }
             
         });
@@ -78,6 +85,8 @@ public class ClockPanel extends JPanel {
 
         add(buttonPanel, BorderLayout.CENTER);
         add(statusLabel, BorderLayout.SOUTH);
+
+        updateButtonState("out"); // Initial state
     }
 
     private String formatTime(long millis) {
@@ -86,5 +95,32 @@ public class ClockPanel extends JPanel {
         long hours = (millis / (1000 * 60 * 60)) % 24;
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
-}
 
+    private void updateButtonState(String status) {
+        switch (status) {
+            case "in":
+                clockInButton.setEnabled(false);
+                clockOutButton.setEnabled(true);
+                breakButton.setEnabled(true);
+                break;
+            case "out":
+                clockInButton.setEnabled(true);
+                clockOutButton.setEnabled(false);
+                breakButton.setEnabled(false);
+                breakButton.setText("Start Break");
+                break;
+            case "break":
+                clockInButton.setEnabled(false);
+                clockOutButton.setEnabled(true);
+                breakButton.setEnabled(true);
+                breakButton.setText("End Break");
+                break;
+            default:
+                clockInButton.setEnabled(true);
+                clockOutButton.setEnabled(false);
+                breakButton.setEnabled(false);
+                breakButton.setText("Start Break");
+                break;
+        }
+    }
+}
