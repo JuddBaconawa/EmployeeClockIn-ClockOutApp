@@ -9,6 +9,8 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.Border;
 
 import models.User;
 
@@ -29,14 +31,16 @@ public class ProfilePanel extends JPanel {
 
     JPanel profilePicturePanel = new JPanel();
     profilePicturePanel.setOpaque(false);
+    profilePicturePanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.LIGHT_GRAY, Color.DARK_GRAY));
     profilePicturePanel.add(profilePictureLabel);
-    profilePicturePanel.setPreferredSize(new Dimension(150, 150));
+    profilePicturePanel.setPreferredSize(new Dimension(150, 100));
 
     JPanel infoPanel = new JPanel();
     infoPanel.setOpaque(false);
     infoPanel.setLayout(new GridLayout(0, 1));
-    infoPanel.add(new JLabel("Name: " + user.firstName));
-    infoPanel.add(new JLabel("Username: " + user.username)); // Access the username field directly
+    infoPanel.add(new JLabel("Name: " + user.lastName + ", " + user.firstName));
+    infoPanel.add(new JLabel("Location" + user.location)); // shows in office or remote
+    infoPanel.add(new JLabel("Email: " + safe(user.email)));
     infoPanel.add(new JLabel("Department: " + user.department));
     infoPanel.add(new JLabel("Role: " + user.role));
 
