@@ -58,9 +58,15 @@ public class Dashboard extends DisplayCard {
         contentPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
         contentPanel.setOpaque(false);
 
+        // instantiate clock panel
+        ClockPanel clockPanel = new ClockPanel(this);
+
+        // timestatpanel reference to clockpanel
+        TimeStatsPanel timeStatsPanel = new TimeStatsPanel(clockPanel);
+
         //profilepanel leaves a small white square for spacing
         contentPanel.add(new ProfilePanel(User.getCurrentUser()));
-        contentPanel.add(new TimeStatsPanel());
+        contentPanel.add(new TimeStatsPanel(clockPanel));
         contentPanel.add(new ClockPanel(this));
 
 
