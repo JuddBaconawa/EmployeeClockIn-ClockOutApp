@@ -11,7 +11,9 @@ public class User {
 		// User class' Attributes
 		public java.awt.Image profilePicture;
 		public String firstName;
+		public String lastName;
 		public String username;
+		public String location;
 		public String department;
 		public String role;
 		public String email;
