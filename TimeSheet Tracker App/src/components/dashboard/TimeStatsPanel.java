@@ -19,8 +19,13 @@ public class TimeStatsPanel extends JPanel {
     private JLabel regularHoursLabel;
     private JLabel overtimeLabel;
     private JLabel remainingHoursLabel;
+    private ClockPanel clockPanel;
+    
 
-    public TimeStatsPanel() {
+    public TimeStatsPanel(ClockPanel clockPanel) {
+        this.clockPanel = clockPanel;  
+
+        // Initialize the panel
         setLayout(new BorderLayout(15, 10));
         setPreferredSize(new Dimension(300, 150));
         setBackground(new Color(255, 255, 255));
@@ -45,12 +50,47 @@ public class TimeStatsPanel extends JPanel {
         add(modeLabel, BorderLayout.WEST);
         add(center, BorderLayout.CENTER);
 
+        updateStats();
+
     }
 
     private void cycleMode() {
       currentMode = (currentMode + 1) % modes.length;
       modeLabel.setText("Mode: " + modes[currentMode]);
+      updateStats();
       // TODO: Update stats for the selected mode
     }
+
+    private void updateStats() {
+      long millis = 0;
+      switch (modes[currentMode]) {
+        case "Daily":
+          millis = clockPanel.getDailyWorkedMillis();
+          break;
+        case "Weekly":
+          millis = clockPanel.getWeeklyWorkedMillis();
+          break;
+        case "Monthly":
+          millis = clockPanel.getMonthlyWorkedMillis();
+          break;
+      }
+
+      long regularMillis = Math.min(millis, 8 * 60 * 60 * 1000); // 8 hours
+      long overtimeMillis = Math.max(0, millis - regularMillis);
+      long remainingMillis = Math.max(0, (8 * 60 * 60 * 1000) - millis);
+
+      regularHoursLabel.setText("Regular Hours: " + formatTime(regularMillis));
+      overtimeLabel.setText("Overtime: " + formatTime(overtimeMillis));
+      remainingHoursLabel.setText("Remaining: " + formatTime(remainingMillis));
+
+    }
+
+    private String formatTime(long millis) {
+      long seconds = (millis / 1000) % 60;
+      long minutes = (millis / (1000 * 60)) % 60;
+      long hours = (millis / (1000 * 60 * 60));
+      return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+    }
+
   
 }
