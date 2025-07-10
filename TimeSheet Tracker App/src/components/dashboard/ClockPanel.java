@@ -1,14 +1,24 @@
+// Package: components.dashboard for functionality related to the dashboard
 package components.dashboard;
 
+// AWT imports for layout and colors
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+// Swing components
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+// Java time API for date and time
+import java.time.LocalDate;
+
+// For time tracking
+import java.util.HashMap;
+import java.util.Map;
 
 import displayCards.Dashboard;
 
@@ -19,10 +29,14 @@ public class ClockPanel extends JPanel {
     private Dashboard dashboard;
     private long breakStartTime = 0;
     private long totalBreakMillis = 0;
+    private long todayTotalMillis = 0;
+
+    // Buttons
     private JButton clockInButton;
     private JButton clockOutButton;
     private JButton breakButton;
 
+    private Map<LocalDate, Long> dailyWorkedTime = new HashMap<>();
 
     public ClockPanel(Dashboard dashboard) {
         this.dashboard = dashboard;
@@ -40,14 +54,22 @@ public class ClockPanel extends JPanel {
 
         clockInButton.addActionListener(e -> {
             clockInTime = System.currentTimeMillis();
+            totalBreakMillis = 0; // Reset break time on clock in
+            breakStartTime = 0; // Reset break start time
             statusLabel.setText("Status: Clocked In");
             dashboard.updateStatus("in");
             updateButtonState("in");
         });
 
         clockOutButton.addActionListener(e -> {
-            long workedMillis = System.currentTimeMillis() - clockInTime - totalBreakMillis;
-            statusLabel.setText("Worked: " + workedMillis / 1000 + "s");
+            long sessionWorkedMillis = System.currentTimeMillis() - clockInTime - totalBreakMillis;
+            LocalDate today = LocalDate.now();
+            dailyWorkedTime.put(today, dailyWorkedTime.getOrDefault(today, 0L) + sessionWorkedMillis);
+
+            
+            statusLabel.setText("Worked: " + sessionWorkedMillis / 1000 + "s");
+
+            // reset session
             clockInTime = 0;
             totalBreakMillis = 0;
             breakStartTime = 0;
@@ -123,4 +145,38 @@ public class ClockPanel extends JPanel {
                 break;
         }
     }
+
+    public long getDailyWorkedMillis() {
+        LocalDate today = LocalDate.now();
+        long saved = dailyWorkedTime.getOrDefault(today, 0L);
+        if (clockInTime > 0) {
+            long currentSession = System.currentTimeMillis() - clockInTime - totalBreakMillis;
+            return saved + currentSession;
+        } else {
+            return saved; // No active session, return total worked time today
+        }
+    
+    }
+
+    public long getWeeklyWorkedMillis() {
+        // Placeholder for weekly calculation
+        LocalDate today = LocalDate.now();
+        LocalDate startOfWeek = today.with(java.time.DayOfWeek.MONDAY); // Monday as start of week
+
+        return dailyWorkedTime.entrySet().stream()
+            .filter(entry -> !entry.getKey().isBefore(startOfWeek))
+            .mapToLong(Map.Entry::getValue)
+            .sum(); // Add today's worked time
+    }
+
+    public long getMonthlyWorkedMillis() {
+        // Placeholder for monthly calculation
+        LocalDate today = LocalDate.now();
+
+        return dailyWorkedTime.entrySet().stream()
+            .filter(entry -> entry.getKey().getMonth().equals(today.getMonth()) &&
+                             entry.getKey().getYear() == today.getYear())
+            .mapToLong(Map.Entry::getValue)
+            .sum(); // Add today's worked time
+    }   
 }
