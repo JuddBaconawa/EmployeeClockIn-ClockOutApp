@@ -105,7 +105,7 @@ public class TimeSheet extends JFrame{
 		displayPanel.add(new Projects(), "Projects");
 		displayPanel.add(new Settings(), "Settings");
 		
-		/*********************** Add Panel to Frame **************************/
+		/*********************** Add Panel to Frame ************************/
 		mainPanel.add(displayPanel);					// Add display panel to the main panel
 		// add(displayPanel);												// Add display panel to the frame		
 		add(mainPanel);														// Add main panel to the frame					
