@@ -15,6 +15,7 @@ import components.dashboard.TimeStatsPanel;
 import models.User;
 import components.dashboard.ProfilePanel;
 import components.dashboard.StatusIndicator;
+import components.dashboard.TimeGraphPanel;
 
 
 // Dashboard class
@@ -68,6 +69,7 @@ public class Dashboard extends DisplayCard {
         contentPanel.add(new ProfilePanel(User.getCurrentUser()));
         contentPanel.add(new TimeStatsPanel(clockPanel));
         contentPanel.add(new ClockPanel(this));
+        contentPanel.add(new TimeGraphPanel(clockPanel));
 
 
         // Add panels to layout
