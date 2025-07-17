@@ -95,7 +95,7 @@ public class TimeSheet extends JFrame{
 		topInfoPanel.setBorder(new MatteBorder(0, 0, 1, 0, new Color(220, 220, 220))); // Example border, adjust as needed
 		//mainPanel.add(topInfoPanel); // Add top info panel to the main panel
 
-		/********************** (Views) Display Panel ****************************/
+		/********************** (Views) Display Panel *********************/
 		displayPanel = new JPanel(new java.awt.CardLayout());
 		displayPanel.setBounds(200, 0, 1400, 800);
 		displayPanel.setBackground(new Color(240, 235, 216));
