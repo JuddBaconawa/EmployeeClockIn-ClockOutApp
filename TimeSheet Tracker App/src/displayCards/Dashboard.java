@@ -66,10 +66,11 @@ public class Dashboard extends DisplayCard {
         TimeStatsPanel timeStatsPanel = new TimeStatsPanel(clockPanel);
 
         //profilepanel leaves a small white square for spacing
+        contentPanel.add(new TimeGraphPanel(clockPanel));
         contentPanel.add(new ProfilePanel(User.getCurrentUser()));
         contentPanel.add(new TimeStatsPanel(clockPanel));
         contentPanel.add(new ClockPanel(this));
-        contentPanel.add(new TimeGraphPanel(clockPanel));
+
 
 
         // Add panels to layout
