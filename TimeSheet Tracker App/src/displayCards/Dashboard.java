@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -47,7 +48,7 @@ public class Dashboard extends DisplayCard {
         statusText.setForeground(Color.WHITE);
 
         // Group Indicator + Text
-        JPanel indicatorPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 0));
+        JPanel indicatorPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 5, 5));
         indicatorPanel.setOpaque(false);
         indicatorPanel.add(statusIndicator);
         indicatorPanel.add(statusText);
@@ -59,6 +60,7 @@ public class Dashboard extends DisplayCard {
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new GridLayout(2, 3, 25, 25));
         contentPanel.setOpaque(false);
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Add padding around the content panel
 
         // instantiate clock panel
         ClockPanel clockPanel = new ClockPanel(this);
