@@ -18,8 +18,8 @@ public class ProfilePanel extends JPanel {
 
   public ProfilePanel(User user) {
 
-    setLayout(new BorderLayout(10, 10));
-    setPreferredSize(new Dimension(400, 200));
+    setLayout(new BorderLayout(5, 5));
+    setPreferredSize(new Dimension(200, 150));
     setBackground(new Color(255, 255, 255));
     setBorder(BorderFactory.createTitledBorder("Profile"));
 
@@ -39,7 +39,7 @@ public class ProfilePanel extends JPanel {
     infoPanel.setOpaque(false);
     infoPanel.setLayout(new GridLayout(0, 1));
     infoPanel.add(new JLabel("Name: " + user.lastName + ", " + user.firstName));
-    infoPanel.add(new JLabel("Location" + user.location)); // shows in office or remote
+    infoPanel.add(new JLabel("Location: " + user.location)); // shows in office or remote
     infoPanel.add(new JLabel("Email: " + safe(user.email)));
     infoPanel.add(new JLabel("Department: " + user.department));
     infoPanel.add(new JLabel("Role: " + user.role));
