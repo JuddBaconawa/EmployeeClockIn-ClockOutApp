@@ -76,7 +76,7 @@ public class TimeGraphPanel extends JPanel {
         }
 
         // Inner circle (Donut effect)
-        int innerSize = size / 2;
+        int innerSize = size / 3;
         int innerX = x + (size - innerSize) / 2;
         int innerY = y + (size - innerSize) / 2;
         g2.setColor(getBackground());
@@ -84,7 +84,7 @@ public class TimeGraphPanel extends JPanel {
 
         // Center text: total time
         String timeText = formatTime(workedMillis);
-        g2.setFont(new Font("Arial", Font.BOLD, 18));
+        g2.setFont(new Font("Arial", Font.BOLD, 20));
         FontMetrics fm = g2.getFontMetrics();
         int tx = getWidth() / 2 - fm.stringWidth(timeText) / 2;
         int ty = getHeight() / 2 + fm.getAscent() / 2 - 5;
@@ -93,7 +93,7 @@ public class TimeGraphPanel extends JPanel {
 
         // Mode label under circle
         String modeText = modes[currentMode];
-        g2.setFont(new Font("Arial", Font.PLAIN, 14));
+        g2.setFont(new Font("Arial", Font.BOLD, 25));
         FontMetrics mf = g2.getFontMetrics();
         int mx = getWidth() / 2 - mf.stringWidth(modeText) / 2;
         g2.drawString(modeText, mx, getHeight() - 10);
