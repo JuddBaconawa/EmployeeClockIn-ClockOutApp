@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -56,7 +57,7 @@ public class Dashboard extends DisplayCard {
 
         // === Content Panel === 
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));
+        contentPanel.setLayout(new GridLayout(2, 3, 25, 25));
         contentPanel.setOpaque(false);
 
         // instantiate clock panel
@@ -71,6 +72,9 @@ public class Dashboard extends DisplayCard {
         contentPanel.add(new TimeStatsPanel(clockPanel));
         contentPanel.add(new ClockPanel(this));
 
+        // Spacing
+        contentPanel.add(new JPanel()); // Empty panel for spacing
+        contentPanel.add(new JPanel()); // Empty panel for spacing
 
 
         // Add panels to layout
