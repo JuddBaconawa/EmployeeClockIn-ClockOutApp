@@ -97,7 +97,8 @@ public class TimeSheet extends JFrame{
 
 		/********************** (Views) Display Panel *********************/
 		displayPanel = new JPanel(new java.awt.CardLayout());
-		displayPanel.setBounds(200, 0, 1400, 800);
+		// displayPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Add padding around the display panel
+		displayPanel.setBounds(200, 0, 1200, 800);
 		displayPanel.setBackground(new Color(240, 235, 216));
 		displayPanel.add(new Dashboard(), "Dashboard");
 		displayPanel.add(new Profile(), "Profile");
