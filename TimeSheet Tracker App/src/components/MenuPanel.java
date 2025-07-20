@@ -81,7 +81,7 @@ public class MenuPanel extends JPanel {
         logoutButton.setForeground(new Color(29, 45, 68));
         logoutButton.setBackground(new Color(128, 14, 19));
         // logoutButton.setBounds(0, 0, 200, 40);
-        logoutButton.setFont(new Font("Arial", Font.BOLD, 25));
+        logoutButton.setFont(new Font("Arial", Font.BOLD, 20));
         logoutButton.setMargin(new java.awt.Insets(10, 10, 10, 20));
         ImageIcon logoutIcon = new ImageIcon(new ImageIcon("src/images/sign-out-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
         // logoutButton.setIcon(logoutIcon);
@@ -100,7 +100,7 @@ public class MenuPanel extends JPanel {
         JButton exitButton = createRoundedButton("Exit", new Color(240, 235, 216));
         exitButton.setForeground(new Color(29, 45, 68));
         exitButton.setBackground(new Color(255, 183, 3));
-        exitButton.setFont(new Font("Arial", Font.BOLD, 25));
+        exitButton.setFont(new Font("Arial", Font.BOLD, 20));
         exitButton.addActionListener(e -> parentFrame.dispose());
         exitButton.setMargin(new java.awt.Insets(10, 10, 10, 10));
         // ImageIcon exitIcon = new ImageIcon(new ImageIcon("src/images/exit-icon.png").getImage().getScaledInstance(35, 35, java.awt.Image.SCALE_SMOOTH));
@@ -137,6 +137,7 @@ public class MenuPanel extends JPanel {
         // --- Add the two buttons side by side ---
         JPanel buttonRow = new JPanel();
         buttonRow.setLayout(new BoxLayout(buttonRow, BoxLayout.X_AXIS));
+        buttonRow.setBorder(BorderFactory.createEmptyBorder(10, 5, 10, 15));
         buttonRow.setOpaque(false); // Make background transparent to match parent
 
 
