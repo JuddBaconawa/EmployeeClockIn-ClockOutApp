@@ -1,6 +1,7 @@
 package components;
 // IMPORTS
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
@@ -14,7 +15,8 @@ public class DisplayCard extends JPanel {
         
         // Styling
         setBackground(new Color(240, 235, 216));
-        setBounds(200, 120, 1200, 680);         //location and size of a card
+        setBounds(200, 120, 1200, 700);         //location and size of a card
+        // setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Add padding around the card
 
         // Layout
         setLayout(new BorderLayout());
