@@ -58,7 +58,7 @@ public class Dashboard extends DisplayCard {
 
         // === Content Panel === 
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new GridLayout(2, 3, 25, 25));
+        contentPanel.setLayout(new GridLayout(2, 3, 110, 125));
         contentPanel.setOpaque(false);
         contentPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Add padding around the content panel
 
