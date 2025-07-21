@@ -16,7 +16,8 @@ public class TimeGraphPanel extends JPanel {
     public TimeGraphPanel(ClockPanel clockPanel) {
         this.clockPanel = clockPanel;
 
-        setPreferredSize(new Dimension(200, 200));
+        setBorder(BorderFactory.createTitledBorder("Time Graph"));
+        setPreferredSize(new Dimension(100, 100));
         setOpaque(false);
 
         // Optional: right-click or future button for cycling
