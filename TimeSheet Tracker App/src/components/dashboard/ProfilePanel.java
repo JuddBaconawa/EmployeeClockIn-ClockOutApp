@@ -37,8 +37,8 @@ public class ProfilePanel extends JPanel {
 
     JPanel infoPanel = new JPanel();
     infoPanel.setOpaque(false);
-    infoPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 2, 2));
-    infoPanel.setLayout(new GridLayout(4, 3, 2, 2));
+    infoPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+    infoPanel.setLayout(new GridLayout(3, 3, 2, 2));
     infoPanel.add(new JLabel("Name: " + user.lastName + ", " + user.firstName));
     infoPanel.add(new JLabel("Location: " + user.location)); // shows in office or remote
     infoPanel.add(new JLabel("Email: " + safe(user.email)));
