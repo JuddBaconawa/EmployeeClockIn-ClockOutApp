@@ -77,6 +77,7 @@ public class Dashboard extends DisplayCard {
         // Spacing
         contentPanel.add(new JPanel()); // Empty panel for spacing
         contentPanel.add(new JPanel()); // Empty panel for spacing
+        contentPanel.add(new JPanel()); // Empty panel for spacing
 
 
         // Add panels to layout
