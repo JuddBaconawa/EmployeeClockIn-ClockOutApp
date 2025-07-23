@@ -18,7 +18,7 @@ public class ProfilePanel extends JPanel {
 
   public ProfilePanel(User user) {
 
-    setLayout(new BorderLayout(5, 5));
+    setLayout(new BorderLayout(5, 0));
     setPreferredSize(new Dimension(200, 150));
     setBackground(new Color(255, 255, 255));
     setBorder(BorderFactory.createTitledBorder("Profile"));
@@ -33,12 +33,15 @@ public class ProfilePanel extends JPanel {
     profilePicturePanel.setOpaque(false);
     profilePicturePanel.setBorder(BorderFactory.createBevelBorder(BevelBorder.RAISED, Color.LIGHT_GRAY, Color.DARK_GRAY));
     profilePicturePanel.add(profilePictureLabel);
-    profilePicturePanel.setPreferredSize(new Dimension(75, 75));
+    profilePicturePanel.setPreferredSize(new Dimension(75, 55));
 
     JPanel infoPanel = new JPanel();
     infoPanel.setOpaque(false);
+    infoPanel.setLayout(new GridLayout(6, 1, 2, 2));
     infoPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-    infoPanel.setLayout(new GridLayout(3, 3, 2, 2));
+
+
+    infoPanel.add(new JLabel("ID: " + user.userId));
     infoPanel.add(new JLabel("Name: " + user.lastName + ", " + user.firstName));
     infoPanel.add(new JLabel("Location: " + user.location)); // shows in office or remote
     infoPanel.add(new JLabel("Email: " + safe(user.email)));
@@ -47,7 +50,7 @@ public class ProfilePanel extends JPanel {
     infoPanel.add(new JLabel("Remote/In-Office: " + (user.isRemote ? "Remote" : "In-Office")));
 
 
-    add(profilePicturePanel, BorderLayout.EAST);
+    add(profilePicturePanel, BorderLayout.NORTH);
     add(infoPanel, BorderLayout.CENTER);
     
   }
