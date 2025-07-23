@@ -12,6 +12,7 @@ public class User {
 		public java.awt.Image profilePicture;
 		public String firstName;
 		public String lastName;
+		public int userId;
 		public String username;
 		public String location;
 		public String department;
