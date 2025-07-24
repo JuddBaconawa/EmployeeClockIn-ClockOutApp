@@ -42,7 +42,7 @@ public class ClockPanel extends JPanel {
         this.dashboard = dashboard;
 
         setLayout(new BorderLayout(10, 10));
-        setPreferredSize(new Dimension(300, 150));
+        setPreferredSize(new Dimension(150, 150));
         setBackground(new Color(245, 245, 245));
         setBorder(BorderFactory.createTitledBorder("Time Tracking"));
 
