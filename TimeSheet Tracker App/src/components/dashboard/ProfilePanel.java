@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.awt.Image;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 
 import javax.swing.ImageIcon;
@@ -34,7 +35,7 @@ public class ProfilePanel extends JPanel {
 
     JLabel profilePictureLabel = new JLabel(scaleIcon(icon, 64, 64));
     profilePictureLabel.setBorder(BorderFactory.createBevelBorder(1));
-    profilePictureLabel.setPreferredSize(new Dimension(75, 75));
+    profilePictureLabel.setPreferredSize(new Dimension(90, 90));
 
 
     JPanel profilePicturePanel = new JPanel();
@@ -46,14 +47,17 @@ public class ProfilePanel extends JPanel {
     JPanel topInfoPanel = new JPanel();
     topInfoPanel.setLayout(new BoxLayout(topInfoPanel, BoxLayout.Y_AXIS));
     topInfoPanel.setOpaque(false);
-    topInfoPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 0));
+    topInfoPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
-
+    topInfoPanel.add(Box.createVerticalStrut(5));
     topInfoPanel.add(new JLabel("ID: " + user.userId));
+    topInfoPanel.add(Box.createVerticalStrut(5));
     topInfoPanel.add(new JLabel("Name: " + user.lastName + ", " + user.firstName));
+    topInfoPanel.add(Box.createVerticalStrut(5));
     topInfoPanel.add(new JLabel("Role: " + user.role));
+    topInfoPanel.add(Box.createVerticalStrut(5));
 
-    JPanel topSection = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+    JPanel topSection = new JPanel(new FlowLayout(1, 10, 10));
     topSection.setOpaque(false);
     topSection.add(profilePicturePanel);
     topSection.add(topInfoPanel);
@@ -64,14 +68,17 @@ public class ProfilePanel extends JPanel {
     bottomInfoPanel.setOpaque(false);
     bottomInfoPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-    bottomInfoPanel.add(new JLabel("Location: " + user.location)); // shows in office or remote
+    bottomInfoPanel.add(Box.createVerticalStrut(5));
+    bottomInfoPanel.add(new JLabel("Location: " + safe(user.location))); // shows in office or remote
+    bottomInfoPanel.add(Box.createVerticalStrut(5));
     bottomInfoPanel.add(new JLabel("Email: " + safe(user.email)));
-    bottomInfoPanel.add(new JLabel("Department: " + user.department));
-    
+    bottomInfoPanel.add(Box.createVerticalStrut(5));
+    bottomInfoPanel.add(new JLabel("Department: " + safe(user.department)));
+    bottomInfoPanel.add(Box.createVerticalStrut(5));   
     bottomInfoPanel.add(new JLabel("Remote/In-Office: " + (user.isRemote ? "Remote" : "In-Office")));
 
-
-    add(profilePicturePanel, BorderLayout.NORTH);
+    // ***************** Add Panels to Main Panel *****************
+    add(topSection, BorderLayout.NORTH);
     add(bottomInfoPanel, BorderLayout.CENTER);
     
   }
