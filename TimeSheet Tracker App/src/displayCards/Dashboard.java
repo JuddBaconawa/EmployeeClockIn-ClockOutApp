@@ -68,21 +68,34 @@ public class Dashboard extends DisplayCard {
         // timestatpanel reference to clockpanel
         TimeStatsPanel timeStatsPanel = new TimeStatsPanel(clockPanel);
 
+        // New top panel
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
+        topPanel.setOpaque(false);
+
+
         //profilepanel leaves a small white square for spacing
-        contentPanel.add(new TimeGraphPanel(clockPanel));
-        contentPanel.add(new ProfilePanel(User.getCurrentUser()));
-        contentPanel.add(new TimeStatsPanel(clockPanel));
-        contentPanel.add(new ClockPanel(this));
+        topPanel.add(new TimeGraphPanel(clockPanel));
+        topPanel.add(new ProfilePanel(User.getCurrentUser()));
+        topPanel.add(new TimeStatsPanel(clockPanel));
+        topPanel.add(new ClockPanel(this));
 
+        // Bottom Panel
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
+        bottomPanel.setOpaque(false);
         // Spacing
-        contentPanel.add(new JPanel()); // Empty panel for spacing
-        contentPanel.add(new JPanel()); // Empty panel for spacing
-        contentPanel.add(new JPanel()); // Empty panel for spacing
+        bottomPanel.add(new JPanel()); // Empty panel for spacing
+        bottomPanel.add(new JPanel()); // Empty panel for spacing
+        bottomPanel.add(new JPanel()); // Empty panel for spacing
 
+
+        contentPanel.add(topPanel);
+        contentPanel.add(bottomPanel);
 
         // Add panels to layout
         add(titlePanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
+
+
 
         
 
