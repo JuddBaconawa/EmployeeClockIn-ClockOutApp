@@ -27,7 +27,7 @@ public class TimeStatsPanel extends JPanel {
 
         // Initialize the panel
         setLayout(new BorderLayout(15, 10));
-        setPreferredSize(new Dimension(300, 150));
+        setPreferredSize(new Dimension(230, 150));
         setBackground(new Color(255, 255, 255));
         // setOpaque(false);
         setBorder(BorderFactory.createTitledBorder("Time Stats"));
