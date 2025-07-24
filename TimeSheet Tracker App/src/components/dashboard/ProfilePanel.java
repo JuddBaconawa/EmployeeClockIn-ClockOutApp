@@ -49,13 +49,13 @@ public class ProfilePanel extends JPanel {
     topInfoPanel.setOpaque(false);
     topInfoPanel.setBorder(BorderFactory.createEmptyBorder(5, 10, 5, 10));
 
-    topInfoPanel.add(Box.createVerticalStrut(5));
+    topInfoPanel.add(Box.createVerticalStrut(10));
     topInfoPanel.add(new JLabel("ID: " + user.userId));
-    topInfoPanel.add(Box.createVerticalStrut(5));
+    topInfoPanel.add(Box.createVerticalStrut(10));
     topInfoPanel.add(new JLabel("Name: " + user.lastName + ", " + user.firstName));
-    topInfoPanel.add(Box.createVerticalStrut(5));
+    topInfoPanel.add(Box.createVerticalStrut(10));
     topInfoPanel.add(new JLabel("Role: " + user.role));
-    topInfoPanel.add(Box.createVerticalStrut(5));
+    topInfoPanel.add(Box.createVerticalStrut(10));
 
     JPanel topSection = new JPanel(new FlowLayout(1, 10, 10));
     topSection.setOpaque(false);
@@ -68,13 +68,13 @@ public class ProfilePanel extends JPanel {
     bottomInfoPanel.setOpaque(false);
     bottomInfoPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-    bottomInfoPanel.add(Box.createVerticalStrut(5));
+    bottomInfoPanel.add(Box.createVerticalStrut(10));
     bottomInfoPanel.add(new JLabel("Location: " + safe(user.location))); // shows in office or remote
-    bottomInfoPanel.add(Box.createVerticalStrut(5));
+    bottomInfoPanel.add(Box.createVerticalStrut(10));
     bottomInfoPanel.add(new JLabel("Email: " + safe(user.email)));
-    bottomInfoPanel.add(Box.createVerticalStrut(5));
+    bottomInfoPanel.add(Box.createVerticalStrut(10));
     bottomInfoPanel.add(new JLabel("Department: " + safe(user.department)));
-    bottomInfoPanel.add(Box.createVerticalStrut(5));   
+    bottomInfoPanel.add(Box.createVerticalStrut(10));   
     bottomInfoPanel.add(new JLabel("Remote/In-Office: " + (user.isRemote ? "Remote" : "In-Office")));
 
     // ***************** Add Panels to Main Panel *****************
