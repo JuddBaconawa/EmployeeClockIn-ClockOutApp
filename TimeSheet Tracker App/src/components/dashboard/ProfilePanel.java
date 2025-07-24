@@ -24,7 +24,7 @@ public class ProfilePanel extends JPanel {
   public ProfilePanel(User user) {
 
     setLayout(new BorderLayout());
-    setPreferredSize(new Dimension(150, 150));
+    setPreferredSize(new Dimension(270, 250));
     setBackground(new Color(255, 255, 255));
     setBorder(BorderFactory.createTitledBorder("Profile"));
 
