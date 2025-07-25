@@ -58,9 +58,9 @@ public class Dashboard extends DisplayCard {
 
         // === Content Panel === 
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new GridLayout(2, 2, 25, 25));
+        contentPanel.setLayout(new GridLayout(2, 2, 10, 50));
         contentPanel.setOpaque(false);
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(40, 70, 40, 70)); // Add padding around the content panel
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 20)); // Add padding around the content panel
 
         // instantiate clock panel
         ClockPanel clockPanel = new ClockPanel(this);
@@ -69,13 +69,15 @@ public class Dashboard extends DisplayCard {
         TimeStatsPanel timeStatsPanel = new TimeStatsPanel(clockPanel);
 
         // New top panel
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
         topPanel.setOpaque(false);
+        
 
 
         //profilepanel leaves a small white square for spacing
-        topPanel.add(new TimeGraphPanel(clockPanel));
+        
         topPanel.add(new ProfilePanel(User.getCurrentUser()));
+        topPanel.add(new TimeGraphPanel(clockPanel));
         topPanel.add(new TimeStatsPanel(clockPanel));
         topPanel.add(new ClockPanel(this));
 
