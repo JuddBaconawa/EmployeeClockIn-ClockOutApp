@@ -13,6 +13,8 @@ public class TimeGraphPanel extends JPanel {
     // Default assumptions
     private long totalMillis = 8 * 60 * 60 * 1000; // 8h in ms
 
+
+    // Constructor - going to be changed into a exploding pie-donut chart
     public TimeGraphPanel(ClockPanel clockPanel) {
         this.clockPanel = clockPanel;
 
