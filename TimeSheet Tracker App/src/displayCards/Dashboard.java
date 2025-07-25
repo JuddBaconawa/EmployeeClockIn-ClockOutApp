@@ -3,6 +3,7 @@ package displayCards;
 // IMPORTS
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -18,6 +19,7 @@ import models.User;
 import components.dashboard.ProfilePanel;
 import components.dashboard.StatusIndicator;
 import components.dashboard.TimeGraphPanel;
+import components.dashboard.StreakPanel;
 
 
 // Dashboard class
@@ -83,11 +85,16 @@ public class Dashboard extends DisplayCard {
 
         // Bottom Panel
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
+        bottomPanel.setPreferredSize(new Dimension(1200, 300));
         bottomPanel.setOpaque(false);
+
+
         // Spacing
-        bottomPanel.add(new JPanel()); // Empty panel for spacing
-        bottomPanel.add(new JPanel()); // Empty panel for spacing
-        bottomPanel.add(new JPanel()); // Empty panel for spacing
+        // bottomPanel.add(new JPanel()); // Empty panel for spacing
+        // bottomPanel.add(new JPanel()); // Empty panel for spacing
+        // bottomPanel.add(new JPanel()); // Empty panel for spacing
+        bottomPanel.add(new StreakPanel());
+        bottomPanel.add(new JPanel());
 
 
         contentPanel.add(topPanel);
