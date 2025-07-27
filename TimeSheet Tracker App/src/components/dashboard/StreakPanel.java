@@ -23,14 +23,29 @@ public class StreakPanel extends JPanel {
         setOpaque(false);
         setPreferredSize(new Dimension(800, 300));
 
-        JPanel calendarWrapper = new JPanel();
-        calendarWrapper.setBorder(BorderFactory.createTitledBorder("Streak Calendar"));
-        calendarWrapper.setOpaque(false);
-        calendarWrapper.add(new CalendarPanel());
+        // left Panel: Graph
+        JPanel graphPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                drawDonutGraph(g);
+            }
+        };
 
-        add(calendarWrapper);
+        graphPanel.setPreferredSize(new Dimension(400, 300));
+        graphPanel.setOpaque(false);
 
+        // Right Panel: Calendar
+        JPanel calendarPanel = new JPanel();
+        calendarPanel.setBorder(BorderFactory.createTitledBorder("Streak Calendar"));
+        calendarPanel.setOpaque(false);
+        calendarPanel.add(new CalendarPanel()); 
 
+        // Add to main layout
+        add(graphPanel, BorderLayout.WEST);
+        add(calendarPanel, BorderLayout.CENTER);
+
+        // Click to cycle metrics
         addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent e) {
                 currentMetric = (currentMetric + 1) % metrics.length;
@@ -39,9 +54,9 @@ public class StreakPanel extends JPanel {
         });
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    
+    protected void drawDonutGraph(Graphics g) {
+  
 
         double work = workHours[currentMetric];
         double breakTime = breakHours[currentMetric];
@@ -89,10 +104,11 @@ public class StreakPanel extends JPanel {
         g2.drawString(valueStr, tx, ty);
 
         // Label under graph
-        g2.setFont(new Font("Arial", Font.PLAIN, 18));
+        g2.setFont(new Font("Arial", Font.BOLD, 18));
         String label = metrics[currentMetric];
         FontMetrics lf = g2.getFontMetrics();
         int lx = getWidth() / 2 - lf.stringWidth(label) / 2;
         g2.drawString(label, lx, y + size + 30);
-    }
+
+    }    
 }
