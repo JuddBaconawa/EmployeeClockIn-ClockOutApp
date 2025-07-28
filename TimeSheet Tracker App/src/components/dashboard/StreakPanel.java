@@ -36,10 +36,10 @@ public class StreakPanel extends JPanel {
         graphPanel.setOpaque(false);
 
         // Right Panel: Calendar
-        JPanel calendarPanel = new JPanel();
+        JPanel calendarPanel = new JPanel(new BorderLayout());
         calendarPanel.setBorder(BorderFactory.createTitledBorder("Streak Calendar"));
         calendarPanel.setOpaque(false);
-        calendarPanel.add(new CalendarPanel()); 
+        calendarPanel.add(new CalendarPanel(), BorderLayout.EAST); 
 
         // Add to main layout
         add(graphPanel, BorderLayout.WEST);
