@@ -19,6 +19,7 @@ public class StreakPanel extends JPanel {
     private final double maxHours = 12.0;
 
     public StreakPanel() {
+        setLayout(new BorderLayout());
         setBorder(BorderFactory.createTitledBorder("Streak Overview"));
         setOpaque(false);
         setPreferredSize(new Dimension(800, 300));
@@ -39,7 +40,7 @@ public class StreakPanel extends JPanel {
         JPanel calendarPanel = new JPanel(new BorderLayout());
         calendarPanel.setBorder(BorderFactory.createTitledBorder("Streak Calendar"));
         calendarPanel.setOpaque(false);
-        calendarPanel.add(new CalendarPanel(), BorderLayout.EAST); 
+        calendarPanel.add(new CalendarPanel(), BorderLayout.CENTER); 
 
         // Add to main layout
         add(graphPanel, BorderLayout.WEST);
