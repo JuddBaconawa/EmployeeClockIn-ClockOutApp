@@ -7,15 +7,16 @@ import java.util.HashMap;
 
 public class CalendarPanel extends JPanel {
 
-    private final int WEEKS = 5;
+    private final int WEEKS = 6;
     private final int DAYS_IN_WEEK = 7;
-    private final int BOX_SIZE = 30;
+    private final int BOX_SIZE = 35;
+    
 
     // Simulated time log data: LocalDate -> hours worked
     private final HashMap<LocalDate, Double> workLog;
 
     public CalendarPanel() {
-        setPreferredSize(new Dimension(BOX_SIZE * DAYS_IN_WEEK + 50, BOX_SIZE * (WEEKS + 1)));
+        setPreferredSize(new Dimension(BOX_SIZE * DAYS_IN_WEEK + 40, BOX_SIZE * (WEEKS + 1)));
         setOpaque(false);
 
         workLog = new HashMap<>();
