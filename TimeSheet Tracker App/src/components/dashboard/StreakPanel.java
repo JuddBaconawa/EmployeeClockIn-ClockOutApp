@@ -78,7 +78,7 @@ public class StreakPanel extends JPanel {
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         int size = 200;
-        int x = (getWidth() - size) / 2;
+        int x = (panel.getWidth() - size) / 2;
         int y = 40;
 
         // Outer background ring (max)
@@ -110,7 +110,7 @@ public class StreakPanel extends JPanel {
         g2.setFont(new Font("Arial", Font.BOLD, 18));
         String valueStr = String.format("%.2f h", total);
         FontMetrics fm = g2.getFontMetrics();
-        int tx = getWidth() / 2 - fm.stringWidth(valueStr) / 2;
+        int tx = panel.getWidth() / 2 - fm.stringWidth(valueStr) / 2;
         int ty = y + size / 2 + fm.getAscent() / 2 - 5;
         g2.setColor(Color.DARK_GRAY);
         g2.drawString(valueStr, tx, ty);
@@ -119,7 +119,7 @@ public class StreakPanel extends JPanel {
         g2.setFont(new Font("Arial", Font.BOLD, 18));
         String label = metrics[currentMetric];
         FontMetrics lf = g2.getFontMetrics();
-        int lx = getWidth() / 2 - lf.stringWidth(label) / 2;
+        int lx = panel.getWidth() / 2 - lf.stringWidth(label) / 2;
         g2.drawString(label, lx, y + size + 30);
 
     }    
