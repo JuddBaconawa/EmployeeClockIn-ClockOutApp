@@ -1,23 +1,30 @@
+// PACKAGES
 package components.dashboard;
 
+// IMPORTS
 import javax.swing.*;
 import java.awt.*;
 
+// StreakPanel class
 public class StreakPanel extends JPanel {
 
+    // donut graph metrics
     private String[] metrics = {
         "Avg Hours/Workday",
         "Avg Breaks Taken",
         "Work + Break Total"
     };
 
+    // Current metric index set to 0
     private int currentMetric = 0;
 
     // Simulated data
     private double[] workHours = { 6.5, 6.5, 7.7 };
     private double[] breakHours = { 0.0, 1.2, 0.7 };  // relevant only for break/total
     private final double maxHours = 12.0;
+    private JPanel graphPanel;
 
+    // StreakPanel constructor
     public StreakPanel() {
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createTitledBorder("Streak Overview"));
@@ -29,22 +36,26 @@ public class StreakPanel extends JPanel {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                drawDonutGraph(g);
+                drawDonutGraph(g, this);
             }
         };
 
+        // set graphPanel properties
         graphPanel.setPreferredSize(new Dimension(400, 300));
         graphPanel.setOpaque(false);
+
+        add(graphPanel, BorderLayout.WEST);
 
         // Right Panel: Calendar
         JPanel calendarPanel = new JPanel(new BorderLayout());
         calendarPanel.setBorder(BorderFactory.createTitledBorder("Streak Calendar"));
         calendarPanel.setOpaque(false);
-        calendarPanel.add(new CalendarPanel(), BorderLayout.CENTER); 
+        calendarPanel.add(new CalendarPanel(), BorderLayout.CENTER);
+        add(calendarPanel, BorderLayout.CENTER); 
 
         // Add to main layout
         add(graphPanel, BorderLayout.WEST);
-        add(calendarPanel, BorderLayout.CENTER);
+        add(calendarPanel, BorderLayout.EAST);
 
         // Click to cycle metrics
         addMouseListener(new java.awt.event.MouseAdapter() {
@@ -56,7 +67,7 @@ public class StreakPanel extends JPanel {
     }
 
     
-    protected void drawDonutGraph(Graphics g) {
+    protected void drawDonutGraph(Graphics g, JPanel panel) {
   
 
         double work = workHours[currentMetric];
