@@ -15,7 +15,7 @@ public class CalendarPanel extends JPanel {
     private final HashMap<LocalDate, Double> workLog;
 
     public CalendarPanel() {
-        setPreferredSize(new Dimension(BOX_SIZE * DAYS_IN_WEEK + 20, BOX_SIZE * (WEEKS + 1)));
+        setPreferredSize(new Dimension(BOX_SIZE * DAYS_IN_WEEK + 50, BOX_SIZE * (WEEKS + 1)));
         setOpaque(false);
 
         workLog = new HashMap<>();
