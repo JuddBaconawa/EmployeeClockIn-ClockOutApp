@@ -50,6 +50,7 @@ public class StreakPanel extends JPanel {
         JPanel calendarPanel = new JPanel(new BorderLayout());
         calendarPanel.setBorder(BorderFactory.createTitledBorder("Streak Calendar"));
         calendarPanel.setOpaque(false);
+        calendarPanel.setPreferredSize(new Dimension(400, 300));
         calendarPanel.add(new CalendarPanel(), BorderLayout.CENTER);
         add(calendarPanel, BorderLayout.CENTER); 
 
