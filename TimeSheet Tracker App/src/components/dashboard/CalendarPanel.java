@@ -45,7 +45,7 @@ public class CalendarPanel extends JPanel {
         int startDayOfWeek = firstOfMonth.getDayOfWeek().getValue() % 7; // Sunday = 0
 
         // Draw day labels (S M T W T F S)
-        String[] days = {"S", "M", "T", "W", "T", "F", "S"};
+        String[] days = {"S", "M", "T", "W", "TH", "F", "S"};
         g2.setFont(new Font("Arial", Font.BOLD, 14));
         for (int i = 0; i < DAYS_IN_WEEK; i++) {
             int x = i * BOX_SIZE + 10;
