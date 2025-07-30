@@ -12,6 +12,7 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.util.HashMap;
+import java.util.Locale;
 
 // Simulated time log data: LocalDate -> hours worked
 import java.time.LocalDate;
@@ -19,36 +20,36 @@ import java.time.LocalDate;
 // Swing imports
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
+import javax.swing.border.BevelBorder;
 
 // StreakPanel class
 public class StreakPanel extends JPanel {
 
     // Declarations of objects
-    private final int WEEKS = 27;
-    private final int DAYS_IN_WEEK = 7;
-    private final int BOX_SIZE = 15;
-    private final int GAP = 3;
-    private final int LEFT_PADDING = 40;
-    private final int TOP_PADDING = 20;
+    private final int WEEKS = 53; // 1 year of weeks
+    private final int DAYS_IN_WEEK = 7; // 7 days in a week
+    private final int BOX_SIZE = 15; // size of each box in the grid
+    private final int GAP = 3; // gap between boxes
+    private final int LEFT_PADDING = 40; // padding for the left side
+    private final int TOP_PADDING = 20; // padding for the top side
     
 
+    // Map to hold the log data
     private final HashMap<LocalDate, Double> logData = new HashMap<>();
 
+    // StreakPanel constructor
     public StreakPanel() {
+        this.data = generateMockData();
         setPreferredSize(new Dimension(WEEKS * (BOX_SIZE + 2), DAYS_IN_WEEK * (BOX_SIZE + 2)));
         setBackground(Color.WHITE);
+        setBorder(new BevelBorder(ABORT, getForeground(), getBackground()));
 
         generateMockData();
     }
 
-    private void generateMockData() {
-        LocalDate today = LocalDate.now();
-        for (int i = 0; i < WEEKS * DAYS_IN_WEEK; i++) {
-            LocalDate date = today.minusDays(i);
-            logData.put(date, Math.random() * 10);  // random hours
-        }
-    }
 
+
+    // Method to initialize the panel
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -75,12 +76,25 @@ public class StreakPanel extends JPanel {
         }
     }
 
+    // Method to get the color based on hours worked
     private Color getColorForHours(double hours) {
         if (hours == 0) return new Color(235, 237, 240);
         if (hours < 2) return new Color(198, 228, 139);
         if (hours < 4) return new Color(123, 201, 111);
         if (hours < 6) return new Color(35, 154, 59);
         return new Color(25, 97, 39); 
+    }
+
+    // Method to generate mock data for the last 27 weeks
+    private HashMap<LocalDate, Integer> generateMockData() {
+        HashMap<LocalDate, Integer> map = new HashMap<>();
+        LocalDate today = LocalDate.now();
+        for (int i = 0; i < WEEKS * DAYS_IN_WEEK; i++) {
+            LocalDate date = today.minusDays(i);
+            map.put(date, (int) Math.random() * 7);  // random hours
+        }
+
+        return map;
     }
 
 
