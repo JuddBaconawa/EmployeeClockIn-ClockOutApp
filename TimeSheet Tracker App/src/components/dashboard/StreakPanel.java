@@ -27,6 +27,11 @@ public class StreakPanel extends JPanel {
     private final int WEEKS = 27;
     private final int DAYS_IN_WEEK = 7;
     private final int BOX_SIZE = 15;
+    private final int GAP = 3;
+    private final int LEFT_PADDING = 40;
+    private final int TOP_PADDING = 20;
+    
+
     private final HashMap<LocalDate, Double> logData = new HashMap<>();
 
     public StreakPanel() {
