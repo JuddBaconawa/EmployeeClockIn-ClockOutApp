@@ -13,7 +13,7 @@ import java.awt.RenderingHints;
 import java.awt.event.MouseAdapter;
 import java.util.HashMap;
 import java.util.Locale;
-
+import java.time.DayOfWeek;
 // Simulated time log data: LocalDate -> hours worked
 import java.time.LocalDate;
 
@@ -30,8 +30,11 @@ public class StreakPanel extends JPanel {
     private final int DAYS_IN_WEEK = 7; // 7 days in a week
     private final int BOX_SIZE = 15; // size of each box in the grid
     private final int GAP = 3; // gap between boxes
+
+    private final int LABEL_GAP = 20; // gap for the month labels
     private final int BOX_PADDING = 2; // padding for the left side
     private final int TOP_PADDING = 20; // padding for the top side
+    private final int LEFT_PADDING = 30; // padding for the left side
     
 
     // Map to hold the log data
@@ -67,8 +70,26 @@ public class StreakPanel extends JPanel {
 
         int col = 0; // Column index
         int lastMonth = -1; // Last month index to avoid duplicate labels
-        LocalDate current = firstSunday;
+        LocalDate firstSunday = startDate.with(DayOfWeek.SUNDAY);
+
         int lastMonth = -1;
+
+        for (int week = 0; week < WEEKS; week++) {
+            for (int day = 0; day < DAYS_IN_WEEK; day++) {
+                LocalDate date = firstDay.plusDays(week).plusDay(day);
+                int value = data.getOrDefault(date, 0);
+
+                int x = LEFT_PADDING + week * (BOX_SIZE + GAP);
+                int y = TOP_PADDING + day * (BOX_SIZE + GAP);
+
+
+                g.setColor(getColorForHours(value));
+                g.fillRect(x, y, BOX_SIZE, BOX_SIZE);
+            }
+
+            // Draw month labels
+            
+        }
 
 
     }
