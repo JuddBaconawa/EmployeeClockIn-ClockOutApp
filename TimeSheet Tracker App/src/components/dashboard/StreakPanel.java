@@ -61,22 +61,16 @@ public class StreakPanel extends JPanel {
     private void drawGrid(Graphics2D g) {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        
         LocalDate today = LocalDate.now();
         LocalDate startDate = today.minusWeeks(WEEKS);
-        LocalDate firstDay = startDate.minusDays(startDate.getDayOfWeek().getValue() % 7);
-
-        int startX = 50; // LEFT margin
-        int startY = 30; // Top Margin
-
-        int col = 0; // Column index
-        int lastMonth = -1; // Last month index to avoid duplicate labels
         LocalDate firstSunday = startDate.with(DayOfWeek.SUNDAY);
 
         int lastMonth = -1;
 
         for (int week = 0; week < WEEKS; week++) {
             for (int day = 0; day < DAYS_IN_WEEK; day++) {
-                LocalDate date = firstDay.plusDays(week).plusDay(day);
+                LocalDate date = firstSunday.plusDays(week).plusDays(day);
                 int value = data.getOrDefault(date, 0);
 
                 int x = LEFT_PADDING + week * (BOX_SIZE + GAP);
@@ -88,8 +82,29 @@ public class StreakPanel extends JPanel {
             }
 
             // Draw month labels
-            
+            LocalDate labelDate = firstSunday.plusWeeks(week);
+            int monthValue = labelDate.getMonthValue();
+            if (monthValue != lastMonth) {
+                g.setColor(Color.DARK_GRAY);
+                g.setFont(new Font("SansSerif", Font.PLAIN, 10));
+                String monthText = labelDate.getMonth().toString().substring(0,3);
+                int x = LEFT_PADDING + week * (BOX_SIZE + GAP);
+                g.drawString(monthText, x, TOP_PADDING - 10);
+                lastMonth = monthValue;
+
+            }
+
         }
+
+        // Optionally, draw the grid lines
+        g.setColor(Color.GRAY);
+        g.setFont(new Font("SansSerif", Font.PLAIN, 10));
+        String[] days = {"S", "M", "T", "W", "TH", "F", "S"};
+        for (int i = 0; i < DAYS_IN_WEEK; i++) {
+            int y = TOP_PADDING + i * (BOX_SIZE + GAP) + 10;
+            g.drawString(days[i], LEFT_PADDING - 20, y);
+        }
+
 
 
     }
