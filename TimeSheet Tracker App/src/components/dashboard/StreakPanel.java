@@ -26,62 +26,58 @@ import javax.swing.border.BevelBorder;
 public class StreakPanel extends JPanel {
 
     // Declarations of objects
-    private final int WEEKS = 53; // 1 year of weeks
+    private final int WEEKS = 52; // 1 year of weeks
     private final int DAYS_IN_WEEK = 7; // 7 days in a week
     private final int BOX_SIZE = 15; // size of each box in the grid
     private final int GAP = 3; // gap between boxes
-    private final int LEFT_PADDING = 40; // padding for the left side
+    private final int BOX_PADDING = 2; // padding for the left side
     private final int TOP_PADDING = 20; // padding for the top side
     
 
     // Map to hold the log data
-    private final HashMap<LocalDate, Double> logData = new HashMap<>();
+    private final HashMap<LocalDate, Integer> data;
 
     // StreakPanel constructor
     public StreakPanel() {
         this.data = generateMockData();
-        setPreferredSize(new Dimension(WEEKS * (BOX_SIZE + 2), DAYS_IN_WEEK * (BOX_SIZE + 2)));
+        int panelWidth = (BOX_SIZE + BOX_PADDING) * WEEKS + 60;
+        int panelHeight = (BOX_SIZE + BOX_PADDING) * DAYS_IN_WEEK + 40;
+        setPreferredSize(new Dimension(panelWidth, panelHeight));
         setBackground(Color.WHITE);
-        setBorder(new BevelBorder(ABORT, getForeground(), getBackground()));
 
-        generateMockData();
     }
-
 
 
     // Method to initialize the panel
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        drawGrid((Graphics2D) g);
+    }
 
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+    private void drawGrid(Graphics2D g) {
+        g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         LocalDate today = LocalDate.now();
-        int x = 0;
+        LocalDate startDate = today.minusWeeks(WEEKS);
+        LocalDate firstDay = startDate.minusDays(startDate.getDayOfWeek().getValue() % 7);
 
-        for (int week = 0; week < WEEKS; week++) {
-            int y = 0;
-            for (int day = 0; day < DAYS_IN_WEEK; day++) {
-                LocalDate date = today.minusDays(week * 7 + day);
-                double hours = logData.getOrDefault(date, 0.0);
+        int startX = 50; // LEFT margin
+        int startY = 30; // Top Margin
 
-                g2.setColor(getColorForHours(hours));
-                g2.fillRect(x, y, BOX_SIZE, BOX_SIZE);
+        int col = 0; // Column index
+        int lastMonth = -1; // Last month index to avoid duplicate labels
+        LocalDate current = firstSunday;
 
-                y += BOX_SIZE + 2;
-            }
-
-            x+= BOX_SIZE + 2;
-        }
+        
     }
 
     // Method to get the color based on hours worked
     private Color getColorForHours(double hours) {
         if (hours == 0) return new Color(235, 237, 240);
-        if (hours < 2) return new Color(198, 228, 139);
-        if (hours < 4) return new Color(123, 201, 111);
-        if (hours < 6) return new Color(35, 154, 59);
+        if (hours < 4) return new Color(198, 228, 139);
+        if (hours < 6) return new Color(123, 201, 111);
+        if (hours < 8) return new Color(35, 154, 59);
         return new Color(25, 97, 39); 
     }
 
