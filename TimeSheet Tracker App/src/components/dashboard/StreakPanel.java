@@ -68,8 +68,9 @@ public class StreakPanel extends JPanel {
         int col = 0; // Column index
         int lastMonth = -1; // Last month index to avoid duplicate labels
         LocalDate current = firstSunday;
+        int lastMonth = -1;
 
-        
+
     }
 
     // Method to get the color based on hours worked
