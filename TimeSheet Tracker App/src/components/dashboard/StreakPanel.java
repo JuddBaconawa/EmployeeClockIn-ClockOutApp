@@ -33,7 +33,7 @@ public class StreakPanel extends JPanel {
 
     private final int LABEL_GAP = 20; // gap for the month labels
     private final int BOX_PADDING = 2; // padding for the left side
-    private final int TOP_PADDING = 20; // padding for the top side
+    private final int TOP_PADDING = 25; // padding for the top side
     private final int LEFT_PADDING = 30; // padding for the left side
     
 
@@ -43,8 +43,8 @@ public class StreakPanel extends JPanel {
     // StreakPanel constructor
     public StreakPanel() {
         this.data = generateMockData();
-        int panelWidth = (BOX_SIZE + BOX_PADDING) * WEEKS + 60;
-        int panelHeight = (BOX_SIZE + BOX_PADDING) * DAYS_IN_WEEK + 40;
+        int panelWidth = (BOX_SIZE + BOX_PADDING) * WEEKS + 90;
+        int panelHeight = (BOX_SIZE + BOX_PADDING) * DAYS_IN_WEEK + 35;
         setPreferredSize(new Dimension(panelWidth, panelHeight));
         setBackground(Color.WHITE);
 
@@ -99,7 +99,7 @@ public class StreakPanel extends JPanel {
         // Optionally, draw the grid lines
         g.setColor(Color.GRAY);
         g.setFont(new Font("SansSerif", Font.PLAIN, 10));
-        String[] days = {"S", "M", "T", "W", "TH", "F", "S"};
+        String[] days = {"S", "M", " ", "W", " ", "F", "S"};
         for (int i = 0; i < DAYS_IN_WEEK; i++) {
             int y = TOP_PADDING + i * (BOX_SIZE + GAP) + 10;
             g.drawString(days[i], LEFT_PADDING - 20, y);
