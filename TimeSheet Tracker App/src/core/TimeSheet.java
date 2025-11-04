@@ -40,17 +40,16 @@ import displayCards.Projects;
 import displayCards.Settings;
 import displayCards.Timelog;
 
-import javax.swing.border.EmptyBorder;
-
-
-
 
 
 // TimeSheet class
-
 public class TimeSheet extends JFrame{
 
 	private JPanel displayPanel;
+
+	// variable for dragging the window
+	private int mouseX;
+	private int mouseY;
 
 	public void showCard(String cardname) {
 		CardLayout cl = (CardLayout) displayPanel.getLayout();
@@ -72,7 +71,11 @@ public class TimeSheet extends JFrame{
 		setResizable(false);
 		setLayout(null);
 
+		// Rounds the window's corner
 		setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 15, 15));	// Rounded corners 10 radius
+
+		// Enable the ability for the user to drag the window around
+		enableWindowDrag(this);
 
 		/********************* Main Panel Settings ***********************/
 		JPanel mainPanel = new JPanel(null);
@@ -97,9 +100,9 @@ public class TimeSheet extends JFrame{
 
 		/********************** (Views) Display Panel *********************/
 		displayPanel = new JPanel(new java.awt.CardLayout());
-		// displayPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Add padding around the display panel
 		displayPanel.setBounds(200, 0, 1200, 800);
 		displayPanel.setBackground(new Color(240, 235, 216));
+
 		displayPanel.add(new Dashboard(), "Dashboard");
 		displayPanel.add(new Profile(), "Profile");
 		displayPanel.add(new Timelog(), "Timelog");
@@ -111,6 +114,26 @@ public class TimeSheet extends JFrame{
 		// add(displayPanel);												// Add display panel to the frame		
 		add(mainPanel);														// Add main panel to the frame					
 		// add(menuPanel);														// Add menu panel to the frame
+	}
+
+	private void enableWindowDrag(JFrame frame) {
+		frame.addMouseListener(new java.awt.event.MouseAdapter() {
+			@Override
+			public void mousePressed(java.awt.event.MouseEvent e) {
+				mouseX = e.getX();
+				mouseY = e.getY();
+			}
+		});
+
+		frame.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+			@Override
+			public void mouseDragged(java.awt.event.MouseEvent e) {
+				int x = e.getXOnScreen();
+				int y = e.getYOnScreen();
+				frame.setLocation(x - mouseX, y - mouseY);
+			}
+
+		});
 	}
 
 	public static void main(String[] args) {
