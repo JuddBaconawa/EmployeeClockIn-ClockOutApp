@@ -19,6 +19,7 @@ import java.awt.event.ActionEvent;			// Effect or function of when clicked
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;							//for buttons within the forms
@@ -31,6 +32,7 @@ import javax.swing.JTextField;					//username input
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;			//constants
 
+// file imports from class
 import models.User;
 import core.TimeSheet;
 
@@ -51,7 +53,7 @@ public class LoginForm extends JFrame {
 
 	public void initialize() {
 
-		// 
+		// company icon
 		setIconImage(new ImageIcon("src/images/app-file-icon.png").getImage());
 
 		//create the outer main panel as a background
@@ -156,11 +158,15 @@ public class LoginForm extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+
+				// get user input
 				String username = usernameInput.getText();
 				String password = String.valueOf(userPasswordInput.getPassword());
 
+				//check credentials
 				User user = getAuthenticatedUser(username, password);
 
+				// if valid user - open timesheet
 				if (user != null) {
 					TimeSheet timeSheet = new TimeSheet();
 					timeSheet.initialize(user);
@@ -291,7 +297,7 @@ public class LoginForm extends JFrame {
 			preparedStatement.setString(2, passwordInput);
 
 			// result set
-			java.sql.ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSet = preparedStatement.executeQuery();
 
 			// if statement to check if the user exist
 			if (resultSet.next()) {
@@ -302,16 +308,12 @@ public class LoginForm extends JFrame {
 				user.setFullName(resultSet.getString("full_name"));
 			}
 			
+			resultSet.close();
+			preparedStatement.close();
 			conn.close();
 
 		} catch (Exception e) {
 			System.err.println("Database connection failed: " + e.getMessage());
-		}
-
-
-
-		} catch (Exception e) {
-			System.err.println("Database connection failed" + e.getLocalizedMessage());
 		}
 
 		return user;
