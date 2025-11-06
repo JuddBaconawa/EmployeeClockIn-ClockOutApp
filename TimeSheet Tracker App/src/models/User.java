@@ -26,6 +26,7 @@ public class User {
 		private static User currentUser = new User();
 
 		public User() {
+			// this. uses the current
 			this.username = "SampleUser";
 			this.role = "Employee";
 			this.department = "General";
@@ -40,5 +41,8 @@ public class User {
 		public static void setCurrentUser(User user) {
 			currentUser = user;
 		}
+
+		// ********************** setters ************************
+		public void setUserId(int userId) {this.userId = userId; }
 
 }
