@@ -41,8 +41,9 @@ public class LoginForm extends JFrame {
 	// Global variables are declared that they could be used
 	
 	// Required to be declared and made global for credential checks
-	JTextField usernameInput;
-	JPasswordField userPasswordInput;
+	private JTextField usernameInput;
+	private JPasswordField userPasswordInput;
+	private JButton loginButton;
 
 	public LoginForm() {
         initialize();
@@ -289,13 +290,31 @@ public class LoginForm extends JFrame {
 			preparedStatement.setString(1, usernameInput);
 			preparedStatement.setString(2, passwordInput);
 
+			// result set
+			java.sql.ResultSet resultSet = preparedStatement.executeQuery();
+
+			// if statement to check if the user exist
+			if (resultSet.next()) {
+				user = new User();
+				user.setId(resultSet.getInt("id"));
+				user.setUsername(resultSet.getString("username"));
+				user.setPassword(resultSet.getString("password"));
+				user.setFullName(resultSet.getString("full_name"));
+			}
+			
+			conn.close();
+
+		} catch (Exception e) {
+			System.err.println("Database connection failed: " + e.getMessage());
+		}
+
+
 
 		} catch (Exception e) {
 			System.err.println("Database connection failed" + e.getLocalizedMessage());
 		}
 
 		return user;
-
 	}
 
 }
