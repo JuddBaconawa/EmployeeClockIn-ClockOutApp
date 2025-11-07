@@ -244,7 +244,7 @@ public class MenuPanel extends JPanel {
         button.setBorderPainted(false);
         button.setFocusPainted(false);
         button.setBackground(bg);
-        button.setBackground(new Color(255, 255, 255));
+        // button.setBackground(new Color(255, 255, 255));
         button.setForeground(new Color(29, 45, 68));
         button.setFont(new Font("Arial", Font.BOLD, 25));
         button.setVerticalAlignment(SwingConstants.CENTER);
