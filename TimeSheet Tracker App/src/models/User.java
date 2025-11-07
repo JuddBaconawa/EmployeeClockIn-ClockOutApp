@@ -43,6 +43,19 @@ public class User {
 		}
 
 		// ********************** setters ************************
-		public void setUserId(int userId) {this.userId = userId; }
-
+		public void setUserId(int userId) {this.userId = userId;}
+		public void setUsername(String username) {this.username = username;}
+		public void setPassword(String password) {this.password = password;}
+		public void setFirstName(String firstName) {this.firstName = firstName;}
+		public void setLastName(String lastName) {this.lastName = lastName;}
+		public void setEmail(String email) {this.email = email;}
+		public void setRole(String role) {this.role = role;}
+		public void setDepartment(String department) {this.department = department;}
+		public void setLocation(String location) {this.location = location;}
+		public void setPhone(String phone) {this.phone = phone;}
+		public void setAddress(String address) {this.address = address;}
+		public void setProfilePicture(Image profilePicture) {this.profilePicture = profilePicture;}
+		public void setRemote(boolean isRemote) {this.isRemote = isRemote;}
+		public String getFullName() {return lastName + ", " + firstName;}
+		
 }
