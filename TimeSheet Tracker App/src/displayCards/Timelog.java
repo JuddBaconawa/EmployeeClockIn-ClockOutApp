@@ -16,9 +16,9 @@ public class Timelog extends DisplayCard {
       setLayout(null);
 
       // Example data
-      String[] columns = {"Type", "Time"};
+      String[] columns = {"Type", "Time", "Day", "Date"};
       Object[][] data = {
-          {"Login", "08:00 AM"},
+          {"Login", "08:00 AM", "Monday", "02/03/25"},
           {"Break", "12:00 PM"},
           {"Logout", "05:00 PM"},
           {"Login", "06:00 PM"},
