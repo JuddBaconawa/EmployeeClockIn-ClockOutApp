@@ -71,7 +71,7 @@ public class Dashboard extends DisplayCard {
         TimeStatsPanel timeStatsPanel = new TimeStatsPanel(clockPanel);
 
         // New top panel
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 10));
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 60,20));
         topPanel.setOpaque(false);
         
 
