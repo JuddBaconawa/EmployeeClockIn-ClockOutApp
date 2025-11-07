@@ -1,4 +1,4 @@
-CREATE DATABASE timesheetappdatabase;
+CREATE DATABASE IF NOT EXISTS timesheetappdatabase;
 USE timesheetappdatabase;
 
 -- DROP Tables for mystore to clear them.
@@ -27,14 +27,16 @@ CREATE TABLE salaries (
     payType ENUM('hourly', 'salary') NOT NULL DEFAULT 'hourly',
     payRate DECIMAL(10,2) NOT NULL,
     effectiveDate DATE NOT NULL,
-    FOREIGN KEY (userId) REFERENCES users(userId) on DELETE CASCADE
+    FOREIGN KEY (userId) REFERENCES users(userid) on DELETE CASCADE
 );
 
 
 
 
+-- ADMIN
+INSERT INTO users (username, email, phone, address, password, role)
+    VALUES ('admin', 'admin@gmail.com', '+1234567890', 'New York, USA', 'password01', 'admin');
 
-INSERT INTO users (userid, username, email, phone, address, password)
-    VALUES (0000001, 'admin', 'admin@gmail.com', '+1234567890', 'New York, USA', 'password01');
-INSERT INTO users (userid, username, email, phone, address, password)
-    VALUES (3171245, 'dulce', 'dulcebaconawa@gmail.com', '+15613171571', 'Florida, USA', 'password01');
+-- Employee
+INSERT INTO users (username, email, phone, address, password, role)
+    VALUES ('dulce', 'dulcebaconawa@gmail.com', '+15613171571', 'Florida, USA', 'password01', 'employee');
