@@ -84,7 +84,7 @@ public class Dashboard extends DisplayCard {
         topPanel.add(new ClockPanel(this));
 
         // Bottom Panel
-        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 20));
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
         bottomPanel.setPreferredSize(new Dimension(1200, 300));
         bottomPanel.setOpaque(false);
 
