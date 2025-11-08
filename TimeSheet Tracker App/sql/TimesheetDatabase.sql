@@ -68,4 +68,7 @@ INSERT INTO users (username, email, phone, address, password, role)
 
 -- Employee
 INSERT INTO users (username, email, phone, address, password, role)
-    VALUES ('dulce', 'dulcebaconawa@gmail.com', '+15613171571', 'Florida, USA', 'password01', 'employee');
+    VALUES 
+    ('dulce', 'dulcebaconawa@gmail.com', '+15613171571', 'Florida, USA', 'password01', 'employee'),
+    ('judd', 'juddbaconawa@gmail.com', '+15613171572', 'Florida, USA', 'password02', 'admin'),        
+    ('maria', 'mariacruz@gmail.com', '+15613171573', 'California, USA', 'password03', 'manager');
