@@ -4,17 +4,15 @@ import components.DisplayCard;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Projects extends DisplayCard {
 
     private JPanel projectsGrid;
 
     public Projects() {
-        super("Projects"); // DisplayCard title
+        super("Projects");
 
         setBackground(new Color(240, 235, 216));
         setLayout(new BorderLayout());
@@ -30,10 +28,12 @@ public class Projects extends DisplayCard {
 
         // === Projects Grid Panel ===
         projectsGrid = new JPanel();
+        // [CHANGED] Keep GridLayout, same as before
         projectsGrid.setLayout(new GridLayout(0, 2, 20, 20)); // 2 columns, dynamic rows
         projectsGrid.setBackground(new Color(240, 240, 240));
         projectsGrid.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
+        // [CHANGED] Wrap grid in scroll pane
         JScrollPane scrollPane = new JScrollPane(projectsGrid);
         scrollPane.setBorder(null);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -51,6 +51,7 @@ public class Projects extends DisplayCard {
     public void setProjects(List<Project> projectList) {
         projectsGrid.removeAll();
         for (Project p : projectList) {
+            // [CHANGED] call new card creation method
             projectsGrid.add(createProjectCard(p));
         }
         projectsGrid.revalidate();
@@ -58,68 +59,52 @@ public class Projects extends DisplayCard {
     }
 
     // Create each project card
-private JPanel createProjectCard(Project p) {
-    JPanel panel = new JPanel();
-    panel.setLayout(new BorderLayout());
-    panel.setPreferredSize(new Dimension(300, 200)); // taller to fit timelog
-    panel.setBackground(Color.WHITE);
-    panel.setBorder(BorderFactory.createLineBorder(new Color(62, 92, 118), 2));
+    private JPanel createProjectCard(Project p) {
+        JPanel panel = new JPanel(new BorderLayout());
+        // [CHANGED] taller card to fit timelog
+        panel.setPreferredSize(new Dimension(300, 200));
+        panel.setBackground(Color.WHITE);
+        panel.setBorder(BorderFactory.createLineBorder(new Color(62, 92, 118), 2));
 
-    // --- Project name at top ---
-    JLabel nameLabel = new JLabel(p.name);
-    nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
-    nameLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
-    panel.add(nameLabel, BorderLayout.NORTH);
+        // --- Top: Project name ---
+        JLabel nameLabel = new JLabel(p.name);
+        nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        nameLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
+        panel.add(nameLabel, BorderLayout.NORTH);
 
-    // --- Timelog panel in center ---
-    JPanel timeLogPanel = new JPanel();
-    timeLogPanel.setLayout(new GridLayout(0, 1, 0, 2)); // 1 column, dynamic rows
-    timeLogPanel.setBackground(Color.WHITE);
-    timeLogPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
+        // --- Center: Timelog ---
+        JPanel timeLogPanel = new JPanel();
+        // [CHANGED] Use GridLayout for vertical entries
+        timeLogPanel.setLayout(new GridLayout(0, 1, 0, 2));
+        timeLogPanel.setBackground(Color.WHITE);
+        timeLogPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 
-    for (Project.TimeEntry entry : p.timeEntries) {
-        double percent = (entry.hours / (double) p.maxHours) * 100;
-        JLabel entryLabel = new JLabel(
-            entry.date + " : " + entry.hours + " hrs (" + String.format("%.0f%%", percent) + ")"
-        );
-        entryLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-        timeLogPanel.add(entryLabel);
-    }
-
-    panel.add(timeLogPanel, BorderLayout.CENTER);
-
-    // --- Total hours at bottom ---
-    JLabel progressLabel = new JLabel(p.hoursLogged + " / " + p.maxHours + " hrs total");
-    progressLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-    progressLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 10));
-    panel.add(progressLabel, BorderLayout.SOUTH);
-
-    return panel;
-}
-
-
-    // Open a timelog table for the project
-    private void openTimeLogTable(Project project) {
-        JFrame tableFrame = new JFrame(project.name + " Timelog");
-        tableFrame.setSize(500, 400);
-
-        String[] columns = {"Date", "Hours", "% of Project"};
-        Object[][] data = new Object[project.timeEntries.size()][3];
-
-        for (int i = 0; i < project.timeEntries.size(); i++) {
-            Project.TimeEntry entry = project.timeEntries.get(i);
-            data[i][0] = entry.date;
-            data[i][1] = entry.hours;
-            data[i][2] = String.format("%.0f%%", (entry.hours / (double) project.maxHours) * 100);
+        for (Project.TimeEntry entry : p.timeEntries) {
+            double percent = (entry.hours / (double) p.maxHours) * 100;
+            JLabel entryLabel = new JLabel(
+                entry.date + " : " + entry.hours + " hrs (" + String.format("%.0f%%", percent) + ")"
+            );
+            entryLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+            timeLogPanel.add(entryLabel);
         }
 
-        JTable table = new JTable(data, columns);
-        JScrollPane scroll = new JScrollPane(table);
-        tableFrame.add(scroll);
-        tableFrame.setVisible(true);
+        // [ADDED] Make timelog scrollable if too many entries
+        JScrollPane timeLogScroll = new JScrollPane(timeLogPanel);
+        timeLogScroll.setBorder(null);
+        timeLogScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        timeLogScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+        panel.add(timeLogScroll, BorderLayout.CENTER);
+
+        // --- Bottom: Total hours ---
+        JLabel progressLabel = new JLabel(p.hoursLogged + " / " + p.maxHours + " hrs total");
+        progressLabel.setFont(new Font("Arial", Font.PLAIN, 16));
+        progressLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 10));
+        panel.add(progressLabel, BorderLayout.SOUTH);
+
+        return panel;
     }
 
-    // Minimal Project class with time entries
+    // Minimal Project class with timelog
     public static class Project {
         public String name;
         public int hoursLogged;
@@ -134,7 +119,7 @@ private JPanel createProjectCard(Project p) {
         }
 
         public static class TimeEntry {
-            public String date; // e.g., "2025-11-10"
+            public String date;
             public double hours;
             public TimeEntry(String date, double hours) {
                 this.date = date;
@@ -143,7 +128,8 @@ private JPanel createProjectCard(Project p) {
         }
     }
 
-    // Test main
+    // [REMOVED] main method — no longer needed for dashboard integration
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("Projects Example");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -163,10 +149,21 @@ private JPanel createProjectCard(Project p) {
         betaEntries.add(new Project.TimeEntry("2025-11-10", 8));
         betaEntries.add(new Project.TimeEntry("2025-11-11", 6));
 
+        List<Project.TimeEntry> timeproject = new ArrayList<>();
+        alphaEntries.add(new Project.TimeEntry("2025-11-10", 5));
+        alphaEntries.add(new Project.TimeEntry("2025-11-11", 3));
+        alphaEntries.add(new Project.TimeEntry("2025-11-12", 4));
+        alphaEntries.add(new Project.TimeEntry("2025-11-13", 8));
+
+        List<Project.TimeEntry> marketingProject = new ArrayList<>();
+        betaEntries.add(new Project.TimeEntry("2025-11-10", 8));
+        betaEntries.add(new Project.TimeEntry("2025-11-11", 6));
+
         // Example projects
         List<Project> projectList = new ArrayList<>();
         projectList.add(new Project("Alpha", 10, 40, alphaEntries));
-        projectList.add(new Project("Beta", 14, 50, betaEntries));
+        projectList.add(new Project("Beta", 14, 50, betaEntries));projectList.add(new Project("Time", 10, 40, timeproject));
+        projectList.add(new Project("Marketing", 14, 50, marketingProject));
 
         projectsCard.setProjects(projectList);
 
