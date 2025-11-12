@@ -1,18 +1,25 @@
 package displayCards;
 
 import components.DisplayCard;
+import models.User;
+import util.LoadProjectsFromDB;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Projects extends DisplayCard {
 
     private JPanel projectsGrid;
+    private Connection conn;
+    private User user;
 
-    public Projects() {
+    public Projects(Connection conn, User user) {
         super("Projects");
+        this.conn = conn;
+        this.user = user;
 
         setBackground(new Color(240, 235, 216));
         setLayout(new BorderLayout());
@@ -45,6 +52,13 @@ public class Projects extends DisplayCard {
         JButton addProjectBtn = new JButton("+ Add Project");
         footerPanel.add(addProjectBtn);
         add(footerPanel, BorderLayout.SOUTH);
+    }
+
+    // load projects from the utility class
+    public void loadProjectsFromDB() {
+        LoadProjectsFromDB loader = new LoadProjectsFromDB(conn);
+        List<Project> projectList = loader.loadProjects();
+        setProjects(projectList);
     }
 
     // Add projects dynamically
@@ -135,7 +149,7 @@ public class Projects extends DisplayCard {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1200, 800);
 
-        Projects projectsCard = new Projects();
+        Projects projectsCard = new Projects(null, null);
         frame.add(projectsCard);
 
         // Example time entries
