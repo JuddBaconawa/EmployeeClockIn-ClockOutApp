@@ -4,17 +4,37 @@ import components.DisplayCard;
 import models.User;
 import util.LoadProjectsFromDB;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Projects extends DisplayCard {
 
     private JPanel projectsGrid;
+    private JLabel monthLabel;
     private Connection conn;
     private User user;
+
+    private List<Project> allProjects = new ArrayList<>();
+    private YearMonth currentMonth = YearMonth.now(); // Tracks which month is being shown
 
     public Projects(Connection conn, User user) {
         super("Projects");
@@ -25,22 +45,52 @@ public class Projects extends DisplayCard {
         setLayout(new BorderLayout());
 
         // === Title Panel ===
-        JPanel titlePanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 15));
+        JPanel titlePanel = new JPanel(new BorderLayout());
         titlePanel.setBackground(new Color(62, 92, 118));
+        titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
+        // Left: Title
         JLabel titleLabel = new JLabel("Projects");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
         titleLabel.setForeground(Color.WHITE);
-        titlePanel.add(titleLabel);
+        titlePanel.add(titleLabel, BorderLayout.WEST);
+
+        // Right: Month Navigation
+        JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
+        navPanel.setOpaque(false);
+        JButton prevBtn = new JButton("◀ Prev");
+        JButton nextBtn = new JButton("Next ▶");
+        monthLabel = new JLabel(currentMonth.format(DateTimeFormatter.ofPattern("MMMM yyyy")));
+        monthLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        monthLabel.setForeground(Color.WHITE);
+
+        prevBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                changeMonth(-1);
+            }
+        });
+
+        nextBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                changeMonth(1);
+            }
+        });
+
+        navPanel.add(prevBtn);
+        navPanel.add(monthLabel);
+        navPanel.add(nextBtn);
+        titlePanel.add(navPanel, BorderLayout.EAST);
+
         add(titlePanel, BorderLayout.NORTH);
 
         // === Projects Grid Panel ===
         projectsGrid = new JPanel();
-        // [CHANGED] Keep GridLayout, same as before
-        projectsGrid.setLayout(new GridLayout(0, 2, 20, 20)); // 2 columns, dynamic rows
+        projectsGrid.setLayout(new GridLayout(0, 2, 20, 20));
         projectsGrid.setBackground(new Color(240, 240, 240));
         projectsGrid.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
 
-        // [CHANGED] Wrap grid in scroll pane
         JScrollPane scrollPane = new JScrollPane(projectsGrid);
         scrollPane.setBorder(null);
         scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
@@ -54,6 +104,13 @@ public class Projects extends DisplayCard {
         add(footerPanel, BorderLayout.SOUTH);
     }
 
+    // Change viewed month
+    private void changeMonth(int offset) {
+        currentMonth = currentMonth.plusMonths(offset);
+        monthLabel.setText(currentMonth.format(DateTimeFormatter.ofPattern("MMMM yyyy")));
+        refreshProjectsView();
+    }
+
     // load projects from the utility class
     public void loadProjectsFromDB() {
         LoadProjectsFromDB loader = new LoadProjectsFromDB(conn);
@@ -63,53 +120,56 @@ public class Projects extends DisplayCard {
 
     // Add projects dynamically
     public void setProjects(List<Project> projectList) {
+        this.allProjects = projectList;
+        refreshProjectsView();
+    }
+
+    // Rebuild grid based on currentMonth
+    private void refreshProjectsView() {
         projectsGrid.removeAll();
-        for (Project p : projectList) {
-            // [CHANGED] call new card creation method
+        for (Project p : allProjects) {
             projectsGrid.add(createProjectCard(p));
         }
         projectsGrid.revalidate();
         projectsGrid.repaint();
     }
 
-    // Create each project card
+    // Create each project card (filtered by current month)
     private JPanel createProjectCard(Project p) {
         JPanel panel = new JPanel(new BorderLayout());
-        // [CHANGED] taller card to fit timelog
         panel.setPreferredSize(new Dimension(300, 200));
         panel.setBackground(Color.WHITE);
         panel.setBorder(BorderFactory.createLineBorder(new Color(62, 92, 118), 2));
 
-        // --- Top: Project name ---
         JLabel nameLabel = new JLabel(p.name);
         nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
         nameLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
         panel.add(nameLabel, BorderLayout.NORTH);
 
-        // --- Center: Timelog ---
-        JPanel timeLogPanel = new JPanel();
-        // [CHANGED] Use GridLayout for vertical entries
-        timeLogPanel.setLayout(new GridLayout(0, 1, 0, 2));
+        // === Filter entries by current month ===
+        JPanel timeLogPanel = new JPanel(new GridLayout(0, 1, 0, 2));
         timeLogPanel.setBackground(Color.WHITE);
         timeLogPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         for (Project.TimeEntry entry : p.timeEntries) {
-            double percent = (entry.hours / (double) p.maxHours) * 100;
-            JLabel entryLabel = new JLabel(
-                entry.date + " : " + entry.hours + " hrs (" + String.format("%.0f%%", percent) + ")"
-            );
-            entryLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-            timeLogPanel.add(entryLabel);
+            LocalDate date = LocalDate.parse(entry.date, fmt);
+            if (YearMonth.from(date).equals(currentMonth)) {
+                double percent = (entry.hours / (double) p.maxHours) * 100;
+                JLabel entryLabel = new JLabel(
+                        entry.date + " : " + entry.hours + " hrs (" + String.format("%.0f%%", percent) + ")"
+                );
+                entryLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+                timeLogPanel.add(entryLabel);
+            }
         }
 
-        // [ADDED] Make timelog scrollable if too many entries
         JScrollPane timeLogScroll = new JScrollPane(timeLogPanel);
         timeLogScroll.setBorder(null);
         timeLogScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         timeLogScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         panel.add(timeLogScroll, BorderLayout.CENTER);
 
-        // --- Bottom: Total hours ---
         JLabel progressLabel = new JLabel(p.hoursLogged + " / " + p.maxHours + " hrs total");
         progressLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         progressLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 10));
@@ -118,7 +178,7 @@ public class Projects extends DisplayCard {
         return panel;
     }
 
-    // Minimal Project class with timelog
+    // Minimal Project class
     public static class Project {
         public String name;
         public int hoursLogged;
@@ -135,6 +195,7 @@ public class Projects extends DisplayCard {
         public static class TimeEntry {
             public String date;
             public double hours;
+
             public TimeEntry(String date, double hours) {
                 this.date = date;
                 this.hours = hours;
@@ -142,8 +203,7 @@ public class Projects extends DisplayCard {
         }
     }
 
-    // [REMOVED] main method — no longer needed for dashboard integration
-
+    // === Example Runner ===
     public static void main(String[] args) {
         JFrame frame = new JFrame("Projects Example");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -152,7 +212,9 @@ public class Projects extends DisplayCard {
         Projects projectsCard = new Projects(null, null);
         frame.add(projectsCard);
 
-        // Example time entries
+        // === Example Data ===
+
+        // November Projects
         List<Project.TimeEntry> alphaEntries = new ArrayList<>();
         alphaEntries.add(new Project.TimeEntry("2025-11-10", 5));
         alphaEntries.add(new Project.TimeEntry("2025-11-11", 3));
@@ -160,24 +222,48 @@ public class Projects extends DisplayCard {
         alphaEntries.add(new Project.TimeEntry("2025-11-13", 8));
 
         List<Project.TimeEntry> betaEntries = new ArrayList<>();
-        betaEntries.add(new Project.TimeEntry("2025-11-10", 8));
-        betaEntries.add(new Project.TimeEntry("2025-11-11", 6));
+        betaEntries.add(new Project.TimeEntry("2025-11-09", 8));
+        betaEntries.add(new Project.TimeEntry("2025-11-14", 6));
 
-        List<Project.TimeEntry> timeproject = new ArrayList<>();
-        alphaEntries.add(new Project.TimeEntry("2025-11-10", 5));
-        alphaEntries.add(new Project.TimeEntry("2025-11-11", 3));
-        alphaEntries.add(new Project.TimeEntry("2025-11-12", 4));
-        alphaEntries.add(new Project.TimeEntry("2025-11-13", 8));
+        // January Project
+        List<Project.TimeEntry> timeProjectEntries = new ArrayList<>();
+        timeProjectEntries.add(new Project.TimeEntry("2025-01-05", 6));
+        timeProjectEntries.add(new Project.TimeEntry("2025-01-08", 4));
+        timeProjectEntries.add(new Project.TimeEntry("2025-01-09", 5));
 
-        List<Project.TimeEntry> marketingProject = new ArrayList<>();
-        betaEntries.add(new Project.TimeEntry("2025-11-10", 8));
-        betaEntries.add(new Project.TimeEntry("2025-11-11", 6));
+        // March Project
+        List<Project.TimeEntry> marketingEntries = new ArrayList<>();
+        marketingEntries.add(new Project.TimeEntry("2025-03-02", 8));
+        marketingEntries.add(new Project.TimeEntry("2025-03-04", 7));
+        marketingEntries.add(new Project.TimeEntry("2025-03-05", 5));
 
-        // Example projects
+        // June Project
+        List<Project.TimeEntry> devOpsEntries = new ArrayList<>();
+        devOpsEntries.add(new Project.TimeEntry("2025-06-10", 5));
+        devOpsEntries.add(new Project.TimeEntry("2025-06-15", 6));
+        devOpsEntries.add(new Project.TimeEntry("2025-06-20", 4));
+
+        // August Project
+        List<Project.TimeEntry> researchEntries = new ArrayList<>();
+        researchEntries.add(new Project.TimeEntry("2025-08-03", 8));
+        researchEntries.add(new Project.TimeEntry("2025-08-04", 6));
+        researchEntries.add(new Project.TimeEntry("2025-08-10", 5));
+
+        // October Project
+        List<Project.TimeEntry> designEntries = new ArrayList<>();
+        designEntries.add(new Project.TimeEntry("2025-10-01", 4));
+        designEntries.add(new Project.TimeEntry("2025-10-03", 6));
+        designEntries.add(new Project.TimeEntry("2025-10-05", 7));
+
+        // === Projects List ===
         List<Project> projectList = new ArrayList<>();
-        projectList.add(new Project("Alpha", 10, 40, alphaEntries));
-        projectList.add(new Project("Beta", 14, 50, betaEntries));projectList.add(new Project("Time", 10, 40, timeproject));
-        projectList.add(new Project("Marketing", 14, 50, marketingProject));
+        projectList.add(new Project("Alpha", 20, 40, alphaEntries));
+        projectList.add(new Project("Beta", 14, 50, betaEntries));
+        projectList.add(new Project("Time", 15, 40, timeProjectEntries));
+        projectList.add(new Project("Marketing", 20, 50, marketingEntries));
+        projectList.add(new Project("DevOps", 15, 40, devOpsEntries));
+        projectList.add(new Project("Research & Design", 17, 45, researchEntries));
+        projectList.add(new Project("UI Design", 18, 50, designEntries));
 
         projectsCard.setProjects(projectList);
 
