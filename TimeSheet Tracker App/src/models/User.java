@@ -42,6 +42,22 @@ public class User {
 			currentUser = user;
 		}
 
+		// *********************** getters ************************
+		public int getUserId() { return userId; }
+		public String getUsername() { return username; }
+		public String getFirstName() { return firstName; }
+		public String getLastName() { return lastName; }
+		public String getRole() { return role; }
+		public String getEmail() { return email; }
+		public String getDepartment() { return department; }
+		public String getLocation() { return location; }
+		public String getPhone() { return phone; }
+		public String getAddress() { return address; }
+		public Image getProfilePicture() { return profilePicture; }
+		public boolean isRemote() { return isRemote; }
+		public String getPassword() { return password; }
+		public String getName() { return lastName + ", " + firstName; }
+
 		// ********************** setters ************************
 		public void setUserId(int userId) {this.userId = userId;}
 		public void setUsername(String username) {this.username = username;}
