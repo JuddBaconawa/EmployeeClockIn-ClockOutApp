@@ -173,7 +173,7 @@ public class Projectsv2 extends DisplayCard {
 
     // === Main method ===
     public static void main(String[] args) {
-        Projects projects = new Projects();
+        Projects projects = new Projects(null, null);
         JFrame frame = new JFrame("Projects Example");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(projects);
