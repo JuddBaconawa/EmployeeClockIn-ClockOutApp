@@ -114,7 +114,7 @@ public class Projects extends DisplayCard {
     // load projects from the utility class
     public void loadProjectsFromDB() {
         LoadProjectsFromDB loader = new LoadProjectsFromDB(conn);
-        List<Project> projectList = loader.loadProjects();
+        List<Project> projectList = loader.loadProjectsForUser(user);
         setProjects(projectList);
     }
 
@@ -257,13 +257,13 @@ public class Projects extends DisplayCard {
 
         // === Projects List ===
         List<Project> projectList = new ArrayList<>();
-        projectList.add(new Project("Alpha", 20, 40, alphaEntries));
-        projectList.add(new Project("Beta", 14, 50, betaEntries));
-        projectList.add(new Project("Time", 15, 40, timeProjectEntries));
-        projectList.add(new Project("Marketing", 20, 50, marketingEntries));
+        projectList.add(new Project("Alpha Account", 20, 40, alphaEntries));
+        projectList.add(new Project("The Hilton - Marketing", 14, 50, betaEntries));
+        projectList.add(new Project("TimeZone - Main POS", 15, 40, timeProjectEntries));
+        projectList.add(new Project("CVS POS Software", 20, 50, marketingEntries));
         projectList.add(new Project("DevOps", 15, 40, devOpsEntries));
         projectList.add(new Project("Research & Design", 17, 45, researchEntries));
-        projectList.add(new Project("UI Design", 18, 50, designEntries));
+        projectList.add(new Project("Walmart app - UI Design", 18, 50, designEntries));
 
         projectsCard.setProjects(projectList);
 
