@@ -21,6 +21,26 @@ public class TimelogEntry {
         this.clockOut = clockOut;
         this.totalHours = totalHours;
         this.workDate = workDate;
-    } 
+    }
+    
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public Timestamp getClockIn() {
+        return clockIn;
+    }
+
+    public Timestamp getClockOut() {
+        return clockOut;
+    }
+
+    public double getTOtalHours() {
+        return totalHours;
+    }
+
+    public Date getWorkDate() {
+        return workDate;
+    }
   
 }
