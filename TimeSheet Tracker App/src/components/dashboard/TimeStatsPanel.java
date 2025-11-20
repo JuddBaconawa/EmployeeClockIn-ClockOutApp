@@ -27,7 +27,7 @@ public class TimeStatsPanel extends JPanel {
 
         // Initialize the panel
         setLayout(new BorderLayout(15, 10));
-        setPreferredSize(new Dimension(230, 150));
+        setPreferredSize(new Dimension(250, 150));
         setBackground(new Color(255, 255, 255));
         // setOpaque(false);
         setBorder(BorderFactory.createTitledBorder("Time Stats"));
@@ -56,7 +56,7 @@ public class TimeStatsPanel extends JPanel {
 
     private void cycleMode() {
       currentMode = (currentMode + 1) % modes.length;
-      modeLabel.setText("Mode: " + modes[currentMode]);
+      modeLabel.setText("View: " + modes[currentMode]);
       updateStats();
       // TODO: Update stats for the selected mode
     }
