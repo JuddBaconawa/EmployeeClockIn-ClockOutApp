@@ -71,7 +71,7 @@ public class Dashboard extends DisplayCard {
         TimeStatsPanel timeStatsPanel = new TimeStatsPanel(clockPanel);
 
         // New top panel
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 60,20));
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40,40));
         topPanel.setOpaque(false);
         
 
@@ -84,7 +84,7 @@ public class Dashboard extends DisplayCard {
         topPanel.add(new ClockPanel(this));
 
         // Bottom Panel
-        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         bottomPanel.setPreferredSize(new Dimension(1200, 300));
         bottomPanel.setOpaque(false);
 
