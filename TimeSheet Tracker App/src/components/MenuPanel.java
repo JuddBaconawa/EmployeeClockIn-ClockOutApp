@@ -78,7 +78,7 @@ public class MenuPanel extends JPanel {
 
         // ============ Buttons =============
         JButton logoutButton = createRoundedButton("Logout", new Color(240, 235, 216));
-        logoutButton.setForeground(new Color(29, 45, 68));
+        logoutButton.setForeground(new Color(240, 235, 216));
         logoutButton.setBackground(new Color(128, 14, 19));
         // logoutButton.setBounds(0, 0, 200, 40);
         logoutButton.setFont(new Font("Arial", Font.BOLD, 20));
@@ -98,7 +98,7 @@ public class MenuPanel extends JPanel {
 
         // ============== Exit Button ===============
         JButton exitButton = createRoundedButton("Exit", new Color(240, 235, 216));
-        exitButton.setForeground(new Color(29, 45, 68));
+        exitButton.setForeground(new Color(240, 235, 216));
         exitButton.setBackground(new Color(255, 183, 3));
         exitButton.setFont(new Font("Arial", Font.BOLD, 20));
         exitButton.addActionListener(e -> parentFrame.dispose());
