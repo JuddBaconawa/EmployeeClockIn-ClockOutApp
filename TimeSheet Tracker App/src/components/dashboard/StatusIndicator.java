@@ -8,7 +8,7 @@ public class StatusIndicator extends JPanel {
     private Color statusColor = Color.RED;  // Default to "logged out"
 
     public StatusIndicator() {
-        setPreferredSize(new Dimension(20, 20));
+        setPreferredSize(new Dimension(25, 25));
     }
 
     public void setStatus(String status) {
