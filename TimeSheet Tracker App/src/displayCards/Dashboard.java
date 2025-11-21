@@ -36,8 +36,9 @@ public class Dashboard extends DisplayCard {
         setLayout(new BorderLayout());
 
         // === Title Panel ===
-        JPanel titlePanel = new JPanel();
+        JPanel titlePanel = new JPanel(new BorderLayout());
         titlePanel.setBackground(new Color(62, 92, 118));
+        titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         JLabel titleLabel = new JLabel("Dashboard");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
@@ -45,18 +46,20 @@ public class Dashboard extends DisplayCard {
 
         // Status Indicator (small Colered Circle)
         statusIndicator = new StatusIndicator();
+
         statusText = new JLabel("Logged Out");
         statusText.setFont(new Font("Arial", Font.PLAIN, 16));
         statusText.setForeground(Color.WHITE);
 
+
         // Group Indicator + Text
-        JPanel indicatorPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 30, 15));
+        JPanel indicatorPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 30, 15));
         indicatorPanel.setOpaque(false);
         indicatorPanel.add(statusIndicator);
         indicatorPanel.add(statusText);
 
-        titlePanel.add(titleLabel);
-        titlePanel.add(indicatorPanel);
+        titlePanel.add(titleLabel, BorderLayout.WEST);
+        titlePanel.add(indicatorPanel, BorderLayout.EAST);
 
         // === Content Panel === 
         JPanel contentPanel = new JPanel();
@@ -78,10 +81,10 @@ public class Dashboard extends DisplayCard {
 
         //profilepanel leaves a small white square for spacing
         
-        topPanel.add(new ProfilePanel(User.getCurrentUser()));
-        topPanel.add(new TimeGraphPanel(clockPanel));
-        topPanel.add(new TimeStatsPanel(clockPanel));
-        topPanel.add(new ClockPanel(this));
+        topPanel.add(wrapTopAligned(new ProfilePanel(User.getCurrentUser())));
+        topPanel.add(wrapTopAligned(new TimeGraphPanel(clockPanel)));
+        topPanel.add(wrapTopAligned(new TimeStatsPanel(clockPanel)));
+        topPanel.add(wrapTopAligned(new ClockPanel(this)));
 
         // Bottom Panel
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
@@ -104,15 +107,6 @@ public class Dashboard extends DisplayCard {
         add(titlePanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
 
-
-
-        
-
-        
-        
-
-        titlePanel.add(titleLabel);
-        // add(titlePanel);    == double error
     }
     
     public void updateStatus(String status) {
@@ -128,6 +122,13 @@ public class Dashboard extends DisplayCard {
         default:
             statusText.setText("Clocked Out");
         }
+    }
+
+    private JPanel wrapTopAligned(JPanel inner) {
+        JPanel wrapper = new JPanel(new BorderLayout());
+        wrapper.setOpaque(false);
+        wrapper.add(inner, BorderLayout.NORTH);
+        return wrapper;
     }
 
     // public static void main(String[] args) {
