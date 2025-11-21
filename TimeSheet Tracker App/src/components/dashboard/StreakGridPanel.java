@@ -96,7 +96,7 @@ public class StreakGridPanel extends JPanel {
             if (monthValue != lastMonth) {
                 g.setColor(Color.DARK_GRAY);
                 g.setFont(new Font("SansSerif", Font.PLAIN, 10));
-                
+
                 String monthText = labelDate.getMonth().toString().substring(0,3);
 
                 int x = LEFT_PADDING + week * (BOX_SIZE + GAP);
@@ -133,6 +133,8 @@ public class StreakGridPanel extends JPanel {
     private HashMap<LocalDate, Integer> generateMockData() {
         HashMap<LocalDate, Integer> map = new HashMap<>();
         LocalDate today = LocalDate.now();
+
+        
         for (int i = 0; i < WEEKS * DAYS_IN_WEEK; i++) {
             LocalDate date = today.minusDays(i);
             map.put(date, (int) Math.random() * 7);  // random hours
