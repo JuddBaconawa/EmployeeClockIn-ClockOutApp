@@ -1,7 +1,10 @@
 package displayCards;
+import java.awt.BorderLayout;
 //IMPORTS
 import java.awt.Color;
+import java.awt.Font;
 
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -17,9 +20,22 @@ public class Settings extends DisplayCard {
       super("Setting");
 
       // Set properties for the Home JPanel
-      setLayout(null);
-      setBackground(new Color(116, 140, 171));
-      // setBounds(200, 120, 1000, 680);
+      setBackground(new Color(255, 255, 255));
+      setLayout(new BorderLayout());
+      
+
+      // TITLE Panel
+      JPanel titlePanel = new JPanel(new BorderLayout());
+      titlePanel.setBackground(new Color(62, 92, 118));
+      titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+
+      JLabel titleLabel = new JLabel("Settings");
+      titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
+      titleLabel.setForeground(new Color(100, 100, 100));
+      
+      statusIndicator = new StatusIndicator();
+      statusText = new JLabel("Logged Out");
+
 
 
       // additional initialization if needed
@@ -27,6 +43,8 @@ public class Settings extends DisplayCard {
       usernameLabel.setBounds(25, 150, 200, 30);
       this.add(usernameLabel);
 
+
+      add(titlePanel, BorderLayout.NORTH);
 
     }
 
