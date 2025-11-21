@@ -16,7 +16,7 @@ public class DisplayCard extends JPanel {
         // Styling
         setBackground(new Color(240, 235, 216));
         setBounds(200, 120, 1200, 700);         //location and size of a card
-        // setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20)); // Add padding around the card
+        // setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20)); // Add padding around the card
 
         // Layout
         setLayout(new BorderLayout());
