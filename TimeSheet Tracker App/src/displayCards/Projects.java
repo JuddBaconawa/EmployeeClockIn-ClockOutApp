@@ -4,9 +4,10 @@ import components.DisplayCard;
 import models.User;
 import util.LoadProjectsFromDB;
 import components.TitlePanel;
-import components.TitlePanel;
+import components.dashboard.StatusIndicator;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -21,6 +22,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.ObjectInputFilter.Status;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -30,87 +32,111 @@ import java.util.List;
 
 public class Projects extends DisplayCard {
 
+    //declarations
     private JPanel projectsGrid;
     private JLabel monthLabel;
     private Connection conn;
     private User user;
 
+    // list of all projects loaded
     private List<Project> allProjects = new ArrayList<>();
     private YearMonth currentMonth = YearMonth.now(); // Tracks which month is being shown
+    private StatusIndicator statusIndicator;
 
     public Projects(Connection conn, User user) {
-        super("Projects");
-        this.conn = conn;
-        this.user = user;
+    super("Projects");
+    this.conn = conn;
+    this.user = user;
 
-        setBackground(new Color(240, 235, 216));
-        setLayout(new BorderLayout());
+    setBackground(new Color(240, 235, 216));
+    setLayout(new BorderLayout());
 
-        // title panel
-        TitlePanel titlePanel = new TitlePanel(TitlePanel.setTitle());
+    //statusIndicator
+    statusIndicator = new StatusIndicator();
 
-        // === Navigation Panel ===
-        JPanel navPanel = new JPanel(new BorderLayout());
-        navPanel.setBackground(new Color(62, 92, 118));
-        navPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+    // === Title Panel ===
+    TitlePanel titlePanel = new TitlePanel("Projects", statusIndicator);
+    
+    // titlePanel.setLayout(new BorderLayout());
+    titlePanel.setPreferredSize( new Dimension(0, 50));
 
-        // Left: Title
-        JLabel navLabel = new JLabel("Navigation");
-        navLabel.setFont(new Font("Arial", Font.BOLD, 32));
-        navLabel.setForeground(Color.WHITE);
-        navPanel.add(navLabel, BorderLayout.WEST);
+    // === Navigation Panel ===
+    JPanel navPanel = new JPanel(new BorderLayout());
+    navPanel.setBackground(new Color(62, 92, 118));
+    navPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
-        // statusIndicator = new StatusIndicator();
+    // Left: Title
+    JLabel navLabel = new JLabel("Navigation");
+    navLabel.setFont(new Font("Arial", Font.BOLD, 32));
+    navLabel.setForeground(Color.WHITE);
+    navPanel.add(navLabel, BorderLayout.WEST);
 
+    // Right: Month Navigation
+    JPanel monthlyNavPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
+    monthlyNavPanel.setOpaque(false);
 
-        // Right: Month Navigation
-        JPanel monthlyNavPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
-        monthlyNavPanel.setOpaque(false);
-        JButton prevBtn = new JButton("◀ Prev");
-        JButton nextBtn = new JButton("Next ▶");
-        monthLabel = new JLabel(currentMonth.format(DateTimeFormatter.ofPattern("MMMM yyyy")));
-        monthLabel.setFont(new Font("Arial", Font.BOLD, 18));
-        monthLabel.setForeground(Color.WHITE);
+    // months buttons and label
+    JButton prevBtn = new JButton("◀ Prev");
+    JButton nextBtn = new JButton("Next ▶");
+    monthLabel = new JLabel(currentMonth.format(DateTimeFormatter.ofPattern("MMMM yyyy")));
+    monthLabel.setFont(new Font("Arial", Font.BOLD, 18));
+    monthLabel.setForeground(Color.WHITE);
 
-        prevBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                changeMonth(-1);
-            }
-        });
+    prevBtn.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            changeMonth(-1);
+        }
+    });
 
-        nextBtn.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                changeMonth(1);
-            }
-        });
+    nextBtn.addActionListener(new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            changeMonth(1);
+        }
+    });
 
-        monthlyNavPanel.add(prevBtn);
-        monthlyNavPanel.add(monthLabel);
-        monthlyNavPanel.add(nextBtn);
-        navPanel.add(monthlyNavPanel, BorderLayout.EAST);
+    monthlyNavPanel.add(prevBtn);
+    monthlyNavPanel.add(monthLabel);
+    monthlyNavPanel.add(nextBtn);
 
-        add(navPanel, BorderLayout.NORTH);
+    // add monthlyNavPane to navPanel
+    navPanel.add(monthlyNavPanel, BorderLayout.EAST);
 
-        // === Projects Grid Panel ===
-        projectsGrid = new JPanel();
-        projectsGrid.setLayout(new GridLayout(0, 2, 20, 20));
-        projectsGrid.setBackground(new Color(240, 240, 240));
-        projectsGrid.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+    
 
-        JScrollPane scrollPane = new JScrollPane(projectsGrid);
-        scrollPane.setBorder(null);
-        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        add(scrollPane, BorderLayout.CENTER);
+    // === Top Panel Wrapper ===
+    JPanel topPanel = new JPanel();
+    topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+    topPanel.add(titlePanel, BorderLayout.NORTH);
+    topPanel.add(navPanel, BorderLayout.SOUTH);
+    
 
-        // === Footer Panel ===
-        JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
-        footerPanel.setBackground(new Color(180, 180, 180));
-        JButton addProjectBtn = new JButton("+ Add Project");
-        footerPanel.add(addProjectBtn);
-        add(footerPanel, BorderLayout.SOUTH);
-    }
+    // === Projects Grid Panel ===
+    projectsGrid = new JPanel();
+    projectsGrid.setLayout(new GridLayout(0, 2, 20, 20));
+    projectsGrid.setBackground(new Color(240, 240, 240));
+    projectsGrid.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+    // scroll panel for projects grid
+    JScrollPane scrollPane = new JScrollPane(projectsGrid);
+    scrollPane.setBorder(null);
+    scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+    
+
+    // === Footer Panel ===
+    JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
+    footerPanel.setBackground(new Color(180, 180, 180));
+    JButton addProjectBtn = new JButton("+ Add Project");
+    footerPanel.add(addProjectBtn);
+    
+
+    // added panels to main layout
+    add(topPanel, BorderLayout.NORTH);
+    add(scrollPane, BorderLayout.CENTER);
+    add(footerPanel, BorderLayout.SOUTH);
+}
+
 
     // Change viewed month
     private void changeMonth(int offset) {
