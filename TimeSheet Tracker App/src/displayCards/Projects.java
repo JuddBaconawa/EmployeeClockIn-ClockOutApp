@@ -3,6 +3,8 @@ package displayCards;
 import components.DisplayCard;
 import models.User;
 import util.LoadProjectsFromDB;
+import components.TitlePanel;
+import components.TitlePanel;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -44,20 +46,26 @@ public class Projects extends DisplayCard {
         setBackground(new Color(240, 235, 216));
         setLayout(new BorderLayout());
 
-        // === Title Panel ===
-        JPanel titlePanel = new JPanel(new BorderLayout());
-        titlePanel.setBackground(new Color(62, 92, 118));
-        titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        // title panel
+        TitlePanel titlePanel = new TitlePanel(TitlePanel.setTitle());
+
+        // === Navigation Panel ===
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setBackground(new Color(62, 92, 118));
+        navPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         // Left: Title
-        JLabel titleLabel = new JLabel("Projects");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
-        titleLabel.setForeground(Color.WHITE);
-        titlePanel.add(titleLabel, BorderLayout.WEST);
+        JLabel navLabel = new JLabel("Navigation");
+        navLabel.setFont(new Font("Arial", Font.BOLD, 32));
+        navLabel.setForeground(Color.WHITE);
+        navPanel.add(navLabel, BorderLayout.WEST);
+
+        // statusIndicator = new StatusIndicator();
+
 
         // Right: Month Navigation
-        JPanel navPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
-        navPanel.setOpaque(false);
+        JPanel monthlyNavPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
+        monthlyNavPanel.setOpaque(false);
         JButton prevBtn = new JButton("◀ Prev");
         JButton nextBtn = new JButton("Next ▶");
         monthLabel = new JLabel(currentMonth.format(DateTimeFormatter.ofPattern("MMMM yyyy")));
@@ -78,12 +86,12 @@ public class Projects extends DisplayCard {
             }
         });
 
-        navPanel.add(prevBtn);
-        navPanel.add(monthLabel);
-        navPanel.add(nextBtn);
-        titlePanel.add(navPanel, BorderLayout.EAST);
+        monthlyNavPanel.add(prevBtn);
+        monthlyNavPanel.add(monthLabel);
+        monthlyNavPanel.add(nextBtn);
+        navPanel.add(monthlyNavPanel, BorderLayout.EAST);
 
-        add(titlePanel, BorderLayout.NORTH);
+        add(navPanel, BorderLayout.NORTH);
 
         // === Projects Grid Panel ===
         projectsGrid = new JPanel();
