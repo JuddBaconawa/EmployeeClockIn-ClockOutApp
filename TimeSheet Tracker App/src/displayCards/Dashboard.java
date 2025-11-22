@@ -8,18 +8,19 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import components.DisplayCard;
 import components.dashboard.ClockPanel;
 import components.dashboard.TimeStatsPanel;
-import models.User;
 import components.dashboard.ProfilePanel;
 import components.dashboard.StatusIndicator;
 import components.dashboard.TimeGraphPanel;
 import components.dashboard.StreakPanel;
+
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import models.User;
 
 
 // Dashboard class
@@ -64,8 +65,9 @@ public class Dashboard extends DisplayCard {
         // === Content Panel === 
         JPanel contentPanel = new JPanel();
         contentPanel.setLayout(new GridLayout(2, 2, 10, 50));
-        contentPanel.setOpaque(false);
+        contentPanel.setOpaque(true);
         contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 20)); // Add padding around the content panel
+        // contentPanel.setBackground(new Color(0, 0 ,0));
 
         // instantiate clock panel
         ClockPanel clockPanel = new ClockPanel(this);
