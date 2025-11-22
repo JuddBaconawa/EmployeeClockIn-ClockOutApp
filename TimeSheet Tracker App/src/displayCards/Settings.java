@@ -33,8 +33,6 @@ public class Settings extends DisplayCard {
       titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
       titleLabel.setForeground(new Color(100, 100, 100));
       
-      statusIndicator = new StatusIndicator();
-      statusText = new JLabel("Logged Out");
 
 
 
