@@ -3,6 +3,7 @@ package components;
 
 // IMPORTS
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Font;
 
@@ -30,7 +31,8 @@ public class TitlePanel extends JPanel{
         // set title label + format and color
         titleLabel = new JLabel(title);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
-        titleLabel.setForeground(new Color(66, 217, 200));
+        titleLabel.setForeground(new Color(255, 255, 255));
+        setPreferredSize(new Dimension(0, 60)); // ensure height
 
         // Add the title label to the far left
         add(titleLabel, BorderLayout.WEST);
