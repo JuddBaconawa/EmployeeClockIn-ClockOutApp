@@ -58,7 +58,7 @@ public class Projects extends DisplayCard {
     TitlePanel titlePanel = new TitlePanel("Projects", statusIndicator);
     
     // titlePanel.setLayout(new BorderLayout());
-    titlePanel.setPreferredSize( new Dimension(0, 50));
+    titlePanel.setPreferredSize( new Dimension(0, 60));
 
     // === Navigation Panel ===
     JPanel navPanel = new JPanel(new BorderLayout());
@@ -69,7 +69,7 @@ public class Projects extends DisplayCard {
     JLabel navLabel = new JLabel("Navigation");
     navLabel.setFont(new Font("Arial", Font.BOLD, 32));
     navLabel.setForeground(Color.WHITE);
-    navPanel.add(navLabel, BorderLayout.WEST);
+    navPanel.add(navLabel, BorderLayout.EAST);  // hid the "Navigation" text
 
     // Right: Month Navigation
     JPanel monthlyNavPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
