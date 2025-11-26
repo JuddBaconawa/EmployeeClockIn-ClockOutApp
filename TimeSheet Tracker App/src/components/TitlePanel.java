@@ -47,6 +47,18 @@ public class TitlePanel extends JPanel{
         }
     }
 
+    public void setStatus(String status) {
+        statusIndicator.setStatus(status);
+
+        switch (status) {
+            case "Break": statusText.setText("One Break");
+            case "In": statusText.setText("Logged In");
+            case "Out": 
+            default: statusText.setText("Logged Out");
+            
+        }
+    }
+
     // Method to update the title
     public void setTitle(String title) {
         titleLabel.setText(title);
