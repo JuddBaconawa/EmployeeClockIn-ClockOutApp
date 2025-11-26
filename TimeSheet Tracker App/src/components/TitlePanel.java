@@ -11,6 +11,7 @@ import java.awt.Font;
 import components.dashboard.StatusIndicator;
 
 import javax.swing.BorderFactory;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -18,9 +19,11 @@ public class TitlePanel extends JPanel{
 
     // Declaration
     private JLabel titleLabel;
+    private StatusIndicator statusIndicator;
+    private JLabel statusText;
 
     // Title Panel Constructor
-    public TitlePanel(String title, StatusIndicator statusIndicator) {
+    public TitlePanel(String title, JComponent statusIndicator) {
         
 
         // Title Panel
@@ -28,13 +31,15 @@ public class TitlePanel extends JPanel{
         setBackground(new Color(66, 217, 200));
         setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
-        // set title label + format and color
+        // set title label + format and color (left side)
         titleLabel = new JLabel(title);
         titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
         titleLabel.setForeground(new Color(255, 255, 255));
         setPreferredSize(new Dimension(0, 60)); // ensure height
 
         // Add the title label to the far left
+
+
         add(titleLabel, BorderLayout.WEST);
         if (statusIndicator != null) {
             // adds the the status indicator to the far right
