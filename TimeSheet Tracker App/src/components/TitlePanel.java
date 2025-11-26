@@ -38,19 +38,16 @@ public class TitlePanel extends JPanel{
         setPreferredSize(new Dimension(0, 60)); // ensure height
         add(titleLabel, BorderLayout.WEST);
 
-        // Add the title label to the far left
+        // Add the title label to the far right
         statusIndicator = new StatusIndicator();
         statusText = new JLabel("Status");
         statusText.setFont(new Font("Arial", Font.PLAIN, 16));
         statusText.setForeground(Color.WHITE);
 
-        add(titleLabel, BorderLayout.WEST);
-        if (statusIndicator != null) {
-            // adds the the status indicator to the far right
-            add(statusIndicator, BorderLayout.EAST);
-        }
+        
     }
 
+    // Method to update the status indicator and status text
     public void setStatus(String status) {
         statusIndicator.setStatus(status);
 
