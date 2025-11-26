@@ -32,13 +32,17 @@ public class TitlePanel extends JPanel{
         setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         // set title label + format and color (left side)
-        titleLabel = new JLabel(title);
+        titleLabel = new JLabel(title); 
         titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
         titleLabel.setForeground(new Color(255, 255, 255));
         setPreferredSize(new Dimension(0, 60)); // ensure height
+        add(titleLabel, BorderLayout.WEST);
 
         // Add the title label to the far left
-
+        statusIndicator = new StatusIndicator();
+        statusText = new JLabel("Status");
+        statusText.setFont(new Font("Arial", Font.PLAIN, 16));
+        statusText.setForeground(Color.WHITE);
 
         add(titleLabel, BorderLayout.WEST);
         if (statusIndicator != null) {
@@ -59,7 +63,7 @@ public class TitlePanel extends JPanel{
         }
     }
 
-    // Method to update the title
+    // Method to update the title based on the DisplayCard used
     public void setTitle(String title) {
         titleLabel.setText(title);
     }
