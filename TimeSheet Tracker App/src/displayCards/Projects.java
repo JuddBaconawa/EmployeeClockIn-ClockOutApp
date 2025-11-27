@@ -22,7 +22,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.ObjectInputFilter.Status;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -108,8 +107,8 @@ public class Projects extends DisplayCard {
     // === Top Panel Wrapper ===
     JPanel topPanel = new JPanel();
     topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
-    topPanel.add(titlePanel, BorderLayout.NORTH);
-    topPanel.add(navPanel, BorderLayout.SOUTH);
+    topPanel.add(titlePanel);
+    topPanel.add(navPanel);
     
 
     // === Projects Grid Panel ===
@@ -128,6 +127,19 @@ public class Projects extends DisplayCard {
     JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
     footerPanel.setBackground(new Color(180, 180, 180));
     JButton addProjectBtn = new JButton("+ Add Project");
+
+    addProjectBtn.addActionListener(e -> {
+        Project newProject = new Project(
+            "New Project",
+            0,
+            40,
+            new ArrayList<>()
+        );
+        allProjects.add(newProject);
+        refreshProjectsView();
+
+    });
+
     footerPanel.add(addProjectBtn);
     
 
