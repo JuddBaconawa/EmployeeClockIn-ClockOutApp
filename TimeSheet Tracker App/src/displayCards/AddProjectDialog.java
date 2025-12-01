@@ -13,7 +13,15 @@ public class AddProjectDialog extends JDialog{
     private boolean confirmed = false;
 
     public AddProjectDialog(JFrame parent) {
+        super(parent, "Add New Project", true);
         
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        initLayout();
+        pack();
+        setLocationRelativeTo(parent);
     }
+    
   
 }
