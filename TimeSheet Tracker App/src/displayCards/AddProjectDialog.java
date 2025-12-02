@@ -73,5 +73,9 @@ public class AddProjectDialog extends JDialog{
          cancelButton.addActionListener(e -> dispose());
 
     }
+
+    private void addRow(JPanel panel, GridBagConstraints gbc, int row, String labelText, JTextField textField) {
+        // Implementation of adding a row with label and text field
+    }
   
 }
