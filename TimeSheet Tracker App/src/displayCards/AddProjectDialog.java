@@ -22,6 +22,15 @@ public class AddProjectDialog extends JDialog{
         pack();
         setLocationRelativeTo(parent);
     }
-    
+
+    //=========== Layout Initialization ===========//
+    private void initLayout() {
+        // Implementation of layout initialization
+        JPanel formPanel = new JPanel(new GridBagLayout());
+        formPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        
+
+    }
   
 }
