@@ -1,6 +1,17 @@
 package displayCards;
 
+import java.awt.BorderLayout;
+import java.awt.BorderLayout;
+import java.awt.GridBagLayout;
+
+import javax.swing.BorderFactory;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+
 
 public class AddProjectDialog extends JDialog{
 
