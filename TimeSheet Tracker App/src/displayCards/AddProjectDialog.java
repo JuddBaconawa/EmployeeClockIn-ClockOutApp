@@ -135,6 +135,12 @@ public class AddProjectDialog extends JDialog{
         // close dialog after confirming
         dispose();
     }
+
+    // Boolean to check if confirmed
+    public boolean isConfirmed() {
+        // Return confirmation status
+        return confirmed;
+    }
     
   
 }
