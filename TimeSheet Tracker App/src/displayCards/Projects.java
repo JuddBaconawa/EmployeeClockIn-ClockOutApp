@@ -1,19 +1,14 @@
+// Projects.java
 package displayCards;
 
+// Imports for project management
 import components.DisplayCard;
 import models.User;
 import util.LoadProjectsFromDB;
 import components.TitlePanel;
 import components.dashboard.StatusIndicator;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
+// Imports for GUI and utilities
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -22,6 +17,18 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+// Swing imports
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.ScrollPaneConstants;
+
+// SQL and time imports
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.YearMonth;
@@ -29,6 +36,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+// Main Projects Display Card
 public class Projects extends DisplayCard {
 
     //declarations
@@ -47,6 +55,7 @@ public class Projects extends DisplayCard {
     this.conn = conn;
     this.user = user;
 
+    // Main Layout
     setBackground(new Color(240, 235, 216));
     setLayout(new BorderLayout());
 
@@ -128,6 +137,8 @@ public class Projects extends DisplayCard {
     footerPanel.setBackground(new Color(180, 180, 180));
     JButton addProjectBtn = new JButton("+ Add Project");
 
+
+    // old new project action
     addProjectBtn.addActionListener(e -> {
         Project newProject = new Project(
             "New Project",
@@ -140,6 +151,7 @@ public class Projects extends DisplayCard {
 
     });
 
+    // add button to Footer
     footerPanel.add(addProjectBtn);
     
 
@@ -187,6 +199,7 @@ public class Projects extends DisplayCard {
         panel.setBackground(Color.WHITE);
         panel.setBorder(BorderFactory.createLineBorder(new Color(62, 92, 118), 2));
 
+        // Project Name
         JLabel nameLabel = new JLabel(p.name);
         nameLabel.setFont(new Font("Arial", Font.BOLD, 20));
         nameLabel.setBorder(BorderFactory.createEmptyBorder(10, 10, 5, 10));
@@ -197,6 +210,7 @@ public class Projects extends DisplayCard {
         timeLogPanel.setBackground(Color.WHITE);
         timeLogPanel.setBorder(BorderFactory.createEmptyBorder(0, 10, 10, 10));
 
+        // date Formatter (if needed)
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         for (Project.TimeEntry entry : p.timeEntries) {
             LocalDate date = LocalDate.parse(entry.date, fmt);
@@ -205,22 +219,27 @@ public class Projects extends DisplayCard {
                 JLabel entryLabel = new JLabel(
                         entry.date + " : " + entry.hours + " hrs (" + String.format("%.0f%%", percent) + ")"
                 );
+                // set font for entry
                 entryLabel.setFont(new Font("Arial", Font.PLAIN, 14));
+                // add entry to panel
                 timeLogPanel.add(entryLabel);
             }
         }
 
+        // Scroll pane for time log entries
         JScrollPane timeLogScroll = new JScrollPane(timeLogPanel);
         timeLogScroll.setBorder(null);
         timeLogScroll.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         timeLogScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
         panel.add(timeLogScroll, BorderLayout.CENTER);
 
+        // Progress Summary
         JLabel progressLabel = new JLabel(p.hoursLogged + " / " + p.maxHours + " hrs total");
         progressLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         progressLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 10));
         panel.add(progressLabel, BorderLayout.SOUTH);
 
+        // return the panel when complete/done
         return panel;
     }
 
@@ -231,6 +250,7 @@ public class Projects extends DisplayCard {
         public int maxHours;
         public List<TimeEntry> timeEntries;
 
+        // Project Constructor
         public Project(String name, int hoursLogged, int maxHours, List<TimeEntry> timeEntries) {
             this.name = name;
             this.hoursLogged = hoursLogged;
@@ -238,10 +258,12 @@ public class Projects extends DisplayCard {
             this.timeEntries = timeEntries;
         }
 
+        // Time Entry inner class
         public static class TimeEntry {
             public String date;
             public double hours;
 
+            // TimeEntry Constructor
             public TimeEntry(String date, double hours) {
                 this.date = date;
                 this.hours = hours;
@@ -311,8 +333,10 @@ public class Projects extends DisplayCard {
         projectList.add(new Project("Research & Design", 17, 45, researchEntries));
         projectList.add(new Project("Walmart app - UI Design", 18, 50, designEntries));
 
+        // Set projects to the card
         projectsCard.setProjects(projectList);
 
+        // Show frame
         frame.setVisible(true);
     }
 }
