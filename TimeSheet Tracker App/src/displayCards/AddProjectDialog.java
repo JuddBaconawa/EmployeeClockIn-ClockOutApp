@@ -8,6 +8,7 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.BorderLayout;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.util.concurrent.Flow;
 
 import javax.swing.BorderFactory;
@@ -41,8 +42,12 @@ public class AddProjectDialog extends JDialog{
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new BorderLayout());
 
+        // Initialize input fields
+        initFields();
         // Initialize layout
         initLayout();
+
+        // Finalize dialog
         pack();
         setLocationRelativeTo(parent);
     }
@@ -142,5 +147,25 @@ public class AddProjectDialog extends JDialog{
         return confirmed;
     }
     
+    // getters for input fields
+    public String getProjectName() {
+        return projectNameField.getText().trim();
+    }
+
+    public String getProjectDescription() {
+        return projectDescriptionArea.getText();
+    }
+
+    public String getMaxHours() {
+        return maxHoursField.getText().trim();
+    }
+
+    public String getDeadline() {
+        return deadlineField.getText().trim();
+    }
+
+    public boolean getConfirmed() {
+        return confirmed;
+    }
   
 }
