@@ -127,5 +127,14 @@ public class AddProjectDialog extends JDialog{
         scrollPane.setPreferredSize(new Dimension(250, 80));
         panel.add(scrollPane, gbc);
     }
+
+    // Confirm Action
+    private void onConfirm() {
+        // Set confirmed flag and close dialog
+        confirmed = true;
+        // close dialog after confirming
+        dispose();
+    }
+    
   
 }
