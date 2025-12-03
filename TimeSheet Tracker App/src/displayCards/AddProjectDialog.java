@@ -163,9 +163,5 @@ public class AddProjectDialog extends JDialog{
     public String getDeadline() {
         return deadlineField.getText().trim();
     }
-
-    public boolean getConfirmed() {
-        return confirmed;
-    }
   
 }
