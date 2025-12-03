@@ -113,7 +113,7 @@ public class AddProjectDialog extends JDialog{
         
     }
 
-    private void addRow(JPanel panel, GridBagConstraints gbc, int row, String labelText, JTextField area) {
+    private void addRow(JPanel panel, GridBagConstraints gbc, int row, String labelText, JTextArea area) {
         // Implementation of adding row with label and text area
         gbc.gridx = 0;
         gbc.gridy = row;
