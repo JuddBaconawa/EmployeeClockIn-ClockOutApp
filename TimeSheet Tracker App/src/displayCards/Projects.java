@@ -44,6 +44,7 @@ public class Projects extends DisplayCard {
     private JLabel monthLabel;
     private Connection conn;
     private User user;
+    
 
     // list of all projects loaded
     private List<Project> allProjects = new ArrayList<>();
@@ -140,15 +141,22 @@ public class Projects extends DisplayCard {
 
     // old new project action
     addProjectBtn.addActionListener(e -> {
-        Project newProject = new Project(
-            "New Project",
-            0,
-            40,
-            new ArrayList<>()
-        );
-        allProjects.add(newProject);
-        refreshProjectsView();
+        AddProjectDialog dialog = new AddProjectDialog(parentFrame);
+        dialog.setVisible(true);
 
+        if(dialog.isConfirmed()) {
+            // Build a new Project via dialog input
+            Project newProject = new Project(
+                dialog.getProjectName(),
+                0, // initial hours logged
+                Integer.parseInt(dialog.getMaxHours()),
+                new ArrayList<>(), // empty time entries
+                dialog.getDeadline()
+            );
+
+            allProjects.add(newProject);
+            refreshProjectsView();   
+        }
     });
 
     // add button to Footer
