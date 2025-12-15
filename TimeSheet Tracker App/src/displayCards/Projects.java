@@ -141,22 +141,25 @@ public class Projects extends DisplayCard {
 
     // old new project action
     addProjectBtn.addActionListener(e -> {
+        // Open Add Project Dialog
         AddProjectDialog dialog = new AddProjectDialog(parentFrame);
         dialog.setVisible(true);
 
-        if(dialog.isConfirmed()) {
-            // Build a new Project via dialog input
-            Project newProject = new Project(
-                dialog.getProjectName(),
-                0, // initial hours logged
-                Integer.parseInt(dialog.getMaxHours()),
-                new ArrayList<>(), // empty time entries
-                dialog.getDeadline()
-            );
-
-            allProjects.add(newProject);
-            refreshProjectsView();   
+        // If the dialog was cancelled, do nothing
+        if(!dialog.isConfirmed()) {
+            return;
         }
+
+        Project newProject = new Project(
+            user.getUserId(),
+            dialog.getProjectName(),
+            Integer.parseInt(dialog.getMaxHours()),
+            dialog.getDeadline()
+            
+        );  
+        
+        projectDAO.createProject(newProject);
+        loadProjectsFromDB();
     });
 
     // add button to Footer
