@@ -309,14 +309,14 @@ public class Projects extends DisplayCard {
     }
 
     // === Example Runner ===
-    public static void main(String[] args) {
-        // Creates the JFrame
-        JFrame frame = new JFrame("Projects Example");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1200, 800);
+    // public static void main(String[] args) {
+    //     // Creates the JFrame
+    //     JFrame frame = new JFrame("Projects Example");
+    //     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //     frame.setSize(1200, 800);
 
-        Projects projectsCard = new Projects(parentFrame, conn, user);
-        frame.add(projectsCard);
+    //     Projects projectsCard = new Projects(parentFrame, conn, user);
+    //     frame.add(projectsCard);
 
         // // === Example Data for testing UI===
 
@@ -376,5 +376,5 @@ public class Projects extends DisplayCard {
 
         // // Show frame
         // frame.setVisible(true);
-    }
+    // }
 }
