@@ -4,6 +4,7 @@ package core;
 // IMPORTS
 import components.MenuPanel;
 
+// 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,6 +13,8 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
+import java.sql.DriverManager;
+import java.sql.Connection;
 import java.awt.GridLayout;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -45,7 +48,11 @@ import displayCards.Timelog;
 // TimeSheet class
 public class TimeSheet extends JFrame{
 
+	// variable for the display panel
 	private JPanel displayPanel;
+
+	//private connection variable
+	private Connection conn;
 
 	// variable for dragging the window
 	private int mouseX;
@@ -57,6 +64,18 @@ public class TimeSheet extends JFrame{
 	}
 
 	public void initialize(User user) {
+
+		// DB connection
+
+		try {
+			conn = DriverManager.getConnection(
+        "jdbc:mysql://localhost:3306/timesheetappdatabase",	// database URL
+        "root",	// username
+        "DB_password1301"	// password
+			);		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		/**************** Frame Setup ****************************/
 
@@ -106,7 +125,7 @@ public class TimeSheet extends JFrame{
 		displayPanel.add(new Dashboard(), "Dashboard");
 		displayPanel.add(new Profile(), "Profile");
 		displayPanel.add(new Timelog(), "Timelog");
-		displayPanel.add(new Projects(null, user), "Projects");
+		displayPanel.add(new Projects(this, conn, user), "Projects");
 		displayPanel.add(new Settings(), "Settings");
 		
 		/*********************** Add Panel to Frame ************************/
@@ -114,6 +133,7 @@ public class TimeSheet extends JFrame{
 		// add(displayPanel);												// Add display panel to the frame		
 		add(mainPanel);														// Add main panel to the frame					
 		// add(menuPanel);														// Add menu panel to the frame
+		setVisible(true);
 	}
 
 	private void enableWindowDrag(JFrame frame) {
