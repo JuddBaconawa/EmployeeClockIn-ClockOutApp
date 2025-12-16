@@ -25,7 +25,7 @@ public class ProjectDAO {
         String sql = "INSERT INTO projects (user_id, name, max_hours, deadline) VALUES (?, ?, ?, ?)";
         
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
-            ps.setInt(1, userId);
+            ps.setInt(1, project.userId);
             ps.setString(2, project.name);
             ps.setInt(3, project.maxHours);
             ps.setString(4, project.deadline);
