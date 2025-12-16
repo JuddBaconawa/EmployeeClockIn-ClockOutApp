@@ -164,12 +164,17 @@ public class Projects extends DisplayCard {
                 return;
             }
 
+            //mae sure user is not null
+            if (user == null) {
+                throw new IllegalStateException("User must not be null");
+            }
+
             Project newProject = new Project(
                 user.getUserId(),
                 dialog.getProjectName(),
+                0, // initial hours logged
                 Integer.parseInt(dialog.getMaxHours()),
                 dialog.getDeadline()
-                
             );  
             
             //save project to the database
@@ -305,11 +310,12 @@ public class Projects extends DisplayCard {
 
     // === Example Runner ===
     public static void main(String[] args) {
+        // Creates the JFrame
         JFrame frame = new JFrame("Projects Example");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1200, 800);
 
-        Projects projectsCard = new Projects(null, null);
+        Projects projectsCard = new Projects(parentFrame, conn, user);
         frame.add(projectsCard);
 
         // // === Example Data for testing UI===
