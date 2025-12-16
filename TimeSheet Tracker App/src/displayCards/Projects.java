@@ -2,11 +2,15 @@
 package displayCards;
 
 // Imports for project management
+import displayCards.AddProjectDialog;
 import components.DisplayCard;
 import models.User;
 import util.LoadProjectsFromDB;
 import components.TitlePanel;
 import components.dashboard.StatusIndicator;
+
+// DAO import
+import dao.ProjectDAO;
 
 // Imports for GUI and utilities
 import java.awt.BorderLayout;
@@ -44,132 +48,145 @@ public class Projects extends DisplayCard {
     private JLabel monthLabel;
     private Connection conn;
     private User user;
+
+    // 
+    private JFrame parentFrame; // reference to parent frame for dialogs
     
+    // DAO for project operations
+    private ProjectDAO projectDAO;
 
     // list of all projects loaded
     private List<Project> allProjects = new ArrayList<>();
     private YearMonth currentMonth = YearMonth.now(); // Tracks which month is being shown
     private StatusIndicator statusIndicator;
 
-    public Projects(Connection conn, User user) {
-    super("Projects");
-    this.conn = conn;
-    this.user = user;
+    public Projects(JFrame parentFrame, Connection conn, User user) {
+        // Call super constructor
+        super("Projects");
+        // Initialize fields
+        this.parentFrame = parentFrame;
+        this.conn = conn;
+        this.user = user;
+        // Initialize DAO
+        this.projectDAO = new ProjectDAO(conn);
 
-    // Main Layout
-    setBackground(new Color(240, 235, 216));
-    setLayout(new BorderLayout());
+        // Main Layout
+        setBackground(new Color(240, 235, 216));
+        setLayout(new BorderLayout());
 
-    //statusIndicator
-    statusIndicator = new StatusIndicator();
+        //statusIndicator
+        statusIndicator = new StatusIndicator();
 
-    // === Title Panel ===
-    TitlePanel titlePanel = new TitlePanel("Projects", statusIndicator);
-    
-    // titlePanel.setLayout(new BorderLayout());
-    titlePanel.setPreferredSize( new Dimension(0, 60));
-
-    // === Navigation Panel ===
-    JPanel navPanel = new JPanel(new BorderLayout());
-    navPanel.setBackground(new Color(62, 92, 118));
-    navPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
-
-    // Left: Title
-    JLabel navLabel = new JLabel("Navigation");
-    navLabel.setFont(new Font("Arial", Font.BOLD, 32));
-    navLabel.setForeground(Color.WHITE);
-    navPanel.add(navLabel, BorderLayout.EAST);  // hid the "Navigation" text
-
-    // Right: Month Navigation
-    JPanel monthlyNavPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
-    monthlyNavPanel.setOpaque(false);
-
-    // months buttons and label
-    JButton prevBtn = new JButton("◀ Prev");
-    JButton nextBtn = new JButton("Next ▶");
-    monthLabel = new JLabel(currentMonth.format(DateTimeFormatter.ofPattern("MMMM yyyy")));
-    monthLabel.setFont(new Font("Arial", Font.BOLD, 18));
-    monthLabel.setForeground(Color.WHITE);
-
-    prevBtn.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            changeMonth(-1);
-        }
-    });
-
-    nextBtn.addActionListener(new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            changeMonth(1);
-        }
-    });
-
-    monthlyNavPanel.add(prevBtn);
-    monthlyNavPanel.add(monthLabel);
-    monthlyNavPanel.add(nextBtn);
-
-    // add monthlyNavPane to navPanel
-    navPanel.add(monthlyNavPanel, BorderLayout.EAST);
-
-    
-
-    // === Top Panel Wrapper ===
-    JPanel topPanel = new JPanel();
-    topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
-    topPanel.add(titlePanel);
-    topPanel.add(navPanel);
-    
-
-    // === Projects Grid Panel ===
-    projectsGrid = new JPanel();
-    projectsGrid.setLayout(new GridLayout(0, 2, 20, 20));
-    projectsGrid.setBackground(new Color(240, 240, 240));
-    projectsGrid.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-
-    // scroll panel for projects grid
-    JScrollPane scrollPane = new JScrollPane(projectsGrid);
-    scrollPane.setBorder(null);
-    scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-    
-
-    // === Footer Panel ===
-    JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
-    footerPanel.setBackground(new Color(180, 180, 180));
-    JButton addProjectBtn = new JButton("+ Add Project");
-
-
-    // old new project action
-    addProjectBtn.addActionListener(e -> {
-        // Open Add Project Dialog
-        AddProjectDialog dialog = new AddProjectDialog(parentFrame);
-        dialog.setVisible(true);
-
-        // If the dialog was cancelled, do nothing
-        if(!dialog.isConfirmed()) {
-            return;
-        }
-
-        Project newProject = new Project(
-            user.getUserId(),
-            dialog.getProjectName(),
-            Integer.parseInt(dialog.getMaxHours()),
-            dialog.getDeadline()
-            
-        );  
+        // === Title Panel ===
+        TitlePanel titlePanel = new TitlePanel("Projects", statusIndicator);
         
-        projectDAO.createProject(newProject);
-        loadProjectsFromDB();
-    });
+        // titlePanel.setLayout(new BorderLayout());
+        titlePanel.setPreferredSize( new Dimension(0, 60));
 
-    // add button to Footer
-    footerPanel.add(addProjectBtn);
-    
+        // === Navigation Panel ===
+        JPanel navPanel = new JPanel(new BorderLayout());
+        navPanel.setBackground(new Color(62, 92, 118));
+        navPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
-    // added panels to main layout
-    add(topPanel, BorderLayout.NORTH);
-    add(scrollPane, BorderLayout.CENTER);
-    add(footerPanel, BorderLayout.SOUTH);
+        // Left: Title
+        JLabel navLabel = new JLabel("Navigation");
+        navLabel.setFont(new Font("Arial", Font.BOLD, 32));
+        navLabel.setForeground(Color.WHITE);
+        navPanel.add(navLabel, BorderLayout.EAST);  // hid the "Navigation" text
+
+        // Right: Month Navigation
+        JPanel monthlyNavPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 5));
+        monthlyNavPanel.setOpaque(false);
+
+        // months buttons and label
+        JButton prevBtn = new JButton("◀ Prev");
+        JButton nextBtn = new JButton("Next ▶");
+        monthLabel = new JLabel(currentMonth.format(DateTimeFormatter.ofPattern("MMMM yyyy")));
+        monthLabel.setFont(new Font("Arial", Font.BOLD, 18));
+        monthLabel.setForeground(Color.WHITE);
+
+        prevBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                changeMonth(-1);
+            }
+        });
+
+        nextBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                changeMonth(1);
+            }
+        });
+
+        monthlyNavPanel.add(prevBtn);
+        monthlyNavPanel.add(monthLabel);
+        monthlyNavPanel.add(nextBtn);
+
+        // add monthlyNavPane to navPanel
+        navPanel.add(monthlyNavPanel, BorderLayout.EAST);
+
+        
+
+        // === Top Panel Wrapper ===
+        JPanel topPanel = new JPanel();
+        topPanel.setLayout(new BoxLayout(topPanel, BoxLayout.Y_AXIS));
+        topPanel.add(titlePanel);
+        topPanel.add(navPanel);
+        
+
+        // === Projects Grid Panel ===
+        projectsGrid = new JPanel();
+        projectsGrid.setLayout(new GridLayout(0, 2, 20, 20));
+        projectsGrid.setBackground(new Color(240, 240, 240));
+        projectsGrid.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
+        // scroll panel for projects grid
+        JScrollPane scrollPane = new JScrollPane(projectsGrid);
+        scrollPane.setBorder(null);
+        scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        
+
+        // === Footer Panel ===
+        JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
+        footerPanel.setBackground(new Color(180, 180, 180));
+        JButton addProjectBtn = new JButton("+ Add Project");
+
+
+        // old new project action
+        addProjectBtn.addActionListener(e -> {
+            // Open Add Project Dialog
+            AddProjectDialog dialog = new AddProjectDialog(parentFrame);
+            dialog.setVisible(true);
+
+            // If the dialog was cancelled, do nothing
+            if(!dialog.isConfirmed()) {
+                return;
+            }
+
+            Project newProject = new Project(
+                user.getUserId(),
+                dialog.getProjectName(),
+                Integer.parseInt(dialog.getMaxHours()),
+                dialog.getDeadline()
+                
+            );  
+            
+            //save project to the database
+            projectDAO.createProject(newProject);
+
+            // Refresh the project grid
+            loadProjectsFromDB();
+        });
+
+        // add button to Footer
+        footerPanel.add(addProjectBtn);
+        
+
+        // added panels to main layout
+        add(topPanel, BorderLayout.NORTH);
+        add(scrollPane, BorderLayout.CENTER);
+        add(footerPanel, BorderLayout.SOUTH);
 }
 
 
@@ -256,17 +273,21 @@ public class Projects extends DisplayCard {
 
     // Minimal Project class
     public static class Project {
+        public int userId;
         public String name;
         public int hoursLogged;
         public int maxHours;
+        public String deadline;
         public List<TimeEntry> timeEntries;
 
         // Project Constructor
-        public Project(String name, int hoursLogged, int maxHours, List<TimeEntry> timeEntries) {
+        public Project(int userId, String name, int hoursLogged, int maxHours, String deadline) {
+            this.userId = userId;
             this.name = name;
-            this.hoursLogged = hoursLogged;
+            this.hoursLogged = 0;   // set default to 0
             this.maxHours = maxHours;
-            this.timeEntries = timeEntries;
+            this.deadline = deadline;
+            this.timeEntries = new ArrayList<>();
         }
 
         // Time Entry inner class
@@ -291,63 +312,63 @@ public class Projects extends DisplayCard {
         Projects projectsCard = new Projects(null, null);
         frame.add(projectsCard);
 
-        // === Example Data ===
+        // // === Example Data for testing UI===
 
-        // November Projects
-        List<Project.TimeEntry> alphaEntries = new ArrayList<>();
-        alphaEntries.add(new Project.TimeEntry("2025-11-10", 5));
-        alphaEntries.add(new Project.TimeEntry("2025-11-11", 3));
-        alphaEntries.add(new Project.TimeEntry("2025-11-12", 4));
-        alphaEntries.add(new Project.TimeEntry("2025-11-13", 8));
+        // // November Projects
+        // List<Project.TimeEntry> alphaEntries = new ArrayList<>();
+        // alphaEntries.add(new Project.TimeEntry("2025-11-10", 5));
+        // alphaEntries.add(new Project.TimeEntry("2025-11-11", 3));
+        // alphaEntries.add(new Project.TimeEntry("2025-11-12", 4));
+        // alphaEntries.add(new Project.TimeEntry("2025-11-13", 8));
 
-        List<Project.TimeEntry> betaEntries = new ArrayList<>();
-        betaEntries.add(new Project.TimeEntry("2025-11-09", 8));
-        betaEntries.add(new Project.TimeEntry("2025-11-14", 6));
+        // List<Project.TimeEntry> betaEntries = new ArrayList<>();
+        // betaEntries.add(new Project.TimeEntry("2025-11-09", 8));
+        // betaEntries.add(new Project.TimeEntry("2025-11-14", 6));
 
-        // January Project
-        List<Project.TimeEntry> timeProjectEntries = new ArrayList<>();
-        timeProjectEntries.add(new Project.TimeEntry("2025-01-05", 6));
-        timeProjectEntries.add(new Project.TimeEntry("2025-01-08", 4));
-        timeProjectEntries.add(new Project.TimeEntry("2025-01-09", 5));
+        // // January Project
+        // List<Project.TimeEntry> timeProjectEntries = new ArrayList<>();
+        // timeProjectEntries.add(new Project.TimeEntry("2025-01-05", 6));
+        // timeProjectEntries.add(new Project.TimeEntry("2025-01-08", 4));
+        // timeProjectEntries.add(new Project.TimeEntry("2025-01-09", 5));
 
-        // March Project
-        List<Project.TimeEntry> marketingEntries = new ArrayList<>();
-        marketingEntries.add(new Project.TimeEntry("2025-03-02", 8));
-        marketingEntries.add(new Project.TimeEntry("2025-03-04", 7));
-        marketingEntries.add(new Project.TimeEntry("2025-03-05", 5));
+        // // March Project
+        // List<Project.TimeEntry> marketingEntries = new ArrayList<>();
+        // marketingEntries.add(new Project.TimeEntry("2025-03-02", 8));
+        // marketingEntries.add(new Project.TimeEntry("2025-03-04", 7));
+        // marketingEntries.add(new Project.TimeEntry("2025-03-05", 5));
 
-        // June Project
-        List<Project.TimeEntry> devOpsEntries = new ArrayList<>();
-        devOpsEntries.add(new Project.TimeEntry("2025-06-10", 5));
-        devOpsEntries.add(new Project.TimeEntry("2025-06-15", 6));
-        devOpsEntries.add(new Project.TimeEntry("2025-06-20", 4));
+        // // June Project
+        // List<Project.TimeEntry> devOpsEntries = new ArrayList<>();
+        // devOpsEntries.add(new Project.TimeEntry("2025-06-10", 5));
+        // devOpsEntries.add(new Project.TimeEntry("2025-06-15", 6));
+        // devOpsEntries.add(new Project.TimeEntry("2025-06-20", 4));
 
-        // August Project
-        List<Project.TimeEntry> researchEntries = new ArrayList<>();
-        researchEntries.add(new Project.TimeEntry("2025-08-03", 8));
-        researchEntries.add(new Project.TimeEntry("2025-08-04", 6));
-        researchEntries.add(new Project.TimeEntry("2025-08-10", 5));
+        // // August Project
+        // List<Project.TimeEntry> researchEntries = new ArrayList<>();
+        // researchEntries.add(new Project.TimeEntry("2025-08-03", 8));
+        // researchEntries.add(new Project.TimeEntry("2025-08-04", 6));
+        // researchEntries.add(new Project.TimeEntry("2025-08-10", 5));
 
-        // October Project
-        List<Project.TimeEntry> designEntries = new ArrayList<>();
-        designEntries.add(new Project.TimeEntry("2025-10-01", 4));
-        designEntries.add(new Project.TimeEntry("2025-10-03", 6));
-        designEntries.add(new Project.TimeEntry("2025-10-05", 7));
+        // // October Project
+        // List<Project.TimeEntry> designEntries = new ArrayList<>();
+        // designEntries.add(new Project.TimeEntry("2025-10-01", 4));
+        // designEntries.add(new Project.TimeEntry("2025-10-03", 6));
+        // designEntries.add(new Project.TimeEntry("2025-10-05", 7));
 
-        // === Projects List ===
-        List<Project> projectList = new ArrayList<>();
-        projectList.add(new Project("Alpha Account", 20, 40, alphaEntries));
-        projectList.add(new Project("The Hilton - Marketing", 14, 50, betaEntries));
-        projectList.add(new Project("TimeZone - Main POS", 15, 40, timeProjectEntries));
-        projectList.add(new Project("CVS POS Software", 20, 50, marketingEntries));
-        projectList.add(new Project("DevOps", 15, 40, devOpsEntries));
-        projectList.add(new Project("Research & Design", 17, 45, researchEntries));
-        projectList.add(new Project("Walmart app - UI Design", 18, 50, designEntries));
+        // // === Projects List ===
+        // List<Project> projectList = new ArrayList<>();
+        // projectList.add(new Project("Alpha Account", 20, 40, alphaEntries));
+        // projectList.add(new Project("The Hilton - Marketing", 14, 50, betaEntries));
+        // projectList.add(new Project("TimeZone - Main POS", 15, 40, timeProjectEntries));
+        // projectList.add(new Project("CVS POS Software", 20, 50, marketingEntries));
+        // projectList.add(new Project("DevOps", 15, 40, devOpsEntries));
+        // projectList.add(new Project("Research & Design", 17, 45, researchEntries));
+        // projectList.add(new Project("Walmart app - UI Design", 18, 50, designEntries));
 
-        // Set projects to the card
-        projectsCard.setProjects(projectList);
+        // // Set projects to the card
+        // projectsCard.setProjects(projectList);
 
-        // Show frame
-        frame.setVisible(true);
+        // // Show frame
+        // frame.setVisible(true);
     }
 }
