@@ -39,5 +39,13 @@ public class ProjectDAO {
     // =====================================
     // READ
     // =====================================
+
+    public List<Project> getProjectsForUser(User user) {
+
+        List<Project> projects = new ArrayList<>();
+        String sql;
+
+        boolean isPrivileged = user.getRole
+    }
   
 }
