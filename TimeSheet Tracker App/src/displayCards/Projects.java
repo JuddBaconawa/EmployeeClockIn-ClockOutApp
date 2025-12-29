@@ -204,8 +204,8 @@ public class Projects extends DisplayCard {
 
     // load projects from the utility class
     public void loadProjectsFromDB() {
-        LoadProjectsFromDB loader = new LoadProjectsFromDB(conn);
-        List<Project> projectList = loader.loadProjectsForUser(user);
+        ProjectDAO loader = new ProjectDAO(conn);
+        List<Project> projectList = ProjectDAO.getProjectsForUser(user);
         setProjects(projectList);
     }
 
