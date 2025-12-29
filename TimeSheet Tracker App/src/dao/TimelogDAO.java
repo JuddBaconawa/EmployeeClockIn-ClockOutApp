@@ -38,10 +38,10 @@ public class TimelogDAO {
             while (rs.next()) {
                 logs.add(new TimelogEntry(
                         rs.getString("project_name"),
-                        rs.getTime("clock_in"),
-                        rs.getTime("clock_out"),
-                        rs.getString("total_hours"),
-                        rs.getDate("word_date")
+                        rs.getTimestamp("clock_in"),
+                        rs.getTimestamp("clock_out"),
+                        rs.getDouble("total_hours"),
+                        rs.getDate("work_date")
                 ));
             }
 
