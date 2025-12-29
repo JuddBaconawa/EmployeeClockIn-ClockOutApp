@@ -75,6 +75,9 @@ CREATE TABLE timesheets (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
+INSERT INTO timesheets (user_id, project_id, clock_in, clock_out, total_hours, work_date)
+VALUES ()
+
 -- ================= PAYROLL ==================
 CREATE TABLE payroll (
     payroll_id INT AUTO_INCREMENT PRIMARY KEY,
