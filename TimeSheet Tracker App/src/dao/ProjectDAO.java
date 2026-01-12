@@ -52,6 +52,15 @@ public class ProjectDAO {
         } else {
             sql = "SELECT name, hours_logged, max_hours FROM projects WHERE user_id = ?";
         }
+
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            
+            if (!isPrivileged) {
+                ps.setInt(1, user.getUserId());
+            }
+
+            
+        }
     }
   
 }
