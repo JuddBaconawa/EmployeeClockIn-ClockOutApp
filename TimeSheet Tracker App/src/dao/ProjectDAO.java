@@ -45,7 +45,13 @@ public class ProjectDAO {
         List<Project> projects = new ArrayList<>();
         String sql;
 
-        boolean isPrivileged = user.getRole
+        boolean isPrivileged = user.getRole().equalsIgnoreCase9"admin") || user.getRole().equalsIgnoreCase("manager");
+
+        if (isPrivileged) {
+            sql = "SELECT name, hours_logged, max_hours FROM projects";
+        } else {
+            sql = "SELECT name, hours_logged, max_hours FROM projects WHERE user_id = ?";
+        }
     }
   
 }
