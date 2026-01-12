@@ -45,12 +45,12 @@ public class ProjectDAO {
         List<Project> projects = new ArrayList<>();
         String sql;
 
-        boolean isPrivileged = user.getRole().equalsIgnoreCase9"admin") || user.getRole().equalsIgnoreCase("manager");
+        boolean isPrivileged = user.getRole().equalsIgnoreCase("admin") || user.getRole().equalsIgnoreCase("manager");
 
         if (isPrivileged) {
-            sql = "SELECT name, hours_logged, max_hours FROM projects";
+            sql = "SELECT project_id, user_id,name, hours_logged, max_hours, start_date, end_date FROM projects";
         } else {
-            sql = "SELECT name, hours_logged, max_hours FROM projects WHERE user_id = ?";
+            sql = "SELECT project_id, user_id,name, hours_logged, max_hours, start_date, end_date FROM projects WHERE user_id = ?";
         }
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -59,7 +59,11 @@ public class ProjectDAO {
                 ps.setInt(1, user.getUserId());
             }
 
-            
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+
+                }
+            }
         }
     }
   
