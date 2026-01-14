@@ -43,6 +43,7 @@ public class ProjectDAO {
     public List<Project> getProjectsForUser(User user) {
 
         List<Project> projects = new ArrayList<>();
+
         String sql;
 
         boolean isPrivileged = user.getRole().equalsIgnoreCase("admin") || user.getRole().equalsIgnoreCase("manager");
@@ -61,10 +62,26 @@ public class ProjectDAO {
 
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
-
+                    Project project = new Project (
+                        rs.getInt("project_id"),
+                        rs.getString("name"),
+                        rs.getString("description"),
+                        rs.getString("status"),
+                        rs.getInt("user_id"),
+                        rs.getInt("hours_logged"),
+                        rs.getInt("max_hours"),
+                        rs.getString("start_date"),
+                        rs.getString("end_date")
+                    );
+                    projects.add(project);
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exception
         }
+
+        return projects;
     }
   
 }
