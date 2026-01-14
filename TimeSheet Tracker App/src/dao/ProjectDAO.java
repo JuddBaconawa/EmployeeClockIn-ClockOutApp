@@ -7,7 +7,10 @@ import util.DBConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProjectDAO {
 
@@ -65,13 +68,9 @@ public class ProjectDAO {
                     Project project = new Project (
                         rs.getInt("project_id"),
                         rs.getString("name"),
-                        rs.getString("description"),
-                        rs.getString("status"),
                         rs.getInt("user_id"),
                         rs.getInt("hours_logged"),
-                        rs.getInt("max_hours"),
-                        rs.getString("start_date"),
-                        rs.getString("end_date")
+                        rs.getString("start_date")
                     );
                     projects.add(project);
                 }
