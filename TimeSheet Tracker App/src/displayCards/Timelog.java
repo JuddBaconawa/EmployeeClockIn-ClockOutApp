@@ -1,16 +1,26 @@
 package displayCards;
+
 // IMPORTS
 import java.awt.Color;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 
 import components.DisplayCard;
+import dao.TimelogDAO;
+import models.TimelogEntry;
 
-import java.awt.*;
+
+import java.awt.BorderLayout;
+import java.awt.Component;
+
 
 // TimeLog class
 public class Timelog extends DisplayCard {
     
+    private JTable table;
+    private TimelogDAO timelogDAO;
+    private String[] columns = {"Project", "Clock In", "Clock Out", "Total Hours", "Date"};
+
     public Timelog() {
       super("Timelog");
       setBackground(new Color(0, 40, 0));
