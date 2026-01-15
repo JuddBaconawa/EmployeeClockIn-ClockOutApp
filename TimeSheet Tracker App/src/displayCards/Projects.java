@@ -5,7 +5,8 @@ package displayCards;
 import displayCards.AddProjectDialog;
 import components.DisplayCard;
 import models.User;
-import util.LoadProjectsFromDB;
+import dao.ProjectDAO;
+// import util.LoadProjectsFromDB;
 import components.TitlePanel;
 import components.dashboard.StatusIndicator;
 
@@ -205,7 +206,7 @@ public class Projects extends DisplayCard {
     // load projects from the utility class
     public void loadProjectsFromDB() {
         ProjectDAO loader = new ProjectDAO(conn);
-        List<Project> projectList = ProjectDAO.getProjectsForUser(user);
+        List<Project> projectList = projectDAO.getProjectsForUser(user);
         setProjects(projectList);
     }
 
