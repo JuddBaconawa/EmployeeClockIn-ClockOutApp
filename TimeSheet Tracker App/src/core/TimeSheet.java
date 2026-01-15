@@ -3,6 +3,7 @@ package core;
 
 // IMPORTS
 import components.MenuPanel;
+import dao.TimelogDAO;
 
 // 
 import java.awt.BorderLayout;
@@ -124,7 +125,7 @@ public class TimeSheet extends JFrame{
 
 		displayPanel.add(new Dashboard(), "Dashboard");
 		displayPanel.add(new Profile(), "Profile");
-		displayPanel.add(new Timelog(), "Timelog");
+		displayPanel.add(new Timelog(new TimelogDAO(conn)), "Timelog");
 		displayPanel.add(new Projects(this, conn, user), "Projects");
 		displayPanel.add(new Settings(), "Settings");
 		
