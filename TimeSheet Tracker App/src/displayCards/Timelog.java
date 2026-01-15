@@ -22,7 +22,7 @@ public class Timelog extends DisplayCard {
     private String[] columns = {"Project", "Clock In", "Clock Out", "Total Hours", "Date"};
 
     public Timelog(TimelogDAO dao) {
-        
+
       super("Timelog");
       this.timelogDAO = dao;
 
@@ -76,11 +76,11 @@ public class Timelog extends DisplayCard {
         g2d.drawString("Timelog", 30, 60);
     }
   
-      public static void main(String[] args) {
-        JFrame frame = new JFrame("Timelog Example");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 680);
-        frame.add(new Timelog());
-        frame.setVisible(true);
-    }
+    //   public static void main(String[] args) {
+    //     JFrame frame = new JFrame("Timelog Example");
+    //     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //     frame.setSize(1000, 680);
+    //     frame.add(new Timelog(dao));
+    //     frame.setVisible(true);
+    // }
 }
