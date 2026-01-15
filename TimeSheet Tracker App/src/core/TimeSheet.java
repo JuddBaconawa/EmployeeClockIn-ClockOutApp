@@ -124,9 +124,10 @@ public class TimeSheet extends JFrame{
 		displayPanel.setBackground(new Color(240, 235, 216));
 
 		displayPanel.add(new Dashboard(), "Dashboard");
-		displayPanel.add(new Profile(), "Profile");
-		displayPanel.add(new Timelog(new TimelogDAO(conn)), "Timelog");
-		displayPanel.add(new Projects(this, conn, user), "Projects");
+		displayPanel.add(new Profile(user), "Profile");
+		// displayPanel.add(new Timelog(new TimelogDAO(conn)), "Timelog");
+		// displayPanel.add(new Projects(this, conn, user), "Projects");
+		
 		displayPanel.add(new Settings(), "Settings");
 		
 		/*********************** Add Panel to Frame ************************/
