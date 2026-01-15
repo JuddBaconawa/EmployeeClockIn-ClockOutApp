@@ -21,8 +21,11 @@ public class Timelog extends DisplayCard {
     private TimelogDAO timelogDAO;
     private String[] columns = {"Project", "Clock In", "Clock Out", "Total Hours", "Date"};
 
-    public Timelog() {
+    public Timelog(TimelogDAO dao) {
+        
       super("Timelog");
+      this.timelogDAO = dao;
+
       setBackground(new Color(0, 40, 0));
       setBackground(Color.GREEN);
       setLayout(new BorderLayout());
