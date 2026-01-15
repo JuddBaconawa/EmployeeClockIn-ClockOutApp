@@ -10,30 +10,42 @@ import java.awt.*;
 
 // TimeLog class
 public class Timelog extends DisplayCard {
+    
     public Timelog() {
       super("Timelog");
       setBackground(new Color(0, 40, 0));
-      setLayout(null);
+      setBackground(Color.GREEN);
+      setLayout(new BorderLayout());
+
+      // create a panel for the timelog table
+      JPanel tableContainer = new JPanel(new BorderLayout());
+      tableContainer.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+      tableContainer.setBackground(new Color(240, 235, 216));
 
       // Example data
-      String[] columns = {"Type", "Time", "Day", "Date"};
-      Object[][] data = {
-          {"Login", "08:00 AM", "Monday", "02/03/25"},
-          {"Break", "12:00 PM"},
-          {"Logout", "05:00 PM"},
-          {"Login", "06:00 PM"},
-          {"Break", "07:00 PM"},
-          {"Logout", "08:00 PM"},
-          {"Login", "08:00 AM"},
-          {"Break", "12:00 PM"},
-          {"Logout", "05:00 PM"},
-          {"Login", "06:00 PM"},
-          {"Break", "07:00 PM"},
-          {"Logout", "08:00 PM"}
-      };
+        //   String[] columns = {"Type", "Time", "Day", "Date"};
+        //   Object[][] data = {
+        //       {"Login", "08:00 AM", "Monday", "02/03/25"},
+        //       {"Break", "12:00 PM", "Tuesday", "02/03/25"},
+        //       {"Logout", "05:00 PM", "Tuesday", "02/03/25"},
+        //       {"Login", "06:00 PM", "Wednesday", "02/04/25"},
+        //       {"Break", "07:00 PM", "Wednesday", "02/04/25"},
+        //       {"Logout", "08:00 PM", "Wednesday", "02/04/25"},
+        //       {"Login", "08:00 AM", "Thursday", "02/11/25"},
+        //       {"Break", "12:00 PM", "Thursday", "02/11/25"},
+        //       {"Logout", "05:00 PM", "Thursday", "02/11/25"},
+        //       {"Login", "06:00 PM", "Friday", "02/12/25"},
+        //       {"Break", "07:00 PM", "Friday", "02/12/25"},
+        //       {"Logout", "08:00 PM", "Friday", "02/12/25"},
+        //       {"Login", "08:00 AM"},
+        //       {"Break", "12:00 PM"},
+        //       {"Logout", "05:00 PM"},
+        //       {"Login", "06:00 PM"},
+        //       {"Break", "07:00 PM"},
+        //       {"Logout", "08:00 PM"}
+        //   };
   
-      JTable table = new JTable(data, columns);
-      table.setRowHeight(30);
+
   
       // Custom renderer for coloring text
       table.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
@@ -56,8 +68,9 @@ public class Timelog extends DisplayCard {
       });
   
       JScrollPane scrollPane = new JScrollPane(table);
-      scrollPane.setBounds(50, 150, 400, 200);
-      add(scrollPane);
+    //   scrollPane.setBounds(50, 150, 400, 200);
+      
+      add(scrollPane, BorderLayout.CENTER);
     } 
 
     @Override
