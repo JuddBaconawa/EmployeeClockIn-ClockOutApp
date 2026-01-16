@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 
 import components.DisplayCard;
+import components.TitlePanel;
 import components.dashboard.ClockPanel;
 import components.dashboard.TimeStatsPanel;
 import components.dashboard.ProfilePanel;
@@ -36,31 +37,31 @@ public class Dashboard extends DisplayCard {
         setBackground(new Color(240, 235, 216));
         setLayout(new BorderLayout());
 
-        // === Title Panel ===
-        JPanel titlePanel = new JPanel(new BorderLayout());
-        titlePanel.setBackground(new Color(62, 92, 118));
-        titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        // // === Title Panel ===
+        // JPanel titlePanel = new JPanel(new BorderLayout());
+        // titlePanel.setBackground(new Color(62, 92, 118));
+        // titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
-        JLabel titleLabel = new JLabel("Dashboard");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
-        titleLabel.setForeground(new Color(255, 255, 255));
+        // JLabel titleLabel = new JLabel("Dashboard");
+        // titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
+        // titleLabel.setForeground(new Color(255, 255, 255));
 
-        // Status Indicator (small Colered Circle)
-        statusIndicator = new StatusIndicator();
+        // // Status Indicator (small Colered Circle)
+        // statusIndicator = new StatusIndicator();
 
-        statusText = new JLabel("Logged Out");
-        statusText.setFont(new Font("Arial", Font.PLAIN, 16));
-        statusText.setForeground(Color.WHITE);
+        // statusText = new JLabel("Logged Out");
+        // statusText.setFont(new Font("Arial", Font.PLAIN, 16));
+        // statusText.setForeground(Color.WHITE);
 
 
-        // Group Indicator + Text
-        JPanel indicatorPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 30, 15));
-        indicatorPanel.setOpaque(false);
-        indicatorPanel.add(statusIndicator);
-        indicatorPanel.add(statusText);
+        // // Group Indicator + Text
+        // JPanel indicatorPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 30, 15));
+        // indicatorPanel.setOpaque(false);
+        // indicatorPanel.add(statusIndicator);
+        // indicatorPanel.add(statusText);
 
-        titlePanel.add(titleLabel, BorderLayout.WEST);
-        titlePanel.add(indicatorPanel, BorderLayout.EAST);
+        // titlePanel.add(titleLabel, BorderLayout.WEST);
+        // titlePanel.add(indicatorPanel, BorderLayout.EAST);
 
         // === Content Panel === 
         JPanel contentPanel = new JPanel();
@@ -105,26 +106,41 @@ public class Dashboard extends DisplayCard {
         contentPanel.add(topPanel);
         contentPanel.add(bottomPanel);
 
+        statusIndicator = new StatusIndicator();
+        TitlePanel titlePanel = new TitlePanel("Dashboard", statusIndicator);
+
         // Add panels to layout
         add(titlePanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
 
     }
+
+    public static void main(String[] args) {
+    javax.swing.JFrame frame = new javax.swing.JFrame("Dashboard Test");
+    frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
     
-    public void updateStatus(String status) {
-    statusIndicator.setStatus(status);
-    switch (status) {
-        case "in":
-            statusText.setText("Clocked In");
-            break;
-        case "break":
-            statusText.setText("On Break");
-            break;
-        case "out":
-        default:
-            statusText.setText("Clocked Out");
-        }
-    }
+    Dashboard dashboard = new Dashboard();
+    frame.add(dashboard); // add your panel
+    
+    frame.setSize(1400, 680);
+    frame.setVisible(true);
+}
+
+    
+    // public void updateStatus(String status) {
+    // statusIndicator.setStatus(status);
+    // switch (status) {
+    //     case "in":
+    //         statusText.setText("Clocked In");
+    //         break;
+    //     case "break":
+    //         statusText.setText("On Break");
+    //         break;
+    //     case "out":
+    //     default:
+    //         statusText.setText("Clocked Out");
+    //     }
+    // }
 
     private JPanel wrapTopAligned(JPanel inner) {
         JPanel wrapper = new JPanel(new BorderLayout());
