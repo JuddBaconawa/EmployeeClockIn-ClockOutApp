@@ -4,6 +4,7 @@ package components;
 // IMPORTS
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import java.awt.Font;
 
@@ -23,8 +24,10 @@ public class TitlePanel extends JPanel{
     private JLabel statusText;
 
     // Title Panel Constructor
-    public TitlePanel(String title, JComponent statusIndicatorParam) {
+    public TitlePanel(String title, StatusIndicator statusIndicatorParam) {
         
+        // use to pass display the status indicator
+        this.statusIndicator = statusIndicatorParam;
 
         // Title Panel
         setLayout(new BorderLayout());
@@ -38,15 +41,13 @@ public class TitlePanel extends JPanel{
         setPreferredSize(new Dimension(0, 65)); // ensure height
         add(titleLabel, BorderLayout.WEST);
 
-        // use to pass display the status indicator
-        this.statusIndicator = (StatusIndicator) statusIndicatorParam;
-
+        
         // Add the title label to the far right
         statusText = new JLabel("Status");
         statusText.setFont(new Font("Arial", Font.BOLD, 17));
         statusText.setForeground(Color.WHITE);
 
-        JPanel statusPanel = new JPanel();
+        JPanel statusPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 10, 15));
         statusPanel.setOpaque(false);
         statusPanel.add(this.statusIndicator);
         statusPanel.add(statusText);
