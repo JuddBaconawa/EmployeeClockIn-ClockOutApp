@@ -71,6 +71,10 @@ public class TitlePanel extends JPanel{
         }
     }
 
+    public void setBackgroundColor(Color color) {
+        setBackground(color);
+    }
+
     // Method to update the title based on the DisplayCard used
     public void setTitle(String title) {
         titleLabel.setText(title);
