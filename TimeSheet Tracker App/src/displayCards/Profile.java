@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import components.DisplayCard;
+import components.TitlePanel;
 import components.dashboard.StatusIndicator;
 import components.dashboard.ProfilePanel;
 import models.User;
@@ -34,9 +35,9 @@ public class Profile extends DisplayCard {
 
 
         // TITLE Panel
-        JPanel titlePanel = new JPanel(new BorderLayout());
-        titlePanel.setBackground(new Color(62, 92, 118));
-        titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        statusIndicator = new StatusIndicator();
+        statusIndicator.setStatus("out");
+        TitlePanel titlePanel = new TitlePanel("Profile", statusIndicator);
         add(titlePanel, BorderLayout.NORTH);
 
         // Profile Panel - content
