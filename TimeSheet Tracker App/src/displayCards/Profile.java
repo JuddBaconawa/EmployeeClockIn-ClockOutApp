@@ -1,4 +1,7 @@
+// PACKAGES
 package displayCards;
+
+
 import java.awt.BorderLayout;
 // IMPORTS
 import java.awt.Color;
@@ -6,9 +9,11 @@ import java.awt.GridLayout;
 import java.awt.LayoutManager;
 
 import javax.swing.BorderFactory;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import components.DisplayCard;
+import components.dashboard.StatusIndicator;
 import components.dashboard.ProfilePanel;
 import models.User;
 
@@ -16,18 +21,25 @@ import models.User;
 // Profile Class
 public class Profile extends DisplayCard {
 
+    private StatusIndicator statusIndicator;
+    private JLabel statusText;
+
     public Profile(User user) {
         super("Profile");
         // setBackground(new Color(62, 92, 118));
         // setLayout(new BorderLayout(2, 2, 2, 2));
 
+        setBackground(new Color(240, 235, 216));
         setLayout(new BorderLayout());
 
+
+        // TITLE Panel
         JPanel titlePanel = new JPanel(new BorderLayout());
         titlePanel.setBackground(new Color(62, 92, 118));
         titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
         add(titlePanel, BorderLayout.NORTH);
 
+        // Profile Panel - content
         ProfilePanel profilePanel = new ProfilePanel(user);
         profilePanel.setBackground(Color.LIGHT_GRAY);
         profilePanel.setLayout(new GridLayout(3, 5, 20, 20));
@@ -42,6 +54,12 @@ public class Profile extends DisplayCard {
         g.setFont(new java.awt.Font("arial", java.awt.Font.BOLD, 32));
         g.setColor(java.awt.Color.LIGHT_GRAY);
         g.drawString("Profile", 30, 60);
+    }
+
+    public void updateStatus(String status) {
+        if (statusIndicator != null) {
+            statusIndicator.setStatus(status);
+        }
     }
 
     // public static void main(String[] args) {
