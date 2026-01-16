@@ -38,6 +38,7 @@ public class Profile extends DisplayCard {
         statusIndicator = new StatusIndicator();
         statusIndicator.setStatus("out");
         TitlePanel titlePanel = new TitlePanel("Profile", statusIndicator);
+        titlePanel.setBackgroundColor(new Color(62, 92, 118));
         add(titlePanel, BorderLayout.NORTH);
 
         // Profile Panel - content
