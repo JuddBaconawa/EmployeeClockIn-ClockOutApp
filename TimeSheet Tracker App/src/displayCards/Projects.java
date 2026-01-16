@@ -5,7 +5,7 @@ package displayCards;
 import displayCards.AddProjectDialog;
 import components.DisplayCard;
 import models.User;
-import dao.ProjectDAO;
+
 // import util.LoadProjectsFromDB;
 import components.TitlePanel;
 import components.dashboard.StatusIndicator;
