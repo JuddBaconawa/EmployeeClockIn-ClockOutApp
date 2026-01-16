@@ -3,21 +3,30 @@ import java.awt.BorderLayout;
 //IMPORTS
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import components.DisplayCard;
+import components.dashboard.StatusIndicator;
+import components.TitlePanel;
+
+
 
 
 
 // Home Class
 public class Settings extends DisplayCard {
+
+    private StatusIndicator statusIndicator;
+    private JLabel statusText;
+
     public Settings() {
 
       // Card Title
-      super("Setting");
+      super("");
 
       // Set properties for the Home JPanel
       setBackground(new Color(255, 255, 255));
@@ -25,13 +34,19 @@ public class Settings extends DisplayCard {
       
 
       // TITLE Panel
-      JPanel titlePanel = new JPanel(new BorderLayout());
-      titlePanel.setBackground(new Color(62, 92, 118));
-      titlePanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+      statusIndicator = new StatusIndicator();
+      statusIndicator.setStatus("out");
+      TitlePanel titlePanel = new TitlePanel("Settings", statusIndicator);
+      titlePanel.setBackgroundColor(new Color(62, 92, 118));
+      
 
-      JLabel titleLabel = new JLabel("Settings");
-      titleLabel.setFont(new Font("Arial", Font.BOLD, 32));
-      titleLabel.setForeground(new Color(100, 100, 100));
+      // Content Panel
+      JPanel contentPanel = new JPanel();
+      contentPanel.setLayout(new GridLayout(2, 2, 10, 50));
+      contentPanel.setOpaque(true);
+      contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 20));
+
+      
       
 
 
@@ -46,13 +61,7 @@ public class Settings extends DisplayCard {
 
     }
 
-    @Override
-    protected void paintComponent(java.awt.Graphics g) {
-      super.paintComponent(g);
-      g.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
-      g.setColor(java.awt.Color.LIGHT_GRAY);
-      g.drawString("Settings", 30, 60); // x, y
-    }
+
 
 
     public static void main(String[] args) {
