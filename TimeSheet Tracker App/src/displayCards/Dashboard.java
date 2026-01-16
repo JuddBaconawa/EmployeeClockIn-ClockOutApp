@@ -41,6 +41,7 @@ public class Dashboard extends DisplayCard {
         statusIndicator = new StatusIndicator();
         statusIndicator.setStatus("out");
         TitlePanel titlePanel = new TitlePanel("Dashboard", statusIndicator);
+        titlePanel.setBackgroundColor(new Color(75, 23, 44));
 
 
         // === Content Panel === 
