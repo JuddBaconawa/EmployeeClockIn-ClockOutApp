@@ -44,7 +44,7 @@ public class Profile extends DisplayCard {
         // Profile Panel - content
         ProfilePanel profilePanel = new ProfilePanel(user);
         profilePanel.setBackground(Color.LIGHT_GRAY);
-        profilePanel.setLayout(new GridLayout(3, 5, 20, 20));
+        profilePanel.setLayout(new GridLayout(5, 5, 0, 0));
         profilePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         add(profilePanel, BorderLayout.CENTER);
   
