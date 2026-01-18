@@ -173,7 +173,7 @@ public class Projects extends DisplayCard {
             Project newProject = new Project(
                 user.getUserId(),
                 dialog.getProjectName(),
-                0, // initial hours logged
+                hoursLogged = 0, // initial hours logged
                 Integer.parseInt(dialog.getMaxHours()),
                 dialog.getDeadline()
             );  
@@ -279,19 +279,23 @@ public class Projects extends DisplayCard {
 
     // Minimal Project class
     public static class Project {
+        public int projectId;
         public int userId;
         public String name;
-        public int hoursLogged;
         public int maxHours;
+        public int hoursLogged;
+        public String startDate;
         public String deadline;
         public List<TimeEntry> timeEntries;
 
         // Project Constructor
-        public Project(int userId, String name, int hoursLogged, int maxHours, String deadline) {
+        public Project(int projectId, int userId, String name, int maxHours, int hoursLogged, String startDate, String deadline) {
+            this.projectId = 0;
             this.userId = userId;
             this.name = name;
-            this.hoursLogged = 0;   // set default to 0
             this.maxHours = maxHours;
+            this.hoursLogged = 0;
+            this.startDate = startDate;
             this.deadline = deadline;
             this.timeEntries = new ArrayList<>();
         }
@@ -309,73 +313,5 @@ public class Projects extends DisplayCard {
         }
     }
 
-    // === Example Runner ===
-    // public static void main(String[] args) {
-    //     // Creates the JFrame
-    //     JFrame frame = new JFrame("Projects Example");
-    //     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    //     frame.setSize(1200, 800);
-
-    //     Projects projectsCard = new Projects(parentFrame, conn, user);
-    //     frame.add(projectsCard);
-
-        // // === Example Data for testing UI===
-
-        // // November Projects
-        // List<Project.TimeEntry> alphaEntries = new ArrayList<>();
-        // alphaEntries.add(new Project.TimeEntry("2025-11-10", 5));
-        // alphaEntries.add(new Project.TimeEntry("2025-11-11", 3));
-        // alphaEntries.add(new Project.TimeEntry("2025-11-12", 4));
-        // alphaEntries.add(new Project.TimeEntry("2025-11-13", 8));
-
-        // List<Project.TimeEntry> betaEntries = new ArrayList<>();
-        // betaEntries.add(new Project.TimeEntry("2025-11-09", 8));
-        // betaEntries.add(new Project.TimeEntry("2025-11-14", 6));
-
-        // // January Project
-        // List<Project.TimeEntry> timeProjectEntries = new ArrayList<>();
-        // timeProjectEntries.add(new Project.TimeEntry("2025-01-05", 6));
-        // timeProjectEntries.add(new Project.TimeEntry("2025-01-08", 4));
-        // timeProjectEntries.add(new Project.TimeEntry("2025-01-09", 5));
-
-        // // March Project
-        // List<Project.TimeEntry> marketingEntries = new ArrayList<>();
-        // marketingEntries.add(new Project.TimeEntry("2025-03-02", 8));
-        // marketingEntries.add(new Project.TimeEntry("2025-03-04", 7));
-        // marketingEntries.add(new Project.TimeEntry("2025-03-05", 5));
-
-        // // June Project
-        // List<Project.TimeEntry> devOpsEntries = new ArrayList<>();
-        // devOpsEntries.add(new Project.TimeEntry("2025-06-10", 5));
-        // devOpsEntries.add(new Project.TimeEntry("2025-06-15", 6));
-        // devOpsEntries.add(new Project.TimeEntry("2025-06-20", 4));
-
-        // // August Project
-        // List<Project.TimeEntry> researchEntries = new ArrayList<>();
-        // researchEntries.add(new Project.TimeEntry("2025-08-03", 8));
-        // researchEntries.add(new Project.TimeEntry("2025-08-04", 6));
-        // researchEntries.add(new Project.TimeEntry("2025-08-10", 5));
-
-        // // October Project
-        // List<Project.TimeEntry> designEntries = new ArrayList<>();
-        // designEntries.add(new Project.TimeEntry("2025-10-01", 4));
-        // designEntries.add(new Project.TimeEntry("2025-10-03", 6));
-        // designEntries.add(new Project.TimeEntry("2025-10-05", 7));
-
-        // // === Projects List ===
-        // List<Project> projectList = new ArrayList<>();
-        // projectList.add(new Project("Alpha Account", 20, 40, alphaEntries));
-        // projectList.add(new Project("The Hilton - Marketing", 14, 50, betaEntries));
-        // projectList.add(new Project("TimeZone - Main POS", 15, 40, timeProjectEntries));
-        // projectList.add(new Project("CVS POS Software", 20, 50, marketingEntries));
-        // projectList.add(new Project("DevOps", 15, 40, devOpsEntries));
-        // projectList.add(new Project("Research & Design", 17, 45, researchEntries));
-        // projectList.add(new Project("Walmart app - UI Design", 18, 50, designEntries));
-
-        // // Set projects to the card
-        // projectsCard.setProjects(projectList);
-
-        // // Show frame
-        // frame.setVisible(true);
-    // }
+    
 }
