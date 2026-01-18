@@ -173,7 +173,6 @@ public class Projects extends DisplayCard {
             Project newProject = new Project(
                 user.getUserId(),
                 dialog.getProjectName(),
-                hoursLogged = 0, // initial hours logged
                 Integer.parseInt(dialog.getMaxHours()),
                 dialog.getDeadline()
             );  
@@ -288,7 +287,7 @@ public class Projects extends DisplayCard {
         public String deadline;     // added for db
         public List<TimeEntry> timeEntries;
 
-        // Project Constructor
+        // Project Constructor for db loaded projects
         public Project(int projectId, int userId, String name, int maxHours, int hoursLogged, String startDate, String deadline) {
             this.projectId = projectId;
             this.userId = userId;
@@ -300,8 +299,16 @@ public class Projects extends DisplayCard {
             this.timeEntries = new ArrayList<>();
         }
 
-        public Project() {
-            
+        // Project Constructor for new projects - 4 parameters
+        public Project(int userId, String name, int maxHours, String deadline) {
+            this.projectId = 0; // default value for new projects by db
+            this.userId = userId;
+            this.name = name;
+            this.maxHours = maxHours;
+            this.hoursLogged = 0;   // set to 0 initially
+            this.startDate = LocalDate.now().toString(); // set to current date
+            this.deadline = deadline;
+            this.timeEntries = new ArrayList<>();
         }
 
         // Time Entry inner class
