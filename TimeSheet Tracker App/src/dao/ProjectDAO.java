@@ -52,9 +52,9 @@ public class ProjectDAO {
         boolean isPrivileged = user.getRole().equalsIgnoreCase("admin") || user.getRole().equalsIgnoreCase("manager");
 
         if (isPrivileged) {
-            sql = "SELECT project_id, user_id,name, hours_logged, max_hours, start_date, end_date FROM projects";
+            sql = "SELECT project_id, user_id, name, hours_logged, max_hours, start_date, deadline FROM projects";
         } else {
-            sql = "SELECT project_id, user_id,name, hours_logged, max_hours, start_date, end_date FROM projects WHERE user_id = ?";
+            sql = "SELECT project_id, user_id, name, hours_logged, max_hours, start_date, deadline FROM projects WHERE user_id = ?";
         }
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -67,10 +67,12 @@ public class ProjectDAO {
                 while (rs.next()) {
                     Project project = new Project (
                         rs.getInt("project_id"),
-                        rs.getString("name"),
                         rs.getInt("user_id"),
+                        rs.getString("name"),
+                        rs.getInt("max_hours"),
                         rs.getInt("hours_logged"),
-                        rs.getString("start_date")
+                        rs.getString("start_date"),
+                        rs.getString("deadline")
                     );
                     projects.add(project);
                 }
