@@ -279,25 +279,29 @@ public class Projects extends DisplayCard {
 
     // Minimal Project class
     public static class Project {
-        public int projectId;
+        public int projectId;   //added
         public int userId;
         public String name;
         public int maxHours;
         public int hoursLogged;
-        public String startDate;
-        public String deadline;
+        public String startDate;    // added for db
+        public String deadline;     // added for db
         public List<TimeEntry> timeEntries;
 
         // Project Constructor
         public Project(int projectId, int userId, String name, int maxHours, int hoursLogged, String startDate, String deadline) {
-            this.projectId = 0;
+            this.projectId = projectId;
             this.userId = userId;
             this.name = name;
             this.maxHours = maxHours;
-            this.hoursLogged = 0;
+            this.hoursLogged = hoursLogged;
             this.startDate = startDate;
             this.deadline = deadline;
             this.timeEntries = new ArrayList<>();
+        }
+
+        public Project() {
+            
         }
 
         // Time Entry inner class
