@@ -14,11 +14,13 @@ import components.dashboard.StatusIndicator;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.sql.Connection;
 
 
 // TimeLog class
 public class Timelog extends DisplayCard {
     
+    private Connection conn;
     private StatusIndicator statusIndicator;
     private JLabel statusText;
     private JTable table;
@@ -30,14 +32,16 @@ public class Timelog extends DisplayCard {
       super("Timelog");
       this.timelogDAO = dao;
 
+      // timelog background and layout
       setBackground(new Color(0, 40, 0));
       setBackground(Color.GREEN);
-      setLayout(new BorderLayout());
+    //   setLayout(new BorderLayout());
 
       // title Panel
       statusIndicator = new StatusIndicator();
       TitlePanel titlePanel = new TitlePanel("Timelog", statusIndicator);
       titlePanel.setBackground(new Color(213, 180, 130));
+      add(titlePanel, BorderLayout.NORTH);
 
 
 
@@ -45,6 +49,7 @@ public class Timelog extends DisplayCard {
       JPanel tableContainer = new JPanel(new BorderLayout());
       tableContainer.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
       tableContainer.setBackground(new Color(240, 235, 216));
+      table = new JTable();
 
 
   
@@ -87,11 +92,11 @@ public class Timelog extends DisplayCard {
         g2d.drawString("Timelog", 30, 60);
     }
   
-    //   public static void main(String[] args) {
-    //     JFrame frame = new JFrame("Timelog Example");
-    //     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    //     frame.setSize(1000, 680);
-    //     frame.add(new Timelog(dao));
-    //     frame.setVisible(true);
-    // }
+      public static void main(String[] args) {
+        JFrame frame = new JFrame("Timelog Example");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(1000, 680);
+        // frame.add(new Timelog(new TimelogDAO(conn)));
+        frame.setVisible(true);
+    }
 }
