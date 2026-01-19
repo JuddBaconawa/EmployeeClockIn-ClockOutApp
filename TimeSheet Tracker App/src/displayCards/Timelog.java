@@ -8,6 +8,8 @@ import javax.swing.table.DefaultTableCellRenderer;
 import components.DisplayCard;
 import dao.TimelogDAO;
 import models.TimelogEntry;
+import components.TitlePanel;
+import components.dashboard.StatusIndicator;
 
 
 import java.awt.BorderLayout;
@@ -17,6 +19,8 @@ import java.awt.Component;
 // TimeLog class
 public class Timelog extends DisplayCard {
     
+    private StatusIndicator statusIndicator;
+    private JLabel statusText;
     private JTable table;
     private TimelogDAO timelogDAO;
     private String[] columns = {"Project", "Clock In", "Clock Out", "Total Hours", "Date"};
@@ -29,6 +33,13 @@ public class Timelog extends DisplayCard {
       setBackground(new Color(0, 40, 0));
       setBackground(Color.GREEN);
       setLayout(new BorderLayout());
+
+      // title Panel
+      statusIndicator = new StatusIndicator();
+      TitlePanel titlePanel = new TitlePanel("Timelog", statusIndicator);
+      titlePanel.setBackground(new Color(213, 180, 130));
+
+
 
       // create a panel for the timelog table
       JPanel tableContainer = new JPanel(new BorderLayout());
