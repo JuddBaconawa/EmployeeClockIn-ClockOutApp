@@ -4,6 +4,7 @@ package displayCards;
 import java.awt.Color;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
 
 import components.DisplayCard;
 import dao.TimelogDAO;
@@ -49,8 +50,13 @@ public class Timelog extends DisplayCard {
       JPanel tableContainer = new JPanel(new BorderLayout());
       tableContainer.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
       tableContainer.setBackground(new Color(240, 235, 216));
+
+      // table initialization
       table = new JTable();
 
+      // set table model
+      DefaultTableModel model = new DefaultTableModel(columns, 0);
+      table.setModel(model);
 
   
 
