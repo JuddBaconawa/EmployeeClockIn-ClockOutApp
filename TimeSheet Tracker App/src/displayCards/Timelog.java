@@ -87,24 +87,10 @@ public class Timelog extends DisplayCard {
       add(scrollPane, BorderLayout.CENTER);
     } 
 
-    // @Override
-    // protected void paintComponent(java.awt.Graphics g) {
-    //     super.paintComponent(g);
-    //     java.awt.Graphics2D g2d = (java.awt.Graphics2D) g;
-    //     g2d.setRenderingHint(java.awt.RenderingHints.KEY_ANTIALIASING,
-    //                          java.awt.RenderingHints.VALUE_ANTIALIAS_ON);
-    //     g2d.setFont(new java.awt.Font("Arial", java.awt.Font.BOLD, 32));
-    //     g2d.setColor(java.awt.Color.LIGHT_GRAY);
-    //     g2d.drawString("Timelog", 30, 60);
-    // }
-  
-    //   public static void main(String[] args) {
-    //     JFrame frame = new JFrame("Timelog Example");
-    //     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    //     frame.setSize(1000, 680);
-    //     // frame.add(new Timelog(new TimelogDAO(conn)));
-    //     frame.setVisible(true);
-    // }
+
+    private void loadTimeLogData() {
+        
+    }
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("Timelog Example");
