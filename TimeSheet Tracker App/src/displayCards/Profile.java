@@ -24,6 +24,7 @@ public class Profile extends DisplayCard {
 
     private StatusIndicator statusIndicator;
     private JLabel statusText;
+    private TitlePanel titlePanel;
 
     public Profile(User user) {
         super("Profile");
@@ -35,10 +36,8 @@ public class Profile extends DisplayCard {
 
 
         // TITLE Panel
-        statusIndicator = new StatusIndicator();
-        statusIndicator.setStatus("out");
-        TitlePanel titlePanel = new TitlePanel("Profile", statusIndicator);
-        titlePanel.setBackgroundColor(new Color(62, 92, 118));
+        titlePanel = new TitlePanel("Profile", new StatusIndicator());
+        titlePanel.setBackgroundColor(new Color(89, 92, 118));
         add(titlePanel, BorderLayout.NORTH);
 
         // Profile Panel - content
