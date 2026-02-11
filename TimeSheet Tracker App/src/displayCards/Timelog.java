@@ -27,6 +27,7 @@ public class Timelog extends DisplayCard {
     private JTable table;
     private TimelogDAO timelogDAO;
     private String[] columns = {"Project", "Clock In", "Clock Out", "Total Hours", "Date"};
+    private TitlePanel titlePanel;
 
     public Timelog(TimelogDAO dao) {
 
@@ -39,9 +40,8 @@ public class Timelog extends DisplayCard {
       setLayout(new BorderLayout());
 
       // title Panel
-      statusIndicator = new StatusIndicator();
-      TitlePanel titlePanel = new TitlePanel("Timelog", statusIndicator);
-      titlePanel.setBackground(new Color(213, 180, 130));
+      titlePanel = new TitlePanel("TimeLog", new StatusIndicator());
+      titlePanel.setBackgroundColor(new Color(213, 180, 130));
       add(titlePanel, BorderLayout.NORTH);
 
 
