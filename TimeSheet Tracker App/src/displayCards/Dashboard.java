@@ -29,6 +29,7 @@ public class Dashboard extends DisplayCard {
 
     private StatusIndicator statusIndicator;
     private JLabel statusText;
+    private TitlePanel titlePanel;
     
     public Dashboard() {
         // Card Title
@@ -38,10 +39,9 @@ public class Dashboard extends DisplayCard {
         setLayout(new BorderLayout());
 
         // === Title Panel ===
-        statusIndicator = new StatusIndicator();
-        statusIndicator.setStatus("out");
-        TitlePanel titlePanel = new TitlePanel("Dashboard", statusIndicator);
+        titlePanel = new TitlePanel("Dashboard", new StatusIndicator());
         titlePanel.setBackgroundColor(new Color(75, 23, 44));
+        add(titlePanel, BorderLayout.NORTH);
 
 
         // === Content Panel === 
