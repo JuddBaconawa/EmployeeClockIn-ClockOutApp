@@ -49,6 +49,7 @@ public class Projects extends DisplayCard {
     private JLabel monthLabel;
     private Connection conn;
     private User user;
+    private TitlePanel titlePanel;
 
     // 
     private JFrame parentFrame; // reference to parent frame for dialogs
@@ -75,14 +76,11 @@ public class Projects extends DisplayCard {
         setBackground(new Color(240, 235, 216));
         setLayout(new BorderLayout());
 
-        //statusIndicator
-        statusIndicator = new StatusIndicator();
 
         // === Title Panel ===
-        TitlePanel titlePanel = new TitlePanel("Projects", statusIndicator);
-        
-        // titlePanel.setLayout(new BorderLayout());
-        titlePanel.setPreferredSize( new Dimension(0, 60));
+        titlePanel = new TitlePanel("Projects", new StatusIndicator());
+        titlePanel.setBackgroundColor(new Color(55, 44, 230));
+        add(titlePanel, BorderLayout.NORTH);
 
         // === Navigation Panel ===
         JPanel navPanel = new JPanel(new BorderLayout());
