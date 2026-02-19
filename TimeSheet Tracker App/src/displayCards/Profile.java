@@ -27,11 +27,14 @@ public class Profile extends DisplayCard {
     private TitlePanel titlePanel;
 
     public Profile(User user) {
+
         super("Profile");
         // setBackground(new Color(62, 92, 118));
         // setLayout(new BorderLayout(2, 2, 2, 2));
 
         setBackground(new Color(240, 235, 216));
+
+        // === Layout ===
         setLayout(new BorderLayout());
 
 
@@ -39,6 +42,10 @@ public class Profile extends DisplayCard {
         titlePanel = new TitlePanel("Profile", new StatusIndicator());
         titlePanel.setBackgroundColor(new Color(89, 92, 118));
         add(titlePanel, BorderLayout.NORTH);
+
+        // === Content Panel ===
+        JPanel contentPanel = new JPanel();
+        contentPanel.setLayout(new GridLayout());
 
         // Profile Panel - content
         ProfilePanel profilePanel = new ProfilePanel(user);
@@ -65,12 +72,7 @@ public class Profile extends DisplayCard {
 
     // public static void main(String[] args) {
 
-    //     Profile profile = new Profile();
-    //     javax.swing.JFrame frame = new javax.swing.JFrame("Profile Example");
-    //     frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-    //     frame.add(profile);
-    //     frame.setSize(1200, 680);
-    //     frame.setVisible(true);
+
     // }
 
 }
