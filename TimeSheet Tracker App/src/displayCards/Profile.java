@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 // IMPORTS
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.FlowLayout;
 import java.awt.LayoutManager;
 
 import javax.swing.BorderFactory;
@@ -45,17 +46,36 @@ public class Profile extends DisplayCard {
 
         // === Content Panel ===
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new GridLayout());
+        contentPanel.setLayout(new GridLayout(2, 2, 10, 50));
+        contentPanel.setOpaque(true);
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 20));
+        add(contentPanel, BorderLayout.CENTER);
 
-        // Profile Panel - content
-        ProfilePanel profilePanel = new ProfilePanel(user);
-        profilePanel.setBackground(Color.LIGHT_GRAY);
-        profilePanel.setLayout(new GridLayout(5, 5, 0, 0));
-        profilePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        add(profilePanel, BorderLayout.CENTER);
+        // Top Panel
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 40));
+        topPanel.setOpaque(false);
+
+        topPanel.add(wrapTopAligned(new ProfilePanel(user)));
+
+        // Top panel added to content panel
+        contentPanel.add(topPanel);
+
+        // // Profile Panel - content
+        // ProfilePanel profilePanel = new ProfilePanel(user);
+        // profilePanel.setBackground(Color.LIGHT_GRAY);
+        // profilePanel.setLayout(new GridLayout(5, 5, 0, 0));
+        // profilePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        // topPanel.add(profilePanel, BorderLayout.CENTER);
   
     }
 
+    private JPanel wrapTopAligned(JPanel inner) {
+        JPanel wrapper = new JPanel(new BorderLayout());
+        wrapper.setOpaque(false);
+        wrapper.add(inner, BorderLayout.NORTH);
+        return wrapper;
+    }
+    
     @Override
     protected void paintComponent(java.awt.Graphics g) {
         super.paintComponent(g);
@@ -63,6 +83,7 @@ public class Profile extends DisplayCard {
         g.setColor(java.awt.Color.LIGHT_GRAY);
         g.drawString("Profile", 30, 60);
     }
+    
 
     public void updateStatus(String status) {
         if (statusIndicator != null) {
