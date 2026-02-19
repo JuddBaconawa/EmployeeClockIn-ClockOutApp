@@ -73,18 +73,18 @@ public class Projects extends DisplayCard {
         this.projectDAO = new ProjectDAO(conn);
 
         // Main Layout
-        setBackground(new Color(240, 235, 216));
+        setBackground(new Color(210, 125, 216));
         setLayout(new BorderLayout());
 
 
         // === Title Panel ===
         titlePanel = new TitlePanel("Projects", new StatusIndicator());
-        titlePanel.setBackgroundColor(new Color(55, 44, 230));
+        titlePanel.setBackgroundColor(new Color(120, 121, 178));
         add(titlePanel, BorderLayout.NORTH);
 
         // === Navigation Panel ===
         JPanel navPanel = new JPanel(new BorderLayout());
-        navPanel.setBackground(new Color(62, 92, 118));
+        navPanel.setBackground(new Color(3, 14, 21));
         navPanel.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
         // Left: Title
@@ -148,7 +148,7 @@ public class Projects extends DisplayCard {
 
         // === Footer Panel ===
         JPanel footerPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT, 20, 10));
-        footerPanel.setBackground(new Color(180, 180, 180));
+        footerPanel.setBackground(new Color(3, 14, 21));
         JButton addProjectBtn = new JButton("+ Add Project");
 
 
