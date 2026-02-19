@@ -55,17 +55,18 @@ public class Profile extends DisplayCard {
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 40));
         topPanel.setOpaque(false);
 
+        // Add ProfilePanel to the top panel
         topPanel.add(wrapTopAligned(new ProfilePanel(user)));
 
         // Top panel added to content panel
         contentPanel.add(topPanel);
 
-        // // Profile Panel - content
-        // ProfilePanel profilePanel = new ProfilePanel(user);
-        // profilePanel.setBackground(Color.LIGHT_GRAY);
-        // profilePanel.setLayout(new GridLayout(5, 5, 0, 0));
-        // profilePanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        // topPanel.add(profilePanel, BorderLayout.CENTER);
+        // Bottom Panel
+        JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 25, 25));
+        bottomPanel.setOpaque(false);
+
+        // Add other components to the bottom panel as needed
+
   
     }
 
