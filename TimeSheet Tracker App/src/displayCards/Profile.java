@@ -67,6 +67,9 @@ public class Profile extends DisplayCard {
 
         // Add other components to the bottom panel as needed
 
+        // Bottom Panel added to the Content Panel
+        contentPanel.add(bottomPanel);
+
   
     }
 
