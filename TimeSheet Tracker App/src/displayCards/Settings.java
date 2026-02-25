@@ -5,10 +5,12 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
 
+import javax.swing.border.Border;
 import javax.swing.BorderFactory;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.Border;
+
 
 import components.DisplayCard;
 import components.dashboard.StatusIndicator;
@@ -35,24 +37,29 @@ public class Settings extends DisplayCard {
       
 
       // TITLE Panel
+      statusIndicator = new StatusIndicator();
       TitlePanel titlePanel = new TitlePanel("Settings", new StatusIndicator());
       titlePanel.setBackgroundColor(new Color(89, 92, 118));
       add(titlePanel, BorderLayout.NORTH);
 
       
-
-      // Content Panel
+      // Content Panel: 3 column, 3 rows: Interactive | Description | State
       JPanel contentPanel = new JPanel();
-      contentPanel.setLayout(new GridLayout(1, 2, 10, 50));
+      contentPanel.setLayout(new GridLayout(3, 3, 10, 50));
       contentPanel.setOpaque(true);
       contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 20));
       add(contentPanel, BorderLayout.CENTER);
 
+      // FOOTER Panel
       JPanel footerPanel = new JPanel();
       footerPanel.setBackground(new Color(35, 177, 85));
       footerPanel.setOpaque(true);
       footerPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
       add(footerPanel, BorderLayout.SOUTH);
+
+      // Row 1 : Change Password
+      JButton changePasswordButton = new JButton("Change Password");
+      
 
       
       // Add components to the Home JPanel
