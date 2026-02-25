@@ -34,10 +34,9 @@ public class Settings extends DisplayCard {
       
 
       // TITLE Panel
-      statusIndicator = new StatusIndicator();
-      statusIndicator.setStatus("out");
-      TitlePanel titlePanel = new TitlePanel("Settings", statusIndicator);
-      titlePanel.setBackgroundColor(new Color(62, 92, 118));
+      TitlePanel titlePanel = new TitlePanel("Settings", new StatusIndicator());
+      titlePanel.setBackgroundColor(new Color(89, 92, 118));
+
       
 
       // Content Panel
@@ -45,6 +44,11 @@ public class Settings extends DisplayCard {
       contentPanel.setLayout(new GridLayout(2, 2, 10, 50));
       contentPanel.setOpaque(true);
       contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 20));
+
+      JPanel footerPanel = new JPanel();
+      footerPanel.setBackground(new Color(35, 177, 85));
+      footerPanel.setOpaque(false);
+
 
       
       
@@ -57,7 +61,10 @@ public class Settings extends DisplayCard {
       this.add(usernameLabel);
 
 
+      // Add components to the Home JPanel
       add(titlePanel, BorderLayout.NORTH);
+      add(contentPanel, BorderLayout.CENTER);
+      add(footerPanel, BorderLayout.SOUTH);
 
     }
 
