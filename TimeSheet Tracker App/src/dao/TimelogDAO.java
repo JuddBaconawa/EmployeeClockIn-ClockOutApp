@@ -18,7 +18,7 @@ public class TimelogDAO {
         this.connection = connection;
     }
 
-    public List<TimelogEntry> getAllLogs() {
+    public List<TimelogEntry> getAllLogs(int userId) {
         List<TimelogEntry> logs = new ArrayList<>();
 
         String sql = """
@@ -27,13 +27,17 @@ public class TimelogDAO {
             t.clock_out,
             t.total_hours,
             t.work_date
-            FROM timesheet t
+            FROM timesheets t
             JOIN projects p on t.project_id = p.project_id
+            WHERE t.user_id = ?
             ORDER BY t.work_date DESC, t.clock_in DESC
         """;
 
-        try (PreparedStatement stmt = connection.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+
+            stmt.setInt(1, userId);
+        
+            try (ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 logs.add(new TimelogEntry(
@@ -44,6 +48,8 @@ public class TimelogDAO {
                         rs.getDate("work_date")
                 ));
             }
+
+        }
 
         } catch (SQLException e) {
             e.printStackTrace();
