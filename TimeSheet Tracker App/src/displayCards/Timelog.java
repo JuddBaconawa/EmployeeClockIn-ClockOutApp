@@ -28,10 +28,12 @@ public class Timelog extends DisplayCard {
     private TimelogDAO timelogDAO;
     private String[] columns = {"Project", "Clock In", "Clock Out", "Total Hours", "Date"};
     private TitlePanel titlePanel;
+    private int userId;
 
-    public Timelog(TimelogDAO dao) {
+    public Timelog(TimelogDAO dao, int userId) {
 
       super("Timelog");
+      this.userId = userId;
       this.timelogDAO = dao;
 
       // timelog background and layout
