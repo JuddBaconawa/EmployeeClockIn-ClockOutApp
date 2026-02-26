@@ -94,16 +94,16 @@ public class Timelog extends DisplayCard {
         
     }
 
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Timelog Example");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(1000, 680);
-        frame.setLayout(new BorderLayout());
+    // public static void main(String[] args) {
+    //     JFrame frame = new JFrame("Timelog Example");
+    //     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    //     frame.setSize(1000, 680);
+    //     frame.setLayout(new BorderLayout());
 
-        TimelogDAO dao = new TimelogDAO(null); // temp
-        frame.add(new Timelog(dao), BorderLayout.CENTER);
+    //     TimelogDAO dao = new TimelogDAO(null); // temp
+    //     frame.add(new Timelog(dao), BorderLayout.CENTER);
 
-        frame.setVisible(true);
-    }
+    //     frame.setVisible(true);
+    // }
 
 }
