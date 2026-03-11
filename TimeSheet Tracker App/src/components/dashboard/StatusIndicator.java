@@ -9,6 +9,7 @@ public class StatusIndicator extends JPanel {
 
     public StatusIndicator() {
         setPreferredSize(new Dimension(25, 27));
+        setBorder(BorderFactory.createLineBorder(Color.BLACK));
     }
 
     public void setStatus(String status) {
@@ -35,8 +36,8 @@ public class StatusIndicator extends JPanel {
         int y = (getHeight() - size) / 2 - 1;
 
         // draw square outline around the panel
-        g.setColor(Color.BLACK);
-        g.drawRect(0, 0, getWidth() + 1, getHeight() - 1);
+        // g.setColor(Color.BLACK);
+        // g.drawRect(0, 0, getWidth() + 1, getHeight() - 1);
 
         // fill circle with the current status color
         g.setColor(statusColor);
