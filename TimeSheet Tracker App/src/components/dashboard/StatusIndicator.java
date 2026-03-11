@@ -34,8 +34,17 @@ public class StatusIndicator extends JPanel {
         int x = (getWidth() - size) / 2 - 1;
         int y = (getHeight() - size) / 2 - 1;
 
+        // draw square outline around the panel
+        g.setColor(Color.BLACK);
+        g.drawRect(0, 0, getWidth() + 1, getHeight() - 1);
+
+        // fill circle with the current status color
         g.setColor(statusColor);
         g.fillOval(x, y, size, size);
+
+        // draw a black border around the circle
+        g.setColor(Color.BLACK);
+        g.drawOval(x, y, size, size);
     }
 }
 
