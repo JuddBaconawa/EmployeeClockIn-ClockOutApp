@@ -93,6 +93,22 @@ public class Timelog extends DisplayCard {
 
     private void loadTimeLogData() {
         
+        model.setRowCount(0); // Clear existing data
+
+        java.util.List<TimelogEntry> logs = timelogDAO.getAllLogs(userId);
+
+        for (TimelogEntry log : logs) {
+
+            Object[] row = {
+                log.getProjectName(),
+                log.getClockIn(),
+                log.getClockOut(),
+                log.getTotalHours(),
+                log.getWorkDate()
+            };
+
+            model.addRow(row);
+        }
     }
 
     // public static void main(String[] args) {
