@@ -35,7 +35,7 @@ public class TimelogEntry {
         return clockOut;
     }
 
-    public double getTOtalHours() {
+    public double getTotalHours() {
         return totalHours;
     }
 
