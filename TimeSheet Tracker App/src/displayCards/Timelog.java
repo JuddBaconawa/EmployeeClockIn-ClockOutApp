@@ -29,6 +29,7 @@ public class Timelog extends DisplayCard {
     private String[] columns = {"Project", "Clock In", "Clock Out", "Total Hours", "Date"};
     private TitlePanel titlePanel;
     private int userId;
+    private DefaultTableModel model;
 
     public Timelog(TimelogDAO dao, int userId) {
 
@@ -57,7 +58,7 @@ public class Timelog extends DisplayCard {
       table = new JTable();
 
       // set table model
-      DefaultTableModel model = new DefaultTableModel(columns, 0);
+      model = new DefaultTableModel(columns, 0);
       table.setModel(model);
 
   
