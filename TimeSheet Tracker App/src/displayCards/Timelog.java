@@ -93,12 +93,16 @@ public class Timelog extends DisplayCard {
 
     private void loadTimeLogData() {
         
+        // Clear existing data from the table model
         model.setRowCount(0); // Clear existing data
 
+        // Fetch logs from the database
         java.util.List<TimelogEntry> logs = timelogDAO.getAllLogs(userId);
 
+        // Populate the table model with log data
         for (TimelogEntry log : logs) {
 
+            // Create a row for each log entry
             Object[] row = {
                 log.getProjectName(),
                 log.getClockIn(),
@@ -107,6 +111,7 @@ public class Timelog extends DisplayCard {
                 log.getWorkDate()
             };
 
+            // Add the row to the table model
             model.addRow(row);
         }
     }
