@@ -314,7 +314,7 @@ public class LoginForm extends JFrame {
 			conn.close();
 
 		} catch (Exception e) {
-			System.err.println("Database connection failed: " + e.getMessage());
+			e.printStackTrace();	// Print the stack trace for debugging purposes
 		}
 
 		return user;
