@@ -302,7 +302,7 @@ public class LoginForm extends JFrame {
 			// if statement to check if the user exist
 			if (resultSet.next()) {
 				user = new User();
-				user.setUserId(resultSet.getInt("id"));
+				user.setUserId(resultSet.getInt("user_id"));
 				user.setUsername(resultSet.getString("username"));
 				user.setPassword(resultSet.getString("password"));
 				user.setFirstName(resultSet.getString("firstName"));
