@@ -12,6 +12,8 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
 	user_id INT(7) NOT NULL PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(200) NOT NULL,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
     role VARCHAR(200) NOT NULL DEFAULT 'employee',
     email VARCHAR(200) NOT NULL UNIQUE,
     phone VARCHAR(200),
