@@ -14,8 +14,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.RoundRectangle2D;
+
+// sql imports
 import java.sql.DriverManager;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import java.awt.GridLayout;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
