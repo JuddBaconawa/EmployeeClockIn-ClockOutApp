@@ -48,6 +48,11 @@ public class LoginForm extends JFrame {
 	private JPasswordField userPasswordInput;
 	private JButton loginButton;
 
+	public LoginForm(Connection conn) {
+		this.conn = conn;
+		initialize();
+	}
+
 	public LoginForm() {
         initialize();
     }
@@ -276,9 +281,9 @@ public class LoginForm extends JFrame {
 		User user = null;
 
 		// Database url, username, and password for MySQL access
-		final String DB_URL = "jdbc:mysql://localhost:3306/timesheetappdatabase";
-		final String USERNAME = "root";
-		final String PASSWORD = "DB_password";
+		// final String DB_URL = "jdbc:mysql://localhost:3306/timesheetappdatabase";
+		// final String USERNAME = "root";
+		// final String PASSWORD = "DB_password";
 
 		try {
 				
@@ -291,7 +296,7 @@ public class LoginForm extends JFrame {
 
 			// // SQL statement to pull the list of files from the user table for credential checks
 			// String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
-
+			String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 			// Used preparedStatements to prevent SQL injection Attacks
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, usernameInput);
