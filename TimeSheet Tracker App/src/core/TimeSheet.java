@@ -78,7 +78,7 @@ public class TimeSheet extends JFrame{
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
 			conn = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/timesheetappdatabase",	// database URL
+        "jdbc:mysql://127.0.0.1:3306/timesheetappdatabase",	// database URL
         "root",	// username
         "DB_password1301"	// password
 			);		
