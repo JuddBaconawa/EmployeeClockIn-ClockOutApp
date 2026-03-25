@@ -41,6 +41,7 @@ import core.TimeSheet;
 public class LoginForm extends JFrame {
 	
 	// Global variables are declared that they could be used
+	private Connection conn;
 	
 	// Required to be declared and made global for credential checks
 	private JTextField usernameInput;
@@ -284,12 +285,12 @@ public class LoginForm extends JFrame {
 			// Load MySQl JDBC driver
 			Class.forName("com.mysql.cj.jdbc.Driver");
 
-			// Connect to the database
-			Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+			// // Connect to the database
+			// Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
 
 
-			// SQL statement to pull the list of files from the user table for credential checks
-			String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+			// // SQL statement to pull the list of files from the user table for credential checks
+			// String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 
 			// Used preparedStatements to prevent SQL injection Attacks
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
