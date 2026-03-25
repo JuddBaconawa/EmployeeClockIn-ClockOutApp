@@ -288,7 +288,7 @@ public class LoginForm extends JFrame {
 		try {
 				
 			// Load MySQl JDBC driver
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			// Class.forName("com.mysql.cj.jdbc.Driver");
 
 			// // Connect to the database
 			// Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
