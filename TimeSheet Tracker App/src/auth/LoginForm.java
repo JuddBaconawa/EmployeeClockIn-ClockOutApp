@@ -317,10 +317,9 @@ public class LoginForm extends JFrame {
 			
 			resultSet.close();
 			preparedStatement.close();
-			conn.close();
 
 		} catch (Exception e) {
-			e.printStackTrace();	// Print the stack trace for debugging purposes
+				e.printStackTrace();	// Print the stack trace for debugging purposes
 		}
 
 		return user;
