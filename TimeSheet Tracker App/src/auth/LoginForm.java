@@ -53,9 +53,9 @@ public class LoginForm extends JFrame {
 		initialize();
 	}
 
-	public LoginForm() {
-        initialize();
-    }
+	// public LoginForm() {
+  //       initialize();
+  //   }
 
 	public void initialize() {
 
@@ -174,7 +174,7 @@ public class LoginForm extends JFrame {
 
 				// if valid user - open timesheet
 				if (user != null) {
-					TimeSheet timeSheet = new TimeSheet();
+					TimeSheet timeSheet = new TimeSheet(conn);
 					timeSheet.initialize(user);
 					timeSheet.setVisible(true);
 					dispose();
@@ -287,11 +287,6 @@ public class LoginForm extends JFrame {
 
 		try {
 				
-			// Load MySQl JDBC driver
-			// Class.forName("com.mysql.cj.jdbc.Driver");
-
-			// // Connect to the database
-			// Connection conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
 
 
 			// // SQL statement to pull the list of files from the user table for credential checks
