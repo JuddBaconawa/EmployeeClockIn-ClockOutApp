@@ -64,6 +64,11 @@ public class TimeSheet extends JFrame{
 	private int mouseX;
 	private int mouseY;
 
+	// timesheet connection
+	public TimeSheet(Connection conn) {
+		this.conn = conn;
+	}
+
 	public void showCard(String cardname) {
 		CardLayout cl = (CardLayout) displayPanel.getLayout();
 		cl.show(displayPanel, cardname);
