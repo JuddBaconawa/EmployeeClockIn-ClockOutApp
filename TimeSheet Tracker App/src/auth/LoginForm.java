@@ -56,7 +56,7 @@ public class LoginForm extends JFrame {
 
 	public void initialize() {
 
-		// company icon
+		// ---------------------- FRAMEE icon ----------------------
 		setIconImage(new ImageIcon("src/images/app-file-icon.png").getImage());
 
 		//create the outer main panel as a background
@@ -76,14 +76,8 @@ public class LoginForm extends JFrame {
 		/******************** Form Panel Left **********************/
 		leftPanel.setBackground(new Color(230, 235, 230));
 		leftPanel.add(leftTitle, BorderLayout.NORTH);
-
 		leftPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(40, 20, 20, 20));
 		
-		//future image
-		//image label
-		//leftPanel.add(imageLabel, BorderLayout.CENTER);
-
-
 
 
 		/*********************** Right Form panel ********************/
@@ -109,8 +103,6 @@ public class LoginForm extends JFrame {
 		passwordLabel.setFont(new Font("null", Font.BOLD, 20));
 
 		userPasswordInput = new JPasswordField();
-		// userPasswordInput.setBounds(75, 90, 25, 25);
-
 
 
 		/*********************** Buttons panel ********************/
