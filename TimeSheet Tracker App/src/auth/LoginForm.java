@@ -279,13 +279,12 @@ public class LoginForm extends JFrame {
 
 
 			// // SQL statement to pull the list of files from the user table for credential checks
-			// String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
 			String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+
 			// Used preparedStatements to prevent SQL injection Attacks
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, usernameInput);
 			preparedStatement.setString(2, passwordInput);
-
 			// result set
 			ResultSet resultSet = preparedStatement.executeQuery();
 
