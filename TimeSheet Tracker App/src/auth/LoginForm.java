@@ -53,9 +53,6 @@ public class LoginForm extends JFrame {
 		initialize();
 	}
 
-	// public LoginForm() {
-  //       initialize();
-  //   }
 
 	public void initialize() {
 
