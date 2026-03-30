@@ -116,7 +116,7 @@ public class TimeSheet extends JFrame{
 
 
 		/*********************** Menu Bar Panel *********************************/
-		JPanel menuPanel = new MenuPanel(this, user);
+		JPanel menuPanel = new MenuPanel(this, user, conn);
 		menuPanel.setBounds(0, 0, 200, getHeight()); // Example bounds, adjust as needed
 		mainPanel.add(menuPanel);
 		// Use the custom MenuPanel instead of TopInfoPanel for the menu
