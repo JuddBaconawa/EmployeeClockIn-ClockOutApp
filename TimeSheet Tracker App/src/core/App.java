@@ -29,25 +29,28 @@ public class App {
 	public static void main(String[] args) {
     SwingUtilities.invokeLater(() -> {
 
-        java.sql.Connection conn = null;
+            java.sql.Connection conn = null;
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
 
-            conn = java.sql.DriverManager.getConnection(
-                "jdbc:mysql://127.0.0.1:3306/timesheetappdatabase",
-                "root",
-                "DB_password1301"
-            );
+                conn = java.sql.DriverManager.getConnection(
+                    "jdbc:mysql://127.0.0.1:3306/timesheetappdatabase",
+                    "root",
+                    "DB_password1301"
+                );
 
-            System.out.println("DATABASE CONNECTED");
+                System.out.println("DATABASE CONNECTED");
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+                } catch (Exception e) {
 
-        new LoginForm(conn); // ✅ only entry point
-    });
-}
+                    System.out.println("Database connection failed");
+                    e.printStackTrace();
+                    return;
+                }
+
+                new LoginForm(conn); // ✅ only entry point
+        });
+    }
 
 }
