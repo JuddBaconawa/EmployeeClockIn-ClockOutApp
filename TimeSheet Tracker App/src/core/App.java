@@ -53,4 +53,7 @@ public class App {
         });
     }
 
+
+    // for poqershell to include jar classpath
+    // java -cp "bin;lib/mysql-connector-j-9.3.0.jar" core.TimeSheet
 }
