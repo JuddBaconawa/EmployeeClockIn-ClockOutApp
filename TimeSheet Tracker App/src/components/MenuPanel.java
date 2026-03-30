@@ -35,9 +35,10 @@ import core.TimeSheet;
 public class MenuPanel extends JPanel {
 
     private TimeSheet parentFrame;
+    private java.sql.Connection conn;
 
     // Constructor - used to initialize an object (the Menu panel)
-    public MenuPanel(TimeSheet parentFrame, User user) {
+    public MenuPanel(TimeSheet parentFrame, User user, java.sql.Connection conn) {
         this.parentFrame = parentFrame;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBackground(new Color(29, 45, 68));
@@ -93,7 +94,7 @@ public class MenuPanel extends JPanel {
         logoutButton.addActionListener(e -> {
             // Action to perform on logout
             parentFrame.dispose(); // Close the current frame
-            new LoginForm().setVisible(true); // Open the login form
+            new LoginForm(conn).setVisible(true); // Open the login form
         });
 
         // ============== Exit Button ===============
