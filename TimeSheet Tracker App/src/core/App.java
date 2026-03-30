@@ -40,6 +40,8 @@ public class App {
                 "DB_password1301"
             );
 
+            System.out.println("DATABASE CONNECTED");
+
         } catch (Exception e) {
             e.printStackTrace();
         }
