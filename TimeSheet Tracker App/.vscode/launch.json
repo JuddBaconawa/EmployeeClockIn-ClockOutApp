@@ -6,10 +6,7 @@
       "name": "Run TimeSheet",
       "request": "launch",
       "mainClass": "core.TimeSheet",
-      "classPaths": [
-        "bin",
-        "lib/mysql-connector-j-9.3.0.jar"
-      ]
+      "vmArgs": "-cp \"bin;lib/mysql-connector-j-9.3.0.jar\""
     }
   ]
 }
