@@ -294,8 +294,8 @@ public class LoginForm extends JFrame {
 				user.setUserId(resultSet.getInt("user_id"));
 				user.setUsername(resultSet.getString("username"));
 				user.setPassword(resultSet.getString("password"));
-				user.setFirstName(resultSet.getString("firstName"));
-				user.setLastName(resultSet.getString("lastName"));
+				user.setFirstName(resultSet.getString("first_Name"));
+				user.setLastName(resultSet.getString("last_Name"));
 			}
 			
 			resultSet.close();
