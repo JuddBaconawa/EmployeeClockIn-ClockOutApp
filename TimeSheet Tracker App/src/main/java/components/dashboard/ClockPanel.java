@@ -39,19 +39,25 @@ public class ClockPanel extends JPanel {
     private Timer uiTimer;
 
     public ClockPanel(Dashboard dashboard) {
+        // dashboard reference for updating status across the dashboard
         this.dashboard = dashboard;
 
+        // UI setup
         setLayout(new BorderLayout(10, 10));
         setPreferredSize(new Dimension(150, 150));
         setBackground(new Color(245, 245, 245));
         setBorder(BorderFactory.createTitledBorder("Time Tracking"));
 
+        // Initialize buttons and status label
         clockInButton = new JButton("Clock In");
         clockOutButton = new JButton("Clock Out");
         breakButton = new JButton("Start Break");
 
+        // Status label to show current status and worked time
         statusLabel = new JLabel("Status: Off the clock");
 
+
+        // Action listeners for buttons
         clockInButton.addActionListener(e -> {
             clockInTime = System.currentTimeMillis();
             totalBreakMillis = 0; // Reset break time on clock in
@@ -61,12 +67,13 @@ public class ClockPanel extends JPanel {
             updateButtonState("in");
         });
 
+        // When clocking out, calculate the total worked time for the session and update the daily total
         clockOutButton.addActionListener(e -> {
             long sessionWorkedMillis = System.currentTimeMillis() - clockInTime - totalBreakMillis;
             LocalDate today = LocalDate.now();
             dailyWorkedTime.put(today, dailyWorkedTime.getOrDefault(today, 0L) + sessionWorkedMillis);
 
-            
+            // Update status label with total worked time for the session
             statusLabel.setText("Worked: " + sessionWorkedMillis / 1000 + "s");
 
             // reset session
@@ -76,8 +83,10 @@ public class ClockPanel extends JPanel {
             onBreak = false;
             dashboard.updateStatus("out");
             updateButtonState("out");
+            
         });
 
+        // Break button toggles between starting and ending a break, updating the total break time accordingly
         breakButton.addActionListener(e -> {
             if (onBreak = !onBreak) {
                 // Starting break
@@ -100,17 +109,34 @@ public class ClockPanel extends JPanel {
             
         });
 
+
+        // Timer to update the status label every second with the current worked time if clocked in
         JPanel buttonPanel = new JPanel(new FlowLayout());
         buttonPanel.add(clockInButton);
         buttonPanel.add(clockOutButton);
         buttonPanel.add(breakButton);
 
+        // Add components to the panel
         add(buttonPanel, BorderLayout.CENTER);
         add(statusLabel, BorderLayout.SOUTH);
 
+        // Initial button states
         updateButtonState("out"); // Initial state
+
+        // UI timer to update status label every second
+        uiTimer = new Timer(1000, e -> {
+            
+            // what this means:
+            // every second, force UI panels to update
+
+            // If clocked in, update the status label with the current worked time
+            dashboard.repaint();
+        });
+
+        uiTimer.start();
     }
 
+    // Helper method to format milliseconds into HH:mm:ss
     private String formatTime(long millis) {
         long seconds = (millis / 1000) % 60;
         long minutes = (millis / (1000 * 60)) % 60;
@@ -118,6 +144,7 @@ public class ClockPanel extends JPanel {
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 
+    //
     private void updateButtonState(String status) {
         switch (status) {
             case "in":
