@@ -14,6 +14,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import displayCards.Dashboard;
 
@@ -27,12 +28,15 @@ public class ClockPanel extends JPanel {
     private long totalBreakMillis = 0;
     private long todayTotalMillis = 0;
 
+    private Map<LocalDate, Long> dailyWorkedTime = new HashMap<>();
+
     // Buttons
     private JButton clockInButton;
     private JButton clockOutButton;
     private JButton breakButton;
 
-    private Map<LocalDate, Long> dailyWorkedTime = new HashMap<>();
+    // Timer for UI updates (e.g., to update the status label with worked time)
+    private Timer uiTimer;
 
     public ClockPanel(Dashboard dashboard) {
         this.dashboard = dashboard;
