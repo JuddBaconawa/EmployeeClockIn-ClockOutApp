@@ -5,10 +5,11 @@ package components.dashboard;
 import javax.swing.*;
 import java.awt.*;
 
+
 // For listening to clock updates
 import components.dashboard.TimeUpdateListener;
 
-public class TimeGraphPanel extends JPanel {
+public class TimeGraphPanel extends JPanel implements TimeUpdateListener {
 
     private String[] modes = {"Daily", "Weekly", "Monthly"};
     private int currentMode = 0;
