@@ -35,8 +35,16 @@ public class TimeGraphPanel extends JPanel {
         });
     }
 
+    // Method to cycle through modes - clicking updates the graph
     public void cycleMode() {
         currentMode = (currentMode + 1) % modes.length;
+        repaint();
+    }
+    
+    // 
+    @Override
+    public void onTimeUpdate() {
+        //clock panel tells this panel to repaint when time updates
         repaint();
     }
 
@@ -111,6 +119,7 @@ public class TimeGraphPanel extends JPanel {
         long seconds = (millis / 1000) % 60;
         long minutes = (millis / (1000 * 60)) % 60;
         long hours = (millis / (1000 * 60 * 60));
+        
         return String.format("%02d:%02d:%02d", hours, minutes, seconds);
     }
 }
