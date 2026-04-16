@@ -1,7 +1,12 @@
+// PACKAGE DECLARATION
 package components.dashboard;
 
+// IMPORTS
 import javax.swing.*;
 import java.awt.*;
+
+// For listening to clock updates
+import components.dashboard.TimeUpdateListener;
 
 public class TimeGraphPanel extends JPanel {
 
