@@ -6,23 +6,19 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
-// Swing components
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-// Java time API for date and time
-import java.time.LocalDate;
-
-// For time tracking
-import java.util.HashMap;
-import java.util.Map;
-
 import displayCards.Dashboard;
 
 public class ClockPanel extends JPanel {
+
     private JLabel statusLabel;
     private long clockInTime = 0;
     private boolean onBreak = false;
