@@ -1,5 +1,6 @@
 // PACKAGE DECLARATION
 package components.dashboard;
+// package components.dashboard.ClockPanel;
 
 // IMPORTS
 import javax.swing.*;
