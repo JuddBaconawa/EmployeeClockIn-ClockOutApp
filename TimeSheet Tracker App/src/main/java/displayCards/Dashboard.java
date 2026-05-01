@@ -5,22 +5,20 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
-import java.awt.Font;
 import java.awt.GridLayout;
-
-import components.DisplayCard;
-import components.TitlePanel;
-import components.dashboard.ClockPanel;
-import components.dashboard.TimeStatsPanel;
-import components.dashboard.ProfilePanel;
-import components.dashboard.StatusIndicator;
-import components.dashboard.TimeGraphPanel;
-import components.dashboard.StreakPanel;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import components.DisplayCard;
+import components.TitlePanel;
+import components.dashboard.ClockPanel;
+import components.dashboard.ProfilePanel;
+import components.dashboard.StatusIndicator;
+import components.dashboard.StreakPanel;
+import components.dashboard.TimeGraphPanel;
+import components.dashboard.TimeStatsPanel;
 import models.User;
 
 
@@ -67,7 +65,7 @@ public class Dashboard extends DisplayCard {
         topPanel.add(wrapTopAligned(new ProfilePanel(User.getCurrentUser())));
         topPanel.add(wrapTopAligned(new TimeGraphPanel(clockPanel)));
         topPanel.add(wrapTopAligned(new TimeStatsPanel(clockPanel)));
-        topPanel.add(wrapTopAligned(new ClockPanel(this)));
+        topPanel.add(wrapTopAligned(clockPanel));
 
         // Bottom Panel
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
