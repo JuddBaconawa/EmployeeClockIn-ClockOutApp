@@ -65,7 +65,7 @@ public class Dashboard extends DisplayCard {
         topPanel.add(wrapTopAligned(new ProfilePanel(User.getCurrentUser())));
         topPanel.add(wrapTopAligned(new TimeGraphPanel(clockPanel)));
         topPanel.add(wrapTopAligned(new TimeStatsPanel(clockPanel)));
-        topPanel.add(wrapTopAligned(clockPanel));
+        topPanel.add(wrapTopAligned(clockPanel));   // clock panel is last to ensure timeStatsPanel can reference it without null issues
 
         // Bottom Panel
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
