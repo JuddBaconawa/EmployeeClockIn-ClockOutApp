@@ -2,25 +2,17 @@
 package components.dashboard;
 
 // IMPORTS
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.event.MouseAdapter;
-import java.util.HashMap;
-import java.util.Locale;
 import java.time.DayOfWeek;
-// Simulated time log data: LocalDate -> hours worked
 import java.time.LocalDate;
+import java.util.HashMap;
 
-// Swing imports
-import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.border.BevelBorder;
 
 // StreakPanel class
 public class StreakGridPanel extends JPanel {
@@ -76,7 +68,8 @@ public class StreakGridPanel extends JPanel {
         for (int week = 0; week < WEEKS; week++) {
             for (int day = 0; day < DAYS_IN_WEEK; day++) {
 
-                LocalDate date = firstSunday.plusDays(week).plusDays(week * 7 + day);
+                // Calculate the date for this cell
+                LocalDate date = firstSunday.plusDays(week).plusDays(day);
                 int hours = data.getOrDefault(date, 0);
 
                 int x = LEFT_PADDING + week * (BOX_SIZE + GAP);
@@ -137,7 +130,7 @@ public class StreakGridPanel extends JPanel {
         
         for (int i = 0; i < WEEKS * DAYS_IN_WEEK; i++) {
             LocalDate date = today.minusDays(i);
-            map.put(date, (int) Math.random() * 7);  // random hours
+            map.put(date, (int) (Math.random() * 7));  // random hours
         }
 
         return map;
