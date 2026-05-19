@@ -20,190 +20,267 @@ import displayCards.Dashboard;
 
 public class ClockPanel extends JPanel {
 
-private JLabel statusLabel;
-private long clockInTime = 0;
-private boolean onBreak = false;
-private Dashboard dashboard;
-private long breakStartTime = 0;
-private long totalBreakMillis = 0;
-private long todayTotalMillis = 0;
+    private JLabel statusLabel;
 
-private Map<LocalDate, Long> dailyWorkedTime = new HashMap<>();
+    private long clockInTime = 0;
+    private long breakStartTime = 0;
+    private long totalBreakMillis = 0;
+    private long todayTotalMillis = 0;
 
-// Buttons
-private JButton clockInButton;
-private JButton clockOutButton;
-private JButton breakButton;
+    private boolean onBreak = false;
 
-// Timer for UI updates (e.g., to update the status label with worked time)
-private Timer uiTimer;
+    private Dashboard dashboard;
 
-public ClockPanel(Dashboard dashboard) {
-// dashboard reference for updating status across the dashboard
-this.dashboard = dashboard;
+    private Map<LocalDate, Long> dailyWorkedTime = new HashMap<>();
 
-// UI setup
-setLayout(new BorderLayout(10, 10));
-setPreferredSize(new Dimension(150, 150));
-setBackground(new Color(245, 245, 245));
-setBorder(BorderFactory.createTitledBorder("Time Tracking"));
+    // Buttons
+    private JButton clockInButton;
+    private JButton clockOutButton;
+    private JButton breakButton;
 
-// Initialize buttons and status label
-clockInButton = new JButton("Clock In");
-clockOutButton = new JButton("Clock Out");
-breakButton = new JButton("Start Break");
+    // Timer for UI updates
+    private Timer uiTimer;
 
-// Status label to show current status and worked time
-statusLabel = new JLabel("Status: Off the clock");
+    public ClockPanel(Dashboard dashboard) {
 
+        // Dashboard reference for updating status across the dashboard
+        this.dashboard = dashboard;
 
-// Action listeners for buttons
-clockInButton.addActionListener(e -> {
-clockInTime = System.currentTimeMillis();
-totalBreakMillis = 0; // Reset break time on clock in
-breakStartTime = 0; // Reset break start time
-statusLabel.setText("Status: Clocked In");
-dashboard.updateStatus("in");
-updateButtonState("in");
-});
+        // UI setup
+        setLayout(new BorderLayout(10, 10));
+        setPreferredSize(new Dimension(150, 150));
+        setBackground(new Color(245, 245, 245));
+        setBorder(BorderFactory.createTitledBorder("Time Tracking"));
 
-// When clocking out, calculate the total worked time for the session and update the daily total
-clockOutButton.addActionListener(e -> {
-long sessionWorkedMillis = System.currentTimeMillis() - clockInTime - totalBreakMillis;
-LocalDate today = LocalDate.now();
-dailyWorkedTime.put(today, dailyWorkedTime.getOrDefault(today, 0L) + sessionWorkedMillis);
+        // Initialize buttons and status label
+        clockInButton = new JButton("Clock In");
+        clockOutButton = new JButton("Clock Out");
+        breakButton = new JButton("Start Break");
 
-// Update status label with total worked time for the session
-statusLabel.setText("Worked: " + sessionWorkedMillis / 1000 + "s");
+        // Status label to show current status and worked time
+        statusLabel = new JLabel("Status: Off the clock");
 
-// reset session
-clockInTime = 0;
-totalBreakMillis = 0;
-breakStartTime = 0;
-onBreak = false;
-dashboard.updateStatus("out");
-updateButtonState("out");
+        // Clock in button
+        clockInButton.addActionListener(e -> {
 
-});
+            clockInTime = System.currentTimeMillis();
 
-// Break button toggles between starting and ending a break, updating the total break time accordingly
-breakButton.addActionListener(e -> {
-if (onBreak = !onBreak) {
-// Starting break
-breakStartTime = System.currentTimeMillis();
-onBreak = true;
-breakButton.setText("End Break");
-statusLabel.setText("On Break");
-dashboard.updateStatus("break");
-updateButtonState("break");
-} else {
-// Ending break
-long breakEndTime = System.currentTimeMillis();
-totalBreakMillis += breakEndTime - breakStartTime;
-onBreak = false;
-breakButton.setText("Start Break");
-statusLabel.setText("Clocked In");
-dashboard.updateStatus("in");
-updateButtonState("in");
-}
+            // Reset break tracking
+            totalBreakMillis = 0;
+            breakStartTime = 0;
 
-});
+            statusLabel.setText("Status: Clocked In");
 
+            dashboard.updateStatus("in");
+            updateButtonState("in");
+        });
 
-// Timer to update the status label every second with the current worked time if clocked in
-JPanel buttonPanel = new JPanel(new FlowLayout());
-buttonPanel.add(clockInButton);
-buttonPanel.add(clockOutButton);
-buttonPanel.add(breakButton);
+        // Clock out button
+        clockOutButton.addActionListener(e -> {
 
-// Add components to the panel
-add(buttonPanel, BorderLayout.CENTER);
-add(statusLabel, BorderLayout.SOUTH);
+            long sessionWorkedMillis =
+                    System.currentTimeMillis()
+                    - clockInTime
+                    - totalBreakMillis;
 
-// Initial button states
-updateButtonState("out"); // Initial state
+            LocalDate today = LocalDate.now();
 
-// UI timer to update status label every second
-uiTimer = new Timer(1000, e -> {
+            dailyWorkedTime.put(
+                    today,
+                    dailyWorkedTime.getOrDefault(today, 0L)
+                    + sessionWorkedMillis
+            );
 
-// what this means:
-// every second, force UI panels to update
+            // Update status label
+            statusLabel.setText(
+                    "Worked: "
+                    + sessionWorkedMillis / 1000
+                    + "s"
+            );
 
-// If clocked in, update the status label with the current worked time
-dashboard.repaint();
-});
+            // Reset session
+            clockInTime = 0;
+            totalBreakMillis = 0;
+            breakStartTime = 0;
+            onBreak = false;
 
-uiTimer.start();
-}
+            dashboard.updateStatus("out");
+            updateButtonState("out");
+        });
 
-// Helper method to format milliseconds into HH:mm:ss
-private String formatTime(long millis) {
-long seconds = (millis / 1000) % 60;
-long minutes = (millis / (1000 * 60)) % 60;
-long hours = (millis / (1000 * 60 * 60)) % 24;
-return String.format("%02d:%02d:%02d", hours, minutes, seconds);
-}
+        // Break button
+        breakButton.addActionListener(e -> {
 
-//
-private void updateButtonState(String status) {
-switch (status) {
-case "in":
-clockInButton.setEnabled(false);
-clockOutButton.setEnabled(true);
-breakButton.setEnabled(true);
-break;
-case "out":
-clockInButton.setEnabled(true);
-clockOutButton.setEnabled(false);
-breakButton.setEnabled(false);
-breakButton.setText("Start Break");
-break;
-case "break":
-clockInButton.setEnabled(false);
-clockOutButton.setEnabled(true);
-breakButton.setEnabled(true);
-breakButton.setText("End Break");
-break;
-default:
-clockInButton.setEnabled(true);
-clockOutButton.setEnabled(false);
-breakButton.setEnabled(false);
-breakButton.setText("Start Break");
-break;
-}
-}
+            // Toggle break state
+            if (onBreak = !onBreak) {
 
-public long getDailyWorkedMillis() {
-LocalDate today = LocalDate.now();
-long saved = dailyWorkedTime.getOrDefault(today, 0L);
-if (clockInTime > 0) {
-long currentSession = System.currentTimeMillis() - clockInTime - totalBreakMillis;
-return saved + currentSession;
-} else {
-return saved; // No active session, return total worked time today
-}
+                // Starting break
+                breakStartTime = System.currentTimeMillis();
 
-}
+                onBreak = true;
 
-public long getWeeklyWorkedMillis() {
-// Placeholder for weekly calculation
-LocalDate today = LocalDate.now();
-LocalDate startOfWeek = today.with(java.time.DayOfWeek.MONDAY); // Monday as start of week
+                breakButton.setText("End Break");
+                statusLabel.setText("On Break");
 
-return dailyWorkedTime.entrySet().stream()
-.filter(entry -> !entry.getKey().isBefore(startOfWeek))
-.mapToLong(Map.Entry::getValue)
-.sum(); // Add today's worked time
-}
+                dashboard.updateStatus("break");
+                updateButtonState("break");
 
-public long getMonthlyWorkedMillis() {
-// Placeholder for monthly calculation
-LocalDate today = LocalDate.now();
+            } else {
 
-return dailyWorkedTime.entrySet().stream()
-.filter(entry -> entry.getKey().getMonth().equals(today.getMonth()) &&
-                entry.getKey().getYear() == today.getYear())
-.mapToLong(Map.Entry::getValue)
-.sum(); // Add today's worked time
-}   
+                // Ending break
+                long breakEndTime = System.currentTimeMillis();
+
+                totalBreakMillis +=
+                        breakEndTime - breakStartTime;
+
+                onBreak = false;
+
+                breakButton.setText("Start Break");
+                statusLabel.setText("Clocked In");
+
+                dashboard.updateStatus("in");
+                updateButtonState("in");
+            }
+        });
+
+        // Button panel
+        JPanel buttonPanel = new JPanel(new FlowLayout());
+
+        buttonPanel.add(clockInButton);
+        buttonPanel.add(clockOutButton);
+        buttonPanel.add(breakButton);
+
+        // Add components
+        add(buttonPanel, BorderLayout.CENTER);
+        add(statusLabel, BorderLayout.SOUTH);
+
+        // Initial button state
+        updateButtonState("out");
+
+        // UI timer to refresh dashboard
+        uiTimer = new Timer(1000, e -> {
+
+            // Every second force UI panels to update
+            dashboard.repaint();
+        });
+
+        uiTimer.start();
+    }
+
+    // Helper method to format milliseconds into HH:mm:ss
+    private String formatTime(long millis) {
+
+        long seconds = (millis / 1000) % 60;
+        long minutes = (millis / (1000 * 60)) % 60;
+        long hours = (millis / (1000 * 60 * 60)) % 24;
+
+        return String.format(
+                "%02d:%02d:%02d",
+                hours,
+                minutes,
+                seconds
+        );
+    }
+
+    // Update button states
+    private void updateButtonState(String status) {
+
+        switch (status) {
+
+            case "in":
+
+                clockInButton.setEnabled(false);
+                clockOutButton.setEnabled(true);
+                breakButton.setEnabled(true);
+
+                break;
+
+            case "out":
+
+                clockInButton.setEnabled(true);
+                clockOutButton.setEnabled(false);
+
+                breakButton.setEnabled(false);
+                breakButton.setText("Start Break");
+
+                break;
+
+            case "break":
+
+                clockInButton.setEnabled(false);
+                clockOutButton.setEnabled(true);
+
+                breakButton.setEnabled(true);
+                breakButton.setText("End Break");
+
+                break;
+
+            default:
+
+                clockInButton.setEnabled(true);
+                clockOutButton.setEnabled(false);
+
+                breakButton.setEnabled(false);
+                breakButton.setText("Start Break");
+
+                break;
+        }
+    }
+
+    public long getDailyWorkedMillis() {
+
+        LocalDate today = LocalDate.now();
+
+        long saved =
+                dailyWorkedTime.getOrDefault(today, 0L);
+
+        if (clockInTime > 0) {
+
+            long currentSession =
+                    System.currentTimeMillis()
+                    - clockInTime
+                    - totalBreakMillis;
+
+            return saved + currentSession;
+
+        } else {
+
+            // No active session
+            return saved;
+        }
+    }
+
+    public long getWeeklyWorkedMillis() {
+
+        LocalDate today = LocalDate.now();
+
+        // Monday as start of week
+        LocalDate startOfWeek =
+                today.with(java.time.DayOfWeek.MONDAY);
+
+        return dailyWorkedTime.entrySet()
+                .stream()
+                .filter(entry ->
+                        !entry.getKey().isBefore(startOfWeek)
+                )
+                .mapToLong(Map.Entry::getValue)
+                .sum();
+    }
+
+    public long getMonthlyWorkedMillis() {
+
+        LocalDate today = LocalDate.now();
+
+        return dailyWorkedTime.entrySet()
+                .stream()
+                .filter(entry ->
+                        entry.getKey().getMonth()
+                                .equals(today.getMonth())
+                        &&
+                        entry.getKey().getYear()
+                                == today.getYear()
+                )
+                .mapToLong(Map.Entry::getValue)
+                .sum();
+    }
 }
