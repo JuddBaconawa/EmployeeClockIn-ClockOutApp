@@ -60,6 +60,9 @@ public class ClockPanel extends JPanel {
         // Status label to show current status and worked time
         statusLabel = new JLabel("Status: Off the clock");
 
+        // =========================
+        // CLOCK IN
+        // =========================
         // Clock in button
         clockInButton.addActionListener(e -> {
 
@@ -75,6 +78,9 @@ public class ClockPanel extends JPanel {
             updateButtonState("in");
         });
 
+        // =========================
+        // CLOCK OUT
+        // =========================
         // Clock out button
         clockOutButton.addActionListener(e -> {
 
@@ -108,6 +114,10 @@ public class ClockPanel extends JPanel {
             updateButtonState("out");
         });
 
+
+        // =========================
+        // BREAK TOGGLE (FIXED)
+        // =========================        
         // Break button
         breakButton.addActionListener(e -> {
 
@@ -167,6 +177,9 @@ public class ClockPanel extends JPanel {
         uiTimer.start();
     }
 
+    // =========================
+    // FORMAT TIME (UNCHANGED)
+    // =========================
     // Helper method to format milliseconds into HH:mm:ss
     private String formatTime(long millis) {
 
@@ -227,6 +240,8 @@ public class ClockPanel extends JPanel {
         }
     }
 
+
+    // Method to calculate total worked milliseconds for the current day, including active session
     public long getDailyWorkedMillis() {
 
         LocalDate today = LocalDate.now();
