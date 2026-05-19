@@ -122,16 +122,22 @@ public class ClockPanel extends JPanel {
         breakButton.addActionListener(e -> {
 
             // Toggle break state
-            if (onBreak = !onBreak) {
+            if (!onBreak) {
+
+
+                // Starting state - clear intent
+                onBreak = true;
 
                 // Starting break
                 breakStartTime = System.currentTimeMillis();
 
-                onBreak = true;
+                
 
+                // Update UI
                 breakButton.setText("End Break");
                 statusLabel.setText("On Break");
 
+                // Update dashboard status for break
                 dashboard.updateStatus("break");
                 updateButtonState("break");
 
@@ -140,14 +146,17 @@ public class ClockPanel extends JPanel {
                 // Ending break
                 long breakEndTime = System.currentTimeMillis();
 
+                // Accumulate break time
                 totalBreakMillis +=
                         breakEndTime - breakStartTime;
-
+                // Reset break start time
                 onBreak = false;
 
+                // Update UI
                 breakButton.setText("Start Break");
                 statusLabel.setText("Clocked In");
 
+                // Update dashboard status back to clocked in
                 dashboard.updateStatus("in");
                 updateButtonState("in");
             }
