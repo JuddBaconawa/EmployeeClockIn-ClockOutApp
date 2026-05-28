@@ -38,6 +38,8 @@ public class ClockPanel extends JPanel {
     private JButton clockOutButton;
     private JButton breakButton;
 
+    private TimeUpdateListener listener;
+
     // Timer for UI updates
     private Timer uiTimer;
 
