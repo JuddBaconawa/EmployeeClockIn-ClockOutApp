@@ -183,6 +183,13 @@ public class ClockPanel extends JPanel {
 
             // Every second force UI panels to update
             dashboard.repaint();
+
+            // Notify listener (e.g., TimeGraphPanel) to update when time changes
+            if (listener != null) {
+                // Notify the listener to update its display based on the new time
+                listener.onTimeUpdate();
+            }
+
         });
 
         uiTimer.start();
