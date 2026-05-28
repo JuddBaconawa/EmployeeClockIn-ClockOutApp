@@ -193,7 +193,14 @@ public class ClockPanel extends JPanel {
         });
 
         uiTimer.start();
+
     }
+
+    // Method to set the time update listener (e.g., TimeGraphPanel)
+    public void setTimeUpdateListener(TimeUpdateListener listener) {
+        // This allows the TimeGraphPanel to register itself to receive updates when time changes
+        this.listener = listener;
+    }    
 
     // =========================
     // FORMAT TIME (UNCHANGED)
