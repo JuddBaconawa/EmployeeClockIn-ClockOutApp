@@ -63,7 +63,16 @@ public class Dashboard extends DisplayCard {
         //profilepanel leaves a small white square for spacing
         
         topPanel.add(wrapTopAligned(new ProfilePanel(User.getCurrentUser())));
-        topPanel.add(wrapTopAligned(new TimeGraphPanel(clockPanel)));
+
+        // TimeGraphPanel needs to be created before TimeStatsPanel so it can register as a listener for time updates
+        TimeGraphPanel timeGraphPanel = new TimeGraphPanel(clockPanel);
+
+        // Register TimeGraphPanel to receive time updates from ClockPanel
+        clockPanel.setTimeUpdateListener(timeGraphPanel); 
+
+        // Register TimeGraphPanel to receive time updates from ClockPanel
+        topPanel.add(wrapTopAligned(timeGraphPanel));
+        
         topPanel.add(wrapTopAligned(new TimeStatsPanel(clockPanel)));
         topPanel.add(wrapTopAligned(clockPanel));   // clock panel is last to ensure timeStatsPanel can reference it without null issues
 
