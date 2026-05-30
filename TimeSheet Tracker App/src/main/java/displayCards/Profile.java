@@ -3,11 +3,9 @@ package displayCards;
 
 
 import java.awt.BorderLayout;
-// IMPORTS
 import java.awt.Color;
-import java.awt.GridLayout;
 import java.awt.FlowLayout;
-import java.awt.LayoutManager;
+import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
@@ -15,8 +13,8 @@ import javax.swing.JPanel;
 
 import components.DisplayCard;
 import components.TitlePanel;
-import components.dashboard.StatusIndicator;
 import components.dashboard.ProfilePanel;
+import components.dashboard.StatusIndicator;
 import models.User;
 
 
@@ -38,9 +36,11 @@ public class Profile extends DisplayCard {
         // === Layout ===
         setLayout(new BorderLayout());
 
+        // Initialize status indicator
+        statusIndicator = new StatusIndicator();
 
         // TITLE Panel
-        titlePanel = new TitlePanel("Profile", new StatusIndicator());
+        titlePanel = new TitlePanel("Profile", statusIndicator);
         titlePanel.setBackgroundColor(new Color(89, 92, 118));
         add(titlePanel, BorderLayout.NORTH);
 
