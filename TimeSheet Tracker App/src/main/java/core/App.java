@@ -3,7 +3,7 @@ package core;
 
 //imports
 import javax.swing.SwingUtilities;
-import models.User;
+
 import auth.LoginForm;
 
 
