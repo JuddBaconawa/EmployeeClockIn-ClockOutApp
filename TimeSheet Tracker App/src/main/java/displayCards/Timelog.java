@@ -1,21 +1,24 @@
 package displayCards;
 
 // IMPORTS
+import java.awt.BorderLayout;
 import java.awt.Color;
-import javax.swing.*;
+import java.awt.Component;
+import java.sql.Connection;
+
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 import components.DisplayCard;
-import dao.TimelogDAO;
-import models.TimelogEntry;
 import components.TitlePanel;
 import components.dashboard.StatusIndicator;
-
-
-import java.awt.BorderLayout;
-import java.awt.Component;
-import java.sql.Connection;
+import dao.TimelogDAO;
+import models.TimelogEntry;
 
 
 // TimeLog class
@@ -38,12 +41,15 @@ public class Timelog extends DisplayCard {
       this.timelogDAO = dao;
 
       // timelog background and layout
-    //   setBackground(new Color(0, 40, 0));
+      // setBackground(new Color(0, 40, 0));
       setBackground(Color.GREEN);
       setLayout(new BorderLayout());
 
+      // Initialize status indicator
+      statusIndicator = new StatusIndicator();
+
       // title Panel
-      titlePanel = new TitlePanel("TimeLog", new StatusIndicator());
+      titlePanel = new TitlePanel("TimeLog", statusIndicator);
       titlePanel.setBackgroundColor(new Color(213, 180, 130));
       add(titlePanel, BorderLayout.NORTH);
 
