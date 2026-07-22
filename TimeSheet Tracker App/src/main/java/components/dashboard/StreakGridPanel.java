@@ -69,7 +69,7 @@ public class StreakGridPanel extends JPanel {
             for (int day = 0; day < DAYS_IN_WEEK; day++) {
 
                 // Calculate the date for this cell
-                LocalDate date = firstSunday.plusDays(week).plusDays(day);
+                LocalDate date = firstSunday.plusWeeks(week).plusDays(day);
                 int hours = data.getOrDefault(date, 0);
 
                 int x = LEFT_PADDING + week * (BOX_SIZE + GAP);
