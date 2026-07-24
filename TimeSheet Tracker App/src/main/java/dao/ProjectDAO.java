@@ -1,16 +1,15 @@
 package dao;
 
 // IMPORTS
-import models.User;
-import displayCards.Projects.Project;
-import util.DBConnection;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import displayCards.Projects.Project;
+import models.User;
 
 public class ProjectDAO {
 
@@ -25,13 +24,14 @@ public class ProjectDAO {
     //Create a new project in the database
     public void createProject(Project project) {
         // SQL Insert Statement
-        String sql = "INSERT INTO projects (user_id, name, max_hours, deadline) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO projects (user_id, name, max_hours, start_date,end_date) VALUES (?, ?, ?, ?)";
         
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, project.userId);
             ps.setString(2, project.name);
             ps.setInt(3, project.maxHours);
-            ps.setString(4, project.deadline);
+            ps.setSetDate(4, start_date);
+            ps.setDate(5, project.deadline);
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -52,9 +52,9 @@ public class ProjectDAO {
         boolean isPrivileged = user.getRole().equalsIgnoreCase("admin") || user.getRole().equalsIgnoreCase("manager");
 
         if (isPrivileged) {
-            sql = "SELECT project_id, user_id, name, hours_logged, max_hours, start_date, deadline FROM projects";
+            sql = "SELECT project_id, user_id, name, hours_logged, max_hours, start_date, end_date FROM projects";
         } else {
-            sql = "SELECT project_id, user_id, name, hours_logged, max_hours, start_date, deadline FROM projects WHERE user_id = ?";
+            sql = "SELECT project_id, user_id, name, hours_logged, max_hours, start_date, end_date FROM projects WHERE user_id = ?";
         }
 
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -72,7 +72,7 @@ public class ProjectDAO {
                         rs.getInt("max_hours"),
                         rs.getInt("hours_logged"),
                         rs.getString("start_date"),
-                        rs.getString("deadline")
+                        rs.getString("end_date")
                     );
                     projects.add(project);
                 }
