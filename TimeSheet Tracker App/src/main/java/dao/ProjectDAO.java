@@ -24,14 +24,14 @@ public class ProjectDAO {
     //Create a new project in the database
     public void createProject(Project project) {
         // SQL Insert Statement
-        String sql = "INSERT INTO projects (user_id, name, max_hours, start_date,end_date) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO projects (user_id, name, max_hours, start_date,end_date) VALUES (?, ?, ?, ?, ?)";
         
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, project.userId);
             ps.setString(2, project.name);
             ps.setInt(3, project.maxHours);
-            ps.setSetDate(4, start_date);
-            ps.setDate(5, project.deadline);
+            ps.setDate(4, java.sql.Date.valueOf(project.startDate));
+            ps.setDate(5, java.sql.Date.valueOf(project.deadline));
 
             ps.executeUpdate();
         } catch (SQLException e) {
