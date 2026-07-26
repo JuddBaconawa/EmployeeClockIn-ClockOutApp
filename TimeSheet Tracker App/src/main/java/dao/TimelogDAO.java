@@ -25,7 +25,7 @@ public class TimelogDAO {
             SELECT p.name as project_name,
             t.clock_in,
             t.clock_out,
-            t.total_hours,
+            ROunD(TimeStampDiff(MINUTE, t.clock_in, t.clock_out) - t.break_minutes) / 60.0, 2) AS total_hours,
             t.work_date
             FROM timesheets t
             JOIN projects p on t.project_id = p.project_id
