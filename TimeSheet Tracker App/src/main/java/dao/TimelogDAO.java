@@ -56,4 +56,9 @@ public class TimelogDAO {
 
         return logs;
     }
+
+    public void createTimeEntry() {
+        
+    }
+
 }
