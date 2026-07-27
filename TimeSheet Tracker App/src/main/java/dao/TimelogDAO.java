@@ -1,14 +1,13 @@
 package dao;
 
-import models.TimelogEntry;
-
-import java.sql.*;
-import java.sql.Date;
-import java.sql.Time;
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import models.TimelogEntry;
 
 public class TimelogDAO {
 
@@ -25,7 +24,7 @@ public class TimelogDAO {
             SELECT p.name as project_name,
             t.clock_in,
             t.clock_out,
-            ROunD(TimeStampDiff(MINUTE, t.clock_in, t.clock_out) - t.break_minutes) / 60.0, 2) AS total_hours,
+            ROUND((TIMESTAMPDIFF(MINUTE, t.clock_in, t.clock_out) - t.break_minutes) / 60.0, 2) AS total_hours,
             t.work_date
             FROM timesheets t
             JOIN projects p on t.project_id = p.project_id
