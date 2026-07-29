@@ -61,13 +61,20 @@ public class TimelogDAO {
     public void createTimeEntry(int userId, int projectId, Timestamp clockIn, Timestamp clockOut) throws SQLException {
         
         String sql = """
-                INSERT INTO timesheets (userId, projectId, clock_in, clock_out, break_minutes, work_date)
+                INSERT INTO timesheets (user_Id, project_Id, clock_in, clock_out, break_minutes, work_date)
                 VALUES (?, ?, ?, ?, ?, ?)
                 """;
 
-        try() {
+        try(PreparedStatement ps = connection.prepareStatement(sql)) {
 
-            
+            ps.setInt(1, userId);
+            ps.setInt(2, projectId);
+            ps.setTimestamp(3, clockIn);
+            ps.setTimestamp(4, clockOut);
+            ps.setInt(5, 0);
+            ps.setDate(6, new java.sql.Date(clockIn.getTime()));
+
+            ps.executeUpdate();
 
         }
 
