@@ -57,7 +57,7 @@ public class TimelogDAO {
         return logs;
     }
 
-    public void createTimeEntry() {
+    public void createTimeEntry(int userId, int projectId, Timestamp clockIn, Timestamp clockOut) throws SQLException {
         
     }
 
