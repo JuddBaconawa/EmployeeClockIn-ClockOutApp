@@ -61,8 +61,15 @@ public class TimelogDAO {
     public void createTimeEntry(int userId, int projectId, Timestamp clockIn, Timestamp clockOut) throws SQLException {
         
         String sql = """
-                
+                INSERT INTO timesheets (userId, projectId, clock_in, clock_out, break_minutes, work_date)
+                VALUES (?, ?, ?, ?, ?, ?)
                 """;
+
+        try() {
+
+            
+
+        }
 
     }
 
