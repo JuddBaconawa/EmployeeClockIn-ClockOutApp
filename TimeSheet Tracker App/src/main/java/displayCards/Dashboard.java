@@ -11,6 +11,8 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import java.sql.Connection;
+
 import components.DisplayCard;
 import components.TitlePanel;
 import components.dashboard.ClockPanel;
@@ -66,7 +68,7 @@ public class Dashboard extends DisplayCard {
 
         //profilepanel leaves a small white square for spacing
         
-        topPanel.add(wrapTopAligned(new ProfilePanel(User.getCurrentUser())));
+        topPanel.add(wrapTopAligned(new ProfilePanel(user)));
 
         // TimeGraphPanel needs to be created before TimeStatsPanel so it can register as a listener for time updates
         TimeGraphPanel timeGraphPanel = new TimeGraphPanel(clockPanel);
@@ -88,7 +90,7 @@ public class Dashboard extends DisplayCard {
 
         bottomPanel.add(new StreakPanel());
         bottomPanel.add(new JPanel());
-        bottomPanel.add(new String())
+        bottomPanel.add(new AveragePanel(conn, user.getUserId()));
 
 
         contentPanel.add(topPanel);
