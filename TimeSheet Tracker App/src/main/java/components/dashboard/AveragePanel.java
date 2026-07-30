@@ -10,13 +10,15 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.event.MouseAdapter;
+import java.sql.Connection;
 
-// Swing imports
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 public class AveragePanel extends JPanel{
+
+    private final Connection conn;
+    private final int userId;
 
     // donut graph metrics
     private String[] metrics = {
@@ -35,7 +37,11 @@ public class AveragePanel extends JPanel{
     private JPanel graphPanel;
 
     // StreakPanel constructor
-    public AveragePanel() {
+    public AveragePanel(Connection conn, int userId) {
+
+        this.conn = conn;
+        this.userId = userId;
+
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createTitledBorder("Streak Overview"));
         setOpaque(false);
