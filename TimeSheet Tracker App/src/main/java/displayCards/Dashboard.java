@@ -104,17 +104,6 @@ public class Dashboard extends DisplayCard {
 
     }
 
-    public static void main(String[] args) {
-        javax.swing.JFrame frame = new javax.swing.JFrame("Dashboard Test");
-        frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-        
-        Dashboard dashboard = new Dashboard();
-        frame.add(dashboard); // add your panel
-        
-        frame.setSize(1400, 680);
-        frame.setVisible(true);
-    }
-
 
     private JPanel wrapTopAligned(JPanel inner) {
         JPanel wrapper = new JPanel(new BorderLayout());
@@ -128,17 +117,4 @@ public class Dashboard extends DisplayCard {
             statusIndicator.setStatus(status);
         }
     }
-
-    // public static void main(String[] args) {
-    //     // Create an instance of Dashboard to test
-    //     Dashboard dashboard = new Dashboard();
-    //     // You can add the dashboard to a frame or panel to visualize it
-    //     // For example:
-    //     javax.swing.JFrame frame = new javax.swing.JFrame("Dashboard Example");
-    //     frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-    //     frame.add(dashboard);
-    //     frame.setSize(1400, 680);
-    //     frame.setVisible(true);
-    // }
-
 }
