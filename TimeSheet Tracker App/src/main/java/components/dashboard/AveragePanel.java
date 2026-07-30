@@ -48,7 +48,7 @@ public class AveragePanel extends JPanel{
         setPreferredSize(new Dimension(800, 300));
 
         // left Panel: Graph
-        JPanel graphPanel = new JPanel() {
+        graphPanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
