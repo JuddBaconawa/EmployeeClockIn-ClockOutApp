@@ -6,6 +6,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
@@ -40,13 +41,18 @@ public class ClockPanel extends JPanel {
 
     private TimeUpdateListener listener;
 
+    private final Connection conn;
+    private final int userId;
+
     // Timer for UI updates
     private Timer uiTimer;
 
-    public ClockPanel(Dashboard dashboard) {
+    public ClockPanel(Dashboard dashboard, Connection conn, int userId) {
 
         // Dashboard reference for updating status across the dashboard
         this.dashboard = dashboard;
+        this.conn = conn;
+        this.userId = userId;
 
         // UI setup
         setLayout(new BorderLayout(10, 10));
