@@ -6,12 +6,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.sql.Connection;
 
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import java.sql.Connection;
 
 import components.DisplayCard;
 import components.TitlePanel;
@@ -22,8 +21,6 @@ import components.dashboard.StatusIndicator;
 import components.dashboard.StreakPanel;
 import components.dashboard.TimeGraphPanel;
 import components.dashboard.TimeStatsPanel;
-
-
 import models.User;
 
 
@@ -82,7 +79,7 @@ public class Dashboard extends DisplayCard {
         // Register TimeGraphPanel to receive time updates from ClockPanel
         topPanel.add(wrapTopAligned(timeGraphPanel));
         
-        topPanel.add(wrapTopAligned(new TimeStatsPanel(clockPanel)));
+        topPanel.add(wrapTopAligned(timeStatsPanel));
         topPanel.add(wrapTopAligned(clockPanel));   // clock panel is last to ensure timeStatsPanel can reference it without null issues
 
         // Bottom Panel
@@ -92,7 +89,7 @@ public class Dashboard extends DisplayCard {
 
 
         bottomPanel.add(new StreakPanel());
-        bottomPanel.add(new JPanel());
+        
         bottomPanel.add(new AveragePanel(conn, user.getUserId()));
 
 
