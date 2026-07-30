@@ -15,12 +15,15 @@ import java.sql.Connection;
 
 import components.DisplayCard;
 import components.TitlePanel;
+import components.dashboard.AveragePanel;
 import components.dashboard.ClockPanel;
 import components.dashboard.ProfilePanel;
 import components.dashboard.StatusIndicator;
 import components.dashboard.StreakPanel;
 import components.dashboard.TimeGraphPanel;
 import components.dashboard.TimeStatsPanel;
+
+
 import models.User;
 
 
@@ -55,7 +58,7 @@ public class Dashboard extends DisplayCard {
         contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 20));
 
         // instantiate clock panel
-        ClockPanel clockPanel = new ClockPanel(this, conn, user);
+        ClockPanel clockPanel = new ClockPanel(this, conn, user.getUserId());
 
         // timestatpanel reference to clockpanel
         TimeStatsPanel timeStatsPanel = new TimeStatsPanel(clockPanel);
