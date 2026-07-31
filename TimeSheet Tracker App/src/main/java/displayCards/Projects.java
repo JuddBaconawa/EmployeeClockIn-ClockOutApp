@@ -320,6 +320,16 @@ public class Projects extends DisplayCard {
                 this.hours = hours;
             }
         }
+    
+
+        // Override toString method for 
+        @Override
+        public String toString() {
+
+            // return the project name
+            return name;
+        }
+    
     }
 
     
