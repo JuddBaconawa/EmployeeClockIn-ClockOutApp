@@ -90,6 +90,7 @@ public class Dashboard extends DisplayCard {
 
         bottomPanel.add(new StreakPanel());
         
+        // pass connection and the logged in user id to average panel
         bottomPanel.add(new AveragePanel(conn, user.getUserId()));
 
 
@@ -99,7 +100,7 @@ public class Dashboard extends DisplayCard {
 
 
         // Add panels to layout
-        add(titlePanel, BorderLayout.NORTH);
+        // add(titlePanel, BorderLayout.NORTH);
         add(contentPanel, BorderLayout.CENTER);
 
     }
