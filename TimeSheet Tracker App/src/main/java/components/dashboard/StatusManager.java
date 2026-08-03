@@ -5,8 +5,20 @@ import java.util.List;
 
 public class StatusManager {
 
-  private List<StatusIndicator> indicators = new ArrayList<>();
 
-  
+    // holds all status light indicators
+    private List<StatusIndicator> indicators = new ArrayList<>();
+
+    // The app starts with the employee clocked out
+    private String currentStatus = "Clocked Out";
+
+    // a card calls this once to connect its own light
+    public void register(StatusIndicator indicator) {
+        indicators.add(indicator);
+
+        indicator.updateStatus(currentStatus);
+    }
+
+
 
 }
