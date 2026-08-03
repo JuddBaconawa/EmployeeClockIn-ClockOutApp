@@ -10,7 +10,7 @@ public class StatusManager {
     private List<StatusIndicator> indicators = new ArrayList<>();
 
     // The app starts with the employee clocked out
-    private String currentStatus = "Clocked Out";
+    private String currentStatus = "out";
 
     // a card calls this once to connect its own light
     public void register(StatusIndicator indicator) {
@@ -20,7 +20,13 @@ public class StatusManager {
     }
 
     public void updateStatus(String status) {
-      
+
+        currentStatus = status;
+
+        for (StatusIndicator indicator : indicators) {
+          indicator.setStatus(status);
+        }
+
     }
 
 
