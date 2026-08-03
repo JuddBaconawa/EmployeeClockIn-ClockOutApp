@@ -18,6 +18,7 @@ import components.dashboard.AveragePanel;
 import components.dashboard.ClockPanel;
 import components.dashboard.ProfilePanel;
 import components.dashboard.StatusIndicator;
+import components.dashboard.StatusManager;
 import components.dashboard.StreakPanel;
 import components.dashboard.TimeGraphPanel;
 import components.dashboard.TimeStatsPanel;
@@ -30,8 +31,9 @@ public class Dashboard extends DisplayCard {
     private StatusIndicator statusIndicator;
     private JLabel statusText;
     private TitlePanel titlePanel;
+    private StatusManager statusManager;
     
-    public Dashboard(Connection conn, User user) {
+    public Dashboard(Connection conn, User user, StatusManager statusManager) {
         // Card Title
         super("Dashboard");
 
@@ -40,6 +42,7 @@ public class Dashboard extends DisplayCard {
 
         // Initialize status indicator
         statusIndicator = new StatusIndicator();
+        statusManager.register(statusIndicator);
 
         // === Title Panel ===
         // Create title panel with status indicator above
