@@ -36,6 +36,8 @@ public class Dashboard extends DisplayCard {
     public Dashboard(Connection conn, User user, StatusManager statusManager) {
         // Card Title
         super("Dashboard");
+        // statusManager declared to current statusManager
+        this.statusManager = statusManager;
 
         setBackground(new Color(62, 92, 118));
         setLayout(new BorderLayout());
@@ -117,8 +119,6 @@ public class Dashboard extends DisplayCard {
     }
 
     public void updateStatus(String status) {
-        if (statusIndicator != null) {
-            statusIndicator.setStatus(status);
-        }
+        statusManager.updateStatus(status);
     }
 }
