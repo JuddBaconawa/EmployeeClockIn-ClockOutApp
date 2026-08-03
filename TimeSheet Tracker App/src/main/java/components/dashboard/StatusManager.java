@@ -16,7 +16,11 @@ public class StatusManager {
     public void register(StatusIndicator indicator) {
         indicators.add(indicator);
 
-        indicator.updateStatus(currentStatus);
+        indicator.setStatus(currentStatus);
+    }
+
+    public void updateStatus(String status) {
+      
     }
 
 
