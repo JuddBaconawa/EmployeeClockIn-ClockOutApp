@@ -8,7 +8,10 @@ import models.User;
 
 // import util.LoadProjectsFromDB;
 import components.TitlePanel;
+
+// import for status indicator light changes
 import components.dashboard.StatusIndicator;
+import components.dashboard.StatusManager;
 
 // DAO import
 import dao.ProjectDAO;
