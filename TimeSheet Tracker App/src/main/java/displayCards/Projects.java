@@ -53,6 +53,8 @@ public class Projects extends DisplayCard {
     private Connection conn;
     private User user;
     private TitlePanel titlePanel;
+    private StatusManager statusManager;
+
 
     // 
     private JFrame parentFrame; // reference to parent frame for dialogs
@@ -65,15 +67,27 @@ public class Projects extends DisplayCard {
     private YearMonth currentMonth = YearMonth.now(); // Tracks which month is being shown
     private StatusIndicator statusIndicator;
 
-    public Projects(JFrame parentFrame, Connection conn, User user) {
+    public Projects(JFrame parentFrame, Connection conn, User user, StatusManager statusManager) {
+
         // Call super constructor
         super("Projects");
+        
         // Initialize fields
         this.parentFrame = parentFrame;
         this.conn = conn;
         this.user = user;
+        
+        // for statusIndicator light to work correctly 
+        this.statusManager = statusManager;
+        statusIndicator = new StatusIndicator();
+        statusManager.register(statusIndicator);
+
+
+
         // Initialize DAO
         this.projectDAO = new ProjectDAO(conn);
+
+
 
         // Main Layout
         setBackground(new Color(210, 125, 216));
@@ -81,7 +95,7 @@ public class Projects extends DisplayCard {
 
 
         // === Title Panel ===
-        titlePanel = new TitlePanel("Projects", new StatusIndicator());
+        titlePanel = new TitlePanel("Projects", statusIndicator);
         titlePanel.setBackgroundColor(new Color(120, 121, 178));
         add(titlePanel, BorderLayout.NORTH);
 
