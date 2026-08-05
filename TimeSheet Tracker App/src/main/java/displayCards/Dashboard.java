@@ -34,8 +34,10 @@ public class Dashboard extends DisplayCard {
     private StatusManager statusManager;
     
     public Dashboard(Connection conn, User user, StatusManager statusManager) {
+        
         // Card Title
         super("Dashboard");
+
         // statusManager declared to current statusManager
         this.statusManager = statusManager;
 
@@ -92,13 +94,13 @@ public class Dashboard extends DisplayCard {
         bottomPanel.setPreferredSize(new Dimension(1200, 300));
         bottomPanel.setOpaque(false);
 
-
+        // add streak panel to the bottom panel
         bottomPanel.add(new StreakPanel());
         
         // pass connection and the logged in user id to average panel
         bottomPanel.add(new AveragePanel(conn, user.getUserId()));
 
-
+        // add content panels to the main content panel
         contentPanel.add(topPanel);
         contentPanel.add(bottomPanel);
 
@@ -110,7 +112,7 @@ public class Dashboard extends DisplayCard {
 
     }
 
-
+    // wraps a panel to align it to the top
     private JPanel wrapTopAligned(JPanel inner) {
         JPanel wrapper = new JPanel(new BorderLayout());
         wrapper.setOpaque(false);
@@ -118,6 +120,7 @@ public class Dashboard extends DisplayCard {
         return wrapper;
     }
 
+    // updates StatusManager for clock in, clockout, and breaks
     public void updateStatus(String status) {
         statusManager.updateStatus(status);
     }
