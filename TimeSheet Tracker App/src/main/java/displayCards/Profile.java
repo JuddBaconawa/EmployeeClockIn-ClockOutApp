@@ -15,6 +15,7 @@ import components.DisplayCard;
 import components.TitlePanel;
 import components.dashboard.ProfilePanel;
 import components.dashboard.StatusIndicator;
+import components.dashboard.StatusManager;
 import models.User;
 
 
@@ -25,11 +26,14 @@ public class Profile extends DisplayCard {
     private JLabel statusText;
     private TitlePanel titlePanel;
 
-    public Profile(User user) {
+    // for statusIndicator
+    private StatusManager statusManager;
+
+    public Profile(User user, StatusManager statusManager) {
 
         super("Profile");
-        // setBackground(new Color(62, 92, 118));
-        // setLayout(new BorderLayout(2, 2, 2, 2));
+        
+        this.statusManager = statusManager;
 
         setBackground(new Color(240, 235, 216));
 
@@ -38,6 +42,7 @@ public class Profile extends DisplayCard {
 
         // Initialize status indicator
         statusIndicator = new StatusIndicator();
+        statusManager.register(statusIndicator);
 
         // TITLE Panel
         titlePanel = new TitlePanel("Profile", statusIndicator);
