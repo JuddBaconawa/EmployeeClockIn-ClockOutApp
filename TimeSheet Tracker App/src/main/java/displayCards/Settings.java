@@ -1,20 +1,24 @@
+// PACKAGE
 package displayCards;
-import java.awt.BorderLayout;
+
+
+
+
 //IMPORTS
+// java awt imports 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.GridLayout;
 
-import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-
 import components.DisplayCard;
-import components.dashboard.StatusIndicator;
 import components.TitlePanel;
+import components.dashboard.StatusIndicator;
+import components.dashboard.StatusManager;
 
 
 
@@ -24,12 +28,17 @@ import components.TitlePanel;
 public class Settings extends DisplayCard {
 
     private StatusIndicator statusIndicator;
+    private StatusManager statusManager;
     private JLabel statusText;
+
 
     public Settings() {
 
       // Card Title
       super("");
+
+      // status manager connected to current user logged in
+      this.statusManager = statusManager;
 
       // Set properties for the Home JPanel
       setBackground(new Color(255, 255, 255));
@@ -37,10 +46,15 @@ public class Settings extends DisplayCard {
       
 
       // TITLE Panel
-      statusIndicator = new StatusIndicator();
       TitlePanel titlePanel = new TitlePanel("Settings", new StatusIndicator());
       titlePanel.setBackgroundColor(new Color(89, 92, 118));
       add(titlePanel, BorderLayout.NORTH);
+
+      // status indicator/manager
+      // status indicator created
+      statusIndicator = new StatusIndicator();
+      statusManager.register(statusIndicator);
+      
 
       
       // Content Panel: 3 column, 3 rows: Interactive | Description | State
