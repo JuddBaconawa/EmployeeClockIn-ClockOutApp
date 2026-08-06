@@ -50,7 +50,7 @@ public class Settings extends DisplayCard {
       statusManager.register(statusIndicator);
       
       // TITLE Panel
-      TitlePanel titlePanel = new TitlePanel("Settings", new StatusIndicator());
+      TitlePanel titlePanel = new TitlePanel("Settings", statusIndicator);
       titlePanel.setBackgroundColor(new Color(89, 92, 118));
       add(titlePanel, BorderLayout.NORTH);
 
