@@ -43,17 +43,18 @@ public class Settings extends DisplayCard {
       // Set properties for the Home JPanel
       setBackground(new Color(255, 255, 255));
       setLayout(new BorderLayout());
-      
-
-      // TITLE Panel
-      TitlePanel titlePanel = new TitlePanel("Settings", new StatusIndicator());
-      titlePanel.setBackgroundColor(new Color(89, 92, 118));
-      add(titlePanel, BorderLayout.NORTH);
 
       // status indicator/manager
       // status indicator created
       statusIndicator = new StatusIndicator();
       statusManager.register(statusIndicator);
+      
+      // TITLE Panel
+      TitlePanel titlePanel = new TitlePanel("Settings", new StatusIndicator());
+      titlePanel.setBackgroundColor(new Color(89, 92, 118));
+      add(titlePanel, BorderLayout.NORTH);
+
+
       
 
       
@@ -101,16 +102,4 @@ public class Settings extends DisplayCard {
 
 
 
-
-    public static void main(String[] args) {
-      //Settings instance created for testing
-      Settings settings = new Settings();
-
-      javax.swing.JFrame frame = new javax.swing.JFrame("Settings Example");
-      frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
-      frame.add(settings);
-      frame.setSize(1000, 680);
-      frame.setVisible(true);
-
-    }
 }  
