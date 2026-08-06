@@ -17,6 +17,7 @@ import javax.swing.table.DefaultTableModel;
 import components.DisplayCard;
 import components.TitlePanel;
 import components.dashboard.StatusIndicator;
+import components.dashboard.StatusManager;
 import dao.TimelogDAO;
 import models.TimelogEntry;
 
@@ -26,6 +27,7 @@ public class Timelog extends DisplayCard {
     
     private Connection conn;
     private StatusIndicator statusIndicator;
+    private StatusManager statusManager;
     private JLabel statusText;
     private JTable table;
     private TimelogDAO timelogDAO;
@@ -34,11 +36,12 @@ public class Timelog extends DisplayCard {
     private int userId;
     private DefaultTableModel model;
 
-    public Timelog(TimelogDAO dao, int userId) {
+    public Timelog(TimelogDAO dao, int userId, StatusManager statusManager) {
 
       super("Timelog");
       this.userId = userId;
       this.timelogDAO = dao;
+      this.statusManager = statusManager;
 
       // timelog background and layout
       // setBackground(new Color(0, 40, 0));
@@ -47,6 +50,7 @@ public class Timelog extends DisplayCard {
 
       // Initialize status indicator
       statusIndicator = new StatusIndicator();
+      statusManager.register(statusIndicator);
 
       // title Panel
       titlePanel = new TitlePanel("TimeLog", statusIndicator);
