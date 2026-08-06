@@ -32,12 +32,12 @@ public class Settings extends DisplayCard {
     private JLabel statusText;
 
 
-    public Settings() {
+    public Settings(StatusManager statusManager) {
 
       // Card Title
       super("");
 
-      // status manager connected to current user logged in
+      // save the shared manager created by timesheet
       this.statusManager = statusManager;
 
       // Set properties for the Home JPanel
