@@ -118,7 +118,7 @@ public class TimeSheet extends JFrame{
 
 		displayPanel.add(new Dashboard(conn, user, statusManager), "Dashboard");
 		displayPanel.add(new Profile(user, statusManager), "Profile");
-		displayPanel.add(new Timelog(new TimelogDAO(conn), user.getUserId()), "Timelog");
+		displayPanel.add(new Timelog(new TimelogDAO(conn), user.getUserId(), statusManager), "Timelog");
 		displayPanel.add(new Projects(this, conn, user, statusManager), "Projects");
 		
 		displayPanel.add(new Settings(statusManager), "Settings");
