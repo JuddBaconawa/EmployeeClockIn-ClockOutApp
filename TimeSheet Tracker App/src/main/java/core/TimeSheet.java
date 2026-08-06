@@ -16,6 +16,7 @@ import javax.swing.border.MatteBorder;
 import auth.LoginForm;
 import components.MenuPanel;
 import components.TopInfoPanel;
+import components.dashboard.StatusManager;
 import dao.TimelogDAO;
 import displayCards.Dashboard;
 import displayCards.Profile;
@@ -39,11 +40,15 @@ public class TimeSheet extends JFrame{
 	private int mouseX;
 	private int mouseY;
 
+	// statusmanager created
+	private StatusManager statusManager = new StatusManager();
+
 	// timesheet connection
 	public TimeSheet(Connection conn) {
 		this.conn = conn;
 	}
 
+	// showcard for 
 	public void showCard(String cardname) {
 		CardLayout cl = (CardLayout) displayPanel.getLayout();
 		cl.show(displayPanel, cardname);
@@ -111,10 +116,10 @@ public class TimeSheet extends JFrame{
 		displayPanel.setBounds(200, 0, 1200, 800);
 		displayPanel.setBackground(new Color(240, 235, 216));
 
-		displayPanel.add(new Dashboard(conn, user), "Dashboard");
-		displayPanel.add(new Profile(user), "Profile");
+		displayPanel.add(new Dashboard(conn, user, statusManager), "Dashboard");
+		displayPanel.add(new Profile(user, statusManager), "Profile");
 		displayPanel.add(new Timelog(new TimelogDAO(conn), user.getUserId()), "Timelog");
-		displayPanel.add(new Projects(this, conn, user), "Projects");
+		displayPanel.add(new Projects(this, conn, user, statusManager), "Projects");
 		
 		displayPanel.add(new Settings(), "Settings");
 		
