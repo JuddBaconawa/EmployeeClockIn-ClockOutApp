@@ -1,0 +1,306 @@
+2026-08-07T04:06:13.068Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-07T04:06:13.068Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "precheckCompleted",
+  "phase": "precheck",
+  "status": "succeeded",
+  "details": {
+    "components": [
+      {
+        "name": "jdk",
+        "baseVersion": "21",
+        "targetVersion": "25"
+      }
+    ]
+  }
+}}).
+2026-08-07T04:06:13.068Z [INFO] [Tool.invoke] do invoke.
+2026-08-07T04:06:13.069Z [INFO] Project c:\Users\bacon\Desktop\Programming Projects\GitHub Projects\EmployeeClockIn-ClockOutApp\TimeSheet Tracker App is a maven project, try to get java version from pom.xml
+2026-08-07T04:06:13.070Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'precheckCompleted' reported!\nSession ID: 20260807040613,\nSession Dir: c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\.github\\modernize\\java-upgrade\\20260807040613"
+}}).
+2026-08-07T04:06:13.070Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-07T04:06:13.071Z [INFO] Project java version: 21
+2026-08-07T04:06:13.071Z [INFO] Maven project detected.
+2026-08-07T04:06:13.071Z [INFO] Build tool type: mvn
+2026-08-07T04:06:13.177Z [INFO] JDK: {
+  "name": "java",
+  "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin",
+  "version": "21"
+}
+2026-08-07T04:06:13.179Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\apache-maven-3.9.14-bin\\apache-maven-3.9.14\\bin",
+  "version": "",
+  "source": "PATH"
+}
+2026-08-07T04:06:13.179Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\apache-maven-3.9.14-bin\\apache-maven-3.9.14\\bin",
+    "name": "mvn",
+    "version": "",
+    "source": "PATH"
+  },
+  "jdk": {
+    "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.7.6-hotspot\\bin",
+    "name": "java",
+    "version": "21"
+  },
+  "name": "TimeSheet Tracker App",
+  "dir": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App"
+}
+2026-08-07T04:06:43.914Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-07T04:06:43.915Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "planGenerationStarted",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-08-07T04:06:43.915Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-07T04:06:43.915Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-07T04:06:43.915Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-08-07T04:06:43.939Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-07T04:06:43.939Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "planGenerationStarted",
+  "phase": "plan",
+  "status": "succeeded"
+}}).
+2026-08-07T04:06:43.939Z [INFO] [Tool.invoke] do invoke.
+2026-08-07T04:06:43.940Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planGenerationStarted' reported!\nSession ID: 20260807040613,\nSession Dir: c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\.github\\modernize\\java-upgrade\\20260807040613"
+}}).
+2026-08-07T04:06:43.940Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-07T04:06:46.883Z [INFO] ---------------------prepare appmod-confirm-upgrade-plan----------------------
+2026-08-07T04:06:46.883Z [INFO] [Tool.prepareInvocation]({name: appmod-confirm-upgrade-plan, input: {
+  "sessionId": "20260807040613",
+  "autoExecute": true
+}}).
+2026-08-07T04:06:46.883Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-07T04:06:46.883Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Auto-executing [upgrade plan](file:///c:/Users/bacon/Desktop/Programming Projects/GitHub Projects/EmployeeClockIn-ClockOutApp/TimeSheet Tracker App/.github/modernize/java-upgrade/20260807040613/plan.md)"
+}}).
+2026-08-07T04:06:46.884Z [INFO] ----------------------prepared appmod-confirm-upgrade-plan----------------------
+2026-08-07T04:06:46.918Z [INFO] ----------------------invoke appmod-confirm-upgrade-plan----------------------
+2026-08-07T04:06:46.918Z [INFO] [Tool.invoke]({name: appmod-confirm-upgrade-plan, modelId: auto, input: {
+  "sessionId": "20260807040613",
+  "autoExecute": true
+}}).
+2026-08-07T04:06:46.918Z [INFO] [Tool.invoke] do invoke.
+2026-08-07T04:06:46.918Z [INFO] Upgrade plan confirmed successfully.
+2026-08-07T04:06:46.918Z [INFO] [Tool.invoke]({result: {
+  "message": "Generated plan is reviewed and confirmed by the user! the upgrade process will start now."
+}}).
+2026-08-07T04:06:46.918Z [INFO] ----------------------invoked appmod-confirm-upgrade-plan----------------------
+2026-08-07T04:07:13.029Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-07T04:07:13.029Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "planExecutionStarted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-08-07T04:07:13.029Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-07T04:07:13.030Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-07T04:07:13.030Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-08-07T04:07:13.056Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-07T04:07:13.056Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "planExecutionStarted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-08-07T04:07:13.056Z [INFO] [Tool.invoke] do invoke.
+2026-08-07T04:07:13.094Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planExecutionStarted' reported!\nSession ID: 20260807040613,\nSession Dir: c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\.github\\modernize\\java-upgrade\\20260807040613"
+}}).
+2026-08-07T04:07:13.095Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-07T04:07:44.962Z [INFO] ---------------------prepare appmod-install-jdk----------------------
+2026-08-07T04:07:44.962Z [INFO] [Tool.prepareInvocation]({name: appmod-install-jdk, input: {
+  "version": "25",
+  "dest": "c:\\Users\\bacon\\AppData\\Local\\Programs\\Microsoft VS Code\\jdk-25"
+}}).
+2026-08-07T04:07:44.962Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-07T04:07:45.862Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Download and install JDK"
+}}).
+2026-08-07T04:07:45.862Z [INFO] ----------------------prepared appmod-install-jdk----------------------
+2026-08-07T04:07:45.888Z [INFO] ----------------------invoke appmod-install-jdk----------------------
+2026-08-07T04:07:45.888Z [INFO] [Tool.invoke]({name: appmod-install-jdk, modelId: auto, input: {
+  "version": "25",
+  "dest": "c:\\Users\\bacon\\AppData\\Local\\Programs\\Microsoft VS Code\\jdk-25",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp"
+}}).
+2026-08-07T04:07:45.888Z [INFO] [Tool.invoke] do invoke.
+2026-08-07T04:08:12.331Z [INFO] [Tool.invoke]({result: {
+  "result": {
+    "name": "java",
+    "path": "c:\\Users\\bacon\\AppData\\Local\\Programs\\Microsoft VS Code\\jdk-25\\jdk-25.0.2\\bin",
+    "version": "25.0.2"
+  },
+  "message": "JDK 25 is installed at c:\\Users\\bacon\\AppData\\Local\\Programs\\Microsoft VS Code\\jdk-25\\jdk-25.0.2\\bin",
+  "telemetry": {
+    "tool": "JDK",
+    "version": "25"
+  }
+}}).
+2026-08-07T04:08:12.331Z [INFO] ----------------------invoked appmod-install-jdk----------------------
+2026-08-07T04:08:16.883Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-07T04:08:16.883Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "environmentSetup",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "jdkPath": "c:\\Users\\bacon\\AppData\\Local\\Programs\\Microsoft VS Code\\jdk-25\\jdk-25.0.2\\bin",
+    "buildToolPath": "C:\\apache-maven-3.9.14-bin\\apache-maven-3.9.14\\bin\\mvn.cmd"
+  }
+}}).
+2026-08-07T04:08:16.883Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-07T04:08:16.884Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-07T04:08:16.884Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-08-07T04:08:16.912Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-07T04:08:16.912Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "environmentSetup",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "jdkPath": "c:\\Users\\bacon\\AppData\\Local\\Programs\\Microsoft VS Code\\jdk-25\\jdk-25.0.2\\bin",
+    "buildToolPath": "C:\\apache-maven-3.9.14-bin\\apache-maven-3.9.14\\bin\\mvn.cmd"
+  }
+}}).
+2026-08-07T04:08:16.912Z [INFO] [Tool.invoke] do invoke.
+2026-08-07T04:08:16.913Z [INFO] Project c:\Users\bacon\Desktop\Programming Projects\GitHub Projects\EmployeeClockIn-ClockOutApp\TimeSheet Tracker App is a maven project, try to get java version from pom.xml
+2026-08-07T04:08:16.914Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'environmentSetup' reported!\nSession ID: 20260807040613,\nSession Dir: c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\.github\\modernize\\java-upgrade\\20260807040613"
+}}).
+2026-08-07T04:08:16.914Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-07T04:08:16.938Z [INFO] Project java version: 21
+2026-08-07T04:08:16.938Z [INFO] Maven project detected.
+2026-08-07T04:08:16.939Z [INFO] Build tool type: mvn
+2026-08-07T04:08:16.939Z [INFO] JDK: {
+  "name": "java",
+  "path": "c:\\Users\\bacon\\AppData\\Local\\Programs\\Microsoft VS Code\\jdk-25\\jdk-25.0.2\\bin",
+  "version": "21"
+}
+2026-08-07T04:08:16.939Z [INFO] Build tool: {
+  "name": "mvn",
+  "path": "C:\\apache-maven-3.9.14-bin\\apache-maven-3.9.14\\bin\\mvn.cmd\\bin",
+  "version": ""
+}
+2026-08-07T04:08:16.939Z [INFO] Project config: {
+  "buildTool": {
+    "path": "C:\\apache-maven-3.9.14-bin\\apache-maven-3.9.14\\bin\\mvn.cmd\\bin",
+    "name": "mvn",
+    "version": ""
+  },
+  "jdk": {
+    "path": "c:\\Users\\bacon\\AppData\\Local\\Programs\\Microsoft VS Code\\jdk-25\\jdk-25.0.2\\bin",
+    "name": "java",
+    "version": "21"
+  },
+  "name": "TimeSheet Tracker App",
+  "dir": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App"
+}
+2026-08-07T04:10:23.167Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-07T04:10:23.167Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "upgradeValidationCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Final Validation",
+    "commitId": "N/A"
+  }
+}}).
+2026-08-07T04:10:23.168Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-07T04:10:23.168Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-07T04:10:23.168Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-08-07T04:10:23.201Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-07T04:10:23.201Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "upgradeValidationCompleted",
+  "phase": "execute",
+  "status": "succeeded",
+  "details": {
+    "stepNumber": 3,
+    "stepTitle": "Final Validation",
+    "commitId": "N/A"
+  }
+}}).
+2026-08-07T04:10:23.201Z [INFO] [Tool.invoke] do invoke.
+2026-08-07T04:10:23.202Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'upgradeValidationCompleted' reported!\nSession ID: 20260807040613,\nSession Dir: c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\.github\\modernize\\java-upgrade\\20260807040613"
+}}).
+2026-08-07T04:10:23.202Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-07T04:10:26.222Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-07T04:10:26.222Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "planExecutionCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-08-07T04:10:26.222Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-07T04:10:26.222Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-07T04:10:26.222Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-08-07T04:10:26.301Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-07T04:10:26.301Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "planExecutionCompleted",
+  "phase": "execute",
+  "status": "succeeded"
+}}).
+2026-08-07T04:10:26.301Z [INFO] [Tool.invoke] do invoke.
+2026-08-07T04:10:26.303Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'planExecutionCompleted' reported!\nSession ID: 20260807040613,\nSession Dir: c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\.github\\modernize\\java-upgrade\\20260807040613"
+}}).
+2026-08-07T04:10:26.304Z [INFO] ----------------------invoked appmod-report-event----------------------
+2026-08-07T04:10:31.036Z [INFO] ---------------------prepare appmod-report-event----------------------
+2026-08-07T04:10:31.037Z [INFO] [Tool.prepareInvocation]({name: appmod-report-event, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "summaryGenerated",
+  "phase": "summarize",
+  "status": "succeeded",
+  "message": "Java target updated to 25 and verified with Maven tests under the new runtime."
+}}).
+2026-08-07T04:10:31.037Z [INFO] [Tool.prepareInvocation] do prepare invocation.
+2026-08-07T04:10:31.037Z [INFO] [Tool.prepareInvocation]({result: {
+  "invocationMessage": "Report upgrade event"
+}}).
+2026-08-07T04:10:31.037Z [INFO] ----------------------prepared appmod-report-event----------------------
+2026-08-07T04:10:31.066Z [INFO] ----------------------invoke appmod-report-event----------------------
+2026-08-07T04:10:31.066Z [INFO] [Tool.invoke]({name: appmod-report-event, modelId: auto, input: {
+  "sessionId": "20260807040613",
+  "projectPath": "c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App",
+  "event": "summaryGenerated",
+  "phase": "summarize",
+  "status": "succeeded",
+  "message": "Java target updated to 25 and verified with Maven tests under the new runtime."
+}}).
+2026-08-07T04:10:31.066Z [INFO] [Tool.invoke] do invoke.
+2026-08-07T04:10:31.067Z [INFO] [Tool.invoke]({result: {
+  "message": "Event 'summaryGenerated' reported!\nSession ID: 20260807040613,\nSession Dir: c:\\Users\\bacon\\Desktop\\Programming Projects\\GitHub Projects\\EmployeeClockIn-ClockOutApp\\TimeSheet Tracker App\\.github\\modernize\\java-upgrade\\20260807040613"
+}}).
+2026-08-07T04:10:31.067Z [INFO] ----------------------invoked appmod-report-event----------------------
