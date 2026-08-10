@@ -29,7 +29,7 @@ public class ClockPanel extends JPanel {
 
     private boolean onBreak = false;
 
-    private Dashboard dashboard;
+    private final Dashboard dashboard;
 
     private Map<LocalDate, Long> dailyWorkedTime = new HashMap<>();
 
