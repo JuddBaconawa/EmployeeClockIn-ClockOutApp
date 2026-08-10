@@ -26,7 +26,6 @@ public class ClockPanel extends JPanel {
     private long clockInTime = 0;
     private long breakStartTime = 0;
     private long totalBreakMillis = 0;
-    private long todayTotalMillis = 0;
 
     private boolean onBreak = false;
 
