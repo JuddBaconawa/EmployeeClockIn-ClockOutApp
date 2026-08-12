@@ -270,24 +270,9 @@ public class ClockPanel extends JPanel {
         }
     }
 
-    private void updateButtonState(String status) {
-
-        switch (status) {
-
-            case "in":
-                clockInButton.setEnabled(false);
-                clockOutButton.setEnabled(true);
-                breakButton.setEnabled(true);
-                break;
-
-            
-
-        }
-
-    }
 
     // added method to calculate worked time and pauses it during active break
-    public long getCurrentSessionWorkedMillis() {
+    private long getCurrentSessionWorkedMillis() {
 
         long activeBreakMillis = 0;
 
@@ -314,10 +299,7 @@ public class ClockPanel extends JPanel {
 
         if (clockInTime > 0) {
 
-            long currentSession =
-                    System.currentTimeMillis()
-                    - clockInTime
-                    - totalBreakMillis;
+            long currentSession = getCurrentSessionWorkedMillis();
 
             return saved + currentSession;
 
