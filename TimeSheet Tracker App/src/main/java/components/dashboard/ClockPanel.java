@@ -270,6 +270,16 @@ public class ClockPanel extends JPanel {
         }
     }
 
+    private void updateButtonState(String status) {
+
+        switch (status) {
+
+            
+
+        }
+
+    }
+
 
     // Method to calculate total worked milliseconds for the current day, including active session
     public long getDailyWorkedMillis() {
