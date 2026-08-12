@@ -274,7 +274,13 @@ public class ClockPanel extends JPanel {
 
         switch (status) {
 
+            case "in":
+                clockInButton.setEnabled(false);
+                clockOutButton.setEnabled(true);
+                breakButton.setEnabled(true);
+                break;
 
+            
 
         }
 
