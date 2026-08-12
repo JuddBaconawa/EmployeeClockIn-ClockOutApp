@@ -55,7 +55,7 @@ public class Timelog extends DisplayCard {
       // title Panel
       titlePanel = new TitlePanel("TimeLog", statusIndicator);
       titlePanel.setBackgroundColor(new Color(213, 180, 130));
-      add(titlePanel, BorderLayout.NORTH);
+      add(titlePanel, BorderLayout.NORTH);  // add title panel to the top of the card
 
 
 
@@ -69,6 +69,7 @@ public class Timelog extends DisplayCard {
 
       // set table model
       model = new DefaultTableModel(columns, 0);
+      // set the model to the table
       table.setModel(model);
 
   
@@ -94,10 +95,17 @@ public class Timelog extends DisplayCard {
           }
       });
   
+      // put the table inside a scroll pane for better viewing
       JScrollPane scrollPane = new JScrollPane(table);
-    //   scrollPane.setBounds(50, 150, 400, 200);
+   
+      // put that scroll pane inside its spacing container
+      tableContainer.add(scrollPane, BorderLayout.CENTER);
       
-      add(scrollPane, BorderLayout.CENTER);
+      // put the completed container into the card
+      add(tableContainer, BorderLayout.CENTER);
+
+      // load the data from the database into the table
+      loadTimeLogData();
     } 
 
 
