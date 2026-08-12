@@ -91,13 +91,14 @@ public class ClockPanel extends JPanel {
         // Clock out button
         clockOutButton.addActionListener(e -> {
 
+            // Calculate worked time for the current session
             long sessionWorkedMillis =
-                    System.currentTimeMillis()
-                    - clockInTime
-                    - totalBreakMillis;
+                     getCurrentSessionWorkedMillis();
 
+            // Update the daily worked time map
             LocalDate today = LocalDate.now();
 
+            // update dailyWorkedTime map
             dailyWorkedTime.put(
                     today,
                     dailyWorkedTime.getOrDefault(today, 0L)
@@ -117,6 +118,7 @@ public class ClockPanel extends JPanel {
             breakStartTime = 0;
             onBreak = false;
 
+            // Update UI
             dashboard.updateStatus("out");
             updateButtonState("out");
         });
@@ -172,6 +174,7 @@ public class ClockPanel extends JPanel {
         // Button panel
         JPanel buttonPanel = new JPanel(new FlowLayout());
 
+        // Add buttons to the panel
         buttonPanel.add(clockInButton);
         buttonPanel.add(clockOutButton);
         buttonPanel.add(breakButton);
@@ -197,6 +200,7 @@ public class ClockPanel extends JPanel {
 
         });
 
+        // Start the timer to update the UI every second
         uiTimer.start();
 
     }
@@ -217,6 +221,7 @@ public class ClockPanel extends JPanel {
         long minutes = (millis / (1000 * 60)) % 60;
         long hours = (millis / (1000 * 60 * 60)) % 24;
 
+        // return formated string in Hours:Minutes:Seconds format with leading zeros
         return String.format(
                 "%02d:%02d:%02d",
                 hours,
@@ -228,8 +233,10 @@ public class ClockPanel extends JPanel {
     // Update button states
     private void updateButtonState(String status) {
 
+        // Enable or disable buttons based on the current status
         switch (status) {
 
+            // User is Clocked in
             case "in":
 
                 clockInButton.setEnabled(false);
@@ -238,6 +245,7 @@ public class ClockPanel extends JPanel {
 
                 break;
 
+            // User is Clocked out
             case "out":
 
                 clockInButton.setEnabled(true);
@@ -248,6 +256,7 @@ public class ClockPanel extends JPanel {
 
                 break;
 
+            // User is on Break
             case "break":
 
                 clockInButton.setEnabled(false);
@@ -258,6 +267,7 @@ public class ClockPanel extends JPanel {
 
                 break;
 
+            // Default case (should not occur)
             default:
 
                 clockInButton.setEnabled(true);
@@ -274,6 +284,7 @@ public class ClockPanel extends JPanel {
     // added method to calculate worked time and pauses it during active break
     private long getCurrentSessionWorkedMillis() {
 
+        // If the user is currently on a break, we need to account for the time spent on break and exclude it from the worked time calculation.
         long activeBreakMillis = 0;
 
         // While on break, calculate the active break time
@@ -281,6 +292,7 @@ public class ClockPanel extends JPanel {
             activeBreakMillis = System.currentTimeMillis() - breakStartTime;
         }
 
+        // Calculate the total worked time for the current session, excluding breaks
         return System.currentTimeMillis()
                 - clockInTime
                 - totalBreakMillis
@@ -292,15 +304,20 @@ public class ClockPanel extends JPanel {
     // Method to calculate total worked milliseconds for the current day, including active session
     public long getDailyWorkedMillis() {
 
+        // Get today's date
         LocalDate today = LocalDate.now();
 
+        // Get the saved worked time for today, defaulting to 0 if not present
         long saved =
                 dailyWorkedTime.getOrDefault(today, 0L);
 
+        // If statement for when the user is clocked in to save per session
         if (clockInTime > 0) {
 
+            // calculate current session
             long currentSession = getCurrentSessionWorkedMillis();
 
+            // return today's saved time plus the current active session
             return saved + currentSession;
 
         } else {
@@ -310,14 +327,17 @@ public class ClockPanel extends JPanel {
         }
     }
 
+    // method to calculate total worked milliseconds for the current week
     public long getWeeklyWorkedMillis() {
 
+        // get today's date
         LocalDate today = LocalDate.now();
 
         // Monday as start of week
         LocalDate startOfWeek =
                 today.with(java.time.DayOfWeek.MONDAY);
 
+        // Sum up the worked time for each day in the current week
         return dailyWorkedTime.entrySet()
                 .stream()
                 .filter(entry ->
@@ -327,10 +347,13 @@ public class ClockPanel extends JPanel {
                 .sum();
     }
 
+    // Method to calculate total worked milliseconds for the current month
     public long getMonthlyWorkedMillis() {
 
+        // get today's date
         LocalDate today = LocalDate.now();
 
+        // sum up the worked time for each day in the current month
         return dailyWorkedTime.entrySet()
                 .stream()
                 .filter(entry ->
