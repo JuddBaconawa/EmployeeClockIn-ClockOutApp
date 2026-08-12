@@ -281,9 +281,19 @@ public class ClockPanel extends JPanel {
     }
 
     // added method to calculate worked time and pauses it during active break
-    public long getCurrentSessionWorkedMillis(){
+    public long getCurrentSessionWorkedMillis() {
 
-        
+        long activeBreakMillis = 0;
+
+        // While on break, calculate the active break time
+        if (onBreak) {
+            activeBreakMillis = System.currentTimeMillis() - breakStartTime;
+        }
+
+        return System.currentTimeMillis()
+                - clockInTime
+                - totalBreakMillis
+                - activeBreakMillis;
 
     }
 
