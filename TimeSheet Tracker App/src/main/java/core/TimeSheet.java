@@ -14,15 +14,23 @@ import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
 import auth.LoginForm;
-import components.MenuPanel;
-import components.TopInfoPanel;
-import components.dashboard.StatusManager;
+
 import dao.TimelogDAO;
+
+// import Displaycards
+import displayCards.AdminDashboard;
 import displayCards.Dashboard;
 import displayCards.Profile;
 import displayCards.Projects;
 import displayCards.Settings;
 import displayCards.Timelog;
+
+// import components
+import components.MenuPanel;
+import components.TopInfoPanel;
+import components.dashboard.StatusManager;
+
+// User model
 import models.User;
 
 
