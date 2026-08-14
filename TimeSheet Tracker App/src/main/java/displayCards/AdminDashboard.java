@@ -7,12 +7,13 @@ import components.dashboard.StatusIndicator;
 import components.dashboard.StatusManager;
 import components.TitlePanel;
 
-// swing imports
-import javax.swing.JLabel;
-
 // awt imports
 import java.awt.BorderLayout;
 import java.awt.Color;
+
+
+// swing imports
+import javax.swing.JLabel;
 
 
 
@@ -42,6 +43,8 @@ public class AdminDashboard extends DisplayCard{
         titlePanel = new TitlePanel("Admin Dashboard", statusIndicator);
         titlePanel.setBackgroundColor(new Color(75, 24, 55));
         add(titlePanel, BorderLayout.NORTH);
+
+        
 
 
     }
