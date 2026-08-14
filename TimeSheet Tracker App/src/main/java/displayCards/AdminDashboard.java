@@ -26,5 +26,14 @@ public class AdminDashboard extends DisplayCard{
         // statusManager declared to current statusManager
         this.statusManager = statusManager;
 
+        // initialize status indicator
+        statusIndicator = new StatusIndicator();
+        statusManager.register(statusIndicator);
+
+        // === Title Panel ===
+        // Create title panel with status indicator above
+        titlePanel = new TitlePanel("Admin Dashboard", statusIndicator);
+        
+
     }
 }
