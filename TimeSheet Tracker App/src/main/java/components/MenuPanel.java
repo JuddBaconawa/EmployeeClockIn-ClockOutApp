@@ -122,6 +122,16 @@ public class MenuPanel extends JPanel {
         
         addButton("DASHBOARD", "Dashboard");
         add(Box.createVerticalStrut(10));
+
+        // add admin dashboard button only if the user is an admin
+        if ("admin". equalsIgnoreCase(user.getRole())) {
+            // add admin dashboard button
+            addButton("Admin DASHBOARD", "AdminDashboard");
+            //added for spacing 
+            add(Box.createVerticalStrut(10));
+        }
+
+
         addButton("TIMELOG", "Timelog");
         add(Box.createVerticalStrut(10));
         addButton("PROFILE", "Profile");
