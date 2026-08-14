@@ -124,7 +124,13 @@ public class TimeSheet extends JFrame{
 		displayPanel.setBounds(200, 0, 1200, 800);
 		displayPanel.setBackground(new Color(240, 235, 216));
 
+		// Add the different display cards to the display panel
 		displayPanel.add(new Dashboard(conn, user, statusManager), "Dashboard");
+		// Add AdminDashboard only if the user is an admin
+		if ("admin".equalsIgnoreCase(user.getRole())) {
+				displayPanel.add(new AdminDashboard(statusManager), "AdminDashboard");
+		}
+
 		displayPanel.add(new Profile(user, statusManager), "Profile");
 		displayPanel.add(new Timelog(new TimelogDAO(conn), user.getUserId(), statusManager), "Timelog");
 		displayPanel.add(new Projects(this, conn, user, statusManager), "Projects");
