@@ -12,11 +12,13 @@ import components.TitlePanel;
 // awt imports
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 
 
 // swing imports
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 
 
