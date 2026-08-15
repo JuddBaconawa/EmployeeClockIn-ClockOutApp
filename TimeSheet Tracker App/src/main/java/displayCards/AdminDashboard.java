@@ -52,8 +52,11 @@ public class AdminDashboard extends DisplayCard{
         add(titlePanel, BorderLayout.NORTH);
 
         // temporary content panel
-        JPanel contentPanel = new JPanel();
+        JPanel contentPanel = new JPanel(new BorderLayout());
         contentPanel.setBackground(new Color(250, 235, 40));
+
+        
+
         contentPanel.add(new JLabel("Admin Dashboard Content Here"));
         add(contentPanel, BorderLayout.CENTER);
 
