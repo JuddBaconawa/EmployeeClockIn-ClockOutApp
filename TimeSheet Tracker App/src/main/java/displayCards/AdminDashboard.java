@@ -37,6 +37,8 @@ public class AdminDashboard extends DisplayCard{
         // statusManager declared to current statusManager
         this.statusManager = statusManager;
 
+        setLayout(new BorderLayout());
+
         // initialize status indicator
         statusIndicator = new StatusIndicator();
         statusManager.register(statusIndicator);
