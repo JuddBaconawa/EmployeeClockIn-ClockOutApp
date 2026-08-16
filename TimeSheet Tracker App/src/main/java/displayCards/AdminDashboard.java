@@ -64,7 +64,7 @@ public class AdminDashboard extends DisplayCard{
         contentPanel.add(message, BorderLayout.CENTER);
 
         // add content panel to the center of the AdminDashboard
-        contentPanel.add(new JLabel("Admin Dashboard Content Here"));
+        
         add(contentPanel, BorderLayout.CENTER);
 
 
