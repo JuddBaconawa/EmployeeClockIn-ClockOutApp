@@ -92,6 +92,12 @@ public class Settings extends DisplayCard {
       passwordPanel.setOpaque(true);
       passwordPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
       passwordPanel.add(new JLabel("Change Password:"));
+
+      // Add the change password button to the password panel
+      passwordPanel.add(changePasswordButton);
+
+
+      // Add the password panel to the content panel
       contentPanel.add(passwordPanel);
 
       
