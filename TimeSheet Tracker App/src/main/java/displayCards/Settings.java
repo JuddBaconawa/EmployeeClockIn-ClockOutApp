@@ -82,8 +82,9 @@ public class Settings extends DisplayCard {
 
 
       // additional initialization if needed
-      JLabel usernameLabel = new JLabel ("Welcome, " + "User!" + "This is the settings"); // Replace "User" with actual username
-      this.add(usernameLabel);
+      JLabel usernameLabel = new JLabel ("Welcome, " + "User!" + "This is the settings"); // Replace 
+      // Add the username label to the content panel
+      contentPanel.add(usernameLabel);
 
       // settings panel
       JPanel passwordPanel = new JPanel();
