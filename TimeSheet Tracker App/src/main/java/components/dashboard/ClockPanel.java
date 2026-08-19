@@ -55,17 +55,19 @@ public class ClockPanel extends JPanel {
     private TimeUpdateListener listener;
 
     private final Connection conn;
-    private final int userId;
+
+    // 
+    private final User user;
 
     // Timer for UI updates
     private Timer uiTimer;
 
-    public ClockPanel(Dashboard dashboard, Connection conn, int userId) {
+    public ClockPanel(Dashboard dashboard, Connection conn, User user) {
 
         // Dashboard reference for updating status across the dashboard
         this.dashboard = dashboard;
         this.conn = conn;
-        this.userId = userId;
+        this.user = user;
 
         // UI setup
         setLayout(new BorderLayout(10, 10));
