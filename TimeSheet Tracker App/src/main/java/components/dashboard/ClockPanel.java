@@ -6,31 +6,44 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+
+// User model import for user-specific data
+import models.User;
+
+// SQL imports for database connection
 import java.sql.Connection;
+// Time imports for date and time handling
 import java.time.LocalDate;
+
+// Util imports for data structures
 import java.util.HashMap;
 import java.util.Map;
 
+// Swing imports for UI components
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+// Importing the Dashboard class for interaction with the main dashboard
 import displayCards.Dashboard;
 
 public class ClockPanel extends JPanel {
 
+    //  UI Components
     private JLabel statusLabel;
-
     private long clockInTime = 0;
     private long breakStartTime = 0;
     private long totalBreakMillis = 0;
 
+    // State tracking for break status
     private boolean onBreak = false;
 
+    // Reference to the main Dashboard for updating status across the dashboard
     private final Dashboard dashboard;
 
+    // Map to track daily worked time in milliseconds
     private Map<LocalDate, Long> dailyWorkedTime = new HashMap<>();
 
     // Buttons
@@ -38,6 +51,7 @@ public class ClockPanel extends JPanel {
     private JButton clockOutButton;
     private JButton breakButton;
 
+    // Listener for time updates to notify other components (e.g., TimeGraphPanel)
     private TimeUpdateListener listener;
 
     private final Connection conn;
