@@ -7,6 +7,9 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
+// DAO import for project-related database operations
+import dao.ProjectDAO;
+
 // User model import for user-specific data
 import models.User;
 
@@ -17,17 +20,20 @@ import java.time.LocalDate;
 
 // Util imports for data structures
 import java.util.HashMap;
+import java.util.List;  // For handling lists of projects
 import java.util.Map;
 
 // Swing imports for UI components
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
+import javax.swing.JComboBox;   // For dropdown selection of projects
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
 // Importing the Dashboard class for interaction with the main dashboard
 import displayCards.Dashboard;
+import displayCards.Projects.Project;   // For handling project-related data
 
 public class ClockPanel extends JPanel {
 
