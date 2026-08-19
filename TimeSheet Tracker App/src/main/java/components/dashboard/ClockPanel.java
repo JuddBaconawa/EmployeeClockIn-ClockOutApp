@@ -60,9 +60,10 @@ public class ClockPanel extends JPanel {
     // Listener for time updates to notify other components (e.g., TimeGraphPanel)
     private TimeUpdateListener listener;
 
+    // Database connection for persisting time tracking data
     private final Connection conn;
 
-    // 
+    // User object representing the current user for personalized time tracking
     private final User user;
 
     // Timer for UI updates
@@ -95,14 +96,17 @@ public class ClockPanel extends JPanel {
         // Clock in button
         clockInButton.addActionListener(e -> {
 
+            // Record the clock-in time
             clockInTime = System.currentTimeMillis();
 
             // Reset break tracking
             totalBreakMillis = 0;
             breakStartTime = 0;
 
+            // Update status label
             statusLabel.setText("Status: Clocked In");
 
+            // Update dashboard status and button states
             dashboard.updateStatus("in");
             updateButtonState("in");
         });
