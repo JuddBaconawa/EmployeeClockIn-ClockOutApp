@@ -61,7 +61,7 @@ public class Dashboard extends DisplayCard {
         contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 20));
 
         // instantiate clock panel
-        ClockPanel clockPanel = new ClockPanel(this, conn, user.getUserId());
+        ClockPanel clockPanel = new ClockPanel(this, conn, user);
 
         // timestatpanel reference to clockpanel
         TimeStatsPanel timeStatsPanel = new TimeStatsPanel(clockPanel);
