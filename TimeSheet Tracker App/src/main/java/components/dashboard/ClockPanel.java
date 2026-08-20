@@ -95,7 +95,9 @@ public class ClockPanel extends JPanel {
 
         // Initialize ProjectDAO for project-related operations
         ProjectDAO projectDAO = new ProjectDAO(conn);
-        List<Project> projects = projectDAO.getAllProjects();
+
+        // Fetch all projects for the current user from the database
+        List<Project> projects = projectDAO.getProjectsForUser(user);
 
         // Create the project dropdown from those projects
         projectComboBox = new JComboBox<>(projects.toArray(new Project[0]));
@@ -106,7 +108,7 @@ public class ClockPanel extends JPanel {
         // =========================
         // CLOCK IN
         // =========================
-        // Clock in button
+        // Clock in button action listener
         clockInButton.addActionListener(e -> {
 
             // Record the clock-in time
@@ -212,6 +214,8 @@ public class ClockPanel extends JPanel {
 
         // Button panel
         JPanel buttonPanel = new JPanel(new FlowLayout());
+        projectPanel.add(new JLabel("Working on: "));   // Label for project selection
+        projectPanel.add(projectComboBox);  // Add the project dropdown to the panel
 
         // Add buttons to the panel
         buttonPanel.add(clockInButton);
