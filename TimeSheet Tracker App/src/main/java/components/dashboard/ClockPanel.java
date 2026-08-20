@@ -57,6 +57,9 @@ public class ClockPanel extends JPanel {
     private JButton clockOutButton;
     private JButton breakButton;
 
+    // ComboBox for selecting projects (if applicable)
+    private JComboBox<Project> projectComboBox;
+
     // Listener for time updates to notify other components (e.g., TimeGraphPanel)
     private TimeUpdateListener listener;
 
@@ -204,6 +207,8 @@ public class ClockPanel extends JPanel {
         buttonPanel.add(clockInButton);
         buttonPanel.add(clockOutButton);
         buttonPanel.add(breakButton);
+
+
 
         // Add components
         add(buttonPanel, BorderLayout.CENTER);
