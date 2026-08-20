@@ -93,6 +93,16 @@ public class ClockPanel extends JPanel {
         // Status label to show current status and worked time
         statusLabel = new JLabel("Status: Off the clock");
 
+        // Initialize ProjectDAO for project-related operations
+        ProjectDAO projectDAO = new ProjectDAO(conn);
+        List<Project> projects = projectDAO.getAllProjects();
+
+        // Create the project dropdown from those projects
+        projectComboBox = new JComboBox<>(projects.toArray(new Project[0]));
+
+        projectComboBox.setSelectedIndex(-1); // No project selected by default
+
+
         // =========================
         // CLOCK IN
         // =========================
