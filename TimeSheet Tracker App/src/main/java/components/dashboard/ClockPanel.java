@@ -111,6 +111,16 @@ public class ClockPanel extends JPanel {
         // Clock in button action listener
         clockInButton.addActionListener(e -> {
 
+            // Check if a project is selected before allowing clock-in
+            if (projectComboBox.getSelectedIndex() == null) {
+
+                // If no project is selected, update the status label to prompt the user
+                statusLabel.setText("Please selct a project first");
+
+                //  return early to prevent clocking in without a project
+                return;
+            }
+
             // Record the clock-in time
             clockInTime = System.currentTimeMillis();
 
@@ -213,7 +223,8 @@ public class ClockPanel extends JPanel {
         });
 
         // Button panel
-        JPanel buttonPanel = new JPanel(new FlowLayout());
+        JPanel buttonPanel = new JPanel(new FlowLayout());  // Panel to hold the buttons
+        JPanel projectPanel = new JPanel(new FlowLayout());  // Panel to hold the project selection
         projectPanel.add(new JLabel("Working on: "));   // Label for project selection
         projectPanel.add(projectComboBox);  // Add the project dropdown to the panel
 
@@ -226,6 +237,7 @@ public class ClockPanel extends JPanel {
 
         // Add components
         add(buttonPanel, BorderLayout.CENTER);
+        add(projectPanel, BorderLayout.NORTH);  // added the project panel - Position is NORTH
         add(statusLabel, BorderLayout.SOUTH);
 
         // Initial button state
