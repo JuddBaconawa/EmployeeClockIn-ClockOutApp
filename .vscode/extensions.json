@@ -1,3 +1,11 @@
 {
-  "recommendations": []
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run TimeSheet",
+      "request": "launch",
+      "mainClass": "core.App"
+    }
+  ]
 }
