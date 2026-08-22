@@ -212,10 +212,14 @@ public class ClockPanel extends JPanel {
             }
         });
 
-        // Button panel
-        JPanel buttonPanel = new JPanel(new FlowLayout());
+        // project selector panel
+        JPanel projectPanel = new JPanel(new FlowLayout());
         projectPanel.add(new JLabel("Working on: "));   // Label for project selection
         projectPanel.add(projectComboBox);  // Add the project dropdown to the panel
+
+        // Button panel
+        JPanel buttonPanel = new JPanel(new FlowLayout());
+        
 
         // Add buttons to the panel
         buttonPanel.add(clockInButton);
@@ -225,6 +229,7 @@ public class ClockPanel extends JPanel {
 
 
         // Add components
+        add(projectPanel, BorderLayout.NORTH);
         add(buttonPanel, BorderLayout.CENTER);
         add(statusLabel, BorderLayout.SOUTH);
 
