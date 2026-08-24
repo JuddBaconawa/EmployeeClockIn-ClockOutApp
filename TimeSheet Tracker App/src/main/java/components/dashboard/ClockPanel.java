@@ -111,6 +111,13 @@ public class ClockPanel extends JPanel {
         // Clock in button action listener
         clockInButton.addActionListener(e -> {
 
+            // if statement to check if project is selected before clock in
+            if (projectComboBox.getSelectedItem() == null) {
+                // if no project is selected, show a warning
+                statusLabel.setText("Please select a project first");
+                return; // Exit the action listener without clocking in
+            }
+
             // Record the clock-in time
             clockInTime = System.currentTimeMillis();
 
