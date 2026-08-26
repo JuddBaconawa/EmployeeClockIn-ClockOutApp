@@ -128,7 +128,8 @@ public class TimeSheet extends JFrame{
 		displayPanel.add(new Dashboard(conn, user, statusManager), "Dashboard");
 		// Add AdminDashboard only if the user is an admin
 		if ("admin".equalsIgnoreCase(user.getRole())) {
-				displayPanel.add(new AdminDashboard(statusManager), "AdminDashboard");
+				// Add AdminDashboard to the display panel for admin users
+				displayPanel.add(new AdminDashboard(conn, user, statusManager), "AdminDashboard");
 		}
 
 		displayPanel.add(new Profile(user, statusManager), "Profile");
