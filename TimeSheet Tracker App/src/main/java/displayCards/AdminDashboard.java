@@ -60,11 +60,18 @@ public class AdminDashboard extends DisplayCard{
                 "Team overview and management tools",
                 SwingConstants.CENTER
         );
+        // set font for the message label
         message.setFont(new Font("Arial", Font.BOLD, 24));
+        // set color for the message label
+        message.setForeground(new Color(75, 24, 55));
+        
+        // content panel added to the center
         contentPanel.add(message, BorderLayout.CENTER);
 
+        // set border for the content panel
+        contentPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
+
         // add content panel to the center of the AdminDashboard
-        
         add(contentPanel, BorderLayout.CENTER);
 
 
