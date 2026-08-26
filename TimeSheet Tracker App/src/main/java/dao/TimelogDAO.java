@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -58,15 +59,19 @@ public class TimelogDAO {
         return logs;
     }
 
+    // createTimeEntry method to insert a new time entry into the databse
     public void createTimeEntry(int userId, int projectId, Timestamp clockIn, Timestamp clockOut) throws SQLException {
         
+        // SQL query to insert a new time entry into the timesheets table
         String sql = """
-                INSERT INTO timesheets (user_id, project_i d, clock_in, clock_out, break_minutes, work_date)
+                INSERT INTO timesheets (user_id, project_id, clock_in, clock_out, break_minutes, work_date)
                 VALUES (?, ?, ?, ?, ?, ?)
                 """;
 
+        // Use try-with-resources to ensure the PreparedStatement is closed automatically
         try(PreparedStatement ps = connection.prepareStatement(sql)) {
 
+            // Set the parameters for the PreparedStatement
             ps.setInt(1, userId);
             ps.setInt(2, projectId);
             ps.setTimestamp(3, clockIn);
@@ -74,6 +79,7 @@ public class TimelogDAO {
             ps.setInt(5, 0);
             ps.setDate(6, new java.sql.Date(clockIn.getTime()));
 
+            // Execute the update to insert the new time entry
             ps.executeUpdate();
 
         }
