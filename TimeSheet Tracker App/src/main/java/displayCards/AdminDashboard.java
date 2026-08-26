@@ -40,7 +40,7 @@ public class AdminDashboard extends DisplayCard{
     private TitlePanel titlePanel;
     private StatusManager statusManager;
     
-    public AdminDashboard (StatusManager statusManager) {
+    public AdminDashboard (Connection conn, User user, StatusManager statusManager) {
 
         // card title
         super("Admin Dashboard");
@@ -64,6 +64,10 @@ public class AdminDashboard extends DisplayCard{
         JPanel contentPanel = new JPanel(new BorderLayout());
         contentPanel.setBackground(new Color(250, 235, 40));
 
+        // Load real number of projects visible to this admin
+        ProjectDAO projectDAO = new ProjectDAO(conn);   // ProjectDAO instance
+        //  get the number of projects for the user
+        int projectCount = projectDAO.getProjectsForUser(user).size();
         //  message label for the content panel
         JLabel message = new JLabel(
                 "Team overview and management tools",
