@@ -70,8 +70,9 @@ public class AdminDashboard extends DisplayCard{
         int projectCount = projectDAO.getProjectsForUser(user).size();
         //  message label for the content panel
         JLabel message = new JLabel(
-                "Team overview and management tools",
-                SwingConstants.CENTER
+                // display the number of projects
+                "Total projects: " + projectCount,  // message text plus the number of projects
+                SwingConstants.CENTER   // center the text
         );
         // set font for the message label
         message.setFont(new Font("Arial", Font.BOLD, 24));
