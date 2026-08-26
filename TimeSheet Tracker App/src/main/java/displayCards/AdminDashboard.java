@@ -7,18 +7,27 @@ import components.dashboard.StatusIndicator;
 import components.dashboard.StatusManager;
 import components.TitlePanel;
 
-
+// dao imports
+import dao.ProjectDAO;
 
 // awt imports
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
+// model imports
+import models.User;
+
 
 // swing imports
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+// sql imports
+import java.sql.Connection;
+
+
 
 
 
