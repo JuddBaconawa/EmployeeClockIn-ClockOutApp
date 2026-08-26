@@ -1,27 +1,36 @@
+// Packages
 package dao;
 
+// SQL imports
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
+// Util imports
 import java.util.ArrayList;
 import java.util.List;
 
+// model Imports
 import models.TimelogEntry;
 
+// TimelogDAO constructor and methods for database logging and retrieval
 public class TimelogDAO {
 
+    // Database connection
     private Connection connection;
 
+    //  Constructor to initialize the TimelogDAO with a database connection
     public TimelogDAO(Connection connection) {
         this.connection = connection;
     }
 
+    // Method to retrieve all time logs for a specific user from the database
     public List<TimelogEntry> getAllLogs(int userId) {
         List<TimelogEntry> logs = new ArrayList<>();
 
+        // SQL query to select time log entries for the specified user, including project name and total hours worked
         String sql = """
             SELECT p.name as project_name,
             t.clock_in,
@@ -34,12 +43,16 @@ public class TimelogDAO {
             ORDER BY t.work_date DESC, t.clock_in DESC
         """;
 
+        // Use try-with-resources to ensure the PreparedStatement and ResultSet are closed automatically
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
 
+            //  Set the userId parameter in the SQL query
             stmt.setInt(1, userId);
         
+            // Try statement to execute the query and retrieve the results
             try (ResultSet rs = stmt.executeQuery()) {
 
+            // Iterate through the ResultSet and create TimelogEntry objects for each row, adding them to the logs list
             while (rs.next()) {
                 logs.add(new TimelogEntry(
                         rs.getString("project_name"),
@@ -52,10 +65,12 @@ public class TimelogDAO {
 
         }
 
+        // catch statement
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
+        // show logs
         return logs;
     }
 
