@@ -75,7 +75,12 @@ public class TimelogDAO {
     }
 
     // createTimeEntry method to insert a new time entry into the databse
-    public void createTimeEntry(int userId, int projectId, Timestamp clockIn, Timestamp clockOut) throws SQLException {
+    public void createTimeEntry(int userId,
+                                int projectId, 
+                                Timestamp clockIn, 
+                                Timestamp clockOut, 
+                                int breakMinutes
+    ) throws SQLException {
         
         // SQL query to insert a new time entry into the timesheets table
         String sql = """
@@ -91,7 +96,7 @@ public class TimelogDAO {
             ps.setInt(2, projectId);
             ps.setTimestamp(3, clockIn);
             ps.setTimestamp(4, clockOut);
-            ps.setInt(5, 0);
+            ps.setInt(5, breakMinutes);
             ps.setDate(6, new java.sql.Date(clockIn.getTime()));
 
             // Execute the update to insert the new time entry
