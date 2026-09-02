@@ -162,13 +162,19 @@ public class ClockPanel extends JPanel {
 
             // include a break that is still active when clocking out
             long breakMillisToSave = totalBreakMillis;
-            
+
             // If the user is on a break when clocking out, calculate the break time up to the clock-out moment
             if (onBreak) {
 
                 // If the user is on a break when clocking out, calculate the break time up to the clock-out moment
                 breakMillisToSave += clockOutTime - breakStartTime;
             }
+
+            // (save time) convert milliseconds to seconds for storage in the database
+            int breakMinutes = (int) (breakMillisToSave / 60_000);  // Convert milliseconds to minutes
+
+
+            
 
             // Update the daily worked time map
             LocalDate today = LocalDate.now();
