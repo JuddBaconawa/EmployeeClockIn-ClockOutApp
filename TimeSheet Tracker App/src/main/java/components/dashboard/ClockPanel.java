@@ -119,10 +119,12 @@ public class ClockPanel extends JPanel {
                 // if no project is selected, show a warning
                 statusLabel.setText("Please select a project first");
 
-                // Set the active project to the selected project (if any) and exit the action listener
-                activeProject = (Project) projectComboBox.getSelectedItem();
+
                 return; // Exit the action listener without clocking in
             }
+
+            // Set the active project to the selected project (if any) and exit the action listener
+            activeProject = (Project) projectComboBox.getSelectedItem();
 
             // Record the clock-in time
             clockInTime = System.currentTimeMillis();
