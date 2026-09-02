@@ -61,7 +61,7 @@ public class ClockPanel extends JPanel {
     private JComboBox<Project> projectComboBox;
 
     // Currently active project for time tracking
-    private Project ActiveProject;
+    private Project activeProject;
 
     // Listener for time updates to notify other components (e.g., TimeGraphPanel)
     private TimeUpdateListener listener;
