@@ -157,6 +157,19 @@ public class ClockPanel extends JPanel {
             long sessionWorkedMillis =
                      getCurrentSessionWorkedMillis();
 
+            // Record the clock-out time
+            long clockOutTime = System.currentTimeMillis();
+
+            // include a break that is still active when clocking out
+            long breakMillisToSave = totalBreakMillis;
+            
+            // If the user is on a break when clocking out, calculate the break time up to the clock-out moment
+            if (onBreak) {
+
+                // If the user is on a break when clocking out, calculate the break time up to the clock-out moment
+                breakMillisToSave += clockOutTime - breakStartTime;
+            }
+
             // Update the daily worked time map
             LocalDate today = LocalDate.now();
 
