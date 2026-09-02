@@ -9,6 +9,7 @@ import java.awt.FlowLayout;
 
 // DAO import for project-related database operations
 import dao.ProjectDAO;
+import dao.TimelogDAO;  // DAO for handling time log operations in the database
 
 // User model import for user-specific data
 import models.User;
@@ -68,6 +69,7 @@ public class ClockPanel extends JPanel {
 
     // Database connection for persisting time tracking data
     private final Connection conn;
+    private final TimelogDAO timelogDAO;    // DAO for handling time log operations in the database
 
     // User object representing the current user for personalized time tracking
     private final User user;
@@ -81,6 +83,7 @@ public class ClockPanel extends JPanel {
         this.dashboard = dashboard;
         this.conn = conn;
         this.user = user;
+        this.timelogDAO = new TimelogDAO(conn); // Initialize TimelogDAO for time log operations
 
         // UI setup
         setLayout(new BorderLayout(10, 10));
