@@ -185,6 +185,16 @@ public class ClockPanel extends JPanel {
                     new Timestamp(clockOutTime),
                     breakMinutes
                 );
+
+            
+            // catch block to handle SQL exceptions that may occur during the database operation
+            } catch (SQLException sqlException) {
+
+                // Handle SQL exception (e.g., log the error, show a message to the user)
+                statusLabel.setText("Could not save time entry");
+                // Log the exception for debugging purposes
+                sqlException.printStackTrace();
+                return; // Exit the action listener if saving fails
             }
 
             // Update the daily worked time map
