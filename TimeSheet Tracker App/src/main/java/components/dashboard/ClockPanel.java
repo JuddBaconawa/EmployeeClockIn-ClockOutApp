@@ -16,6 +16,9 @@ import models.User;
 
 // SQL imports for database connection
 import java.sql.Connection;
+import java.sql.SQLException;   // For handling SQL exceptions
+import java.sql.Timestamp;  // For handling timestamp data from the database
+
 // Time imports for date and time handling
 import java.time.LocalDate;
 
