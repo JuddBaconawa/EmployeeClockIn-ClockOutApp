@@ -170,7 +170,7 @@ public class ClockPanel extends JPanel {
                 breakMillisToSave += clockOutTime - breakStartTime;
             }
 
-            // (save time) convert milliseconds to seconds for storage in the database
+            // (save time) convert milliseconds to minutes for storage in the database
             int breakMinutes = (int) (breakMillisToSave / 60_000);  // Convert milliseconds to minutes
 
 
