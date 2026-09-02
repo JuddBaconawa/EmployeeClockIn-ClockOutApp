@@ -174,7 +174,18 @@ public class ClockPanel extends JPanel {
             int breakMinutes = (int) (breakMillisToSave / 60_000);  // Convert milliseconds to minutes
 
 
-            
+            // Save the time log to the database using TimelogDAO
+            try {
+
+                // Ensure that the active project is not null before attempting to save the time log
+                timelogDAO.createTimeEntry(
+                    user.getUserId(),
+                    activeProject.projectId,
+                    new Timestamp(clockInTime),
+                    new Timestamp(clockOutTime),
+                    breakMinutes
+                );
+            }
 
             // Update the daily worked time map
             LocalDate today = LocalDate.now();
