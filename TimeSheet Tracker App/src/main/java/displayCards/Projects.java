@@ -207,6 +207,9 @@ public class Projects extends DisplayCard {
         add(topPanel, BorderLayout.NORTH);
         add(scrollPane, BorderLayout.CENTER);
         add(footerPanel, BorderLayout.SOUTH);
+
+        // Load projects from the database
+        loadProjectsFromDB();
 }
 
 
