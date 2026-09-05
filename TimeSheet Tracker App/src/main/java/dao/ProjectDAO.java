@@ -96,5 +96,11 @@ public class ProjectDAO {
         // Return the list of projects
         return projects;
     }
+
+    public List<Project.TimeEntry> getTimeEntriesForProject() {
+
+        
+
+    }
   
 }
