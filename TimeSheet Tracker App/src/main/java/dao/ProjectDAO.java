@@ -99,7 +99,15 @@ public class ProjectDAO {
 
     public List<Project.TimeEntry> getTimeEntriesForProject() {
 
-        
+        // List to hold the time entries
+        List<Project.TimeEntry> entries = new ArrayList<>();
+
+        // SQL query to fetch time entries
+        String sql = ""
+                Select work_date,
+                    ROUND(
+                        ()
+                    )
 
     }
   
