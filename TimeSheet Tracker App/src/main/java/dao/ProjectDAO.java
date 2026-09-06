@@ -97,23 +97,49 @@ public class ProjectDAO {
         return projects;
     }
 
-    public List<Project.TimeEntry> getTimeEntriesForProject() {
+    public List<Project.TimeEntry> getTimeEntriesForProject(int projectId) {
 
         // List to hold the time entries
         List<Project.TimeEntry> entries = new ArrayList<>();
 
         // SQL query to fetch time entries
-        String sql = """"
+        String sql = """
                 SELECT work_date,
                     ROUND(
                         (TIMESTAMPDIFF(MINUTE, clock_in, clock_out) - break_minutes)
-                        / 60.0, 2) AS hours
+                        / 60.0, 2
+                    ) AS hours
                 FROM timesheets
                 WHERE project_id = ?
                 ORDER BY work_date DESC, clock_in DESC
         """;
                     
+        try (PreparedStatement ps = conn.prepareStatement(sql)) {
+            // Set the project ID parameter
+            ps.setInt(1, projectId);
+
+            // Execute the query and process the results
+            try (ResultSet rs = ps.executeQuery()) {
+
+                // Loop through the result set and create TimeEntry objects
+                while (rs.next()) {
+                    Project.TimeEntry entry = new Project.TimeEntry(
+                        rs.getString("work_date"),
+                        rs.getDouble("hours")
+                    );
+
+                    // Add the time entry to the list
+                    entries.add(entry);
+                }
+            }
         
-    }
+        } catch (SQLException e) {
+        // Handle exception
+        e.printStackTrace();
+        }
+
+    // return the list of time entries
+    return entries;
   
+    }
 }
