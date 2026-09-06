@@ -103,12 +103,17 @@ public class ProjectDAO {
         List<Project.TimeEntry> entries = new ArrayList<>();
 
         // SQL query to fetch time entries
-        String sql = ""
-                Select work_date,
+        String sql = """"
+                SELECT work_date,
                     ROUND(
-                        ()
-                    )
-
+                        (TIMESTAMPDIFF(MINUTE, clock_in, clock_out) - break_minutes)
+                        / 60.0, 2) AS hours
+                FROM timesheets
+                WHERE project_id = ?
+                ORDER BY work_date DESC, clock_in DESC
+        """;
+                    
+        
     }
   
 }
