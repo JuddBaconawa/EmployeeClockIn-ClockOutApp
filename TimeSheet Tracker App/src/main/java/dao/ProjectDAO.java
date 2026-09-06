@@ -2,10 +2,14 @@
 package dao;
 
 // IMPORTS
+
+// SQL IMPORTS
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+// UTIL IMPORTS
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +40,10 @@ public class ProjectDAO {
             ps.setDate(4, java.sql.Date.valueOf(project.startDate));
             ps.setDate(5, java.sql.Date.valueOf(project.deadline));
 
+            // Execute the update to insert the new project into the database
             ps.executeUpdate();
+
+        // Handles any sql Exception    
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -97,6 +104,9 @@ public class ProjectDAO {
         return projects;
     }
 
+    // =====================================
+    // READ TIME ENTRIES
+    // =====================================
     public List<Project.TimeEntry> getTimeEntriesForProject(int projectId) {
 
         // List to hold the time entries
@@ -113,7 +123,8 @@ public class ProjectDAO {
                 WHERE project_id = ?
                 ORDER BY work_date DESC, clock_in DESC
         """;
-                    
+     
+        // Prepare the statement and set parameters
         try (PreparedStatement ps = conn.prepareStatement(sql)) {
             // Set the project ID parameter
             ps.setInt(1, projectId);
