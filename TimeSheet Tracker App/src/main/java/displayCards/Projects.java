@@ -263,8 +263,20 @@ public class Projects extends DisplayCard {
 
         // date Formatter (if needed)
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+        // add Together every time entry for the current month to the panel
+        double totalHours = 0;
+
+        // Loop through time entries and filter by current month
         for (Project.TimeEntry entry : p.timeEntries) {
+
+            // count this session toward the projects total hours
+            totalHours += entry.hours;
+            
+            // Filter by current month
             LocalDate date = LocalDate.parse(entry.date, fmt);
+
+            //  if Statement to check if the entry is in the current month
             if (YearMonth.from(date).equals(currentMonth)) {
                 double percent = (entry.hours / (double) p.maxHours) * 100;
                 JLabel entryLabel = new JLabel(
@@ -285,7 +297,7 @@ public class Projects extends DisplayCard {
         panel.add(timeLogScroll, BorderLayout.CENTER);
 
         // Progress Summary
-        JLabel progressLabel = new JLabel(p.hoursLogged + " / " + p.maxHours + " hrs total");
+        JLabel progressLabel = new JLabel(String.format("%.2f, %d hrs total", totalHours, p.maxHours));
         progressLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         progressLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 10));
         panel.add(progressLabel, BorderLayout.SOUTH);
