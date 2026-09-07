@@ -91,6 +91,10 @@ public class ProjectDAO {
                         rs.getString("start_date"),
                         rs.getString("end_date")
                     );
+
+                    // Load time entries for the project
+                    project.timeEntries = getTimeEntriesForProject(project.projectId);
+
                     // Add the project to the list
                     projects.add(project);
                 }
