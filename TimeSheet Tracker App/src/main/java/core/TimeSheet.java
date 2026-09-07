@@ -61,6 +61,14 @@ public class TimeSheet extends JFrame{
 
 	// showcard for 
 	public void showCard(String cardname) {
+
+		// If statement to reload current proj and saved session when projects is open
+		if ("Projects".equals(cardname) && projectsCard != null) {
+				// Reload the projects from the database when switching to the Projects card
+				projectsCard.loadProjectsFromDB();
+		}
+
+		// Get the CardLayout from the display panel
 		CardLayout cl = (CardLayout) displayPanel.getLayout();
 		cl.show(displayPanel, cardname);
 	}
