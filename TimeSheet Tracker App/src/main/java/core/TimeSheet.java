@@ -41,6 +41,9 @@ public class TimeSheet extends JFrame{
 	// variable for the display panel
 	private JPanel displayPanel;
 
+	// reference to the projects card
+	private Projects projectsCard;
+
 	//private connection variable
 	private Connection conn;
 
@@ -132,10 +135,17 @@ public class TimeSheet extends JFrame{
 				displayPanel.add(new AdminDashboard(conn, user, statusManager), "AdminDashboard");
 		}
 
+		// Add other cards to the display panel
 		displayPanel.add(new Profile(user, statusManager), "Profile");
 		displayPanel.add(new Timelog(new TimelogDAO(conn), user.getUserId(), statusManager), "Timelog");
-		displayPanel.add(new Projects(this, conn, user, statusManager), "Projects");
+
+		// Add Projects card to the display panel
+		displayPanel = new Projects(this, conn, user, statusManager);	
 		
+		// Add the Projects card to the display panel
+		displayPanel.add(projectsCard, "Projects");
+
+		// Add Settings card to the display panel
 		displayPanel.add(new Settings(statusManager), "Settings");
 		
 		/*********************** Add Panel to Frame ************************/
