@@ -297,7 +297,7 @@ public class Projects extends DisplayCard {
         panel.add(timeLogScroll, BorderLayout.CENTER);
 
         // Progress Summary
-        JLabel progressLabel = new JLabel(String.format("%.2f, %d hrs total", totalHours, p.maxHours));
+        JLabel progressLabel = new JLabel(String.format("%.2f / %d hrs total", totalHours, p.maxHours));
         progressLabel.setFont(new Font("Arial", Font.PLAIN, 16));
         progressLabel.setBorder(BorderFactory.createEmptyBorder(5, 10, 10, 10));
         panel.add(progressLabel, BorderLayout.SOUTH);
