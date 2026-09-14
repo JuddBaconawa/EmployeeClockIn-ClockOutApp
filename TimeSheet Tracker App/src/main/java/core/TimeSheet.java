@@ -44,6 +44,9 @@ public class TimeSheet extends JFrame{
 	// reference to the projects card
 	private Projects projectsCard;
 
+	// referece to the timelog card
+	private Timelog timelogCard;
+
 	//private connection variable
 	private Connection conn;
 
@@ -147,7 +150,12 @@ public class TimeSheet extends JFrame{
 
 			// Add other cards to the display panel
 			displayPanel.add(new Profile(user, statusManager), "Profile");
-			displayPanel.add(new Timelog(new TimelogDAO(conn), user.getUserId(), statusManager), "Timelog");
+
+			// Create and save the timelog card so it can be refreshed for later
+			timelogCard = new Timelog(new TimelogDAO(conn), user.getUserId(), statusManager);
+
+			// Add the Timelog card to the display panel
+			displayPanel.add(timelogCard, "Timelog");
 
 			// Add Projects card to the display panel
 			projectsCard = new Projects(this, conn, user, statusManager);	
