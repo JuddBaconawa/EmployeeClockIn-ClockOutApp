@@ -69,6 +69,7 @@ public class Timelog extends DisplayCard {
 
       // set table model
       model = new DefaultTableModel(columns, 0);
+
       // set the model to the table
       table.setModel(model);
 
@@ -109,7 +110,8 @@ public class Timelog extends DisplayCard {
     } 
 
 
-    private void loadTimeLogData() {
+    // Method to load timelog data from the database and populate the table - set to public for timesheet class to call when switching to this card
+    public void loadTimeLogData() {
         
         // Clear existing data from the table model
         model.setRowCount(0); // Clear existing data
