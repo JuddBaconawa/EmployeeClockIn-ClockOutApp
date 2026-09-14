@@ -62,15 +62,15 @@ public class TimeSheet extends JFrame{
 	// showcard for 
 	public void showCard(String cardname) {
 
-		// If statement to reload current proj and saved session when projects is open
-		if ("Projects".equals(cardname) && projectsCard != null) {
-				// Reload the projects from the database when switching to the Projects card
-				projectsCard.loadProjectsFromDB();
-		}
+			// If statement to reload current proj and saved session when projects is open
+			if ("Projects".equals(cardname) && projectsCard != null) {
+					// Reload the projects from the database when switching to the Projects card
+					projectsCard.loadProjectsFromDB();
+			}
 
-		// Get the CardLayout from the display panel
-		CardLayout cl = (CardLayout) displayPanel.getLayout();
-		cl.show(displayPanel, cardname);
+			// Get the CardLayout from the display panel
+			CardLayout cl = (CardLayout) displayPanel.getLayout();
+			cl.show(displayPanel, cardname);
 	}
 
 	public void initialize(User user) {
@@ -92,96 +92,98 @@ public class TimeSheet extends JFrame{
 		
 		/**************** Frame Setup ****************************/
 
-		setTitle("Time Sheet Home");
-		setUndecorated(true);						// Takes out the TimeSheet title bar
-		setSize(1400, 800);						// Set the size of the frame	
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// sets the icon for the App that can be seen in the taskbar
-		setIconImage(new ImageIcon("src/images/app-file-icon.png").getImage());
-		setLocationRelativeTo(null);
-		setVisible(true);
-		setResizable(false);
-		setLayout(null);
+			setTitle("Time Sheet Home");
+			setUndecorated(true);						// Takes out the TimeSheet title bar
+			setSize(1400, 800);						// Set the size of the frame	
+			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			// sets the icon for the App that can be seen in the taskbar
+			setIconImage(new ImageIcon("src/images/app-file-icon.png").getImage());
+			setLocationRelativeTo(null);
+			setVisible(true);
+			setResizable(false);
+			setLayout(null);
 
-		// Rounds the window's corner
-		setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 15, 15));	// Rounded corners 10 radius
+			// Rounds the window's corner
+			setShape(new RoundRectangle2D.Double(0, 0, getWidth(), getHeight(), 15, 15));	// Rounded corners 10 radius
 
-		// Enable the ability for the user to drag the window around
-		enableWindowDrag(this);
+			// Enable the ability for the user to drag the window around
+			enableWindowDrag(this);
 
-		/********************* Main Panel Settings ***********************/
-		JPanel mainPanel = new JPanel(null);
-		mainPanel.setBounds(0, 0, 1400, 800);			//panel size is 1200 x 800
-
-
-		/*********************** Menu Bar Panel *********************************/
-		JPanel menuPanel = new MenuPanel(this, user, conn);
-		menuPanel.setBounds(0, 0, 200, getHeight()); // Example bounds, adjust as needed
-		mainPanel.add(menuPanel);
-		// Use the custom MenuPanel instead of TopInfoPanel for the menu
+			/********************* Main Panel Settings ***********************/
+			JPanel mainPanel = new JPanel(null);
+			mainPanel.setBounds(0, 0, 1400, 800);			//panel size is 1200 x 800
 
 
+			/*********************** Menu Bar Panel *********************************/
+			JPanel menuPanel = new MenuPanel(this, user, conn);
+			menuPanel.setBounds(0, 0, 200, getHeight()); // Example bounds, adjust as needed
+			mainPanel.add(menuPanel);
+			// Use the custom MenuPanel instead of TopInfoPanel for the menu
 
-		/********************* Top Info Panel Settings ***************************/
-		// Used to add sections into the main panel
-		JPanel topInfoPanel = new TopInfoPanel(user);
 
 
-		topInfoPanel.setBorder(new MatteBorder(0, 0, 1, 0, new Color(220, 220, 220))); // Example border, adjust as needed
-		//mainPanel.add(topInfoPanel); // Add top info panel to the main panel
+			/********************* Top Info Panel Settings ***************************/
+			// Used to add sections into the main panel
+			JPanel topInfoPanel = new TopInfoPanel(user);
 
-		/********************** (Views) Display Panel *********************/
-		displayPanel = new JPanel(new java.awt.CardLayout());
-		displayPanel.setBounds(200, 0, 1200, 800);
-		displayPanel.setBackground(new Color(240, 235, 216));
 
-		// Add the different display cards to the display panel
-		displayPanel.add(new Dashboard(conn, user, statusManager), "Dashboard");
-		// Add AdminDashboard only if the user is an admin
-		if ("admin".equalsIgnoreCase(user.getRole())) {
-				// Add AdminDashboard to the display panel for admin users
-				displayPanel.add(new AdminDashboard(conn, user, statusManager), "AdminDashboard");
-		}
+			topInfoPanel.setBorder(new MatteBorder(0, 0, 1, 0, new Color(220, 220, 220))); // Example border, adjust as needed
+			//mainPanel.add(topInfoPanel); // Add top info panel to the main panel
 
-		// Add other cards to the display panel
-		displayPanel.add(new Profile(user, statusManager), "Profile");
-		displayPanel.add(new Timelog(new TimelogDAO(conn), user.getUserId(), statusManager), "Timelog");
+			/********************** (Views) Display Panel *********************/
+			displayPanel = new JPanel(new java.awt.CardLayout());
+			displayPanel.setBounds(200, 0, 1200, 800);
+			displayPanel.setBackground(new Color(240, 235, 216));
 
-		// Add Projects card to the display panel
-		displayPanel = new Projects(this, conn, user, statusManager);	
-		
-		// Add the Projects card to the display panel
-		displayPanel.add(projectsCard, "Projects");
+			// Add the different display cards to the display panel
+			displayPanel.add(new Dashboard(conn, user, statusManager), "Dashboard");
 
-		// Add Settings card to the display panel
-		displayPanel.add(new Settings(statusManager), "Settings");
-		
-		/*********************** Add Panel to Frame ************************/
-		mainPanel.add(displayPanel);					// Add display panel to the main panel
-		// add(displayPanel);												// Add display panel to the frame		
-		add(mainPanel);														// Add main panel to the frame					
-		// add(menuPanel);														// Add menu panel to the frame
-		setVisible(true);
+			
+			// Add AdminDashboard only if the user is an admin
+			if ("admin".equalsIgnoreCase(user.getRole())) {
+					// Add AdminDashboard to the display panel for admin users
+					displayPanel.add(new AdminDashboard(conn, user, statusManager), "AdminDashboard");
+			}
+
+			// Add other cards to the display panel
+			displayPanel.add(new Profile(user, statusManager), "Profile");
+			displayPanel.add(new Timelog(new TimelogDAO(conn), user.getUserId(), statusManager), "Timelog");
+
+			// Add Projects card to the display panel
+			projectsCard = new Projects(this, conn, user, statusManager);	
+			
+			// Add the Projects card to the display panel
+			displayPanel.add(projectsCard, "Projects");
+
+			// Add Settings card to the display panel
+			displayPanel.add(new Settings(statusManager), "Settings");
+			
+			/*********************** Add Panel to Frame ************************/
+			mainPanel.add(displayPanel);					// Add display panel to the main panel
+			// add(displayPanel);												// Add display panel to the frame		
+			add(mainPanel);														// Add main panel to the frame					
+			// add(menuPanel);														// Add menu panel to the frame
+			setVisible(true);
 	}
 
 	private void enableWindowDrag(JFrame frame) {
-		frame.addMouseListener(new java.awt.event.MouseAdapter() {
-			@Override
-			public void mousePressed(java.awt.event.MouseEvent e) {
-				mouseX = e.getX();
-				mouseY = e.getY();
-			}
-		});
+			frame.addMouseListener(new java.awt.event.MouseAdapter() {
+				@Override
+				public void mousePressed(java.awt.event.MouseEvent e) {
+					mouseX = e.getX();
+					mouseY = e.getY();
+				}
+			});
 
-		frame.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-			@Override
-			public void mouseDragged(java.awt.event.MouseEvent e) {
-				int x = e.getXOnScreen();
-				int y = e.getYOnScreen();
-				frame.setLocation(x - mouseX, y - mouseY);
-			}
+			frame.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+				@Override
+				public void mouseDragged(java.awt.event.MouseEvent e) {
+					int x = e.getXOnScreen();
+					int y = e.getYOnScreen();
+					frame.setLocation(x - mouseX, y - mouseY);
+				}
 
-		});
+			});
 	}
 
 	// public static void main(String[] args) {
