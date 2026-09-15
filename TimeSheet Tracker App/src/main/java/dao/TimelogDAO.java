@@ -74,8 +74,41 @@ public class TimelogDAO {
         return logs;
     }
 
+    // Calculate the user's average worked hours for each day they worked
+    public double getAverageWorkedHoursPerDay(int userId) {
+
+        String sql = """
+            SELECT COALESCE(AVG(daily_worked_hours), 0) AS average_worked_hours
+            FROM (
+                SELECT work_date,
+                    SUM(
+                        (TIMESTAMPDIFF(MINUTE, clock_in, clock_out) - break_minutes)
+                        / 60.0
+                    ) AS daily_worked_hours
+                FROM timesheets
+                WHERE user_id = ? AND clock_out IS NOT NULL
+                GROUP BY work_date
+            ) AS daily_totals
+        """;
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getDouble("average_worked_hours");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        // Return zero if there are no completed sessions or a database error occurs
+        return 0;
+    }  
+
     // createTimeEntry method to insert a new time entry into the databse
-    public void createTimeEntry(int userId,
+    public void createTimeEntry (int userId,
                                 int projectId, 
                                 Timestamp clockIn, 
                                 Timestamp clockOut, 
