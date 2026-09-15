@@ -65,8 +65,16 @@ public class TimeSheet extends JFrame{
 	// showcard for 
 	public void showCard(String cardname) {
 
+			// If statement to reload current timelog and saved session when timelog is open
+			if ("Timelog".equals(cardname) && timelogCard != null) {
+
+					// reload the timelog from the database when switching the timelog card
+					timelogCard.loadTimeLogData();
+			}
+
 			// If statement to reload current proj and saved session when projects is open
 			if ("Projects".equals(cardname) && projectsCard != null) {
+				
 					// Reload the projects from the database when switching to the Projects card
 					projectsCard.loadProjectsFromDB();
 			}
