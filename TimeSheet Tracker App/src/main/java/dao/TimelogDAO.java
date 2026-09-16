@@ -116,7 +116,34 @@ public class TimelogDAO {
         return 0;
     }
     
+    // Calculate the user's average break hours for each day they worked
+    public double getAverageBreakHoursPerDay(int userId) {
 
+        String sql = """
+            SELECT COALESCE(AVG(daily_break_hours), 0) AS average_break_hours
+            FROM (
+                SELECT work_date,
+                    SUM(break_minutes) / 60.0 AS daily_break_hours
+                FROM timesheets
+                WHERE user_id = ? AND clock_out IS NOT NULL
+                GROUP BY work_date
+            ) AS daily_totals
+        """;
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getDouble("average_break_hours");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return 0;
+    }
 
     // createTimeEntry method to insert a new time entry into the databse
     public void createTimeEntry (int userId,
