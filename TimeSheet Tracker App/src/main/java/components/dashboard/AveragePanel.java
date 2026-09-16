@@ -38,7 +38,7 @@ public class AveragePanel extends JPanel{
     // Current metric index set to 0
     private int currentMetric = 0;
 
-    // Simulated data
+    // real dashboard metric data loadeed from MySQL database
     private double[] workHours;     // relevant only for work/total
     private double[] breakHours;    // relevant only for break/total
     private final double maxHours = 12.0;
