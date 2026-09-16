@@ -2,6 +2,9 @@
 package components.dashboard;
 
 // IMPORTS 
+import dao.TimelogDAO;
+
+// awt imports
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -10,11 +13,16 @@ import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+
+// SQL imports
 import java.sql.Connection;
 
+// SWING imports
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+
+// AveragePanel class to display average work hours and breaks in a donut graph format
 public class AveragePanel extends JPanel{
 
     private final Connection conn;
@@ -39,9 +47,12 @@ public class AveragePanel extends JPanel{
     // StreakPanel constructor
     public AveragePanel(Connection conn, int userId) {
 
+        // Initialize the connection and userId
         this.conn = conn;
         this.userId = userId;
 
+
+        // Set layout and properties for the AveragePanel
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createTitledBorder("Streak Overview"));
         setOpaque(false);
@@ -83,17 +94,20 @@ public class AveragePanel extends JPanel{
         });
     }
 
-    
+    // Method to draw a donut graph representing work hours and break time
     protected void drawDonutGraph(Graphics g, JPanel panel) {
   
 
+        // Calculate the total work hours, break time, and overall total for the current metric
         double work = workHours[currentMetric];
         double breakTime = breakHours[currentMetric];
         double total = work + breakTime;
 
+        // Cast Graphics to Graphics2D for better rendering control
         Graphics2D g2 = (Graphics2D) g;
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
+        // Set the size and position for the donut graph
         int size = 200;
         int x = (panel.getWidth() - size) / 2;
         int y = 40;
