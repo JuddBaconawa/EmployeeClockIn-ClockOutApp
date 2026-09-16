@@ -119,6 +119,7 @@ public class TimelogDAO {
     // Calculate the user's average break hours for each day they worked
     public double getAverageBreakHoursPerDay(int userId) {
 
+        // SQL query statement to calculate the average break hours per day
         String sql = """
             SELECT COALESCE(AVG(daily_break_hours), 0) AS average_break_hours
             FROM (
@@ -130,18 +131,31 @@ public class TimelogDAO {
             ) AS daily_totals
         """;
 
+        // try statement that creates a PS statement and excute the query
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
+
+            // Set the userId parameter in the SQL query
             ps.setInt(1, userId);
 
+            // try statement to execute the query and retrieve the results
             try (ResultSet rs = ps.executeQuery()) {
+
+                // If there are results, return the average break hours; otherwise, return 0
                 if (rs.next()) {
+
+                    // Return the average break hours from the ResultSet
                     return rs.getDouble("average_break_hours");
                 }
             }
+
+        // catch statement to handle any SQL exceptions that may occur during the execution of the query
         } catch (SQLException e) {
+
+            // Print the stack trace for debugging purposes
             e.printStackTrace();
         }
 
+        // Return zero if there are no completed sessions or a database error occurs
         return 0;
     }
 
