@@ -77,6 +77,7 @@ public class TimelogDAO {
     // Calculate the user's average worked hours for each day they worked
     public double getAverageWorkedHoursPerDay(int userId) {
 
+        // sql query to calculate the average worked hours per day for a specific user
         String sql = """
             SELECT COALESCE(AVG(daily_worked_hours), 0) AS average_worked_hours
             FROM (
@@ -91,21 +92,31 @@ public class TimelogDAO {
             ) AS daily_totals
         """;
 
+        // try statement to execute the query and retrieve the average worked hours
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setInt(1, userId);
 
+            // Use try-with-resources to ensure the ResultSet is closed automatically
             try (ResultSet rs = ps.executeQuery()) {
+
+                // If there are results, return the average worked hours; otherwise, return 0
                 if (rs.next()) {
+
+                    //  Return the average worked hours from the ResultSet
                     return rs.getDouble("average_worked_hours");
                 }
             }
+        
+        // catch statement to handle any SQL exceptions that may occur during the execution of the query
         } catch (SQLException e) {
-            e.printStackTrace();
+            e.printStackTrace();    // Print the stack trace for debugging purposes
         }
 
         // Return zero if there are no completed sessions or a database error occurs
         return 0;
-    }  
+    }
+    
+
 
     // createTimeEntry method to insert a new time entry into the databse
     public void createTimeEntry (int userId,
