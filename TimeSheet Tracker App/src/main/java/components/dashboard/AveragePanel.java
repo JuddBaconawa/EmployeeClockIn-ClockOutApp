@@ -39,8 +39,8 @@ public class AveragePanel extends JPanel{
     private int currentMetric = 0;
 
     // Simulated data
-    private double[] workHours = { 6.5, 6.5, 7.7 };
-    private double[] breakHours = { 0.0, 1.2, 0.7 };  // relevant only for break/total
+    private double[] workHours;     // relevant only for work/total
+    private double[] breakHours;    // relevant only for break/total
     private final double maxHours = 12.0;
     private JPanel graphPanel;
 
@@ -50,6 +50,28 @@ public class AveragePanel extends JPanel{
         // Initialize the connection and userId
         this.conn = conn;
         this.userId = userId;
+
+        // Load real average work and break values for the logged-in user
+        TimelogDAO timelogDAO = new TimelogDAO(conn);
+
+        // Retrieve the average worked hours and average break hours for the user from the database
+        double averageWorkedHours = timelogDAO.getAverageWorkedHoursPerDay(userId);
+        // Retrieve the average break hours for the user from the database
+        double averageBreakHours = timelogDAO.getAverageBreakHoursPerDay(userId);
+
+        // Map real values to the three donut-graph views
+        workHours = new double[] {
+            averageWorkedHours,
+            0.0,
+            averageWorkedHours
+        };
+
+        
+        breakHours = new double[] {
+            0.0,
+            averageBreakHours,
+            averageBreakHours
+        };
 
 
         // Set layout and properties for the AveragePanel
