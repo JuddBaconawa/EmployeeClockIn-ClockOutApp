@@ -30,9 +30,9 @@ public class AveragePanel extends JPanel{
 
     // donut graph metrics
     private String[] metrics = {
-        "Avg Hours/Workday",
-        "Avg Breaks Taken",
-        "Work + Break Total"
+        "Avg Worked Hrs / Day", // "Avg Worked Hrs / Day" is the first metric displayed in the donut graph
+        "Avg Breaks Hrs / Day", // "Avg Breaks Hrs / Day" is the second metric displayed in the donut graph
+        "Avg Work + Break / Day" // "Avg Work + Break / Day" is the third metric displayed in the donut graph
     };
 
     // Current metric index set to 0
