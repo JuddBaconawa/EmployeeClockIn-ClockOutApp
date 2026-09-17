@@ -19,7 +19,7 @@ import java.util.Map;
 // swing imports
 import javax.swing.JPanel;
 
-// StreakPanel class
+// StreakGridPanel class
 public class StreakGridPanel extends JPanel {
 
     // Declarations of objects
@@ -29,7 +29,6 @@ public class StreakGridPanel extends JPanel {
     private final int BOX_SIZE = 15; // size of each box in the grid
     private final int GAP = 3; // gap between boxes
 
-    private final int LABEL_GAP = 20; // gap for the month labels
     private final int BOX_PADDING = 2; // padding for the left side
 
     private final int TOP_PADDING = 25; // padding for the top side
@@ -39,7 +38,7 @@ public class StreakGridPanel extends JPanel {
     // Map to hold the log data
     private final Map<LocalDate, Double> data;
 
-    // StreakPanel constructor
+    // StreakGridPanel constructor
     public StreakGridPanel(Map<LocalDate, Double> data) {
 
         // Initialize the data map with the provided data
@@ -49,6 +48,7 @@ public class StreakGridPanel extends JPanel {
         int panelWidth = (BOX_SIZE + BOX_PADDING) * WEEKS + LEFT_PADDING + 31;
         int panelHeight = (BOX_SIZE + BOX_PADDING) * DAYS_IN_WEEK + TOP_PADDING + 15;
 
+        // Set the preferred size and background color of the panel
         setPreferredSize(new Dimension(panelWidth, panelHeight));
         setBackground(Color.WHITE);
     }
