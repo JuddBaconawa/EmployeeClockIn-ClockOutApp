@@ -1,17 +1,25 @@
+// Package
 package components.dashboard;
 
+// Imports
+
+// awt imports
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
-
+// swing imports
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+
+// StreakPanel class
 public class StreakPanel extends JPanel {
 
+
+    // StreakPanel constructor
     public StreakPanel() {
       setLayout(new BorderLayout());
       setBackground(Color.WHITE);
