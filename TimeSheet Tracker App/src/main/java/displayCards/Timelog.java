@@ -6,6 +6,7 @@ import java.awt.Color;
 import java.awt.Component;
 import java.sql.Connection;
 
+// SWING imports
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -14,17 +15,23 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
+// component imports
 import components.DisplayCard;
 import components.TitlePanel;
 import components.dashboard.StatusIndicator;
 import components.dashboard.StatusManager;
+
+// dao imports
 import dao.TimelogDAO;
+
+// model imports
 import models.TimelogEntry;
 
 
 // TimeLog class
 public class Timelog extends DisplayCard {
     
+    // variables for the timelog card
     private Connection conn;
     private StatusIndicator statusIndicator;
     private StatusManager statusManager;
@@ -36,48 +43,52 @@ public class Timelog extends DisplayCard {
     private int userId;
     private DefaultTableModel model;
 
+    // Timelog constructor
     public Timelog(TimelogDAO dao, int userId, StatusManager statusManager) {
 
-      super("Timelog");
-      this.userId = userId;
-      this.timelogDAO = dao;
-      this.statusManager = statusManager;
+        // card title
+        super("Timelog");
+        this.userId = userId;
+        this.timelogDAO = dao;
+        this.statusManager = statusManager;
 
-      // timelog background and layout
-      // setBackground(new Color(0, 40, 0));
-      setBackground(Color.GREEN);
-      setLayout(new BorderLayout());
+        // timelog background and layout
+        // setBackground(new Color(0, 40, 0));
+        setBackground(Color.GREEN);
+        setLayout(new BorderLayout());
 
-      // Initialize status indicator
-      statusIndicator = new StatusIndicator();
-      statusManager.register(statusIndicator);
+        // Initialize status indicator
+        statusIndicator = new StatusIndicator();
+        statusManager.register(statusIndicator);
 
-      // title Panel
-      titlePanel = new TitlePanel("TimeLog", statusIndicator);
-      titlePanel.setBackgroundColor(new Color(213, 180, 130));
-      add(titlePanel, BorderLayout.NORTH);  // add title panel to the top of the card
+        // title Panel
+        titlePanel = new TitlePanel("TimeLog", statusIndicator);
+        titlePanel.setBackgroundColor(new Color(213, 180, 130));
+        add(titlePanel, BorderLayout.NORTH);  // add title panel to the top of the card
 
 
 
-      // create a panel for the timelog table
-      JPanel tableContainer = new JPanel(new BorderLayout());
-      tableContainer.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
-      tableContainer.setBackground(new Color(240, 235, 216));
+        // create a panel for the timelog table
+        JPanel tableContainer = new JPanel(new BorderLayout());
+        tableContainer.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
+        tableContainer.setBackground(new Color(240, 235, 216));
 
-      // table initialization
-      table = new JTable();
+        // table initialization
+        table = new JTable();
 
-      // set table model
-      model = new DefaultTableModel(columns, 0);
+        // set table model
+        model = new DefaultTableModel(columns, 0);
 
-      // set the model to the table
-      table.setModel(model);
+        // set the model to the table
+        table.setModel(model);
 
   
 
   
       // Custom renderer for coloring text
       table.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
+
+        
           @Override
           public Component getTableCellRendererComponent(JTable table, Object value,
                   boolean isSelected, boolean hasFocus, int row, int column) {
