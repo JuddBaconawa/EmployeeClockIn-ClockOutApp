@@ -26,15 +26,12 @@ import components.dashboard.StatusManager;
 // dao imports
 import dao.TimelogDAO;
 
-// time import
-import java.time.LocalDate;
+
 
 // model imports
 import models.TimelogEntry;
 
-// awt imports
-import java.util.HashMap;
-import java.util.Map;
+
 
 
 
