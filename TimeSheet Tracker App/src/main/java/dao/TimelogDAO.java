@@ -8,12 +8,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 
+// time import
+import java.time.LocalDate;
+
 // Util imports
 import java.util.ArrayList;
 import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 // model Imports
 import models.TimelogEntry;
+
+
 
 // TimelogDAO constructor and methods for database logging and retrieval
 public class TimelogDAO {
