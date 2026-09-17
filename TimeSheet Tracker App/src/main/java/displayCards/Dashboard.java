@@ -121,6 +121,8 @@ public class Dashboard extends DisplayCard {
 
     // wraps a panel to align it to the top
     private JPanel wrapTopAligned(JPanel inner) {
+
+        // create a wrapper panel with BorderLayout
         JPanel wrapper = new JPanel(new BorderLayout());
         wrapper.setOpaque(false);
         wrapper.add(inner, BorderLayout.NORTH);
@@ -129,6 +131,8 @@ public class Dashboard extends DisplayCard {
 
     // updates StatusManager for clock in, clockout, and breaks
     public void updateStatus(String status) {
+
+        // update the status indicator and status text
         statusManager.updateStatus(status);
     }
 }
