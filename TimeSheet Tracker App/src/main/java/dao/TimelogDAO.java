@@ -14,7 +14,6 @@ import java.time.LocalDate;
 // Util imports
 import java.util.ArrayList;
 import java.util.List;
-import java.util.HashMap;
 import java.util.Map;
 
 // model Imports
@@ -35,6 +34,8 @@ public class TimelogDAO {
 
     // Method to retrieve all time logs for a specific user from the database
     public List<TimelogEntry> getAllLogs(int userId) {
+
+        // List to hold the retrieved time log entries
         List<TimelogEntry> logs = new ArrayList<>();
 
         // SQL query to select time log entries for the specified user, including project name and total hours worked
@@ -164,6 +165,51 @@ public class TimelogDAO {
 
         // Return zero if there are no completed sessions or a database error occurs
         return 0;
+    }
+
+    // Get total worked hours for each day in a selected date range
+    public Map<LocalDate, Double> getDailyWorkedHours(
+            int userId,
+            LocalDate startDate,
+            LocalDate endDate
+    ) {
+        Map<LocalDate, Double> dailyHours = new HashMap<>();
+
+        String sql = """
+            SELECT work_date,
+                ROUND(
+                    SUM(
+                        (TIMESTAMPDIFF(MINUTE, clock_in, clock_out) - break_minutes)
+                        / 60.0
+                    ),
+                    2
+                ) AS worked_hours
+            FROM timesheets
+            WHERE user_id = ?
+            AND clock_out IS NOT NULL
+            AND work_date >= ?
+            AND work_date <= ?
+            GROUP BY work_date
+            """;
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, userId);
+            ps.setDate(2, java.sql.Date.valueOf(startDate));
+            ps.setDate(3, java.sql.Date.valueOf(endDate));
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    LocalDate workDate = rs.getDate("work_date").toLocalDate();
+                    double workedHours = rs.getDouble("worked_hours");
+
+                    dailyHours.put(workDate, workedHours);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return dailyHours;
     }
 
     // createTimeEntry method to insert a new time entry into the databse
