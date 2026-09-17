@@ -8,10 +8,12 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.sql.Connection;
 
+// SWING imports
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+// component imports
 import components.DisplayCard;
 import components.TitlePanel;
 import components.dashboard.AveragePanel;
@@ -30,11 +32,13 @@ import models.User;
 // Dashboard class
 public class Dashboard extends DisplayCard {
 
+    // statusIndicator and statusText for the dashboard
     private StatusIndicator statusIndicator;
     private JLabel statusText;
     private TitlePanel titlePanel;
     private StatusManager statusManager;
     
+    // Dashboard constructor
     public Dashboard(Connection conn, User user, StatusManager statusManager) {
         
         // Card Title
@@ -43,6 +47,7 @@ public class Dashboard extends DisplayCard {
         // statusManager declared to current statusManager
         this.statusManager = statusManager;
 
+        // Set background color and layout
         setBackground(new Color(62, 92, 118));
         setLayout(new BorderLayout());
 
