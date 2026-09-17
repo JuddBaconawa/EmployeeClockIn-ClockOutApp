@@ -14,7 +14,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 // util imports
-import java.util.HashMap;
+import java.util.Map;
 
 // swing imports
 import javax.swing.JPanel;
@@ -37,12 +37,15 @@ public class StreakGridPanel extends JPanel {
     
 
     // Map to hold the log data
-    private final HashMap<LocalDate, Integer> data;
+    private final Map<LocalDate, Double> data;
 
     // StreakPanel constructor
-    public StreakGridPanel() {
-        this.data = generateMockData();
+    public StreakGridPanel(Map<LocalDate, Double> data) {
 
+        // Initialize the data map with the provided data
+        this.data = data;
+
+        // Calculate the preferred size of the panel based on the number of weeks and days
         int panelWidth = (BOX_SIZE + BOX_PADDING) * WEEKS + LEFT_PADDING + 31;
         int panelHeight = (BOX_SIZE + BOX_PADDING) * DAYS_IN_WEEK + TOP_PADDING + 15;
 
@@ -58,6 +61,7 @@ public class StreakGridPanel extends JPanel {
         drawGrid((Graphics2D) g);
     }
 
+    // Method to draw the grid of boxes representing the streaks
     private void drawGrid(Graphics2D g) {
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
@@ -75,7 +79,9 @@ public class StreakGridPanel extends JPanel {
 
                 // Calculate the date for this cell
                 LocalDate date = firstSunday.plusWeeks(week).plusDays(day);
-                int hours = data.getOrDefault(date, 0);
+
+                // Get the hours worked for this date, defaulting to 0 if not present
+                double hours = data.getOrDefault(date, 0.0);
 
                 int x = LEFT_PADDING + week * (BOX_SIZE + GAP);
                 int y = TOP_PADDING + day * (BOX_SIZE + GAP);
@@ -91,12 +97,17 @@ public class StreakGridPanel extends JPanel {
 
 
 
+            // If the month has changed, draw the month label
             if (monthValue != lastMonth) {
+
+                // Draw the month label above the grid
                 g.setColor(Color.DARK_GRAY);
                 g.setFont(new Font("SansSerif", Font.PLAIN, 10));
 
+                // Get the first three letters of the month name
                 String monthText = labelDate.getMonth().toString().substring(0,3);
 
+                // Calculate the x position for the month label based on the week index
                 int x = LEFT_PADDING + week * (BOX_SIZE + GAP);
                 g.drawString(monthText, x, TOP_PADDING - 10);
                 lastMonth = monthValue;
