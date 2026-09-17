@@ -63,10 +63,13 @@ public class StreakGridPanel extends JPanel {
 
     // Method to draw the grid of boxes representing the streaks
     private void drawGrid(Graphics2D g) {
+
+        // Enable anti-aliasing for smoother graphics
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         
         LocalDate today = LocalDate.now();
+
         LocalDate startDate = today.minusWeeks(WEEKS);
 
         // Align the start date to the Previous Sunday
@@ -136,20 +139,6 @@ public class StreakGridPanel extends JPanel {
         if (hours < 6) return new Color(123, 201, 111);
         if (hours < 8) return new Color(35, 154, 59);
         return new Color(25, 97, 39); 
-    }
-
-    // Method to generate mock data for the last 27 weeks
-    private HashMap<LocalDate, Integer> generateMockData() {
-        HashMap<LocalDate, Integer> map = new HashMap<>();
-        LocalDate today = LocalDate.now();
-
-        
-        for (int i = 0; i < WEEKS * DAYS_IN_WEEK; i++) {
-            LocalDate date = today.minusDays(i);
-            map.put(date, (int) (Math.random() * 7));  // random hours
-        }
-
-        return map;
     }
 
 
