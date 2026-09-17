@@ -19,8 +19,11 @@ import components.dashboard.ClockPanel;
 import components.dashboard.ProfilePanel;
 import components.dashboard.StatusIndicator;
 import components.dashboard.StatusManager;
+import components.dashboard.StreakPanel;
 import components.dashboard.TimeGraphPanel;
 import components.dashboard.TimeStatsPanel;
+
+// model imports
 import models.User;
 
 
@@ -94,7 +97,7 @@ public class Dashboard extends DisplayCard {
         bottomPanel.setOpaque(false);
 
         // add streak panel to the bottom panel
-        // bottomPanel.add(new StreakPanel());
+        bottomPanel.add(new StreakPanel());
         
         // pass connection and the logged in user id to average panel
         bottomPanel.add(new AveragePanel(conn, user.getUserId()));
