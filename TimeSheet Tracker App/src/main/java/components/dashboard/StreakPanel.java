@@ -1,7 +1,9 @@
 // Package
 package components.dashboard;
 
-// Imports
+// |----------------------------------------|
+// |-----------IMPORTS----------------------|
+// |----------------------------------------|
 
 // awt imports
 import java.awt.BorderLayout;
@@ -21,6 +23,8 @@ public class StreakPanel extends JPanel {
 
     // StreakPanel constructor
     public StreakPanel() {
+
+      // Set layout and styling
       setLayout(new BorderLayout());
       setBackground(Color.WHITE);
       setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
@@ -31,6 +35,11 @@ public class StreakPanel extends JPanel {
       titleLabel.setForeground(new Color(60, 60, 60));
       titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
       titleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
+
+      // load real dealy work totals for the same 52-week period shown by the grid
+      TimelogDAO timelogDAO = new TimelogDAO(conn);
+      LocalDate today = LocalDate.now();
+      LocalDate firstSunday = today.minusWeeks(52).with(DayOfWeek.SUNDAY);
 
       // Add components to the panel
       add(titleLabel, BorderLayout.NORTH);
