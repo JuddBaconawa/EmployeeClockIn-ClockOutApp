@@ -10,11 +10,20 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
+// time imports
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+
+// sql imports
+import java.sql.Connection;
+import java.util.Map;
+
 // swing imports
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
 
 
 // StreakPanel class
