@@ -25,12 +25,14 @@ public class StreakPanel extends JPanel {
       setBackground(Color.WHITE);
       setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
 
+      // Title label
       JLabel titleLabel = new JLabel("Activity Streak");
       titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
       titleLabel.setForeground(new Color(60, 60, 60));
       titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
       titleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
 
+      // Add components to the panel
       add(titleLabel, BorderLayout.NORTH);
       add(new StreakGridPanel(), BorderLayout.CENTER);
     }
