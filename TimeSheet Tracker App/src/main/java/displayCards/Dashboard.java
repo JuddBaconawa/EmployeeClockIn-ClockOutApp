@@ -102,7 +102,7 @@ public class Dashboard extends DisplayCard {
         bottomPanel.setOpaque(false);
 
         // add streak panel to the bottom panel
-        bottomPanel.add(new StreakPanel());
+        bottomPanel.add(new StreakPanel(conn, user.getUserId()));
         
         // pass connection and the logged in user id to average panel
         bottomPanel.add(new AveragePanel(conn, user.getUserId()));
