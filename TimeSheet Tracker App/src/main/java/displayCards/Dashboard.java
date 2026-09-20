@@ -64,7 +64,7 @@ public class Dashboard extends DisplayCard {
 
         // === Content Panel === 
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new GridLayout(2, 2, 10, 50));
+        contentPanel.setLayout(new GridLayout(3, 2, 10, 50));
         contentPanel.setOpaque(true);
         contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 20));
 
@@ -93,8 +93,12 @@ public class Dashboard extends DisplayCard {
         // Register TimeGraphPanel to receive time updates from ClockPanel
         topPanel.add(wrapTopAligned(timeGraphPanel));
         
+        // Top Panel
         topPanel.add(wrapTopAligned(timeStatsPanel));
         topPanel.add(wrapTopAligned(clockPanel));   // clock panel is last to ensure timeStatsPanel can reference it without null issues
+
+        // middle panel
+        JPanel midPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 40));
 
         // Bottom Panel
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
