@@ -98,8 +98,6 @@ public class Dashboard extends DisplayCard {
 
         // Register TimeGraphPanel to receive time updates from ClockPanel
         topPanel.add(wrapTopAligned(timeGraphPanel));
-        
-
         topPanel.add(wrapTopAligned(timeStatsPanel));
         topPanel.add(wrapTopAligned(clockPanel));   // clock panel is last to ensure timeStatsPanel can reference it without null issues
 
@@ -109,6 +107,9 @@ public class Dashboard extends DisplayCard {
         // |-----------------------------------------------
         // Middle panel
         JPanel midPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 40));
+
+        // StreakPanel added to the Mid Panel
+        midPanel.add(new StreakPanel(conn, user.getUserId()));
         
 
         // |-----------------------------------------------
@@ -116,17 +117,16 @@ public class Dashboard extends DisplayCard {
         // |-----------------------------------------------
         // Bottom Panel
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        bottomPanel.setPreferredSize(new Dimension(1200, 300));
+        // bottomPanel.setPreferredSize(new Dimension(1200, 300));
         bottomPanel.setOpaque(false);
 
-        // add streak panel to the bottom panel
-        bottomPanel.add(new StreakPanel(conn, user.getUserId()));
         
         // pass connection and the logged in user id to average panel
         bottomPanel.add(new AveragePanel(conn, user.getUserId()));
 
         // add content panels to the main content panel
         contentPanel.add(topPanel);
+        contentPanel.add(midPanel);
         contentPanel.add(bottomPanel);
 
 
