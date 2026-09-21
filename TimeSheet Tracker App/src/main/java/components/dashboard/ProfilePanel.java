@@ -24,7 +24,7 @@ public class ProfilePanel extends JPanel {
   public ProfilePanel(User user) {
 
     setLayout(new BorderLayout());
-    setPreferredSize(new Dimension(250, 230));
+    setPreferredSize(new Dimension(225, 200));
     setBackground(new Color(255, 255, 255));
     setBorder(BorderFactory.createTitledBorder("Profile"));
 
@@ -33,9 +33,9 @@ public class ProfilePanel extends JPanel {
             ? new ImageIcon(user.profilePicture) 
             : new ImageIcon("default_profile.png");
 
-    JLabel profilePictureLabel = new JLabel(scaleIcon(icon, 64, 64));
+    JLabel profilePictureLabel = new JLabel(scaleIcon(icon, 50, 50));
     profilePictureLabel.setBorder(BorderFactory.createBevelBorder(1));
-    profilePictureLabel.setPreferredSize(new Dimension(90, 90));
+    profilePictureLabel.setPreferredSize(new Dimension(60, 60));
 
 
     JPanel profilePicturePanel = new JPanel();
