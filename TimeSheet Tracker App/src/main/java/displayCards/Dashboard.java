@@ -71,17 +71,23 @@ public class Dashboard extends DisplayCard {
         // instantiate clock panel
         ClockPanel clockPanel = new ClockPanel(this, conn, user);
 
+
+
+
+
         // timestatpanel reference to clockpanel
         TimeStatsPanel timeStatsPanel = new TimeStatsPanel(clockPanel);
 
+
+        // |-----------------------------------------------
+        // |------------------Top Panel--------------------
+        // |-----------------------------------------------
         // New top panel
         JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40,40));
         topPanel.setOpaque(false);
         
 
-
-        //profilepanel leaves a small white square for spacing
-        
+        //  top panel added + aligned which wraps profilePanel while user is passed
         topPanel.add(wrapTopAligned(new ProfilePanel(user)));
 
         // TimeGraphPanel needs to be created before TimeStatsPanel so it can register as a listener for time updates
@@ -93,13 +99,21 @@ public class Dashboard extends DisplayCard {
         // Register TimeGraphPanel to receive time updates from ClockPanel
         topPanel.add(wrapTopAligned(timeGraphPanel));
         
-        // Top Panel
+
         topPanel.add(wrapTopAligned(timeStatsPanel));
         topPanel.add(wrapTopAligned(clockPanel));   // clock panel is last to ensure timeStatsPanel can reference it without null issues
 
-        // middle panel
-        JPanel midPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 40));
 
+        // |-----------------------------------------------
+        // |------------------Mid Panel--------------------
+        // |-----------------------------------------------
+        // Middle panel
+        JPanel midPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 40));
+        
+
+        // |-----------------------------------------------
+        // |------------------Bottom Panel-----------------
+        // |-----------------------------------------------
         // Bottom Panel
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
         bottomPanel.setPreferredSize(new Dimension(1200, 300));
