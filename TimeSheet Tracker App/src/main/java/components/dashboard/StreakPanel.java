@@ -38,7 +38,7 @@ public class StreakPanel extends JPanel {
         // Set layout and styling
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
-        setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));
+        setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // Title label
         JLabel titleLabel = new JLabel("Activity Streak");
