@@ -64,9 +64,9 @@ public class Dashboard extends DisplayCard {
 
         // === Content Panel === 
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new GridLayout(3, 2, 10, 50));
+        contentPanel.setLayout(new GridLayout(3, 1, 10, 10));
         contentPanel.setOpaque(true);
-        contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 20, 20));
+        contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         // instantiate clock panel
         ClockPanel clockPanel = new ClockPanel(this, conn, user);
@@ -83,7 +83,7 @@ public class Dashboard extends DisplayCard {
         // |------------------Top Panel--------------------
         // |-----------------------------------------------
         // New top panel
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40,40));
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20,20));
         topPanel.setOpaque(false);
         
 
@@ -106,7 +106,7 @@ public class Dashboard extends DisplayCard {
         // |------------------Mid Panel--------------------
         // |-----------------------------------------------
         // Middle panel
-        JPanel midPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 40, 40));
+        JPanel midPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
 
         // StreakPanel added to the Mid Panel
         midPanel.add(new StreakPanel(conn, user.getUserId()));
