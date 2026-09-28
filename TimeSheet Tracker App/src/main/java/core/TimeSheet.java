@@ -62,7 +62,7 @@ public class TimeSheet extends JFrame{
 		this.conn = conn;
 	}
 
-	// showcard for 
+	// show cards
 	public void showCard(String cardname) {
 
 			// If statement to reload current timelog and saved session when timelog is open
