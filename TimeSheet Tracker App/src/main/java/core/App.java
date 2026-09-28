@@ -40,15 +40,18 @@ public class App {
                     "DB_password1301"
                 );
 
+                // print "Database Connected if the database connects to mysql"
                 System.out.println("DATABASE CONNECTED");
 
                 } catch (Exception e) {
 
+                    // prints text when connection fails
                     System.out.println("Database connection failed");
                     e.printStackTrace();
                     return;
                 }
 
+                // confirms connection/entry point
                 new LoginForm(conn); // ✅ only entry point
         });
     }
