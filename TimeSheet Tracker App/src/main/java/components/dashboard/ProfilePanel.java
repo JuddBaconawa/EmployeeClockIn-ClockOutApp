@@ -83,12 +83,18 @@ public class ProfilePanel extends JPanel {
     
   }
 
+  // Helper method to safely handle null values
   private String safe(String s) {
+
+    // If the string is null, return "N/A" to avoid displaying null values in the UI
     return s != null ? s : "N/A";
   }
 
+  // Method to scale the profile picture icon
   private ImageIcon scaleIcon(ImageIcon icon, int width, int height) {
     Image img = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
+
+    // Return a new ImageIcon with the scaled image
     return new ImageIcon(img);
   }
   
