@@ -25,7 +25,7 @@ import javax.swing.JPanel;
 // AveragePanel class to display average work hours and breaks in a donut graph format
 public class AveragePanel extends JPanel{
 
-    //  
+    // Database connection and user ID for fetching data
     private final Connection conn;
     private final int userId;
 
@@ -62,6 +62,8 @@ public class AveragePanel extends JPanel{
 
         // Map real values to the three donut-graph views
         workHours = new double[] {
+
+            // For the first metric (Avg Worked Hrs / Day), work hours are relevant, so set to averageWorkedHours
             averageWorkedHours,
             0.0,
             averageWorkedHours
@@ -70,7 +72,7 @@ public class AveragePanel extends JPanel{
         // Map real values to the three donut-graph views
         breakHours = new double[] {
 
-
+            // For the first metric (Avg Worked Hrs / Day), break hours are not relevant, so set to 0.0
             0.0,
             averageBreakHours,
             averageBreakHours
@@ -96,6 +98,7 @@ public class AveragePanel extends JPanel{
         graphPanel.setPreferredSize(new Dimension(400, 300));
         graphPanel.setOpaque(false);
 
+        // graphPanel added to the WEST of the AveragePanel
         add(graphPanel, BorderLayout.WEST);
 
         // Right Panel: Calendar
