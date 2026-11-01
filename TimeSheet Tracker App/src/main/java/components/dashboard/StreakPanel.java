@@ -26,19 +26,23 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+// DAO imports
 import dao.TimelogDAO;
 
 // StreakPanel class
 public class StreakPanel extends JPanel {
 
+    private final StreakGridPanel streakGridPanel;
 
     // StreakPanel constructor
     public StreakPanel(Connection conn, int userId) {
 
+
+
         // Set layout and styling
         setLayout(new BorderLayout());
         setBackground(Color.WHITE);
-        setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 
         // Title label
         JLabel titleLabel = new JLabel("Activity Streak");
