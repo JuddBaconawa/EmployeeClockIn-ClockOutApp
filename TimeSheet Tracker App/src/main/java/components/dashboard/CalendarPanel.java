@@ -1,12 +1,16 @@
+// CalendarPanel.java
 package components.dashboard;
 
+// IMPORTS
 import javax.swing.*;
 import java.awt.*;
 import java.time.LocalDate;
 import java.util.HashMap;
 
+// CalendarPanel class
 public class CalendarPanel extends JPanel {
 
+    // Declarations of objects
     private final int WEEKS = 6;
     private final int DAYS_IN_WEEK = 7;
     private final int BOX_SIZE = 35;
@@ -15,6 +19,7 @@ public class CalendarPanel extends JPanel {
     // Simulated time log data: LocalDate -> hours worked
     private final HashMap<LocalDate, Double> workLog;
 
+    // Constructor for CalendarPanel
     public CalendarPanel() {
         setPreferredSize(new Dimension(BOX_SIZE * DAYS_IN_WEEK + 40, BOX_SIZE * (WEEKS + 1)));
         setOpaque(false);
@@ -25,6 +30,7 @@ public class CalendarPanel extends JPanel {
         LocalDate today = LocalDate.now();
         LocalDate start = today.withDayOfMonth(1);
 
+        // Populate the workLog with random hours for the first 31 days of the current month
         for (int i = 0; i < 31; i++) {
             LocalDate day = start.plusDays(i);
             int dow = day.getDayOfWeek().getValue(); // 1 = Monday, 7 = Sunday
@@ -35,6 +41,7 @@ public class CalendarPanel extends JPanel {
         }
     }
 
+    // Method to set work log data
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -56,6 +63,7 @@ public class CalendarPanel extends JPanel {
         LocalDate current = firstOfMonth.minusDays(startDayOfWeek);
         int boxYStart = 30;
 
+        // Draw the grid of boxes for the month
         for (int week = 0; week < WEEKS; week++) {
             for (int day = 0; day < DAYS_IN_WEEK; day++) {
                 int x = day * BOX_SIZE + 10;
@@ -74,7 +82,7 @@ public class CalendarPanel extends JPanel {
                         } else if (hours > 0) {
                             fill = new Color(255, 235, 59); // 🟨 Yellow
                         } else {
-                            fill = new Color(244, 67, 54); // 🟥 Red (absent)
+                            fill = new Color(244, 67, 54); // 🟥 Red (no hours logged)
                         }
                     }
                 }
@@ -85,6 +93,7 @@ public class CalendarPanel extends JPanel {
                 g2.setColor(Color.DARK_GRAY);
                 g2.drawRect(x, y, BOX_SIZE, BOX_SIZE);
 
+                // draw day number
                 current = current.plusDays(1);
             }
         }
