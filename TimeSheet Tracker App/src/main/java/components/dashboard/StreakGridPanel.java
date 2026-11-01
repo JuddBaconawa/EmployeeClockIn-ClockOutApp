@@ -36,7 +36,7 @@ public class StreakGridPanel extends JPanel {
     
 
     // Map to hold the log data
-    private final Map<LocalDate, Double> data;
+    private Map<LocalDate, Double> data;
 
     // StreakGridPanel constructor
     public StreakGridPanel(Map<LocalDate, Double> data) {
@@ -51,6 +51,13 @@ public class StreakGridPanel extends JPanel {
         // Set the preferred size and background color of the panel
         setPreferredSize(new Dimension(panelWidth, panelHeight));
         setBackground(Color.WHITE);
+    }
+
+    // replaces old daily hours with new loaded database data
+    public void setData(Map<LocalDate, Double> data) {
+        // set data to new data
+        this.data = data;
+        repaint(); // Repaint the panel to reflect the new data
     }
 
 
