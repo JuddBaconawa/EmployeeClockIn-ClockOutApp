@@ -32,6 +32,7 @@ import dao.TimelogDAO;
 // StreakPanel class
 public class StreakPanel extends JPanel {
 
+    // Declarations of objects
     private final StreakGridPanel streakGridPanel;
 
     // StreakPanel constructor
@@ -61,7 +62,8 @@ public class StreakPanel extends JPanel {
 
         // Add components to the panel
         add(titleLabel, BorderLayout.NORTH);
-        add(new StreakGridPanel(dailyHours), BorderLayout.CENTER);
+        streakGridPanel = new StreakGridPanel(dailyHours);
+        add()
 
     }
   
