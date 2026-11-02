@@ -23,7 +23,7 @@ import javax.swing.JPanel;
 public class StreakGridPanel extends JPanel {
 
     // Declarations of objects
-    private final int WEEKS = 52; // 1 year of weeks
+    private final int WEEKS = 53; // 1 year of weeks
     private final int DAYS_IN_WEEK = 7; // 7 days in a week
 
     private final int BOX_SIZE = 15; // size of each box in the grid
@@ -74,10 +74,11 @@ public class StreakGridPanel extends JPanel {
         // Enable anti-aliasing for smoother graphics
         g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        
+        // Get the current date and calculate the start date for the grid
         LocalDate today = LocalDate.now();
 
-        LocalDate startDate = today.minusWeeks(WEEKS);
+        //  Calculate the start date for the grid (53 weeks ago)
+        LocalDate startDate = today.minusWeeks(WEEKS - 1);
 
         // Align the start date to the Previous Sunday
         LocalDate firstSunday = startDate.with(DayOfWeek.SUNDAY);
