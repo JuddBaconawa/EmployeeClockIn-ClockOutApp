@@ -82,6 +82,12 @@ public class TimeSheet extends JFrame{
 					projectsCard.loadProjectsFromDB();
 			}
 
+			if ("Dashboard".equals(cardname) && dashboardCard != null) {
+
+					// Refresh the dashboard data when switching to the Dashboard card
+					dashboardCard.refreshDashboardData();
+			}
+
 			// Get the CardLayout from the display panel
 			CardLayout cl = (CardLayout) displayPanel.getLayout();
 			cl.show(displayPanel, cardname);
@@ -185,6 +191,7 @@ public class TimeSheet extends JFrame{
 			setVisible(true);
 	}
 
+	// Method to enable dragging of the window
 	private void enableWindowDrag(JFrame frame) {
 			frame.addMouseListener(new java.awt.event.MouseAdapter() {
 				@Override
@@ -206,6 +213,7 @@ public class TimeSheet extends JFrame{
 	}
 
 
+	// Main method to start the application
 	public static void main(String[] args) {
     Connection conn = null;
 
