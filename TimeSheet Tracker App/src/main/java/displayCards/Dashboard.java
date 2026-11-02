@@ -37,6 +37,7 @@ public class Dashboard extends DisplayCard {
     private JLabel statusText;
     private TitlePanel titlePanel;
     private StatusManager statusManager;
+    private StreakPanel streakPanel;
     
     // Dashboard constructor
     public Dashboard(Connection conn, User user, StatusManager statusManager) {
@@ -108,8 +109,9 @@ public class Dashboard extends DisplayCard {
         // Middle panel
         JPanel midPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 20));
 
-        // StreakPanel added to the Mid Panel
-        midPanel.add(new StreakPanel(conn, user.getUserId()));
+        // StreakPanel created and added to the Mid Panel
+        streakPanel = new StreakPanel(conn, user.getUserId());
+        midPanel.add(streakPanel);
         
 
         // |-----------------------------------------------
@@ -137,6 +139,13 @@ public class Dashboard extends DisplayCard {
 
     }
 
+    // refreshes the dashboard data when the user returns to this card
+    public void refreshDashboardData() {
+
+        // method to refresh the streak data in the streak panel
+        streakPanel.refreshStreakData();
+    }
+
     // wraps a panel to align it to the top
     private JPanel wrapTopAligned(JPanel inner) {
 
@@ -144,6 +153,8 @@ public class Dashboard extends DisplayCard {
         JPanel wrapper = new JPanel(new BorderLayout());
         wrapper.setOpaque(false);
         wrapper.add(inner, BorderLayout.NORTH);
+
+        // return the wrapper panel
         return wrapper;
     }
 
