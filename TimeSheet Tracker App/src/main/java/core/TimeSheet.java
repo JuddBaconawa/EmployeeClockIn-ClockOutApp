@@ -8,13 +8,16 @@ import java.awt.geom.RoundRectangle2D;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+// swing imports
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.MatteBorder;
 
+// auth imports
 import auth.LoginForm;
 
+// dao imports
 import dao.TimelogDAO;
 
 // import Displaycards
@@ -231,7 +234,7 @@ public class TimeSheet extends JFrame{
     }
 
     new LoginForm(conn); // ✅ Start app here
-}
+	}
 
 
 }
