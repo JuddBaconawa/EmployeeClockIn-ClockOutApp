@@ -62,8 +62,10 @@ public class StreakPanel extends JPanel {
 
         // Add components to the panel
         add(titleLabel, BorderLayout.NORTH);
+
+        // Create and add the StreakGridPanel
         streakGridPanel = new StreakGridPanel(dailyHours);
-        add()
+        add(streakGridPanel, BorderLayout.CENTER);
 
     }
   
