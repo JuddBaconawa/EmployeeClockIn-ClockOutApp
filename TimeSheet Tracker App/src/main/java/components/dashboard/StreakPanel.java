@@ -34,11 +34,15 @@ public class StreakPanel extends JPanel {
 
     // Declarations of objects
     private final StreakGridPanel streakGridPanel;
+    private final TimelogDAO timelogDAO;
+    private final int userId;
 
     // StreakPanel constructor
     public StreakPanel(Connection conn, int userId) {
 
-
+        // Initialize the DAO and userId using this.
+        this.timelogDAO = new TimelogDAO(conn);
+        this.userId = userId;
 
         // Set layout and styling
         setLayout(new BorderLayout());
@@ -52,8 +56,7 @@ public class StreakPanel extends JPanel {
         titleLabel.setHorizontalAlignment(SwingConstants.LEFT);
         titleLabel.setBorder(BorderFactory.createEmptyBorder(5, 0, 10, 0));
 
-        // load real dealy work totals for the same 52-week period shown by the grid
-        TimelogDAO timelogDAO = new TimelogDAO(conn);
+        // Calculate the first Sunday of the last 52 weeks
         LocalDate today = LocalDate.now();
         LocalDate firstSunday = today.minusWeeks(52).with(DayOfWeek.SUNDAY);
 
