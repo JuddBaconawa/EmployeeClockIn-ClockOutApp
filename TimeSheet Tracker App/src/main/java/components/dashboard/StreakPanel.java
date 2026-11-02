@@ -71,5 +71,18 @@ public class StreakPanel extends JPanel {
         add(streakGridPanel, BorderLayout.CENTER);
 
     }
+
+    public void refreshStreakData() {
+        // calculates the first sunday of the last 52 weeks
+        LocalDate today = LocalDate.now();
+        LocalDate firstSunday = today.minusWeeks(52).with(DayOfWeek.SUNDAY);
+
+        // Get the daily worked hours for the user
+        Map<LocalDate, Double> dailyHours = timelogDAO.getDailyWorkedHours(userId, firstSunday, today);
+
+        // Update the streak grid panel with the new data
+        streakGridPanel.setData(dailyHours);
+
+    }
   
 }
