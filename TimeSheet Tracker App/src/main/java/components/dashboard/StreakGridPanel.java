@@ -26,8 +26,8 @@ public class StreakGridPanel extends JPanel {
     private final int WEEKS = 53; // 1 year of weeks
     private final int DAYS_IN_WEEK = 7; // 7 days in a week
 
-    private final int BOX_SIZE = 15; // size of each box in the grid
-    private final int GAP = 3; // gap between boxes
+    private final int BOX_SIZE = 12; // size of each box in the grid
+    private final int GAP = 2; // gap between boxes
 
     private final int BOX_PADDING = 2; // padding for the left side
 
@@ -130,7 +130,7 @@ public class StreakGridPanel extends JPanel {
         // Optionally, draw the grid lines
         g.setColor(Color.GRAY);
         g.setFont(new Font("SansSerif", Font.PLAIN, 10));
-        String[] days = {"S", "M", " ", "W", " ", "F", "S"};
+        String[] days = {"S", "M", "T", "W", "TH", "F", "S"};
         for (int i = 0; i < DAYS_IN_WEEK; i++) {
             int y = TOP_PADDING + i * (BOX_SIZE + GAP) + 10;
             g.drawString(days[i], LEFT_PADDING - 20, y);
@@ -146,6 +146,8 @@ public class StreakGridPanel extends JPanel {
         if (hours < 4) return new Color(198, 228, 139);
         if (hours < 6) return new Color(123, 201, 111);
         if (hours < 8) return new Color(35, 154, 59);
+
+        // If hours are 8 or more, return a darker green color
         return new Color(25, 97, 39); 
     }
 
