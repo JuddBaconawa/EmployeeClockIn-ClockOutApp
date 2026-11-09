@@ -13,7 +13,7 @@ public class CalendarPanel extends JPanel {
     // Declarations of objects
     private final int WEEKS = 6;
     private final int DAYS_IN_WEEK = 7;
-    private final int BOX_SIZE = 25;
+    private final int BOX_SIZE = 23;
     
 
     // Simulated time log data: LocalDate -> hours worked
