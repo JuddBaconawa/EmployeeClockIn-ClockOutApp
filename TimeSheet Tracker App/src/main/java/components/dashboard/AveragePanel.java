@@ -83,7 +83,7 @@ public class AveragePanel extends JPanel{
         setLayout(new BorderLayout());
         setBorder(BorderFactory.createTitledBorder("Streak Overview"));
         setOpaque(false);
-        setPreferredSize(new Dimension(800, 300));
+        setPreferredSize(new Dimension(800, 220));
 
         // left Panel: Graph
         graphPanel = new JPanel() {
@@ -95,7 +95,7 @@ public class AveragePanel extends JPanel{
         };
 
         // set graphPanel properties
-        graphPanel.setPreferredSize(new Dimension(400, 300));
+        graphPanel.setPreferredSize(new Dimension(400, 210));
         graphPanel.setOpaque(false);
 
         // graphPanel added to the WEST of the AveragePanel
@@ -136,7 +136,7 @@ public class AveragePanel extends JPanel{
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
         // Set the size and position for the donut graph
-        int size = 200;
+        int size = 150;
         int x = (panel.getWidth() - size) / 2;
         int y = 40;
 
