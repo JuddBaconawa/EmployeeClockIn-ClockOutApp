@@ -65,7 +65,7 @@ public class Dashboard extends DisplayCard {
 
         // === Content Panel === 
         JPanel contentPanel = new JPanel();
-        contentPanel.setLayout(new GridLayout(3, 1, 10, 10));
+        contentPanel.setLayout(new GridLayout(3, 1, 0, 2));
         contentPanel.setOpaque(true);
         contentPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
@@ -84,7 +84,7 @@ public class Dashboard extends DisplayCard {
         // |------------------Top Panel--------------------
         // |-----------------------------------------------
         // New top panel
-        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20,20));
+        JPanel topPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10,10));
         topPanel.setOpaque(false);
         
 
