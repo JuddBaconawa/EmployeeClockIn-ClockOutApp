@@ -33,6 +33,7 @@ public class StreakGridPanel extends JPanel {
 
     private final int TOP_PADDING = 25; // padding for the top side
     private final int LEFT_PADDING = 30; // padding for the left side
+    private final int RIGHT_PADDING = 10; // padding for the right side
     
 
     // Map to hold the log data
