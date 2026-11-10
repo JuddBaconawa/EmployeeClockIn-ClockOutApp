@@ -2,10 +2,15 @@
 package components.dashboard;
 
 // IMPORTS
-import javax.swing.*;
+// AWT Imports
 import java.awt.*;
 import java.time.LocalDate;
-import java.util.HashMap;
+
+// Util Imports
+import java.util.Map;
+
+// Swing Imports
+import javax.swing.*;
 
 // CalendarPanel class
 public class CalendarPanel extends JPanel {
@@ -17,37 +22,36 @@ public class CalendarPanel extends JPanel {
     
 
     // Simulated time log data: LocalDate -> hours worked
-    private final HashMap<LocalDate, Double> workLog;
+    private final Map<LocalDate, Double> workLog;
 
     // Constructor for CalendarPanel
-    public CalendarPanel() {
+    public CalendarPanel(Map<LocalDate, Double> workLog) {
+
+        // set to this.workLog
+        this.workLog = workLog;
+
+        // Set layout and styling
         setPreferredSize(new Dimension(BOX_SIZE * DAYS_IN_WEEK + 40, BOX_SIZE * (WEEKS + 1)));
         setOpaque(false);
 
-        workLog = new HashMap<>();
 
         // Simulated data for demonstration
         LocalDate today = LocalDate.now();
         LocalDate start = today.withDayOfMonth(1);
 
-        // Populate the workLog with random hours for the first 31 days of the current month
-        for (int i = 0; i < 31; i++) {
-            LocalDate day = start.plusDays(i);
-            int dow = day.getDayOfWeek().getValue(); // 1 = Monday, 7 = Sunday
-            if (dow >= 1 && dow <= 5) { // Mon–Fri only
-                double simulatedHours = Math.random() < 0.2 ? 0 : 6 + Math.random() * 4; // Some absent, some overtime
-                workLog.put(day, simulatedHours);
-            }
-        }
+
     }
 
     // Method to set work log data
     @Override
     protected void paintComponent(Graphics g) {
         
+        // Call the superclass's paintComponent method to ensure rendering
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
 
+        // Enable anti-aliasing for smoother graphics
+        
         LocalDate today = LocalDate.now();
         LocalDate firstOfMonth = today.withDayOfMonth(1);
         int startDayOfWeek = firstOfMonth.getDayOfWeek().getValue() % 7; // Sunday = 0
@@ -60,6 +64,7 @@ public class CalendarPanel extends JPanel {
             g2.drawString(days[i], x + 10, 20);
         }
 
+        
         // Draw boxes
         LocalDate current = firstOfMonth.minusDays(startDayOfWeek);
         int boxYStart = 30;
