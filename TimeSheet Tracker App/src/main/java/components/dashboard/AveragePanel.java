@@ -21,6 +21,12 @@ import java.sql.Connection;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+// Java Time imports
+import java.time.LocalDate;
+
+// Java Util imports
+import java.util.Map;
+
 
 // AveragePanel class to display average work hours and breaks in a donut graph format
 public class AveragePanel extends JPanel{
@@ -54,6 +60,12 @@ public class AveragePanel extends JPanel{
 
         // Load real average work and break values for the logged-in user
         TimelogDAO timelogDAO = new TimelogDAO(conn);
+
+        LocalDate today = LocalDate.now();
+        LocalDate firstOfMonth = today.withDayOfMonth(1);
+
+        Map<LocalDate, Double> monthlyHours =
+            timelogDAO.getDailyWorkedHours(userId, firstOfMonth, today);
 
         // Retrieve the average worked hours and average break hours for the user from the database
         double averageWorkedHours = timelogDAO.getAverageWorkedHoursPerDay(userId);
@@ -106,7 +118,7 @@ public class AveragePanel extends JPanel{
         calendarPanel.setBorder(BorderFactory.createTitledBorder("Streak Calendar"));
         calendarPanel.setOpaque(false);
         calendarPanel.setPreferredSize(new Dimension(400, 300));
-        calendarPanel.add(new CalendarPanel(), BorderLayout.CENTER);
+        calendarPanel.add(new CalendarPanel(monthlyHours), BorderLayout.CENTER);
         add(calendarPanel, BorderLayout.CENTER); 
 
         // Add to main layout
