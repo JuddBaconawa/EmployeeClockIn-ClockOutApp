@@ -53,10 +53,20 @@ public class CalendarPanel extends JPanel {
 
         // Draw day labels (S M T W T F S)
         String[] days = {"S", "M", "T", "W", "TH", "F", "S"};
-        g2.setFont(new Font("Arial", Font.BOLD, 14));
+        g2.setFont(new Font("Arial", Font.BOLD, 15));
+
+        // Get font metrics for centering the day labels
+        FontMetrics dayMetrics = g2.getFontMetrics();
+
+        // Draw the day labels at the top of the calendar
         for (int i = 0; i < DAYS_IN_WEEK; i++) {
             int x = i * BOX_SIZE + 10;
-            g2.drawString(days[i], x + 10, 20);
+
+            //  
+            int textX = x + (BOX_SIZE - dayMetrics.stringWidth(days[i])) / 2;
+
+            // Draw the day label centered above the box
+            g2.drawString(days[i], textX, 20);
         }
 
         
@@ -80,7 +90,7 @@ public class CalendarPanel extends JPanel {
                             && workLog.containsKey(current)) {
 
                         // Get the hours worked for the current day from the work log
-                        double hours = workLog.getOrDefault(current, -1.0);
+                        double hours = workLog.get(current);
 
 
                         // Determine the fill color based on hours worked
