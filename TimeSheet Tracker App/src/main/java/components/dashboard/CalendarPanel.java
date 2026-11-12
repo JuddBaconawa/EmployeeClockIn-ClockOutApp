@@ -21,7 +21,7 @@ public class CalendarPanel extends JPanel {
     private final int BOX_SIZE = 23;
     
 
-    // Simulated time log data: LocalDate -> hours worked
+    // Daily worked hours loaded from the database: date => hours worked
     private final Map<LocalDate, Double> workLog;
 
     // Constructor for CalendarPanel
@@ -33,11 +33,6 @@ public class CalendarPanel extends JPanel {
         // Set layout and styling
         setPreferredSize(new Dimension(BOX_SIZE * DAYS_IN_WEEK + 40, BOX_SIZE * (WEEKS + 1)));
         setOpaque(false);
-
-
-        // Simulated data for demonstration
-        LocalDate today = LocalDate.now();
-        LocalDate start = today.withDayOfMonth(1);
 
 
     }
@@ -76,22 +71,28 @@ public class CalendarPanel extends JPanel {
                 int y = week * BOX_SIZE + boxYStart;
 
                 Color fill = new Color(230, 230, 230); // Default: weekend gray
-                int weekday = current.getDayOfWeek().getValue(); // Mon = 1, Sun = 7
 
-                if (current.getMonth() == today.getMonth()) {
-                    if (weekday >= 1 && weekday <= 5) { // Only weekdays
+                // Check if the current day is a weekend (Saturday or Sunday)
+                if (current.getMonth() == today.getMonth() 
+                    
+                            // Check if the current day is a weekday (Monday to Friday)
+                            && current.getYear() == today.getYear()
+                            && workLog.containsKey(current)) {
+
+                        // Get the hours worked for the current day from the work log
                         double hours = workLog.getOrDefault(current, -1.0);
+
+
+                        // Determine the fill color based on hours worked
                         if (hours > 8.0) {
                             fill = new Color(100, 181, 246); // 🔵 Light Blue for overtime
                         } else if (hours == 8.0) {
                             fill = new Color(76, 175, 80); // 🟩 Green
                         } else if (hours > 0) {
                             fill = new Color(255, 235, 59); // 🟨 Yellow
-                        } else {
-                            fill = new Color(244, 67, 54); // 🟥 Red (no hours logged)
                         }
                     }
-                }
+            
 
                 // Fill and border
                 g2.setColor(fill);
