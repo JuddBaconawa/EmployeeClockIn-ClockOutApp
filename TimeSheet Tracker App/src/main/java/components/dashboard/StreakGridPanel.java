@@ -131,7 +131,12 @@ public class StreakGridPanel extends JPanel {
         // Optionally, draw the grid lines
         g.setColor(Color.GRAY);
         g.setFont(new Font("SansSerif", Font.PLAIN, 10));
+
+
+        //  days of the week labels
         String[] days = {"S", "M", "T", "W", "TH", "F", "S"};
+
+        // Draw the day labels on the left side of the grid
         for (int i = 0; i < DAYS_IN_WEEK; i++) {
             int y = TOP_PADDING + i * (BOX_SIZE + GAP) + 10;
             g.drawString(days[i], LEFT_PADDING - 20, y);
