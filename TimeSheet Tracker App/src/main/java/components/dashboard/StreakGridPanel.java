@@ -5,6 +5,7 @@ package components.dashboard;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -136,10 +137,20 @@ public class StreakGridPanel extends JPanel {
         //  days of the week labels
         String[] days = {"S", "M", "T", "W", "TH", "F", "S"};
 
+        // dayMetrics declared and initialized to get the font metrics for the current font
+        FontMetrics dayMetrics = g.getFontMetrics();
+
         // Draw the day labels on the left side of the grid
         for (int i = 0; i < DAYS_IN_WEEK; i++) {
-            int y = TOP_PADDING + i * (BOX_SIZE + GAP) + 10;
-            g.drawString(days[i], LEFT_PADDING - 20, y);
+
+            // Calculate the x position for the day label based on the width of the text
+            int rowY = TOP_PADDING + i * (BOX_SIZE + GAP);
+
+            int textY = rowY
+                + (BOX_SIZE - dayMetrics)
+
+            // Calculate the x position for the day label based on the width of the text
+            g.drawString(days[i], textX, textY);
         }
 
 
