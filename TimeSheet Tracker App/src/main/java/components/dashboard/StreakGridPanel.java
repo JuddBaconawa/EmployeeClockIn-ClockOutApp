@@ -146,8 +146,13 @@ public class StreakGridPanel extends JPanel {
             // Calculate the x position for the day label based on the width of the text
             int rowY = TOP_PADDING + i * (BOX_SIZE + GAP);
 
+            // Calculate the y position for the day label based on the height of the text
             int textY = rowY
-                + (BOX_SIZE - dayMetrics)
+                + (BOX_SIZE - dayMetrics.getHeight()) / 2
+                + dayMetrics.getAscent();
+
+            // Calculate the x position for the day label based on the width of the text
+            int textX = LEFT_PADDING - 6 - dayMetrics.stringWidth(days[i]);
 
             // Calculate the x position for the day label based on the width of the text
             g.drawString(days[i], textX, textY);
